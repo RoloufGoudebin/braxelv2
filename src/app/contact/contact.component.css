@@ -1,0 +1,40 @@
+h1{
+    color: #233353;
+    font-size: 3em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h2{
+    font-size: 1.1em;
+    font-style: "Source Sans Pro", sans-serif;
+    font-weight: normal;
+  }
+
+h3{
+    font-size: 1.3em;
+    font-style: "Source Sans Pro", sans-serif;
+    font-weight: 700;
+}
+h4{
+    font-size: 1.1em;
+        font-style: "Source Sans Pro", sans-serif;
+        font-weight: normal;
+        padding-top: 10px;
+}
+
+p.ps{font-style: italic;
+}
+
+form{
+  padding-top: 10px;
+}
+
+label{
+    font-style: "Montserrat", sans-serif;
+}
+
+input{
+  font-style: "Source Sans Pro", sans-serif;
+  font-weight: lighter;
+  font-size: 1.1em
+}

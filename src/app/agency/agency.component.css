@@ -1,0 +1,55 @@
+.mission .banner{
+    max-height: 100vh;
+    background-image: url("/assets/img/...");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    font-family: 'Montserrat', sans-serif;
+    font-display: swap;
+}
+
+h2{
+  padding-top: 5em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.mission h2{
+  font-family: 2.5em;
+  color: #EE5C5A;
+  font-style:'Montserrat', sans-serif;
+  padding-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1.4em;
+  color: #EE5C5A;
+  font-family:'Montserrat', sans-serif;
+  font-weight: 800;
+}
+
+.charte h2{
+  font-size: 2.5em;
+  color: #EE5C5A;
+  font-family:'Montserrat', sans-serif;
+  padding-bottom: 0.5em;
+}
+
+.charte .banner {
+    max-height: 100vh;
+    min-height: 100%;
+    background-image: url("/assets/img/charte.jpeg");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    font-family: 'Montserrat', sans-serif;
+    font-display: swap;
+}
+
+p{
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 1.1em;
+}
+.intro {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.0em;
+}

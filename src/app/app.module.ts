@@ -10,6 +10,13 @@ import { ViewPropertyListComponent } from './view-property-list/view-property-li
 import { OmnicasaService } from './services/omnicasa/omnicasa.service';
 import { ViewPropertyComponent } from './view-property/view-property.component';
 
+import { AgmCoreModule } from '@agm/core';
+import { AgencyComponent } from './agency/agency.component';
+import { ContactComponent } from './contact/contact.component';
+import { ServicesComponent } from './services-braxel/services.component';
+import { FooterComponent } from './footer/footer.component';
+import { FaqComponent } from './faq/faq.component';
+
 
 
 @NgModule({
@@ -18,12 +25,20 @@ import { ViewPropertyComponent } from './view-property/view-property.component';
     NavbarComponent,
     HomeComponent,
     ViewPropertyListComponent,
-    ViewPropertyComponent
+    ViewPropertyComponent,
+    AgencyComponent,
+    ContactComponent,
+    ServicesComponent,
+    FooterComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyATpESf9vy24duvdNS3TeSOQE7XBUSnUtA'
+    })
   ],
   providers: [OmnicasaService],
   bootstrap: [AppComponent]

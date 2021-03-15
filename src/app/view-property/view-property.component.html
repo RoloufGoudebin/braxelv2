@@ -1,0 +1,94 @@
+<div class="container mt-5 pt-5">
+    <div *ngIf="property" class="pt-5 mt-5">
+      <h1 *ngIf="property.TypeDescription">{{property.TypeDescription}}</h1>
+      <h2 *ngIf="property.City">{{property.Zip}} {{property.City}}</h2>
+      <hr>
+      <h3 *ngIf="property.StartPrice">{{property.StartPrice}} {{property.PriceUnitText}}</h3>
+      <p class="price"> Hors droits et taxes diverses</p>
+      <img src="{{property.LargePicture}}" class="img-fluid col-12">
+  
+      <div class="container">
+        <ul class="row">
+          <div class="col liste">
+            <li class="info" *ngIf="property.MainTypeName">Type de bien : {{property.MainTypeName}}</li>
+            <li *ngIf="property.City">Commune : {{property.City}}</li>
+            <li *ngIf="property.SurfaceTotal">Surface habitable : {{property.SurfaceTotal}}m²</li>
+          </div>
+  
+          <div class="col liste">
+            <li *ngIf="property.SurfaceGarden">Surface du terrain : {{property.SurfaceGarden}}m²</li>
+            <li *ngIf="property.EnergyPerformance">Énergie/niveau PEG : {{property.EnergyPerformance}}</li>
+          </div>
+        </ul>
+  
+        <div align="center" class="container">
+          <ul class="row">
+            <div class="col card">
+              <span class="icon-object-ungroup"></span>
+              <li class="titlecard" *ngIf="property.SurfaceTotal">Superficie
+                <hr> {{property.SurfaceTotal}}
+              </li>
+            </div>
+            <div class="col card">
+              <span class="icon-bed"></span>
+              <li *ngIf="property.NumberOfBedRooms">Chambres
+                <hr> {{property.NumberOfBedRooms}}
+              </li>
+            </div>
+            <div class="col card">
+              <span class="icon-bath"></span>
+              <li *ngIf="property.NumberOfBathRooms">Salle(s) de bain
+                <hr> {{property.NumberOfBathRooms}}
+              </li>
+            </div>
+            <div class="col card">
+              <span class="icon-shower"></span>
+              <li *ngIf="property.NumberOfShowerRooms">Salle(s) de douche
+                <hr> {{property.NumberOfShowerRooms}}
+              </li>
+            </div>
+            <div class="col card">
+              <span class="icon-automobile"></span>
+              <li *ngIf="property.NumberOfGarages">Garage(s)
+                <hr> {{property.NumberOfGarages}}
+              </li>
+            </div>
+          </ul>
+        </div>
+  
+  
+  
+        <h4>Particularités</h4>
+        <div class="container">
+          <ul class="row">
+            <div class="col">
+              <li *ngIf="property.KitchenName">Cuisine : {{property.KitchenName}}</li>
+              <li *ngIf="property.WindowGlazing">Vitrage : {{property.WindowGlazing}}</li>
+              <li *ngIf="property.OrientationT">Orientation : {{property.OrientationT}}</li>
+              <li *ngIf="property.MainStyleName">Style : {{property.MainStyleName}}</li>
+            </div>
+            <div class="col">
+              <li *ngIf="property.HasLift ">Ascensceur : Oui</li>
+              <li *ngIf="property.Floor">Étage(s) : {{property.Floor}}</li>
+              <li *ngIf="property.ConstructionYear">Année de construction: {{property.ConstructionYear}}</li>
+              <li *ngIf="property.SurfaceTerrace">Terrasse : {{property.SurfaceTerrace}}</li>
+            </div>
+            <div class="col">
+              <li *ngIf="property.ConstructionName">Type de construction : {{property.ConstructionName}}</li>
+              <li *ngIf="property.SurfaceGarden">Jardin : {{property.SurfaceGarden}} m²</li>
+            </div>
+          </ul>
+        </div>
+  
+        <h4>Description</h4>
+        <p *ngIf="property.DescriptionA">{{property.DescriptionB}}</p>
+        <div class="row">
+          <div *ngIf="lat" class="row">
+            <agm-map [latitude]="lat" [longitude]="long" [zoom]="12">
+              <agm-marker [latitude]="lat" [longitude]="long"></agm-marker>
+            </agm-map>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

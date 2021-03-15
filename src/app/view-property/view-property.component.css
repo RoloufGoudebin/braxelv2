@@ -1,0 +1,84 @@
+
+
+agm-map {
+    height: 600px;
+    width: 1200px;
+}
+
+p {
+  color:#233353;
+  font-size: 15px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.price {
+  margin-top: -10px;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 2.2em;
+  color:#233353;
+}
+
+
+h2 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: 400;
+  font-size: 1.7em;
+  color:#233353;
+}
+
+h3 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 800;
+  font-size: 3.3em;
+  color:#233353;
+}
+
+h4 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  font-size: 1.3em;
+  color:#233353;
+
+}
+
+h6 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  font-size: 1.8em;
+  color:#233353;
+}
+
+.card {
+  background-color: #E4E4E4;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.0em;
+  border:none;
+  font-style: #233353;
+  margin: 3px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  margin-bottom: 20px;
+}
+
+ul {
+  color: #233353;
+}
+
+li {
+  color: #233353;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.3em;
+  list-style-type: none;
+}
+
+
+
+
+.liste {
+padding: 25px;
+}

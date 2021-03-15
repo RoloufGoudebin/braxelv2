@@ -1,0 +1,175 @@
+<body style="background-color:#F6F6F6;">
+
+    <section class="header fullheight">
+        <div class="container-fluid mt-5 pt-5">
+            <div class="row mt-5 pt-5 col-9 mx-auto">
+                <div class="col-5 pt-5">
+                    <h2>BRAXEL</h2>
+                    <h1>L'immobilier selon vous</h1>
+                    <p>Vous avez trouvé vos agents immobiliers de confiance, en Brabants et à Bruxelles !</p>
+                    <button type="button" class="btn btn-outline-danger">Découvrez notre méthode</button>
+                    <button type="button" class="btn btn-outline-safe">Vendre/Louer</button>
+
+                </div>
+
+                <!--formulaire de recherche-->
+                <div class="col-5 offset-2">
+                    <div class="container">
+                        <div class="row">
+                            <h2 class="col-8 text-center ml-auto">Vous cherchez un bien?</h2>
+                        </div>
+                        <div class="search-form col-8 ml-auto pb-3">
+                            <div class="row">
+                                <div class="text-search-form col-12 text-left">Je souhaite</div>
+                                <button type="button"
+                                    class="btn btn-outline-primary offset-3 col-3 ml-auto rounded-pill"
+                                    aria-pressed="true">Acheter</button>
+                                <button type="button"
+                                    class="btn btn-outline-primary offset-1 col-3 mr-auto rounded-pill">Louer</button>
+                            </div>
+                            <div class="row">
+                                <form class="form-inline col-12">
+                                    <label class="text-search-form col-12 text-left"
+                                        for="inlineFormCustomSelectPref">Type
+                                        de bien</label>
+                                    <select class="custom-select mx-auto rounded-pill col-7"
+                                        id="inlineFormCustomSelectPref">
+                                        <option value="1">Maison</option>
+                                        <option value="2">Appartement</option>
+                                        <option value="3">Terrain</option>
+                                        <option value="3">Bureaux/Commerces</option>
+                                        <option value="3">Immeubles</option>
+                                        <option value="3">Garage/Parking</option>
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="row">
+                                <form class="form-inline col-12">
+                                    <label class="text-search-form col-12 text-left"
+                                        for="inlineFormCustomSelectPref">Localité</label>
+                                    <select class="custom-select mx-auto rounded-pill col-7"
+                                        id="inlineFormCustomSelectPref">
+                                        <option value="1">Maison</option>
+                                        <option value="2">Appartement</option>
+                                        <option value="3">Terrain</option>
+                                        <option value="3">Bureaux/Commerces</option>
+                                        <option value="3">Immeubles</option>
+                                        <option value="3">Garage/Parking</option>
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="row">
+                                <form class="form-inline col-12">
+                                    <label class="text-search-form col-12 text-sm-left"
+                                        for="inlineFormCustomSelectPref">Nombre de chambres</label>
+                                    <select class="custom-select mx-auto rounded-pill col-3"
+                                        id="inlineFormCustomSelectPref">
+                                        <option selected>Min</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="3">4</option>
+                                        <option value="3">5</option>
+                                        <option value="3">6</option>
+                                    </select>
+                                    <select class="custom-select mx-auto rounded-pill col-3"
+                                        id="inlineFormCustomSelectPref">
+                                        <option selected>Max</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="3">4</option>
+                                        <option value="3">5</option>
+                                        <option value="3">6</option>
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="row">
+                                <form class="form-inline col-12">
+                                    <label class="text-search-form col-12 text-center"
+                                        for="inlineFormCustomSelectPref">Budget</label>
+                                    <select class="custom-select mx-auto rounded-pill col-3"
+                                        id="inlineFormCustomSelectPref">
+                                        <option selected>Min</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="3">4</option>
+                                        <option value="3">5</option>
+                                        <option value="3">6</option>
+                                    </select>
+                                    <select class="custom-select mx-auto rounded-pill col-3"
+                                        id="inlineFormCustomSelectPref">
+                                        <option selected>Max</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="3">4</option>
+                                        <option value="3">5</option>
+                                        <option value="3">6</option>
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="row pt-3 button-search">
+                                <button type="button"
+                                    class="btn btn-outline-primary offset-1 col-10 mx-auto rounded-pill">Voir tous les
+                                    résultats</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="nos-biens pt-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <h2 class="mx-auto">NOS BIENS IMMOBILIERS
+                </h2>
+            </div>
+            <app-view-property-list></app-view-property-list>
+        </div>
+    </section>
+
+    <section class="agent-immobilier pt-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <h2 class="mx-auto">VOS AGENTS IMMOBILIERS</h2>
+                <p class="mx-auto">AU-DELÀ DE 10 ANNÉES D’EXPÉRIENCE COMBINÉES, NOS AGENTS IMMOBILIERS SONT AGRÉÉS IPI
+                    ET
+                    VOUS ACCUEILLENT AVEC PASSION.</p>
+            </div>
+            <div class="row presentation">
+                <div class="col-md-6 col-sm-6">
+                    <div class="box1 pb-0 mb-0">
+                        <img src="assets/img/worker-1.jpg" alt="">
+                        <h3 class="title">Agent immobilier agréé I.P.I. 508.871</h3>
+                        <ul class="icon">
+                            <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                            <li><a href="#"><i class="bi bi-envelope-fill"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="mt-3">Edouard Chevalier</h4>
+                        <h5>Plus d'infos</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="box1">
+                        <img src="assets/img/worker-2.jpg" alt="">
+                        <h3 class="title">Agent immobilier agréé I.P.I. 509.783</h3>
+                        <ul class="icon">
+                            <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                            <li><a href="#"><i class="bi bi-envelope-fill"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="mt-3">Thomas Offergeld</h4>
+                        <h5>Plus d'infos</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
