@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,14 @@ import { FooterComponent } from './footer/footer.component';
 import { FaqComponent } from './faq/faq.component';
 
 
+import { environment } from "../environments/environment";
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AdminComponent } from './admin/admin.component';
+import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.component';
+import { TopBiensComponent } from './admin/top-biens/top-biens.component';
+
+
 
 @NgModule({
   declarations: [
@@ -30,15 +39,21 @@ import { FaqComponent } from './faq/faq.component';
     ContactComponent,
     ServicesComponent,
     FooterComponent,
-    FaqComponent
+    FaqComponent,
+    AdminComponent,
+    NavbarAdminComponent,
+    TopBiensComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyATpESf9vy24duvdNS3TeSOQE7XBUSnUtA'
-    })
+    }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [OmnicasaService],
   bootstrap: [AppComponent]

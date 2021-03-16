@@ -1,0 +1,88 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="container-fluid">
+  <div class="row">
+    <h1 class="col-5 text-center">
+      BIENS A LA UNE
+    </h1>
+    <h2 class="col-2 text-center">
+      Recherche
+    </h2>
+    <h1 class="col-5 text-center">
+      VOS AUTRES BIENS
+    </h1>
+  </div>
+  <div class="row">
+    <div class="col-5 topBiens">
+      <div class="row">
+        <div class="card-deck">
+          <a *ngFor="let Items of topPropertyList" class="col-4 px-1 my-3" style="width: 18rem;"
+            routerLinkActive="active" routerLink="biens-immobiliers/{{Items.ID}}">
+            <div class="card">
+              <img class="card-img-top" src={{Items.LargePicture}} alt="Card image cap">
+              <div class="card-block">
+                <h5 class="card-title">{{Items.TypeDescription}}</h5>
+                <p class="card-text">{{Items.Zip}} {{Items.City}}</p>
+                <hr>
+                <h6>{{Items.Price}}</h6>
+                <button class="button" (click)="update( 4, 5)">remplacer</button>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-2">
+      <form>
+        <div class="form-group row">
+          <div class="col-sm-9">
+            <input [(ngModel)]="zip" type="string" class="form-control" #inputZip  placeholder="Code Postal">
+          </div>
+          <button type="button" class="btn btn-primary col-2" (click)="searchZIP(inputZip.value)">GO</button>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-9">
+            <input type="priceMax" class="form-control" id="priceMax" placeholder="Prix max">
+          </div>
+          <button type="button" class="btn btn-primary col-2">GO</button>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-9">
+            <input type="priceMin" class="form-control" id="priceMin" placeholder="Prix min">
+          </div>
+          <button type="button" class="btn btn-primary col-2">GO</button>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-9">
+            <input type="price" class="form-control" id="price" placeholder="Prix exact">
+          </div>
+          <button type="button" class="btn btn-primary col-2">GO</button>
+        </div>
+      </form>
+      <div class="row">
+        <button type="button" class="btn btn-primary col-6">Échanger</button>
+      </div>
+      <div class="row">
+        <button type="button" class="btn btn-primary col-6">Sauvegarder</button>
+      </div>
+    </div>
+
+    <div class="col-5 topBiens">
+      <div class="row">
+        <div class="card-deck">
+          <a *ngFor="let Items of propertyList" class="col-4 px-1 my-3" style="width: 18rem;" routerLinkActive="active" routerLink="biens-immobiliers/{{Items.ID}}">
+            <div class="card">
+              <img class="card-img-top" src={{Items.LargePicture}} alt="Card image cap">
+              <div class="card-block">
+                <h5 class="card-title">{{Items.TypeDescription}}</h5>
+                <p class="card-text">{{Items.Zip}} {{Items.City}}</p>
+                <hr>
+                <h6>{{Items.Price}}</h6>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

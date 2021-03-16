@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Property } from '../services/omnicasa/interface';
-import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
+import { FirestoreService } from '../services/firebase/firestore.service';
+
+import { BraxelHome } from '../braxel-home.model'
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,20 @@ import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public omnicasa: OmnicasaService) { }
+  constructor(private firestore: FirestoreService) { }
 
 
-  propertyList: Property[]; // liste des propriétés
+  texts: BraxelHome[];
 
 
   ngOnInit() {
+    this.firestore.getFirestoreCollection("home").subscribe(data => {
+      this.texts = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as BraxelHome }
+      })
+    });
   }
 
 
