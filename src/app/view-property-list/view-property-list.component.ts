@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service'
 import { Property} from '../services/omnicasa/interface';
+import { FirestoreService } from '../services/firebase/firestore.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,12 +12,20 @@ import { Observable } from 'rxjs';
 })
 export class ViewPropertyListComponent implements OnInit {
 
+  topPropertyList: Property[];
   propertyList: Property[];
 
-  constructor(private readonly omnicasaService: OmnicasaService) { }
+  constructor(private omnicasaService: OmnicasaService, private firestore: FirestoreService) { }
 
   ngOnInit(): void {
-
+    this.firestore.getFirestoreCollection("topProperties").subscribe(data => {
+      this.topPropertyList = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as Property
+        }
+      })
+    });
 
     this.omnicasaService.getPropertyList()
       .subscribe((data: any) => {

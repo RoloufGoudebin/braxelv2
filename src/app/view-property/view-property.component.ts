@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Property, PropertyList } from '../services/omnicasa/interface';
 import { ActivatedRoute } from '@angular/router';
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
+import { FirestoreService } from '../services/firebase/firestore.service';
 
 @Component({
   selector: 'app-view-property',
@@ -11,27 +12,35 @@ import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
 export class ViewPropertyComponent implements OnInit {
 
   propertyList: Property[];
+  topPropertyList: Property[];
   property: Property;
   id: number;
   lat: number;
   long: number;
 
-  constructor(private route: ActivatedRoute, public omnicasa: OmnicasaService) {
+  constructor(private route: ActivatedRoute, public omnicasa: OmnicasaService, private firestore: FirestoreService) {
   }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.omnicasa.getPropertyList()
-      .subscribe(response => {
-        this.propertyList = response.GetPropertyListJsonResult.Value.Items;
-        for (let i = 0; i < this.propertyList.length; i++) {
-          if (this.propertyList[i].ID == this.id) {
-            this.property = this.propertyList[i];
-          }
+    this.firestore.getFirestoreCollection('topProperties').subscribe(data => {
+      this.topPropertyList = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as Property
         }
-        this.lat = +this.property.GoogleX;
-        this.long = +this.property.GoogleY;
       })
+      for (let i = 0; i < this.topPropertyList.length; i++) {
+        if (this.topPropertyList[i].ID == this.id) {
+          this.property = this.topPropertyList[i];
+        }
+      }
+      this.lat = +this.property.GoogleX;
+      this.long = +this.property.GoogleY;
+    });
+
+
+
   }
 
 
