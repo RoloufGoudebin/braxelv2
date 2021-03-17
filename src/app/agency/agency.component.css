@@ -1,16 +1,29 @@
 .mission .banner{
     max-height: 100vh;
-    background-image: url("/assets/img/...");
+    background-image: url("/assets/img/recherche.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     font-family: 'Montserrat', sans-serif;
     font-display: swap;
+    margin-top: 25%;
+    margin-right: 3%;
+    border-radius: 10%;
+
 }
 
+h1{
+  font-family: 2.5em;
+  color: #EE5C5A;
+  font-style:'Montserrat', sans-serif;
+  padding-top: 6em;
+  padding-bottom: 0.5em;
+  }
+
 h2{
-  padding-top: 5em;
+  padding-top: 2em;
   font-family: 'Montserrat', sans-serif;
+  color: #233353;
 }
 
 .mission h2{
@@ -43,11 +56,27 @@ h3 {
     background-position: center center;
     font-family: 'Montserrat', sans-serif;
     font-display: swap;
+    margin-top: 4%;
+    border-radius: 10%;
 }
 
 p{
       font-family: 'Source Sans Pro', sans-serif;
       font-size: 1.1em;
+      color: #233353;
+}
+
+b{
+  color: #EE5C5A;
+  font-style: 800;
+
+}
+
+ul {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.1em;
+  color: #233353;
+  margin-top: 2em;
 }
 .intro {
   font-family: 'Montserrat', sans-serif;

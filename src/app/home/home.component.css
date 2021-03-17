@@ -92,6 +92,10 @@ h2{
     font-family: 'Montserrat', sans-serif;
 }
 
+li{
+  color: #233353;
+}
+
 .search-form h2{
     font-size: 2.3em;
     color: #EE5C5A;
