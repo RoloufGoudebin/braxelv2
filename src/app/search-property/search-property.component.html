@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <h2 class="col-8 text-center ml-auto">Vous cherchez un bien?</h2>
+    </div>
+    <div class="search-form col-8 ml-auto pb-3">
+        <div class="row">
+            <div class="text-search-form col-12 text-left">Je souhaite</div>
+            <button type="button" class="btn btn-outline-primary offset-3 col-3 ml-auto rounded-pill"
+                aria-pressed="true">Acheter</button>
+            <button type="button" class="btn btn-outline-primary offset-1 col-3 mr-auto rounded-pill">Louer</button>
+        </div>
+        <div class="row">
+            <form class="form-inline col-12">
+                <label class="text-search-form col-12 text-left" for="inlineFormCustomSelectPref">Type
+                    de bien</label>
+                <select class="custom-select mx-auto rounded-pill col-7" id="inlineFormCustomSelectPref">
+                    <option value="1">Maison</option>
+                    <option value="2">Appartement</option>
+                    <option value="3">Terrain</option>
+                    <option value="3">Bureaux/Commerces</option>
+                    <option value="3">Immeubles</option>
+                    <option value="3">Garage/Parking</option>
+                </select>
+            </form>
+        </div>
+        <div class="row">
+            <form class="form-inline col-12">
+                <div class="container">
+                    <div class="row">
+                        <label class="text-search-form col-12 text-left">Code Postal</label>
+                        <input type="text" id="zip" name="name" class="col-8 mx-auto">
+                        <label class="text-search-form col-12" for="rooms">Nombre de chambres</label>
+                        <app-slider class="col-8 mx-auto" id="rooms"></app-slider>
+                        <label class="text-search-form col-12" for="budget">Nombre de chambres</label>
+                        <app-slider class="col-8 mx-auto" id="budget"></app-slider>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row pt-3 button-search">
+            <button type="button" class="btn btn-outline-primary offset-1 col-10 mx-auto rounded-pill">Voir tous les
+                résultats</button>
+        </div>
+    </div>
+</div>

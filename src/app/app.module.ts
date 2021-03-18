@@ -25,6 +25,11 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AdminComponent } from './admin/admin.component';
 import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.component';
 import { TopBiensComponent } from './admin/top-biens/top-biens.component';
+import { AlertModalComponent } from './alert-modal/alert-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { SliderComponent } from './slider/slider.component';
+import { SearchPropertyComponent } from './search-property/search-property.component';
 
 
 
@@ -42,18 +47,23 @@ import { TopBiensComponent } from './admin/top-biens/top-biens.component';
     FaqComponent,
     AdminComponent,
     NavbarAdminComponent,
-    TopBiensComponent
+    TopBiensComponent,
+    AlertModalComponent,
+    SliderComponent,
+    SearchPropertyComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgxSliderModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyATpESf9vy24duvdNS3TeSOQE7XBUSnUtA'
     }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    NgbModule
   ],
   providers: [OmnicasaService],
   bootstrap: [AppComponent]
