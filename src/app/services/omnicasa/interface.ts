@@ -12,6 +12,8 @@ export interface Items{
 
 export interface Property {
     GetPropertyListJsonResult : any;
+    Status : number;
+    Goal : number;
     City : string;
     ID: number;
     TypeDescription: string;
@@ -40,4 +42,6 @@ export interface Property {
     GoogleX: number;
     GoogleY: number;
     PriceUnitText: string;
+    MarqueeName: string;
+    Marquee: number;
 }

@@ -69,6 +69,17 @@ h5 {
       transform: scale(1.10, 1.10);
   
   }
+
+  .ribon{
+      position: absolute;
+      top: 110px;
+      right: -5px;
+      color: #fff;
+      text-transform: uppercase;
+      padding: 3px 15px;
+      font-weight: 600;
+      top: 18px;
+}
   
   img {
     width: 100%;
