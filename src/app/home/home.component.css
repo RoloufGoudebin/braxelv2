@@ -4,13 +4,17 @@
 .header{
     background-image: url('/assets/img/choice.png');
     background-size: 25%;
-    background-color: #233350;
     background-repeat: no-repeat;
-    background-position: right 39% bottom 45%;
+    background-position: right 25% bottom 45%;
 
 }
 
-
+.bg{
+  background-image: url('/assets/img/banner_bg.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: top 45%;
+}
 
 
 
@@ -90,6 +94,17 @@ h2{
     color: #ffff;
     font-size: 1.2em;
     font-family: 'Montserrat', sans-serif;
+}
+
+h3{
+    color: #ffff;
+    font-size: 1.2em;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 4.5em;
+}
+
+li{
+  color: #233353;
 }
 
 .search-form h2{
