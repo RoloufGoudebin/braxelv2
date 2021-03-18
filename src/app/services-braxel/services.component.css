@@ -1,3 +1,16 @@
+svg {
+  width: 160px;
+}
+
+path {
+  fill: none;
+  stroke-dasharray: 4, 6; /*adjust this to control the number of dots*/
+  stroke-width:2px;
+}
+
+
+
+
 h1 {
     text-transform: uppercase;
     font-size: 36px;
