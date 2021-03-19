@@ -1,8 +1,8 @@
 <ng-template #content let-modal>
-    <div class="modal-header">
+    <div class="modal-header" style="background:#F2F2F2">
         <div class="container">
             <div class="row">
-                <h4 class="modal-title" id="modal-basic-title">Être alerté</h4>
+                <h1 class="modal-title" id="modal-basic-title">Être alerté</h1>
             </div>
             <div class="row">
                 <p>Soyez le premier alerté des nouveaux biens correspondant à vos critères de recherche.</p>
@@ -15,7 +15,7 @@
     <div class="modal-body">
         <form>
             <div class="form-group">
-                <label for="dateOfBirth">Date of birth</label>
+                <label for="dateOfBirth">Je souhaite</label>
                 <div class="input-group">
                     <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
                         #dp="ngbDatepicker">
@@ -23,10 +23,51 @@
                         <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
                     </div>
                 </div>
-                <app-slider></app-slider>
             </div>
         </form>
     </div>
+
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="dateOfBirth">Type de bien </label>
+                <div class="input-group">
+                    <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
+                        #dp="ngbDatepicker">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="dateOfBirth">Localité</label>
+                <div class="input-group">
+                    <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
+                        #dp="ngbDatepicker">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+
+      <h2>Surface habitable</h2>
+      <app-slider></app-slider>
+
+        <h2>Chambres</h2>
+        <app-slider></app-slider>
+
+          <h2>Prix</h2>
+          <app-slider></app-slider>
+
+
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
     </div>
