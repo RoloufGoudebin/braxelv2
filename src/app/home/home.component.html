@@ -2,77 +2,90 @@
 
 <body style="background-color:#F6F6F6;">
 
-    <section class="bg">
-        <div class="header fullheight">
-            <div class="container-fluid mt-5 pt-5">
-                <div class="row mt-5 pt-5 col-9 mx-auto">
-                    <div class="col-5 pt-5">
-                        <h3>BRAXEL</h3>
-                        <h1 *ngFor="let text of texts">{{text.titre1}}</h1>
-                        <p>Vous avez trouvé vos agents immobiliers de confiance, en Brabants et à Bruxelles !</p>
-                        <button type="button" class="btn btn-outline-danger">Découvrez notre méthode</button>
-                        <button type="button" class="btn btn-outline-safe">Vendre/Louer</button>
+  <section class="bg">
+    <div class="header fullheight">
+      <div class="container-fluid mt-5 pt-5">
+        <div class="row mt-5 pt-5 col-9 mx-auto">
+          <div class="col-5 pt-5">
+            <h3>BRAXEL</h3>
+            <h1 *ngFor="let text of texts">{{text.titre1}}</h1>
+            <p>Vous avez trouvé vos agents immobiliers de confiance, en Brabants et à Bruxelles !</p>
+            <button type="button" class="btn btn-outline-danger">Découvrez notre méthode</button>
+            <button type="button" class="btn btn-outline-safe">Vendre/Louer</button>
 
-                    </div>
+          </div>
 
-                    <!--formulaire de recherche-->
-                    <div class="offset-2 col-5">
-                        <app-search-property></app-search-property>
-                    </div>
-                </div>
-            </div>
+          <!--formulaire de recherche-->
+          <div class="offset-2 col-5">
+            <app-search-property></app-search-property>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section class="nos-biens pt-5 mt-5">
-        <div class="container">
-            <div class="row">
-                <h2 class="mx-auto">NOS BIENS IMMOBILIERS
-                </h2>
-            </div>
-            <app-view-property-list></app-view-property-list>
-        </div>
-    </section>
+  <section class="nos-biens pt-5 mt-5">
+    <div class="container">
+      <div class="row">
+        <h2 class="mx-auto">NOS BIENS IMMOBILIERS
+        </h2>
+      </div>
+      <app-view-property-list></app-view-property-list>
+    </div>
+  </section>
 
-    <section class="agent-immobilier pt-5 mt-5">
-        <div class="container">
-            <div class="row">
-                <h2 class="mx-auto">VOS AGENTS IMMOBILIERS</h2>
-                <p class="mx-auto">AU-DELÀ DE 10 ANNÉES D’EXPÉRIENCE COMBINÉES, NOS AGENTS IMMOBILIERS SONT AGRÉÉS IPI
-                    ET
-                    VOUS ACCUEILLENT AVEC PASSION.</p>
-            </div>
-            <div class="row presentation">
-                <div class="col-md-6 col-sm-6">
-                    <div class="box1 pb-0 mb-0">
-                        <img src="assets/img/worker-1.jpg" alt="">
-                        <h3 class="title">Agent immobilier agréé I.P.I. 508.871</h3>
-                        <ul class="icon">
-                            <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-                            <li><a href="#"><i class="bi bi-envelope-fill"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="mt-3">Edouard Chevalier</h4>
-                        <h5>Plus d'infos</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="box1">
-                        <img src="assets/img/worker-2.jpg" alt="">
-                        <h3 class="title">Agent immobilier agréé I.P.I. 509.783</h3>
-                        <ul class="icon">
-                            <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-                            <li><a href="#"><i class="bi bi-envelope-fill"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="text-center">
-                        <h4 class="mt-3">Thomas Offergeld</h4>
-                        <h5>Plus d'infos</h5>
-                    </div>
-                </div>
-            </div>
+  <section class="agent-immobilier pt-5 mt-5">
+    <div class="container">
+      <div class="row">
+        <h2 class="mx-auto">VOS AGENTS IMMOBILIERS</h2>
+        <p class="mx-auto">AU-DELÀ DE 10 ANNÉES D’EXPÉRIENCE COMBINÉES, NOS AGENTS IMMOBILIERS SONT AGRÉÉS IPI
+          ET
+          VOUS ACCUEILLENT AVEC PASSION.</p>
+      </div>
+      <div class="row presentation">
+        <div class="col-md-6 col-sm-6">
+          <div class="box1 pb-0 mb-0">
+            <img src="assets/img/worker-1.jpg" alt="">
+            <h3 class="title">Agent immobilier agréé I.P.I. 508.871</h3>
+            <ul class="icon">
+              <li><a href="https://www.linkedin.com/in/edouard-chevalier-027761b3/"><i class="bi bi-linkedin"></i></a></li>
+              <li><a href="mailto:edouard@braxel.be"><i class="bi bi-envelope-fill"></i></a></li>
+            </ul>
+          </div>
+          <div class="text-center">
+            <h4 class="mt-3">Edouard Chevalier</h4>
+            <h5>Plus d'infos</h5>
+          </div>
         </div>
-    </section>
+        <div class="col-md-6 col-sm-6">
+          <div class="box1">
+            <img src="assets/img/worker-2.jpg" alt="">
+            <h3 class="title">Agent immobilier agréé I.P.I. 509.783</h3>
+            <ul class="icon">
+              <li><a href="https://www.linkedin.com/in/thomas-offergeld-89277b137/"><i class="bi bi-linkedin"></i></a></li>
+              <li><a href="mailto:thomas@braxel.be"><i class="bi bi-envelope-fill"></i></a></li>
+            </ul>
+          </div>
+          <div class="text-center">
+            <h4 class="mt-3">Thomas Offergeld</h4>
+            <h5>Plus d'infos</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="chiffres container-fluid">
+    <div class="row">
+      <div class="col">
+        <h1>42</h1>
+        <h2>jours</h2>
+        <p>Durée moyenne de vente</p>
+      </div>
+      <div class="col"><h1>94,5</h1><h2>%</h2> <p>Dossiers activés et vendus</p></div>
+      <div class="col"><h1>3,5</h1><h2>%</h2> <p>Taux de négociation moyen</p></div>
+    </div>
+  </div>
 </body>
 <app-footer></app-footer>
