@@ -10,8 +10,8 @@
                         <h3>BRAXEL</h3>
                         <h1 *ngFor="let text of texts">{{text.titre1}}</h1>
                         <p>Vous avez trouvé vos agents immobiliers de confiance, en Brabants et à Bruxelles !</p>
-                        <button type="button" class="btn btn-outline-danger">Découvrez notre méthode</button>
-                        <button type="button" class="btn btn-outline-safe">Vendre/Louer</button>
+                        <a routerLinkActive="active" routerLink="/agence"><button type="button" class="btn btn-outline-danger">Découvrez notre méthode</button></a>
+                        <a routerLinkActive="active" routerLink="/services"><button type="button" class="btn btn-outline-safe">Vendre/Louer</button></a>
 
                     </div>
 
