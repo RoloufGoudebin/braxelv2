@@ -196,15 +196,59 @@ body{background-color:#f1f1f2}
 .box1 .icon li{display:block;margin:10px 0}
 .box1 .icon li a{display:block;width:35px;height:35px;line-height:35px;border-radius:10px;font-size:18px;color:#fff;transition:all .3s ease 0s}
 .box2 .icon li a,.box3 .icon a:hover,.box4 .icon li a:hover,.box5 .icon li a,.box6 .icon li a{border-radius:50%}
-.box1 .icon li a:hover{color:#fff;box-shadow:0 0 10px #000 inset,0 0 0 3px #fff}
+.box1 .icon li a:hover{color:#fff;box-shadow:0 0 3px #000}
 @media only screen and (max-width:990px){.box1{margin-bottom:30px}
 }
 
 h4{
-    font-weight: 800;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h5{
+
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #233353;
+    font-size: 20px;
+
 }
 
 /*sous titre image presentation*/
 .presentation p{
     font-size: 25px;
+}
+
+
+.chiffres{
+  padding: 10%;
+  background-image: url('/assets/img/banner_chiffre.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: top 45%;
+}
+
+.chiffres h1{
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 5em;
+  font-weight: 800;
+  display: inline;
+}
+
+.chiffres h2{
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 2em;
+  font-weight: 800;
+  display: inline;
+}
+
+
+
+.chiffres p{
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.4em;
+  font-weight: 400;
+
 }

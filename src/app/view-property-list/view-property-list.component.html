@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="card-deck">
-      <a *ngFor="let Items of topPropertyList | slice: 0:9;" class="col-4 px-1 my-3" style="width: 18rem;"
+      <a *ngFor="let Items of topPropertyList | slice: 0:8;" class="col-3 px-1 my-3" style="width: 18rem;"
         routerLinkActive="active" routerLink="biens-immobiliers/{{Items.ID}}">
         <div class="card">
           <img class="card-img-top" src={{Items.LargePicture}} alt="Card image cap">
