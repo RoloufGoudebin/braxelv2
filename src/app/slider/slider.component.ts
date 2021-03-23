@@ -6,10 +6,7 @@ import { Options } from '@angular-slider/ngx-slider';
 interface SliderDetails {
   minValue: number;
   highValue: number;
-  floor: number;
-  ceil: number;
-  step: number;
-  showTicks: boolean;
+  options : Options;
 }
 
 @Component({

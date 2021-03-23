@@ -1,0 +1,12 @@
+.search-form{
+    background: #f5f5f5;
+    border-radius: 20px;
+    border: black;
+    box-shadow: 5px 7px 7px #121932;
+    opacity: 95%;
+}
+
+.search-form p{
+    color: white;
+    opacity: 1 !important;
+}

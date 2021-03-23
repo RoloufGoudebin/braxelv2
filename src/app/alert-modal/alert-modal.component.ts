@@ -62,7 +62,7 @@ export class AlertModalComponent {
       highValue: 2000000,
       floor: 0,
       ceil: 2000000,
-      step: 10000
+      step: 10000,
     }
 
 }

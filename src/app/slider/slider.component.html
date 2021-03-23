@@ -1,5 +1,5 @@
-<div class="custom-slider col-10 mx-auto">
+<div class="custom-slider mx-auto">
     <div *ngIf="options">
-        <ngx-slider [(value)]="options.minValue" [(highValue)]="options.highValue" [options]="options"></ngx-slider>
+        <ngx-slider [(value)]="options.minValue" [(highValue)]="options.highValue" [options]="options.options"></ngx-slider>
     </div>
 </div>
