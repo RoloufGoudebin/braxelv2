@@ -25,9 +25,6 @@
                 </div>
             </div>
         </form>
-    </div>
-
-    <div class="modal-body">
         <form>
             <div class="form-group">
                 <label for="dateOfBirth">Type de bien </label>
@@ -40,8 +37,6 @@
                 </div>
             </div>
         </form>
-    </div>
-    <div class="modal-body">
         <form>
             <div class="form-group">
                 <label for="dateOfBirth">Localité</label>
@@ -57,15 +52,17 @@
         </form>
     </div>
 
+    <div *ngIf="sliderRooms">
+        <app-slider [options]="sliderRooms"></app-slider>
+    </div>
 
-      <h2>Surface habitable</h2>
-      <app-slider></app-slider>
+    <div *ngIf="sliderSurface">
+        <app-slider [options]="sliderSurface"></app-slider>
+    </div>
 
-        <h2>Chambres</h2>
-        <app-slider></app-slider>
-
-          <h2>Prix</h2>
-          <app-slider></app-slider>
+    <div *ngIf="sliderPrice">
+        <app-slider [options]="sliderPrice"></app-slider>
+    </div>
 
 
     <div class="modal-footer">

@@ -1,6 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Options } from '@angular-slider/ngx-slider';
+
+
+interface SliderDetails {
+  minValue: number;
+  highValue: number;
+  floor: number;
+  ceil: number;
+  step: number;
+  showTicks: boolean;
+}
 
 @Component({
   selector: 'app-slider',
@@ -9,13 +19,8 @@ import { Options } from '@angular-slider/ngx-slider';
 })
 export class SliderComponent{
 
-  constructor() { }
+  @Input() options: SliderDetails;
 
-  minChambre: number = 0;
-  maxChambre: number = 10;
-  options: Options = {
-    floor: 0,
-    ceil: 10
-  };
+
 
 }

@@ -35,7 +35,6 @@ export class ViewPropertyListComponent implements OnInit {
   }
 
   getColor(marquee: number){
-    console.log(marquee);
     if (marquee == 0) {
       return '#233353'
     }
