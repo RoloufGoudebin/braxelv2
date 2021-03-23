@@ -1,3 +1,32 @@
 .clickable{
     cursor: pointer;
+
+}
+
+
+
+input-group, app-slider{
+  margin-left:2.5em;
+  margin-right: 2.5em;
+}
+
+
+h1 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 800;
+  font-size: 2em;
+}
+
+p{
+font-family: 'Source Sans Pro', sans-serif;
+font-size: 1em;
+margin-top: 2%;
+}
+
+
+h2, label{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 800;
+  font-size: 1.2em;
+  margin-left:1.3em;
 }
