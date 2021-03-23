@@ -3,9 +3,9 @@
 /* Header */
 .header{
     background-image: url('/assets/img/choice.png');
-    background-size: 25%;
+    background-size: 24%;
     background-repeat: no-repeat;
-    background-position: right 25% bottom 45%;
+    background-position: right 1% bottom 29%;
 
 }
 
@@ -76,7 +76,7 @@
 
 a{
     text-decoration: none;
-    color: white;    
+    color: white;
 }
 
 
