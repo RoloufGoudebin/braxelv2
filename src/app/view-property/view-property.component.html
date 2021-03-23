@@ -7,7 +7,7 @@
       <h3 *ngIf="property.StartPrice">{{property.StartPrice}} {{property.PriceUnitText}}</h3>
       <p class="price"> Hors droits et taxes diverses</p>
       <img src="{{property.LargePicture}}" class="img-fluid col-12">
-  
+
       <div class="container">
         <ul class="row">
           <div class="col liste">
@@ -15,50 +15,50 @@
             <li *ngIf="property.City">Commune : {{property.City}}</li>
             <li *ngIf="property.SurfaceTotal">Surface habitable : {{property.SurfaceTotal}}m²</li>
           </div>
-  
+
           <div class="col liste">
             <li *ngIf="property.SurfaceGarden">Surface du terrain : {{property.SurfaceGarden}}m²</li>
             <li *ngIf="property.EnergyPerformance">Énergie/niveau PEG : {{property.EnergyPerformance}}</li>
           </div>
         </ul>
-  
+
         <div align="center" class="container">
           <ul class="row">
-            <div class="col card">
-              <span class="icon-object-ungroup"></span>
-              <li class="titlecard" *ngIf="property.SurfaceTotal">Superficie
+            <div *ngIf="property.SurfaceTotal" class="col card">
+              <span class="icon-object-ungroup icon"></span>
+              <li class="titlecard">Superficie
                 <hr> {{property.SurfaceTotal}}
               </li>
             </div>
-            <div class="col card">
-              <span class="icon-bed"></span>
-              <li *ngIf="property.NumberOfBedRooms">Chambres
+            <div *ngIf="property.NumberOfBedRooms" class="col card">
+              <span class="icon-bed icon"></span>
+              <li>Chambres
                 <hr> {{property.NumberOfBedRooms}}
               </li>
             </div>
-            <div class="col card">
-              <span class="icon-bath"></span>
-              <li *ngIf="property.NumberOfBathRooms">Salle(s) de bain
+            <div *ngIf="property.NumberOfBathRooms" class="col card">
+              <span class="icon-bath icon"></span>
+              <li>Salle(s) de bain
                 <hr> {{property.NumberOfBathRooms}}
               </li>
             </div>
-            <div class="col card">
-              <span class="icon-shower"></span>
-              <li *ngIf="property.NumberOfShowerRooms">Salle(s) de douche
+            <div *ngIf="property.NumberOfShowerRooms" class="col card">
+              <span class="icon-shower icon"></span>
+              <li>Salle(s) de douche
                 <hr> {{property.NumberOfShowerRooms}}
               </li>
             </div>
-            <div class="col card">
-              <span class="icon-automobile"></span>
-              <li *ngIf="property.NumberOfGarages">Garage(s)
+            <div *ngIf="property.NumberOfGarages" class="col card">
+              <span class="icon-automobile icon"></span>
+              <li>Garage(s)
                 <hr> {{property.NumberOfGarages}}
               </li>
             </div>
           </ul>
         </div>
-  
-  
-  
+
+
+
         <h4>Particularités</h4>
         <div class="container">
           <ul class="row">
@@ -80,7 +80,7 @@
             </div>
           </ul>
         </div>
-  
+
         <h4>Description</h4>
         <p *ngIf="property.DescriptionA">{{property.DescriptionB}}</p>
         <div class="row">

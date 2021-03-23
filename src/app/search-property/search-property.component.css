@@ -1,12 +1,57 @@
-.search-form{
-    background: #f5f5f5;
-    border-radius: 20px;
-    border: black;
-    box-shadow: 5px 7px 7px #121932;
-    opacity: 95%;
+.search-form {
+  background: #f5f5f5;
+  border: black;
+  box-shadow: 5px 7px 7px #121932;
+  opacity: 95%;
+  margin-top: 5%;
 }
 
-.search-form p{
-    color: white;
-    opacity: 1 !important;
+.search-form p {
+  color: white;
+  opacity: 1 !important;
+}
+
+.text-search-form {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding-left: 8%;
+}
+
+.text-search-form H3 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 1em;
+}
+
+.btn {
+  background-color: #233353;
+  color: white;
+  border: none;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.btn:hover {
+  background-color: #12223f;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+  background-color: #ee5c5a;
+}
+
+.btn1 {
+  background-color: #233353;
+  color: white;
+  border: none;
+}
+
+h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.5em;
+  font-weight: 800;
+  margin: 1em;
+  color: white;
 }
