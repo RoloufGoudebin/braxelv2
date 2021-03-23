@@ -2,7 +2,7 @@
   background: #f5f5f5;
   border: black;
   box-shadow: 5px 7px 7px #121932;
-  opacity: 95%;
+  opacity: 85%;
   margin-top: 5%;
 }
 
@@ -39,7 +39,14 @@
 .btn-outline-primary:hover,
 .btn-outline-primary:focus,
 .btn-outline-primary:active {
-  background-color: #ee5c5a;
+  background-color: #ee5c5a !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.active{
+  background-color: #ee5c5a !important;
+  outline: none !important;
 }
 
 .btn1 {

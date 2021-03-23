@@ -5,13 +5,15 @@
         </div>
         <div class="search-form ml-auto pb-3 col-12">
             <div class="row">
-                <div class="text-search-form col-11 text-left my-2"><h3>Je souhaite :</h3></div>
+                <div class="text-search-form col-11 text-left my-2">
+                    <h3>Je souhaite :</h3>
+                </div>
                 <div class="col-11 mx-auto">
-                    <button type="button" class="btn btn-outline-primary rounded-pill col-3"
-                        aria-pressed="true">Acheter</button>
-                    <button type="button" class="btn btn-outline-primary rounded-pill mx-4 col-3">Louer</button>
-                    <button type="button" class="btn btn-outline-primary rounded-pill col-3"
-                        aria-pressed="true">Estimer</button>
+                    <div class="row">
+                        <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
+                            [ngClass]="{'active': item.active}" class="btn btn-outline-primary rounded-pill
+                        col mx-2">{{item.name}}</button>
+                    </div>
                 </div>
             </div>
             <div class="row pt-2">
@@ -41,7 +43,8 @@
                 <app-slider class="col-11 mx-auto" [options]="sliderBudget"></app-slider>
             </div>
             <div class="row pt-3 button-search">
-                <button type="button" class="btn1 btn-outline-primary offset-1 col-10 mx-auto rounded-pill">Voir tous les
+                <button type="button" class="btn1 btn-outline-primary offset-1 col-10 mx-auto rounded-pill">Voir tous
+                    les
                     résultats</button>
             </div>
         </div>

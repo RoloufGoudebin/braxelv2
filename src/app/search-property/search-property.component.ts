@@ -20,6 +20,19 @@ export class SearchPropertyComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  items = [
+    {name:'Acheter', active:false},
+    {name:'Louer', active:false},
+    {name:'Estimer', active:false},
+  ];
+
+  toggleClass(item){
+    this.items[0].active = false;
+    this.items[1].active = false;
+    this.items[2].active = false;
+    item.active = "active";
+  }
+
   sliderRadius: SliderDetails =
     {
       minValue: 0,
