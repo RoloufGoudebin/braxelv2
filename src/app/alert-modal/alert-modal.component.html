@@ -13,57 +13,82 @@
         </button>
     </div>
     <div class="modal-body">
-        <form>
-            <div class="form-group">
-                <label for="dateOfBirth">Je souhaite</label>
-                <div class="input-group">
-                    <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
-                        #dp="ngbDatepicker">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+        <div class="search-form ml-auto pb-3 col-12">
+            <div class="row">
+                <div class="text-search-form col-11 text-left my-2">
+                    <h3>Je souhaite :</h3>
+                </div>
+                <div class="col-11 mx-auto">
+                    <div class="row">
+                        <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
+                            [ngClass]="{'active': item.active}" class="btn btn-outline-primary rounded-pill
+                        col mx-2">{{item.name}}</button>
                     </div>
                 </div>
             </div>
-        </form>
-        <form>
-            <div class="form-group">
-                <label for="dateOfBirth">Type de bien </label>
-                <div class="input-group">
-                    <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
-                        #dp="ngbDatepicker">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-                    </div>
+            <div class="row pt-2">
+                <label class="text-search-form mr-auto" for="inlineFormCustomSelectPref">Type
+                    de bien :</label>
+                <select class="custom-select mx-auto rounded-pill col-11 borders-choices"
+                    id="inlineFormCustomSelectPref">
+                    <option value="1">Maison</option>
+                    <option value="2">Appartement</option>
+                    <option value="3">Terrain</option>
+                    <option value="4">Bureaux/Commerces</option>
+                    <option value="5">Immeubles</option>
+                    <option value="6">Garage/Parking</option>
+                </select>
+            </div>
+            <div class="row pt-1">
+                <label class="text-search-form mr-auto">Code Postal/Localité :</label>
+            </div>
+            <div class="row">
+                <input type="text" id="zip" name="zip" class="col-11 mx-auto rounded-pill form-control">
+                <label class="text-search-form col-2 text-left mx-auto" for="radius">Rayon (km):</label>
+                <app-slider class="col-9 mx-auto" [options]="sliderRadius"></app-slider>
+            </div>
+            <div class="row pt-1">
+                <label class="text-search-form mr-auto">Chambres :</label>
+                <app-slider class="col-11 mx-auto" [options]="sliderRooms"></app-slider>
+            </div>
+            <div class="row pt-1">
+                <label class="text-search-form mr-auto">Budget :</label>
+                <app-slider class="col-11 mx-auto" [options]="sliderPrice"></app-slider>
+            </div>
+            <div class="row pt-1">
+                <label class="text-search-form mr-auto">Surface (m²):</label>
+                <app-slider class="col-11 mx-auto" [options]="sliderSurface"></app-slider>
+            </div>
+            <div class="row pt-1">
+                <label class="text-search-form mr-auto">Autres particularités :</label>
+                <textarea class="form-control rounded col-11 mx-auto" rows="5"></textarea>
+            </div>
+            <div class="row pt-1">
+                <label class="text-search-form mr-auto">Votre nom : </label>
+                <input type="name" id="name" name="zip" class="col-11 mx-auto rounded-pill form-control">
+            </div>
+            <div class="row pt-1">
+                <label class="text-search-form mr-auto">Votre email : </label>
+                <input type="name" id="mail" name="mail" class="col-11 mx-auto rounded-pill form-control">
+            </div>
+            <div class="row pt-1">
+                <label class="text-search-form mr-auto">Téléphone : </label>
+                <input type="name" id="phone" name="phone" class="col-11 mx-auto rounded-pill form-control">
+            </div>
+            <div class="row">
+                <p class="col-11 mx-auto text-justify conditions">
+                    En soumettant ce formulaire, j'accepte que les informations saisies dans ce formulaire soient
+                    utilisées, exploitées, traitées dans le cadre de la relation commerciale.
+                </p>
+            </div>
+            <div class="row">
+                <div class="form-check col-11 mx-auto">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">M'inscrire à la newsletter</label>
                 </div>
             </div>
-        </form>
-        <form>
-            <div class="form-group">
-                <label for="dateOfBirth">Localité</label>
-                <div class="input-group">
-                    <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker
-                        #dp="ngbDatepicker">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-                    </div>
-                </div>
-
-            </div>
-        </form>
+        </div>
     </div>
-
-    <div *ngIf="sliderRooms">
-        <app-slider [options]="sliderRooms"></app-slider>
-    </div>
-
-    <div *ngIf="sliderSurface">
-        <app-slider [options]="sliderSurface"></app-slider>
-    </div>
-
-    <div *ngIf="sliderPrice">
-        <app-slider [options]="sliderPrice"></app-slider>
-    </div>
-
 
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Créer une alerte</button>

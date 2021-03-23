@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Options } from '@angular-slider/ngx-slider';
 
 interface SliderDetails {
   minValue: number;
   highValue: number;
-  floor: number;
-  ceil: number;
-  step: number;
+  options: Options;
 }
 
 @Component({
@@ -17,6 +16,11 @@ interface SliderDetails {
 })
 export class AlertModalComponent {
   closeResult = '';
+
+  items = [
+    { name: 'Acheter', active: false },
+    { name: 'Louer', active: false },
+  ];
 
   constructor(private modalService: NgbModal) { }
 
@@ -38,31 +42,54 @@ export class AlertModalComponent {
     }
   }
 
+  toggleClass(item) {
+    this.items[0].active = false;
+    this.items[1].active = false;
+    item.active = "active";
+  }
+
   sliderRooms: SliderDetails =
     {
       minValue: 0,
       highValue: 10,
-      floor: 0,
-      ceil: 10,
-      step: 1,
+      options: {
+        floor: 0,
+        ceil: 10,
+        step: 1,
+      }
     }
 
   sliderSurface: SliderDetails =
     {
       minValue: 0,
       highValue: 500,
-      floor: 0,
-      ceil: 500,
-      step: 10,
+      options: {
+        floor: 0,
+        ceil: 500,
+        step: 10,
+      }
     }
 
-    sliderPrice: SliderDetails =
+  sliderPrice: SliderDetails =
     {
       minValue: 0,
       highValue: 2000000,
-      floor: 0,
-      ceil: 2000000,
-      step: 10000,
+      options: {
+        floor: 0,
+        ceil: 2000000,
+        step: 10000,
+      }
+    }
+
+  sliderRadius: SliderDetails =
+    {
+      minValue: 0,
+      highValue: 100,
+      options: {
+        floor: 0,
+        ceil: 100,
+        step: 1,
+      }
     }
 
 }
