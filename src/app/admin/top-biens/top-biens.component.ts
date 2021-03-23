@@ -13,7 +13,12 @@ export class TopBiensComponent implements OnInit {
   topPropertyList: Property[];
   propertyList: Property[];
   newList: Array<Property> = [];
+  listTemp: Array<Property> = [];
   zip;
+  priceMax;
+  priceMin;
+  priceExact;
+
 
   constructor(private firestore: FirestoreService, private omnicasa: OmnicasaService) { }
 
@@ -48,10 +53,29 @@ export class TopBiensComponent implements OnInit {
         this.newList.push(this.propertyList[i]);
       }
     }
-
     this.propertyList = this.newList;
-    console.log(this.propertyList);
   }
+
+  searchMinPrice(min: number) {
+    if (this.newList.length > 0) {
+      for (let i = 0; i < this.newList.length; i++) {
+        if (this.newList[i].StartPrice > min) {
+          this.listTemp.push(this.newList[i]);
+        }
+      }
+      this.propertyList = this.listTemp;
+    }
+    else{
+      for (let i = 0; i < this.propertyList.length; i++) {
+        if (this.propertyList[i].StartPrice > min) {
+          this.newList.push(this.propertyList[i]);
+        }
+      }
+      console.log(this.newList);
+    }
+    this.propertyList = this.newList;
+  }
+
 }
 
 

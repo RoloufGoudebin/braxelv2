@@ -36,25 +36,25 @@
       <form>
         <div class="form-group row">
           <div class="col-sm-9">
-            <input [(ngModel)]="zip" type="string" class="form-control" #inputZip  placeholder="Code Postal">
+            <input [(ngModel)]="zip" type="string" class="form-control" #inputZip name="zip" placeholder="Code Postal">
           </div>
           <button type="button" class="btn btn-primary col-2" (click)="searchZIP(inputZip.value)">GO</button>
         </div>
         <div class="form-group row">
           <div class="col-sm-9">
-            <input type="priceMax" class="form-control" id="priceMax" placeholder="Prix max">
+            <input [(ngModel)]="priceMax" type="string" class="form-control" #inputPriceMax name="priceMax" placeholder="Prix max">
           </div>
           <button type="button" class="btn btn-primary col-2">GO</button>
         </div>
         <div class="form-group row">
           <div class="col-sm-9">
-            <input type="priceMin" class="form-control" id="priceMin" placeholder="Prix min">
+            <input [(ngModel)]="priceMin" type="string" class="form-control" name="priceMin" #inputPriceMin placeholder="Prix min">
           </div>
-          <button type="button" class="btn btn-primary col-2">GO</button>
+          <button type="button" class="btn btn-primary col-2" (click)="searchMinPrice(inputPriceMin.value)">GO</button>
         </div>
         <div class="form-group row">
           <div class="col-sm-9">
-            <input type="price" class="form-control" id="price" placeholder="Prix exact">
+            <input [(ngModel)]="priceExact" type="string" class="form-control" name="priceExact" #inputPriceExact placeholder="Prix exact">
           </div>
           <button type="button" class="btn btn-primary col-2">GO</button>
         </div>
