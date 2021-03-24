@@ -14,6 +14,7 @@ export class FirestoreService {
   constructor(private firestore: AngularFirestore, private omnicasaService: OmnicasaService) { }
 
   propertyList: Property[];
+  propertyListTop: Property[]
 
 
 
@@ -21,8 +22,14 @@ export class FirestoreService {
     return this.firestore.collection(collection).snapshotChanges();
   }
 
-  updatePropertyTop(property: Property, id: number) {
-    this.propertyList[id] = property;
+  savePropertyTop(newTopPropertyList: Property[]) {
+    this.propertyListTop = newTopPropertyList;
+    for (let i = 0; i < this.propertyListTop.length; i++) {
+      this.firestore
+        .collection("topProperties")
+        .doc(i.toString())
+        .set(newTopPropertyList[i])
+    }
   }
 
 
@@ -48,13 +55,12 @@ export class FirestoreService {
     this.omnicasaService.getPropertyList()
       .subscribe((data: any) => {
         this.propertyList = data.GetPropertyListJsonResult.Value.Items;
-        console.log(this.propertyList);
         return new Promise<Property>((resolve, reject) => {
           for (let i = 0; i < 10; i++)
             this.firestore
               .collection("topProperties")
-              .add(this.propertyList[i])
-              .then(res => { }, err => reject(err));
+              .doc(i.toString())
+              .set(this.propertyList[i])
         });
       });
   }

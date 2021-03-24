@@ -14,21 +14,18 @@
   <div class="row">
     <div class="col-5 topBiens">
       <div class="row">
-        <div class="card-deck">
-          <a *ngFor="let Items of topPropertyList" class="col-4 px-1 my-3" style="width: 18rem;"
-            routerLinkActive="active" routerLink="biens-immobiliers/{{Items.ID}}">
-            <div class="card">
-              <img class="card-img-top" src={{Items.LargePicture}} alt="Card image cap">
-              <div class="card-block">
-                <h5 class="card-title">{{Items.TypeDescription}}</h5>
-                <p class="card-text">{{Items.Zip}} {{Items.City}}</p>
-                <hr>
-                <h6>{{Items.Price}}</h6>
-                <button class="button" (click)="update( 4, 5)">remplacer</button>
-              </div>
+        <a *ngFor="let Items of topPropertyList; let index = index;" class="col-4 px-1 my-3" style="width: 18rem;"
+          (click)="selectTop(index)">
+          <div class="card">
+            <img class="card-img-top" src={{Items.LargePicture}} alt="Card image cap">
+            <div class="card-block">
+              <h5 class="card-title">{{Items.TypeDescription}}</h5>
+              <p class="card-text">{{Items.Zip}} {{Items.City}}</p>
+              <hr>
+              <h6>{{Items.Price}}</h6>
             </div>
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
     </div>
 
@@ -42,46 +39,48 @@
         </div>
         <div class="form-group row">
           <div class="col-sm-9">
-            <input [(ngModel)]="priceMax" type="string" class="form-control" #inputPriceMax name="priceMax" placeholder="Prix max">
+            <input [(ngModel)]="priceMax" type="string" class="form-control" #inputPriceMax name="priceMax"
+              placeholder="Prix max">
           </div>
-          <button type="button" class="btn btn-primary col-2">GO</button>
+          <button type="button" class="btn btn-primary col-2" (click)="searchMaxPrice(inputPriceMax.value)">GO</button>
         </div>
         <div class="form-group row">
           <div class="col-sm-9">
-            <input [(ngModel)]="priceMin" type="string" class="form-control" name="priceMin" #inputPriceMin placeholder="Prix min">
+            <input [(ngModel)]="priceMin" type="string" class="form-control" #inputPriceMin name="priceMin"
+              placeholder="Prix min">
           </div>
           <button type="button" class="btn btn-primary col-2" (click)="searchMinPrice(inputPriceMin.value)">GO</button>
         </div>
         <div class="form-group row">
           <div class="col-sm-9">
-            <input [(ngModel)]="priceExact" type="string" class="form-control" name="priceExact" #inputPriceExact placeholder="Prix exact">
+            <input [(ngModel)]="priceExact" type="string" class="form-control" #inputPriceExact name="priceExact"
+              placeholder="Prix exact">
           </div>
-          <button type="button" class="btn btn-primary col-2">GO</button>
+          <button type="button" class="btn btn-primary col-2"
+            (click)="searchExactPrice(inputPriceExact.value)">GO</button>
         </div>
       </form>
       <div class="row">
-        <button type="button" class="btn btn-primary col-6">Échanger</button>
+        <button type="button" class="btn btn-primary col-6" (click)="changeProperty()">Échanger</button>
       </div>
       <div class="row">
-        <button type="button" class="btn btn-primary col-6">Sauvegarder</button>
+        <button type="button" class="btn btn-primary col-6" (click)="save()">Sauvegarder</button>
       </div>
     </div>
 
     <div class="col-5 topBiens">
       <div class="row">
-        <div class="card-deck">
-          <a *ngFor="let Items of propertyList" class="col-4 px-1 my-3" style="width: 18rem;" routerLinkActive="active" routerLink="biens-immobiliers/{{Items.ID}}">
-            <div class="card">
-              <img class="card-img-top" src={{Items.LargePicture}} alt="Card image cap">
-              <div class="card-block">
-                <h5 class="card-title">{{Items.TypeDescription}}</h5>
-                <p class="card-text">{{Items.Zip}} {{Items.City}}</p>
-                <hr>
-                <h6>{{Items.Price}}</h6>
-              </div>
+        <a *ngFor="let Items of propertyList; let index = index" class="col-4 px-1 my-3" style="width: 18rem;" (click)="selectPropertyListToChange(index)">
+          <div class="card">
+            <img class="card-img-top" src={{Items.LargePicture}} alt="Card image cap">
+            <div class="card-block">
+              <h5 class="card-title">{{Items.TypeDescription}}</h5>
+              <p class="card-text">{{Items.Zip}} {{Items.City}}</p>
+              <hr>
+              <h6>{{Items.Price}}</h6>
             </div>
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
     </div>
   </div>
