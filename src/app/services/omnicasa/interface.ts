@@ -7,7 +7,7 @@ export interface Value{
 }
 
 export interface Items{
-    Items : Property[]
+    Items : Property[];
 }
 
 export interface Property {
@@ -20,6 +20,7 @@ export interface Property {
     Zip: number;
     LargePicture: string;
     StartPrice: number;
+    Price: number;
     MainTypeName: string;
     SurfaceTotal: number;
     SurfaceGarden: number;
