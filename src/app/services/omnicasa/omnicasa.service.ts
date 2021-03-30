@@ -19,7 +19,6 @@ export class OmnicasaService {
   getPropertyList(): Observable<PropertyList> {
 
     if (this.propertyList) {
-      console.log(this.propertyList);
       return of(this.propertyList);
     }
 
@@ -27,6 +26,7 @@ export class OmnicasaService {
       .pipe(tap((returnedData: PropertyList) => {
         //save the returned data so we can re-use it later without making more HTTP calls
         this.propertyList = returnedData;
+        
       }));
   }
 

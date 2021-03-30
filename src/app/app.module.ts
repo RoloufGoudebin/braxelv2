@@ -31,6 +31,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { SliderComponent } from './slider/slider.component';
 import { SearchPropertyComponent } from './search-property/search-property.component';
 import { OurBiensComponent } from './our-biens/our-biens.component';
+import { AvisComponent } from './avis/avis.component';
+import { ContactModalComponent } from './view-property/contact-modal/contact-modal.component';
 
 
 
@@ -52,7 +54,9 @@ import { OurBiensComponent } from './our-biens/our-biens.component';
     AlertModalComponent,
     SliderComponent,
     SearchPropertyComponent,
-    OurBiensComponent
+    OurBiensComponent,
+    AvisComponent,
+    ContactModalComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

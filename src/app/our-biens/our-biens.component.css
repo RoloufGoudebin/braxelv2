@@ -1,0 +1,5 @@
+.scroll{
+    overflow-x : scroll;
+    max-height: 100vh !important;
+    min-height: 100vh;
+}

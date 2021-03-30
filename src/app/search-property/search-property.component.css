@@ -2,7 +2,6 @@
   background: #f5f5f5;
   border: black;
   box-shadow: 5px 7px 7px #121932;
-  margin-top: 5%;
 }
 
 .search-form p {
@@ -58,7 +57,7 @@ h2 {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1.5em;
   font-weight: 800;
-  margin: 1em;
+  margin: -3em;
   color: white;
 }
 

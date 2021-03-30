@@ -8,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class OurBiensComponent implements OnInit {
 
   constructor() { }
+  numberProperty= 8;
 
   ngOnInit(): void {
+    
+  }
+
+  addProperties(){
+    this.numberProperty = this.numberProperty+8;
   }
 
 }

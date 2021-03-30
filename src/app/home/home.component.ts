@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private firestore: FirestoreService) { }
 
-
+  numberProperty = 8 ;
   texts: BraxelHome[];
 
 

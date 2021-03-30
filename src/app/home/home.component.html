@@ -31,8 +31,10 @@
             </div>
           </div>
           <div class="row col-12 mx-auto px-0">
-            <button type="button" class="col-4 btn btn-outline-secondary">VENDRE</button>
-            <button type="button" class="col-4 btn btn-outline-secondary">ACHETER</button>
+            <a class="nav-link py-0 mx-0 px-0 col-4" routerLinkActive="active" routerLink="/services"><button type="button"
+                class="btn btn-outline-secondary col-12">VENDRE</button></a>
+            <a class="nav-link py-0 col-4 mx-0 px-0" routerLinkActive="active" routerLink="/services"><button type="button"
+                class="col-12 btn btn-outline-secondary">ACHETER</button></a>
             <button type="button" class="col-4 btn btn-outline-secondary">RECHERCHER DES BIENS</button>
           </div>
         </div>
@@ -46,7 +48,7 @@
         <h2 class="mx-auto">NOS BIENS IMMOBILIERS
         </h2>
       </div>
-      <app-view-property-list></app-view-property-list>
+      <app-view-property-list [numberProperty]="numberProperty"></app-view-property-list>
     </div>
   </section>
 

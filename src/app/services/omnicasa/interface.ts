@@ -19,6 +19,7 @@ export interface Property {
     TypeDescription: string;
     Zip: number;
     LargePicture: string;
+    LargePictures: string[];
     StartPrice: number;
     Price: number;
     MainTypeName: string;

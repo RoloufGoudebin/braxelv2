@@ -14,9 +14,12 @@ export class FirestoreService {
   constructor(private firestore: AngularFirestore, private omnicasaService: OmnicasaService) { }
 
   propertyList: Property[];
-  propertyListTop: Property[]
+  propertyListTop: Property[];
+  collection: any;
 
 
+
+  
 
   getFirestoreCollection(collection) {
     return this.firestore.collection(collection).snapshotChanges();
@@ -31,24 +34,6 @@ export class FirestoreService {
         .set(newTopPropertyList[i])
     }
   }
-
-
-
-  /*getPropertyList(): Observable<PropertyList> {
-
-    if (this.propertyList) {
-      console.log(this.propertyList);
-      return of(this.propertyList);
-    }
-
-    return this.http.get<PropertyList>(this.link)
-      .pipe(tap((returnedData: PropertyList) => {
-        //save the returned data so we can re-use it later without making more HTTP calls
-        this.propertyList = returnedData;
-      }));
-  }*/
-
-
 
 
   createPropertyList() {
