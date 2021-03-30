@@ -6,30 +6,34 @@
     background-position: center center;
     font-family: 'Montserrat', sans-serif;
     font-display: swap;
-    margin-top: 25%;
-    margin-right: 3%;
-    border-radius: 10%;
+    margin-right: 4%;
+    margin-top: 12em;
+    border-radius: 20px;
 
 }
 
 h1{
-  font-family: 2.5em;
+  font-size: 42px;
   color: #EE5C5A;
-  font-style:'Montserrat', sans-serif;
-  padding-top: 6em;
+  font-family:'Montserrat', sans-serif;
+  padding-top: 3em;
   padding-bottom: 0.5em;
   }
 
 h2{
   padding-top: 2em;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   color: #233353;
+}
+
+.presentation{
+  margin-top: 8%;
 }
 
 .mission h2{
   font-family: 2.5em;
   color: #EE5C5A;
-  font-style:'Montserrat', sans-serif;
+  font-family:'Montserrat', sans-serif;
   padding-bottom: 0.5em;
 }
 
@@ -81,4 +85,14 @@ ul {
 .intro {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.0em;
+}
+
+
+hr{
+  border-bottom: 1px solid #F0f0f0;
+}
+
+a{
+  color:#233353;
+  font-weight: bold;
 }
