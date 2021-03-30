@@ -252,3 +252,26 @@ h5{
   font-weight: 400;
 
 }
+
+.search{
+    background-color: #EE5C5A;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.opacity{
+    background-color: white;
+    opacity: 0.5;
+    margin-top: -3em;
+    font-size: 1.8em;
+}
+
+.btn-outline-secondary{
+    background-color: #233353;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    color: white;
+}
+
+.btn-outline-secondary:hover{
+    color: #EE5C5A
+}

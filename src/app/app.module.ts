@@ -30,6 +30,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { SliderComponent } from './slider/slider.component';
 import { SearchPropertyComponent } from './search-property/search-property.component';
+import { OurBiensComponent } from './our-biens/our-biens.component';
 
 
 
@@ -50,7 +51,8 @@ import { SearchPropertyComponent } from './search-property/search-property.compo
     TopBiensComponent,
     AlertModalComponent,
     SliderComponent,
-    SearchPropertyComponent
+    SearchPropertyComponent,
+    OurBiensComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
