@@ -19,8 +19,9 @@ h2 {
   display: block;
   color: #EE5C5A;
   font-family: 'Montserrat', sans-serif;
-  margin-bottom: 6px;
-  padding-bottom: 10px;
+  margin-bottom: 3px;
+  padding-bottom: 3px;
+  margin-right: 10px;
 }
 
 h4 {
@@ -28,8 +29,9 @@ h4 {
   color: #233353;
   font-style: italic;
   font-family: 'Source Sans Pro', sans-serif;
-  padding-bottom: 0.6em;
+  padding-bottom: 0.4em;
   margin-top: 0.8em;
+  margin-right: 10px;
 }
 
 hr.left {
@@ -60,8 +62,8 @@ br {
 p {
   font-size: 1.1em;
   font-family: 'Source Sans Pro', sans-serif;
-  margin-top: 1.1em;
-  margin-bottom: 3em;
+  margin-right: 10px;
+
   color: #233353;
 }
 
