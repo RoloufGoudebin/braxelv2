@@ -28,7 +28,6 @@ export class ViewPropertyListComponent implements OnInit {
           id: e.payload.doc.id,
           ...e.payload.doc.data() as Property
         }
-        console.log("prout");
       })
     });
 
@@ -36,7 +35,6 @@ export class ViewPropertyListComponent implements OnInit {
       .subscribe((data: any) => {
         this.propertyList = data.GetPropertyListJsonResult.Value.Items;
         for (let i = this.propertyList.length - 1; i >= 0; i--) {
-
           this.topPropertyList.push(this.propertyList[i]);
         }
       });

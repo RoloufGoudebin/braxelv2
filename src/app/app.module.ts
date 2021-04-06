@@ -33,6 +33,9 @@ import { SearchPropertyComponent } from './search-property/search-property.compo
 import { OurBiensComponent } from './our-biens/our-biens.component';
 import { AvisComponent } from './avis/avis.component';
 import { ContactModalComponent } from './view-property/contact-modal/contact-modal.component';
+import { SignInComponent } from './admin/sign-in/sign-in.component';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { AuthService } from "./admin/services/auth.service";
 
 
 
@@ -56,7 +59,8 @@ import { ContactModalComponent } from './view-property/contact-modal/contact-mod
     SearchPropertyComponent,
     OurBiensComponent,
     AvisComponent,
-    ContactModalComponent
+    ContactModalComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -71,7 +75,10 @@ import { ContactModalComponent } from './view-property/contact-modal/contact-mod
     AngularFirestoreModule,
     NgbModule
   ],
-  providers: [OmnicasaService],
+  providers: [OmnicasaService,
+    AngularFireAuth,
+    AuthService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
