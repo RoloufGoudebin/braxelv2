@@ -5,7 +5,7 @@
     background-image: url('/assets/img/choice.png');
     background-size: 24%;
     background-repeat: no-repeat;
-    background-position: right 1% bottom 29%;
+    background-position: right 25% bottom 40%;
 
 }
 
@@ -254,13 +254,12 @@ h5{
 }
 
 .search{
-    background-color: #EE5C5A;
+    background-color: #F6F6F6;
     font-family: 'Montserrat', sans-serif;
 }
 
 .opacity{
-    background-color: white;
-    opacity: 0.5;
+    background-color: lightgrey;
     margin-top: -3em;
     font-size: 1.8em;
 }

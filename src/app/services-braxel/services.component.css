@@ -50,10 +50,11 @@ br {
 }
 
 img {
-  max-width: 65%;
+  max-width: 70%;
   height: auto;
   display: block;
   margin: 10%;
+  border-radius: 20px;
 }
 
 p {
