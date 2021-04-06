@@ -20,9 +20,6 @@ export class AuthGuard implements CanActivate {
     if (this.authService.isLoggedIn !== true) {
       this.router.navigate(['admin/top-biens']);
     }
-    else{
-      this.router.navigate(['admin']);
-    }
     return true;
   }
 
