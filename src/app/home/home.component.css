@@ -56,7 +56,6 @@
   font-size: 1.1em;
   background-color: #233353;
   color: white;
-  border-color: #EE5C5A;
   border-radius: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -71,7 +70,6 @@
 .btn-outline-safe:hover{
     font-size: 1.1em;
     color: #EE5C5e;
-    border-color: white;
 }
 
 a{
@@ -187,7 +185,7 @@ body{background-color:#f1f1f2}
 .box1:after,.box1:before{height:50%;background:rgba(35, 51, 83, 0.6);position:absolute;top:0;left:0;z-index:1;transform-origin:100% 0;transform:rotateZ(90deg)}
 .box1:after{top:auto;bottom:0;transform-origin:0 100%}
 .box1:hover:after,.box1:hover:before{transform:rotateZ(0)}
-.box1 img{height:auto;transform:scale(1) rotate(0)}
+.box1 img{height:80%;transform:scale(1) rotate(0)}
 .box1:hover img{transform:scale(1.1)}
 .box1 .title{font-size:19px;font-weight:600;color:#fff;text-transform:uppercase;text-shadow:0 0 1px #EE5C5A;bottom:10px;left:10px;opacity:0;z-index:2;transform:scale(0);transition:all .5s ease .2s}
 .box1:hover .title{opacity:1;transform:scale(1)}
