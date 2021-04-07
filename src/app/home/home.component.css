@@ -11,18 +11,27 @@
 
 .bg{
   background-image: url('/assets/img/banner_bg.jpg');
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: top 45%;
+  background-position: center center;
 }
 
-
-
 .header h1{
-    font-size: 75px;
     font-weight: 800;
     color: #ffff;
     font-family: 'Montserrat', sans-serif;
+}
+
+@media (min-width: 768px){
+    .header h1{
+        font-size: 6em;
+    }
+}
+
+@media (max-width: 768px){
+    .header h1{
+        font-size: 3em;
+    }
 }
 
 .header p{
@@ -40,7 +49,6 @@
     border-radius: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 15px;
     padding-right: 15px;
     margin-top: 20px;
     font-family: 'Montserrat', sans-serif;
@@ -63,7 +71,6 @@
   padding-right: 15px;
   margin-top: 20px;
   font-family: 'Montserrat', sans-serif;
-  margin-left: 22px;
 }
 
 
@@ -220,7 +227,7 @@ h5{
 .chiffres{
   padding: 10%;
   background-image: url('/assets/img/banner_chiffre.jpg');
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: top 45%;
 }

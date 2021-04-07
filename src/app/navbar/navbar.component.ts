@@ -10,6 +10,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class NavbarComponent implements OnInit {
 
+  isNavbarCollapsed = true;
+
   constructor() { }
 
   ngOnInit(): void {

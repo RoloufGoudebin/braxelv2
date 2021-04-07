@@ -1,5 +1,5 @@
 .nav-item{
-    font-size: 15.5px;
+    font-size: 1.2em;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
     line-height: 26px;
@@ -25,6 +25,3 @@ img {
 margin: 3%;
 }
 
-li{
-  margin-left: 2%;
-}
