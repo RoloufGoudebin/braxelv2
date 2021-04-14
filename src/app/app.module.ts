@@ -36,6 +36,7 @@ import { ContactModalComponent } from './view-property/contact-modal/contact-mod
 import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AuthService } from "./admin/services/auth.service";
+import { RealisationsComponent } from './realisations/realisations.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { AuthService } from "./admin/services/auth.service";
     OurBiensComponent,
     AvisComponent,
     ContactModalComponent,
-    SignInComponent
+    SignInComponent,
+    RealisationsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

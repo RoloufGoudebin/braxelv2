@@ -10,6 +10,7 @@ import { TopBiensComponent } from './admin/top-biens/top-biens.component';
 import { OurBiensComponent } from './our-biens/our-biens.component';
 import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { AuthGuard } from './admin/guard/auth.guard';
+import { RealisationsComponent } from './realisations/realisations.component';
 
 
 
@@ -21,13 +22,15 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'biens-immobiliers/:id', component: ViewPropertyComponent },
   { path: 'nos-biens', component: OurBiensComponent },
+  { path: 'realisations', component: RealisationsComponent},
   { path: 'admin', component: SignInComponent },
   { path: 'admin/top-biens', component: TopBiensComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    scrollPositionRestoration: 'enabled'
+    scrollPositionRestoration: 'enabled',
+    anchorScrolling: 'enabled',
   })],
   exports: [RouterModule]
 })

@@ -57,12 +57,13 @@
     <div class="container">
       <div class="row">
         <h2 class="mx-auto text-center">VOS AGENTS IMMOBILIERS</h2>
-        <p class="mx-auto text-center">AU-DELÀ DE 10 ANNÉES D’EXPÉRIENCE COMBINÉES, NOS AGENTS IMMOBILIERS SONT AGRÉÉS IPI
+        <p class="mx-auto text-center">AU-DELÀ DE 10 ANNÉES D’EXPÉRIENCE COMBINÉES, NOS AGENTS IMMOBILIERS SONT AGRÉÉS
+          IPI
           ET
           VOUS ACCUEILLENT AVEC PASSION.</p>
       </div>
       <div class="row presentation">
-        <div class="col-md-6 col-sm-6">
+        <div class="col-md-4 col-sm-4">
           <div class="box1 pb-0 mb-0">
             <img src="assets/img/worker-1.jpg" alt="">
             <h3 class="title">Agent immobilier agréé I.P.I. 508.871</h3>
@@ -74,10 +75,10 @@
           </div>
           <div class="text-center">
             <h4 class="mt-3">Edouard Chevalier</h4>
-            <h5>Plus d'infos</h5>
+            <a routerLink="/agence" [fragment]="'edouard'"><h5>Plus d'infos</h5></a>
           </div>
         </div>
-        <div class="col-md-6 col-sm-6">
+        <div class="col-md-4 col-sm-4">
           <div class="box1">
             <div class="box1 pb-0 mb-0">
               <img src="assets/img/worker-2.jpg" alt="">
@@ -91,7 +92,24 @@
           </div>
           <div class="text-center">
             <h4 class="mt-3">Thomas Offergeld</h4>
-            <h5>Plus d'infos</h5>
+            <a routerLink="/agence" [fragment]="'thomas'" ><h5>Plus d'infos</h5></a>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="box1">
+            <div class="box1 pb-0 mb-0">
+              <img src="assets/img/worker-2.jpg" alt="">
+              <h3 class="title">Agent immobilier agréé I.P.I. 509.783</h3>
+              <ul class="icon">
+                <li><a href="https://www.linkedin.com/in/thomas-offergeld-89277b137/"><i class="bi bi-linkedin"></i></a>
+                </li>
+                <li><a href="mailto:thomas@braxel.be"><i class="bi bi-envelope-fill"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-center">
+            <h4 class="mt-3">François</h4>
+            <a routerLink="/agence" [fragment]="'francois'" ><h5>Plus d'infos</h5></a>
           </div>
         </div>
       </div>
