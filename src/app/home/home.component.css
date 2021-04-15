@@ -1,16 +1,17 @@
 
 
 /* Header */
-.header{
+/*.header{
     background-image: url('/assets/img/choice.png');
     background-size: 24%;
     background-repeat: no-repeat;
     background-position: right 25% bottom 40%;
 
 }
+*/
 
 .bg{
-  background-image: url('/assets/img/banner_bg.jpg');
+  background-image: url('/assets/img/video.gif');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -194,7 +195,7 @@ body{background-color:#f1f1f2}
 .box1:hover:after,.box1:hover:before{transform:rotateZ(0)}
 .box1 img{height:80%;transform:scale(1) rotate(0)}
 .box1:hover img{transform:scale(1.1)}
-.box1 .title{font-size:19px;font-weight:600;color:#fff;text-transform:uppercase;text-shadow:0 0 1px #EE5C5A;bottom:10px;left:10px;opacity:0;z-index:2;transform:scale(0);transition:all .5s ease .2s}
+.box1 .title{font-size:13px;font-weight:600;font-family:'Source Sans Pro', sans-serif;color:#fff;text-transform:uppercase;text-shadow:0 0 1px #EE5C5A;bottom:10px;left:10px;opacity:0;z-index:2;transform:scale(0);transition:all .5s ease .2s}
 .box1:hover .title{opacity:1;transform:scale(1)}
 .box1 .icon{padding:7px 5px;list-style:none;background: #EE5C5A;;border-radius:0 0 0 10px;top:-100%;right:0;z-index:2;transition:all .3s ease .2s}
 .box1:hover .icon{top:0}
