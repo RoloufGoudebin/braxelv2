@@ -42,8 +42,11 @@ export class ViewPropertyListComponent implements OnInit {
   }
 
   getColor(marquee: number) {
-    if (marquee == 0) {
+    if (marquee == 1) {
       return '#233353'
+    }
+    if (marquee == 2) {
+      return '#233353';
     }
     if (marquee == 3) {
       return 'orange';
@@ -54,7 +57,25 @@ export class ViewPropertyListComponent implements OnInit {
     if (marquee == 5) {
       return 'orange';
     }
+
   }
 
+  getStatus(marquee: number){
+    if (marquee == 1){
+      return 'À VENDRE';
+    }
+    if (marquee == 2){
+      return 'À LOUER';
+    }
+    if (marquee == 3){
+      return 'SOUS OPTION';
+    }
+    if (marquee == 4){
+      return 'VENDU';
+    }
+    if (marquee == 5){
+      return 'LOUÉ';
+    }
+  }
 
 }

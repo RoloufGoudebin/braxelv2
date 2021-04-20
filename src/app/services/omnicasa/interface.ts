@@ -46,5 +46,6 @@ export interface Property {
     PriceUnitText: string;
     MarqueeName: string;
     Marquee: number;
+    MarqueeShowOrder: number;
     VirtualTour: string;
 }

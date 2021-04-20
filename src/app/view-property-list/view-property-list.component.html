@@ -5,7 +5,7 @@
         routerLinkActive="active" routerLink="/biens-immobiliers/{{Items.ID}}">
         <div class="card">
           <img class="card-img-top" src={{Items.LargePicture}} alt="Card image cap">
-          <span class="ribon" [ngStyle]="{'background':getColor(Items.Marquee)}"> {{Items.MarqueeName}} </span>
+          <span class="ribon" [ngStyle]="{'background':getColor(Items.MarqueeShowOrder)}"> {{getStatus(Items.MarqueeShowOrder)}} </span>
           <div class="card-block">
             <h5 class="card-title">{{Items.TypeDescription}}</h5>
             <p class="card-text">{{Items.Zip}} {{Items.City}}</p>
