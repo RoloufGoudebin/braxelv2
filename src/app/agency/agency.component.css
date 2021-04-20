@@ -82,6 +82,15 @@ ul {
   color: #233353;
   margin-top: 2em;
 }
+
+ul.icon li:before
+{
+	font-family: bullets;
+	content: "\e905";
+	float: left;
+	width: 1.4em;
+}
+
 .intro {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.0em;
@@ -95,4 +104,34 @@ hr{
 a{
   color:#233353;
   font-weight: bold;
+}
+
+.icon-insights:before {
+  content: "\e907";
+  font-size: 3em;
+  color: #dedbdb;
+}
+
+.icon-cached:before {
+  content: "\e904";
+  font-size: 3em;
+  color: #dedbdb;
+}
+
+.icon-euro:before {
+  content: "\e906";
+  font-size: 3em;
+  color: #dedbdb;
+}
+
+.icon-plagiarism:before {
+  content: "\e908";
+  font-size: 3em;
+  color: #dedbdb;
+}
+
+.icon-hail:before {
+  content: "\e905";
+  font-size: 3em;
+  color: #dedbdb;
 }
