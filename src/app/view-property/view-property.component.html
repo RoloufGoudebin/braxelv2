@@ -5,7 +5,7 @@
     <h2 *ngIf="property.City">{{property.Zip}} {{property.City}}</h2>
     <hr>
     <div class="row">
-      <h3 *ngIf="property.StartPrice" class="mr-auto col">{{property.StartPrice}} {{property.PriceUnitText}}</h3>
+      <h3 *ngIf="property.StartPrice" class="mr-auto col">{{toStringPrice(property.StartPrice)}} {{property.PriceUnitText}}</h3>
       <a href={{property.VirtualTour}}>
         <button *ngIf="property.VirtualTour" type="button" class="btn-primary">Visite virtuelle</button>
       </a>

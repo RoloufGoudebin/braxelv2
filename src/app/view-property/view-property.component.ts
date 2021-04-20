@@ -43,6 +43,12 @@ export class ViewPropertyComponent implements OnInit {
 
   }
 
+  toStringPrice(price: number){
+    let toChange = price.toString();
+    return toChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+
+  }
+
 
 }
 
