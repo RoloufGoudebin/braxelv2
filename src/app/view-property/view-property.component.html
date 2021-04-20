@@ -6,7 +6,9 @@
     <hr>
     <div class="row">
       <h3 *ngIf="property.StartPrice" class="mr-auto col">{{property.StartPrice}} {{property.PriceUnitText}}</h3>
-      <a class="nav-link"><app-contact-modal></app-contact-modal></a>
+      <a class="nav-link">
+        <app-contact-modal></app-contact-modal>
+      </a>
     </div>
     <div class="row">
       <p class="price col"> Hors droits et taxes diverses</p>
@@ -110,8 +112,9 @@
   <div class="container">
     <div class="row mx-auto">
       <div *ngIf="lat" class="row">
-        <agm-map [latitude]="lat" [longitude]="long" [zoom]="12">
-          <agm-marker [latitude]="lat" [longitude]="long"></agm-marker>
+        <agm-map [latitude]="lat" [longitude]="long" [zoom]="15">
+          <agm-circle [latitude]="lat" [longitude]="long" [radius]="500" [fillColor]="'red'">
+          </agm-circle>
         </agm-map>
       </div>
     </div>
