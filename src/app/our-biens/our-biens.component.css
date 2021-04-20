@@ -70,3 +70,7 @@ p {
 .background {
   background-color: #F8F9FA;
 }
+
+button {
+  margin-bottom: 5em;
+}
