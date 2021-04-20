@@ -35,6 +35,7 @@
     "bootstrap-icons": "^1.4.0",
     "express": "^4.15.2",
     "firebase": "^7.13.2",
+    "img-comparison-slider": "^3.0.3",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

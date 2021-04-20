@@ -1,11 +1,14 @@
 <app-navbar></app-navbar>
-<div class="container mt-5 pt-5">
-  <div *ngIf="property" class="pt-5 mt-5">
+<div *ngIf="property" class="container mt-5 pt-5">
+  <div class="pt-5 mt-5">
     <h1 *ngIf="property.TypeDescription">{{property.TypeDescription}}</h1>
     <h2 *ngIf="property.City">{{property.Zip}} {{property.City}}</h2>
     <hr>
     <div class="row">
       <h3 *ngIf="property.StartPrice" class="mr-auto col">{{property.StartPrice}} {{property.PriceUnitText}}</h3>
+      <a href={{property.VirtualTour}}>
+        <button *ngIf="property.VirtualTour" type="button" class="btn-primary">Visite virtuelle</button>
+      </a>
       <a class="nav-link">
         <app-contact-modal></app-contact-modal>
       </a>
@@ -108,7 +111,7 @@
   </div>
 
   <h4>Description</h4>
-  <p *ngIf="property.DescriptionA">{{property.DescriptionB}}</p>
+  <p class="content text-justify" *ngIf="property.DescriptionA">{{property.DescriptionB}}</p>
   <div class="container">
     <div class="row mx-auto">
       <div *ngIf="lat" class="row">

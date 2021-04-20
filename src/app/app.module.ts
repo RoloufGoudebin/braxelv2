@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 
@@ -61,7 +61,7 @@ import { RealisationsComponent } from './realisations/realisations.component';
     AvisComponent,
     ContactModalComponent,
     SignInComponent,
-    RealisationsComponent
+    RealisationsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -80,6 +80,7 @@ import { RealisationsComponent } from './realisations/realisations.component';
     AngularFireAuth,
     AuthService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

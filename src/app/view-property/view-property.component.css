@@ -96,3 +96,9 @@ padding: 25px;
 .carousel-item img{
   margin: auto;
 }
+
+.content {
+  column-count: 2;
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+  }
