@@ -3,7 +3,8 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
     line-height: 26px;
-}
+    padding-left:19px;
+  }
 
 .nav-item .active{
     font-weight: 800;
@@ -18,10 +19,9 @@
     color: white !important;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
-    margin: 19x;
+    margin: 1px;
 }
 
 img {
 margin: 3%;
 }
-
