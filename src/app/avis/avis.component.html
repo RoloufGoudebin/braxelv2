@@ -1,1 +1,25 @@
-<p>avis works!</p>
+<div id="googleReviews"></div>
+<section id='reviews' class="container">
+    <div id="title">
+        <h4>Ils l'expliquent mieux que nous</h4>
+    </div>
+    <div id="reviews" class="row">
+        <div *ngFor="let review of reviews" class="card col-3">
+            <div class="card-img-top">
+                <div class="avatar">
+                    <img src="{{ review.profile_photo_url }}" alt="Avatar" height="50" width="50" class="img-fluid">
+                </div>
+                <div class="card-title">{{ review.author_name }}</div>
+                <h6>{{ review.relative_time_description }}</h6>
+                <div class="stars">
+                    <mat-icon *ngFor="let item of createRange(review.rating)">grade</mat-icon>
+                </div>
+            </div>
+            <p class="card-text">
+            <p>{{ review.text }}</p>
+        </div>
+    </div>
+    <div class="rowButton">
+        <a href="${ALL_REVIEWS_LINK}" target="_blank">View all reviews</a>
+    </div>
+</section>
