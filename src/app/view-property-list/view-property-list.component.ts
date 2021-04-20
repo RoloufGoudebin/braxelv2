@@ -49,7 +49,7 @@ export class ViewPropertyListComponent implements OnInit {
       return '#233353';
     }
     if (marquee == 3) {
-      return 'orange';
+      return 'lightgrey';
     }
     if (marquee == 4) {
       return 'orange';
