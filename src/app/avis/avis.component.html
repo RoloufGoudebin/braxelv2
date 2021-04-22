@@ -5,14 +5,15 @@
     </div>
     <div class="container-fluid">
         <div class="row mx-auto">
-            <div *ngFor="let review of reviews" class="card pl-1" style="width: 18rem;">
-                <div class="avatar">
+            <div *ngFor="let review of reviews" class="card ml-3" style="width: 18rem;">
+                <div class="avatar text-center">
                     <img src="{{ review.profile_photo_url }}" alt="Avatar" height="50" width="50" />
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ review.author_name }}</h5>
                     <h6>{{ review.relative_time_description }}</h6>
-                    <p class="card-text">{{ review.text }}</p>
+                    <div class="card-text text-card text-justify" ng-class="{show: show}">{{ review.text }}</div>
+                    <button ng-click="show = true">Show text</button>
                 </div>
             </div>
         </div>
