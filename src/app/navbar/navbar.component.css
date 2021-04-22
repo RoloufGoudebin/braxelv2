@@ -19,9 +19,56 @@
     color: white !important;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
-    margin: 1px;
+    margin: 10px;
 }
 
 img {
 margin: 3%;
+}
+
+.btn{
+  border-color: #EE5C5A;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #EE5C5A;
+}
+
+.btn:hover{
+  border-color: #EE5C5A;
+  background-color: none;
+  color: none;
+}
+
+
+.btn-outline-primary {
+  background-color: none;
+}
+
+.btn-outline-primary:hover {
+  color: none;
+  background-color: #E8E8E8;
+}
+
+
+.btn-outline-white {
+ padding: 2px;
+  border-color: white;
+  color: white;
+}
+
+.btn-outline-white:hover {
+  border-color: grey;
+  background-color: #213050;
+  color: grey;
+}
+
+
+
+.icon-table_view:before {
+  content: "\e90a";
+  color:white;
+}
+
+.icon-notifications_on:before {
+  content: "\e909";
+  color: white;
 }

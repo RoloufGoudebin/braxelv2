@@ -70,17 +70,17 @@
 }
 
 .header p{
-    font-size: 19px;
-    font-weight: lighter;
+    font-size: 28px;
+    font-weight: lighter ;
     color: #ffff;
     font-family: 'Source Sans Pro', sans-serif;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .header .btn-outline-danger{
     font-size: 1.1em;
     background-color: #EE5C5A;
-    color: #233353;
+    color: #ffff;
     border-radius: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -92,6 +92,7 @@
 
 .header .btn-outline-danger:hover{
     font-size: 1.1em;
+    background-color: #b94b4a;
     color: white;
 }
 
@@ -111,7 +112,8 @@
 
 .btn-outline-safe:hover{
     font-size: 1.1em;
-    color: #EE5C5e;
+    background-color: #0e1a33;
+    color: #fff;
 }
 
 a{
@@ -249,7 +251,8 @@ h5{
 
     font-family: 'Source Sans Pro', sans-serif;
     color: #233353;
-    font-size: 20px;
+    font-size: 15px;
+    text-decoration: underline;
 
 }
 
@@ -306,11 +309,24 @@ h5{
 
 .btn-outline-secondary{
     background-color: #233353;
+    font-size: 1.1em;
     padding-top: 1em;
     padding-bottom: 1em;
     color: white;
 }
 
 .btn-outline-secondary:hover{
-    color: #EE5C5A
+    font-size: 1.1em;
+    background-color: #0e1a33;
+    color:#ffff;
+}
+
+
+.recherche{
+background-image: url('/assets/img/home_app.png');
+background-position: center left 10% ;
+background-repeat: no-repeat;
+position:relative;
+background-size: 22%;
+
 }

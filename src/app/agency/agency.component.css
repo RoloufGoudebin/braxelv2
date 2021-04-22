@@ -54,14 +54,14 @@ h3 {
 .charte .banner {
     max-height: 100vh;
     min-height: 100%;
-    background-image: url("/assets/img/charte.jpg");
+    background-image: url("/assets/img/charte.jpeg");
     background-size: auto;
     background-repeat: no-repeat;
     background-position: center center;
     font-family: 'Montserrat', sans-serif;
     font-display: swap;
     margin-top: 4%;
-    border-radius: 10%;
+    border-radius: 20px;
 }
 
 p{
