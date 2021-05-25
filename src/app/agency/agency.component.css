@@ -109,29 +109,67 @@ a{
 .icon-insights:before {
   content: "\e907";
   font-size: 3em;
-  color: #dedbdb;
+  color: #233353;
+  opacity:90%;
 }
 
 .icon-cached:before {
   content: "\e904";
   font-size: 3em;
-  color: #dedbdb;
+  color:#233353;
+  opacity:90%;
 }
 
 .icon-euro:before {
   content: "\e906";
   font-size: 3em;
-  color: #dedbdb;
+  color: #233353;
+  opacity:90%;
 }
 
 .icon-plagiarism:before {
   content: "\e908";
   font-size: 3em;
-  color: #dedbdb;
+  color: #233353;
+  opacity:90%;
 }
 
 .icon-hail:before {
   content: "\e905";
   font-size: 3em;
-  color: #dedbdb;
+  color: #233353;
+  opacity:90%;
+}
+
+img{
+  width: 80%;
+	height: 80%;
+  vertical-align: baseline;
+}
+
+
+
+.zoom:hover {
+  transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transition: transform .5s ease;
+}
+
+div.slide-right {
+  width:100%;
+  overflow:hidden;
+}
+div.slide-right p {
+  animation: 10s slide-right;
+}
+
+@keyframes slide-right {
+  from {
+    margin-left: -100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
 }

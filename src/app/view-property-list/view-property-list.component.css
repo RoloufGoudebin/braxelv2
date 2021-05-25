@@ -8,7 +8,7 @@ h5 {
     padding-left: 10px;
     padding-right: 10px;
   }
-  
+
   h6 {
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 600;
@@ -16,7 +16,7 @@ h5 {
     color:#233353;
     padding-left: 10px;
     padding-right: 10px;
-  
+
   }
   p {
     font-family: "Source Sans Pro", sans-serif;
@@ -25,9 +25,9 @@ h5 {
     padding-left: 10px;
     padding-right: 10px;
   }
-  
-  
-  
+
+
+
   hr {
     border-top: dotted 1px;
     margin-left: 30px;
@@ -35,39 +35,39 @@ h5 {
     color:grey;
     opacity:55%;
   }
-  
-  
-  
+
+
+
   a {
     border: none;
     text-decoration: none;
   }
-  
+
   a:hover p{ color: white; }
   a:hover h6{ color: #ee5c5a; }
   a:hover h5{ color: white; }
-  
-  
-  
-  
-  
-  .container-fluid { max-width: 1200px; }
-  
-  
+
+
+
+
+
+  .container-fluid { max-width: 1250px; }
+
+
   .card {
     background: white;
     border:none;
     padding-bottom: 10px;
     border-radius: 20px 20px 0 0;
     transition-duration: 0.3s;
-  
+
   }
-  
+
   .card:hover {
     background:#233353;
     box-shadow: 0px 16px 9px -5px rgba(0, 0, 0,0.2);
       transform: scale(1.10, 1.10);
-  
+
   }
 
   .ribon{
@@ -80,22 +80,21 @@ h5 {
       font-weight: 600;
       top: 18px;
 }
-  
+
   img {
     width: 100%;
     border-radius: 20px 20px 0 0  ;
   }
-  
-  
+
+
   [class*="row"] {
       margin-bottom: 1em;
     justify-content: center;
-  
+
   }
-  
+
   [class*="col-"] {
       padding-top: .75rem;
       padding-bottom: .75rem;
       width: 100%;
   }
-  
