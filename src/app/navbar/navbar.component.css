@@ -1,9 +1,12 @@
+
+
 .nav-item{
     font-size: 1.1em;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
     line-height: 26px;
     padding-left:19px;
+    margin-bottom: 0.5em;
   }
 
 .nav-item .active{
@@ -12,14 +15,17 @@
 }
 
 .top-navbar{
-    background-color: #233353;
+    background-color: #F8F9FA;
 }
 
 .top-navbar .nav-link{
-    color: white !important;
+    color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
-    margin: 10px;
+  }
+
+a{
+  color: #233353 !important;
 }
 
 img {
@@ -27,38 +33,34 @@ margin: 3%;
 }
 
 .btn{
-  border-color: #EE5C5A;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  background-color: #233353;
+  border-radius: 18px;
+}
+
+.btn-alert{
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  background-color: #ee5c5a;
+  border:none;
+  border-radius: 0 0 20px 20px;
+
+
+
+}
+
+.btn-estimate{
   font-family: 'Source Sans Pro', sans-serif;
   color: #EE5C5A;
+  background-color: #ee5c5a;
+  border: none;
+  border-radius: 0 0 20px 20px;
 }
-
 .btn:hover{
-  border-color: #EE5C5A;
+  border-color: #0E1A33;
   background-color: none;
   color: none;
-}
-
-
-.btn-outline-primary {
-  background-color: none;
-}
-
-.btn-outline-primary:hover {
-  color: none;
-  background-color: #E8E8E8;
-}
-
-
-.btn-outline-white {
- padding: 2px;
-  border-color: white;
-  color: white;
-}
-
-.btn-outline-white:hover {
-  border-color: grey;
-  background-color: #213050;
-  color: grey;
 }
 
 
