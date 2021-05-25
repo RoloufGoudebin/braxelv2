@@ -205,6 +205,11 @@ li{
 
 /* Agents immobilier*/
 
+.agent-immobilier {
+padding-bottom: 3em;
+padding-top: 3em;
+}
+
 .agent-immobilier h2{
     color: #233353;
     font-size: 46px;
