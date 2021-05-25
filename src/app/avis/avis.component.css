@@ -16,7 +16,7 @@
     opacity: 0;
     transition:all  1s;
   }
-  
+
   ::ng-deep .carousel-item.active {
     position: relative;
     transform: translateY(0);
@@ -32,7 +32,7 @@
     height: 40vh;
 }
 
-h2{
+h1{
     color: #233353;
     font-size: 46px;
     font-weight: 600;
@@ -47,4 +47,22 @@ h2{
 ::ng-deep .carousel-control-prev-icon {
     color: black;
 }
-  
+
+h5 {
+  margin-top: 1em;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight:600;
+}
+
+h6 {
+  font-size: 0.8em;
+  font-style: italic;
+  color: grey;
+  margin-top: 1em;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-bottom: 2em;
+}
+
+img{
+  margin-top: 2em;
+}

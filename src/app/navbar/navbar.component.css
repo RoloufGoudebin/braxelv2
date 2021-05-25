@@ -32,11 +32,12 @@ img {
 margin: 3%;
 }
 
-.btn{
+.btn-contact{
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
+  border: none;
+  border-radius: 0 0 20px 20px;
   background-color: #233353;
-  border-radius: 18px;
 }
 
 .btn-alert{

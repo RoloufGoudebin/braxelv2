@@ -6,6 +6,8 @@
             </div>
 
             <li class="nav-item py-0">
+                <a routerLink="/contact"><button type="button" class="btn-contact nav-link">Nous contacter</button></a>
+            <li class="nav-item py-0">
                 <a> <button type="button" class="btn-alert nav-link">
                     <app-alert-modal></app-alert-modal></button>
                 </a>
@@ -21,7 +23,6 @@
     <div class="container-fluid">
         <a class="navbar-brand" routerLinkActive="active" routerLink="/"><img  src='assets/img/logo-top-inverse.png'
                 style="max-height:45px;"></a>
-                <a routerLink="/contact"><button type="button" class="btn ml-lg-3">Nous contacter</button></a>
         <button class="navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed">
             <span class="navbar-toggler-icon"></span>
         </button>
