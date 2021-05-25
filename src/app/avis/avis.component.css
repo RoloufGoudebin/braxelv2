@@ -8,4 +8,43 @@
     overflow: visible;
     height: auto !important;
 }
+
+::ng-deep .carousel-item {
+    display: block !important;
+    position: absolute;
+    transform: translateY(100%);
+    opacity: 0;
+    transition:all  1s;
+  }
+  
+  ::ng-deep .carousel-item.active {
+    position: relative;
+    transform: translateY(0);
+    opacity: 1;
+    top: 0;
+  }
+
+  *:focus {
+    outline: none;
+}
+
+.carousel{
+    height: 40vh;
+}
+
+h2{
+    color: #233353;
+    font-size: 46px;
+    font-weight: 600;
+    line-height: 51px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.stars{
+    color: rgb(255, 196, 0);
+}
+
+::ng-deep .carousel-control-prev-icon {
+    color: black;
+}
   

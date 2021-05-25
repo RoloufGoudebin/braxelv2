@@ -1,24 +1,22 @@
 <div id="googleReviews"></div>
 <section id='reviews'>
-    <div id="title">
-        <h4>Google Reviews</h4>
-    </div>
-    <div class="container-fluid">
-        <div class="row mx-auto">
-            <div *ngFor="let review of reviews" class="card ml-3" style="width: 18rem;">
-                <div class="avatar text-center">
+    <div class="container pt-3">
+        <h2 class="text-center">ILS L'EXPLIQUENT MIEUX QUE NOUS</h2>
+        <ngb-carousel [interval]="5000" class="pb-5">
+            <ng-template ngbSlide *ngFor="let review of reviews" class="carousel pb-5">
+                <div class="avatar text-center pt-3">
                     <img src="{{ review.profile_photo_url }}" alt="Avatar" height="50" width="50" />
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ review.author_name }}</h5>
-                    <h6>{{ review.relative_time_description }}</h6>
-                    <div class="card-text text-card text-justify" ng-class="{show: show}">{{ review.text }}</div>
-                    <button ng-click="show = true">Show text</button>
+                <h5 class="card-title text-center author">{{ review.author_name }}</h5>
+                <div class="stars text-center pt-0 mt-0">
+                    <mat-icon *ngFor="let item of 
+                        createRange(review.rating)"><i class="bi bi-star-fill"></i></mat-icon>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="rowButton">
-        <a mat-raised-button href="${ALL_REVIEWS_LINK}" target="_blank">View all reviews</a>
+                <h6 class="text-center pt-1">{{ review.relative_time_description }}</h6>
+                <div class="card-text text-justify mx-auto text-center col-10 text-review pt-3" ng-class="{show: show}">
+                    {{ review.text }}
+                </div>
+            </ng-template>
+        </ngb-carousel>
     </div>
 </section>
