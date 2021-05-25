@@ -1,5 +1,5 @@
 .nav-item{
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
     line-height: 26px;
@@ -7,7 +7,7 @@
   }
 
 .nav-item .active{
-    font-weight: 800;
+    font-weight: 900;
     color:#233353;
 }
 
@@ -71,4 +71,8 @@ margin: 3%;
 .icon-notifications_on:before {
   content: "\e909";
   color: white;
+}
+
+ul {
+  padding-right: 10%;
 }
