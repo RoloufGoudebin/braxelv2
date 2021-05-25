@@ -40,7 +40,7 @@ h3 {
 h4 {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
-  font-size: 1.3em;
+  font-size: 1.8em;
   color:#233353;
 
 }
@@ -76,6 +76,13 @@ li {
   list-style-type: none;
 }
 
+.text {
+  color: #233353;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.3em;
+  list-style-type: none;
+}
+
 
 .icon{
   font-size:2em;
@@ -97,8 +104,15 @@ padding: 25px;
   margin: auto;
 }
 
-.content {
-  column-count: 2;
-  -moz-column-count: 2;
-  -webkit-column-count: 2;
+@media (min-width: 768px){
+    .content{
+      column-count: 2;
+      -moz-column-count: 2;
+      -webkit-column-count: 2;
+      
+    }
+}
+  
+.rounded {
+    border-radius: 20px !important;
   }

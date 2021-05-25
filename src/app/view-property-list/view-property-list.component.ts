@@ -52,7 +52,7 @@ export class ViewPropertyListComponent implements OnInit {
       return 'lightgrey';
     }
     if (marquee == 4) {
-      return 'orange';
+      return 'green';
     }
     if (marquee == 5) {
       return 'orange';

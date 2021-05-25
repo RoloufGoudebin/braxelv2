@@ -22,8 +22,7 @@ export class SearchPropertyComponent implements OnInit {
 
   items = [
     {name:'Acheter', active:false},
-    {name:'Louer', active:false},
-    {name:'Estimer', active:false},
+    {name:'Louer', active:false}
   ];
 
   toggleClass(item){
@@ -40,7 +39,7 @@ export class SearchPropertyComponent implements OnInit {
       options: {
         floor: 0,
         ceil: 100,
-        step: 1,
+        step: 5,
       }
     }
 
@@ -51,7 +50,7 @@ export class SearchPropertyComponent implements OnInit {
       options: {
         floor: 0,
         ceil: 10,
-        step: 1
+        step: 1,
       }
     }
 
@@ -61,7 +60,7 @@ export class SearchPropertyComponent implements OnInit {
       highValue: 2000000,
       options: {
         floor: 0,
-        ceil: 2000000,
+        ceil: 5000000,
         step: 10000,
         translate: (value: number): string => {
           return value + " €";

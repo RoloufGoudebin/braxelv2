@@ -17,6 +17,7 @@ export class ViewPropertyComponent implements OnInit {
   id: number;
   lat: number;
   long: number;
+  listInfo: String[] = ["KitchenName", "WindowGlazing", "OrientationT", "HasLift", "Floor", "ConstructionYear", "SurfaceTerrace", "ConstructionName", "SurfaceGarden", "HeatingName", "MainStyleName", "ConditionName"];
 
   constructor(private route: ActivatedRoute, public omnicasa: OmnicasaService, private firestore: FirestoreService) {
   }
@@ -43,10 +44,47 @@ export class ViewPropertyComponent implements OnInit {
 
   }
 
-  toStringPrice(price: number){
+  toStringPrice(price: number) {
     let toChange = price.toString();
     return toChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
+  }
+
+  getLat(lat: number) {
+    var random = Math.random();
+    return lat - 0.00000000000009;
+  }
+
+  getLong(long: number) {
+    var random = Math.random();
+    return long + 0.00000000000009;
+  }
+
+  getPEB(value: number) {
+    if (value < 15) {
+      return "assets/img/peb/peb_aplus.png";
+    }
+    else if (value < 51) {
+      return "assets/img/peb/peb_a.png";
+    }
+    else if (value < 91) {
+      return "assets/img/peb/peb_b.png";
+    }
+    else if (value < 151) {
+      return "assets/img/peb/peb_c.png";
+    }
+    else if (value < 231) {
+      return "assets/img/peb/peb_d.png";
+    }
+    else if (value < 331) {
+      return "assets/img/peb/peb_e.png";
+    }
+    else if (value < 451) {
+      return "assets/img/peb/peb_f.png";
+    }
+    else {
+      return "assets/img/peb/peb_g.png";
+    }
   }
 
 

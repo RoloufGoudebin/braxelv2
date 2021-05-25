@@ -25,6 +25,7 @@ export interface Property {
     MainTypeName: string;
     SurfaceTotal: number;
     SurfaceGarden: number;
+    HasGarden: boolean;
     EnergyPerformance: number;
     KitchenName: string;
     WindowGlazing: string;
@@ -41,6 +42,8 @@ export interface Property {
     NumberOfBathRooms: number;
     NumberOfShowerRooms: number;
     NumberOfGarages: number;
+    HeatingName: string;
+    ConditionName: string;
     GoogleX: number;
     GoogleY: number;
     PriceUnitText: string;

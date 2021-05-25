@@ -5,7 +5,8 @@
     <h2 *ngIf="property.City">{{property.Zip}} {{property.City}}</h2>
     <hr>
     <div class="row">
-      <h3 *ngIf="property.StartPrice" class="mr-auto col">{{toStringPrice(property.StartPrice)}} {{property.PriceUnitText}}</h3>
+      <h3 *ngIf="property.StartPrice" class="mr-auto col">{{toStringPrice(property.StartPrice)}}
+        {{property.PriceUnitText}}</h3>
       <a href={{property.VirtualTour}}>
         <button *ngIf="property.VirtualTour" type="button" class="btn-primary">Visite virtuelle</button>
       </a>
@@ -36,48 +37,46 @@
     </a>
   </div>
 
-  <div class="container">
-    <ul class="row">
-      <div class="col liste">
-        <li class="info" *ngIf="property.MainTypeName">Type de bien : {{property.MainTypeName}}</li>
-        <li *ngIf="property.City">Commune : {{property.City}}</li>
-        <li *ngIf="property.SurfaceTotal">Surface habitable : {{property.SurfaceTotal}}m²</li>
+  <div class="container-fluid py-4">
+    <div class="row text">
+      <div *ngIf="property.MainTypeName" class="col-12 col-md-4"> <b>Type de bien</b> : {{property.MainTypeName}}</div>
+      <div *ngIf="property.City" class="col-12 col-md-4"><b>Commune</b> : {{property.City}}</div>
+      <div *ngIf="property.SurfaceTotal" class="col-12 col-md-4"><b>Surface habitable</b> : {{property.SurfaceTotal}}m²
       </div>
-
-      <div class="col liste">
-        <li *ngIf="property.SurfaceGarden">Surface du terrain : {{property.SurfaceGarden}}m²</li>
-        <li *ngIf="property.EnergyPerformance">Énergie/niveau PEG : {{property.EnergyPerformance}}</li>
-      </div>
-    </ul>
+      <div *ngIf="property.SurfaceGarden" class="col-12 col-md-4"><b>Surface du terrain</b> :
+        {{property.SurfaceGarden}}m²</div>
+      <div *ngIf="property.EnergyPerformance" class="col-12 col-md-4"><b>Énergie/niveau PEG</b> :
+        {{property.EnergyPerformance}} <img src="{{getPEB(property.EnergyPerformance)}}"> </div>
+    </div>
   </div>
 
   <div class="container">
-    <ul class="row mx-auto">
-      <div *ngIf="property.SurfaceTotal" class="col card text-center">
+    <ul class="row px-0 mx-0">
+      <div class="col-12 col-md card text-center">
         <span class="icon-object-ungroup icon"></span>
         <li class="titlecard">Superficie
           <hr> {{property.SurfaceTotal}}
         </li>
       </div>
-      <div *ngIf="property.NumberOfBedRooms" class="col card text-center">
+      <div class="col-12 col-md card text-center">
         <span class="icon-bed icon"></span>
         <li>Chambres
           <hr> {{property.NumberOfBedRooms}}
         </li>
       </div>
-      <div *ngIf="property.NumberOfBathRooms" class="col card text-center">
+      <div class="col-12 col-md card text-center">
         <span class="icon-bath icon"></span>
         <li>Salle(s) de bain
           <hr> {{property.NumberOfBathRooms}}
         </li>
       </div>
-      <div *ngIf="property.NumberOfShowerRooms" class="col card text-center">
+      <div class="col-12 col-md card text-center">
         <span class="icon-shower icon"></span>
         <li>Salle(s) de douche
           <hr> {{property.NumberOfShowerRooms}}
         </li>
       </div>
-      <div *ngIf="property.NumberOfGarages" class="col card text-center">
+      <div class="col-12 col-md card text-center">
         <span class="icon-automobile icon"></span>
         <li>Garage(s)
           <hr> {{property.NumberOfGarages}}
@@ -87,38 +86,38 @@
   </div>
 
 
-
-  <h4>Particularités</h4>
-  <div class="container">
-    <ul class="row">
-      <div class="col">
-        <li *ngIf="property.KitchenName">Cuisine : {{property.KitchenName}}</li>
-        <li *ngIf="property.WindowGlazing">Vitrage : {{property.WindowGlazing}}</li>
-        <li *ngIf="property.OrientationT">Orientation : {{property.OrientationT}}</li>
-        <li *ngIf="property.MainStyleName">Style : {{property.MainStyleName}}</li>
-      </div>
-      <div class="col">
-        <li *ngIf="property.HasLift ">Ascensceur : Oui</li>
-        <li *ngIf="property.Floor">Étage(s) : {{property.Floor}}</li>
-        <li *ngIf="property.ConstructionYear">Année de construction: {{property.ConstructionYear}}</li>
-        <li *ngIf="property.SurfaceTerrace">Terrasse : {{property.SurfaceTerrace}}</li>
-      </div>
-      <div class="col">
-        <li *ngIf="property.ConstructionName">Type de construction : {{property.ConstructionName}}</li>
-        <li *ngIf="property.SurfaceGarden">Jardin : {{property.SurfaceGarden}} m²</li>
-      </div>
-    </ul>
+  <div class="container pb-3">
+    <h4>Particularités</h4>
+    <div class="row text">
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.KitchenName"><b>Cuisine</b> : {{property.KitchenName}}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.WindowGlazing"><b>Vitrage</b> : {{property.WindowGlazing}}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.OrientationT"><b>Orientation</b> : {{property.OrientationT}}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasLift"><b>Ascensceur</b> : Oui</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.Floor"><b>Étage(s)</b> : {{property.Floor}}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionYear"><b>Année de construction</b> :
+        {{property.ConstructionYear}}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.SurfaceTerrace"><b>Terrasse</b> : {{property.SurfaceTerrace}}m²</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionName"><b>Type de construction</b> :
+        {{property.ConstructionName}}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasGarden"><b>Jardin</b> : Oui ({{property.SurfaceGarden}}m²)</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HeatingName"><b>Type de chauffage</b> : {{property.HeatingName}}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.MainStyleName"><b>Type de construction</b> : {{property.MainStyleName}}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConditionName"><b>État</b> : {{property.ConditionName}}</div>
+    </div>
   </div>
 
-  <h4>Description</h4>
-  <p class="content text-justify" *ngIf="property.DescriptionA">{{property.DescriptionB}}</p>
-  <div class="container">
-    <div class="row mx-auto">
-      <div *ngIf="lat" class="row">
-        <agm-map [latitude]="lat" [longitude]="long" [zoom]="15">
-          <agm-circle [latitude]="lat" [longitude]="long" [radius]="500" [fillColor]="'red'">
-          </agm-circle>
-        </agm-map>
+
+  <div class="container pb-5">
+    <h4>Description</h4>
+    <p class="content text-justify" *ngIf="property.DescriptionA">{{property.DescriptionB}}</p>
+    <div class="container">
+      <div class="row mx-auto">
+        <div *ngIf="lat" class="row">
+          <agm-map [latitude]="getLat(lat)" [longitude]="getLong(long)" [zoom]="14">
+            <agm-circle [latitude]="getLat(lat)" [longitude]="getLong(long)" [radius]="1100" [fillColor]="'red'">
+            </agm-circle>
+          </agm-map>
+        </div>
       </div>
     </div>
   </div>
