@@ -52,12 +52,12 @@ export class ViewPropertyComponent implements OnInit {
 
   getLat(lat: number) {
     var random = Math.random();
-    return lat - 0.00000000000009;
+    return lat -0.002;
   }
 
   getLong(long: number) {
     var random = Math.random();
-    return long + 0.00000000000009;
+    return long +0.002;
   }
 
   getPEB(value: number) {
