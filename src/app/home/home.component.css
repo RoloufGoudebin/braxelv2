@@ -9,6 +9,18 @@
 
 }
 */
+.intro {
+  color: #233353;
+  font-size: 2.5em;
+padding-top: 1.7em;
+margin-bottom: 6em;
+font-family: 'Source Sans Pro', sans-serif;
+}
+
+.introimg {
+  width: 40%;
+  margin-top: 15em;
+}
 
 .video-container {
   position: absolute;
