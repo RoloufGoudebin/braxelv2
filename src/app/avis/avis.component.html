@@ -1,7 +1,7 @@
 <div id="googleReviews"></div>
 <section id='reviews'>
     <div class="container pt-3">
-        <h2 class="text-center">ILS L'EXPLIQUENT MIEUX QUE NOUS</h2>
+        <h1 class="text-center">ILS L'EXPLIQUENT MIEUX QUE NOUS</h1>
         <ngb-carousel [interval]="5000">
             <ng-template ngbSlide *ngFor="let review of reviews" class="carousel pb-5">
                 <div class="avatar text-center pt-3">
@@ -9,13 +9,14 @@
                 </div>
                 <h5 class="card-title text-center author">{{ review.author_name }}</h5>
                 <div class="stars text-center pt-0 mt-0">
-                    <mat-icon *ngFor="let item of 
+                    <mat-icon *ngFor="let item of
                         createRange(review.rating)"><i class="bi bi-star-fill"></i></mat-icon>
                 </div>
-                <h6 class="text-center pt-1">{{ review.relative_time_description }}</h6>
+
                 <div class="card-text text-justify mx-auto text-center col-10 text-review pt-3" ng-class="{show: show}">
                     {{ review.text }}
                 </div>
+                <h6 class="text-center pt-1">{{ review.relative_time_description }}</h6>
             </ng-template>
         </ngb-carousel>
     </div>

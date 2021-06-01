@@ -1,5 +1,6 @@
 .mission .banner{
     max-height: 100vh;
+    min-height: 90%;
     background-image: url("/assets/img/porte.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -16,7 +17,7 @@ h1{
   font-size: 42px;
   color: #EE5C5A;
   font-family:'Montserrat', sans-serif;
-  padding-top: 3em;
+  padding-top: 5em;
   padding-bottom: 0.5em;
   }
 
@@ -53,14 +54,13 @@ h3 {
 
 .charte .banner {
     max-height: 100vh;
-    min-height: 100%;
+    min-height: 80%;
     background-image: url("/assets/img/charte.jpeg");
     background-size: auto;
     background-repeat: no-repeat;
-    background-position: center center;
     font-family: 'Montserrat', sans-serif;
     font-display: swap;
-    margin-top: 4%;
+    margin-top: 7em;
     border-radius: 20px;
 }
 
@@ -75,6 +75,7 @@ b{
   font-style: 800;
 
 }
+
 
 ul {
   font-family: 'Source Sans Pro', sans-serif;
@@ -139,12 +140,6 @@ a{
   font-size: 3em;
   color: #233353;
   opacity:90%;
-}
-
-img{
-  width: 80%;
-	height: 80%;
-  vertical-align: baseline;
 }
 
 
