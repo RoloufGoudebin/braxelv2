@@ -111,7 +111,7 @@
     <h4>Description</h4>
     <p class="content text-justify" *ngIf="property.DescriptionA">{{property.DescriptionB}}</p>
     <div class="container">
-      <div class="row mx-auto">
+      <div *ngIf="property" class="row mx-auto">
         <div *ngIf="lat" class="row">
           <agm-map [latitude]="getLat(lat)" [longitude]="getLong(long)" [zoom]="14">
             <agm-circle [latitude]="getLat(lat)" [longitude]="getLong(long)" [radius]="1100" [fillColor]="'red'">
