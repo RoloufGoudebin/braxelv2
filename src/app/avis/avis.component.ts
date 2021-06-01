@@ -10,6 +10,7 @@ declare const google: any;
 export class AvisComponent implements AfterViewInit {
   service;
   public reviews = [];
+  show = false;
 
   constructor() {}
 
