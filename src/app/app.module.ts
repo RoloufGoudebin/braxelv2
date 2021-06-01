@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
+import { Ng2OdometerModule } from 'ng2-odometer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -74,7 +75,8 @@ import { RealisationsComponent } from './realisations/realisations.component';
     }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    NgbModule
+    NgbModule,
+    Ng2OdometerModule.forRoot(),
   ],
   providers: [OmnicasaService,
     AngularFireAuth,
