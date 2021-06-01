@@ -26,3 +26,9 @@ p{
   font-family: "Source Sans Pro", sans-serif;
   font-weight: normal;
 }
+
+.question{
+  background-color: #F6F6F6;
+  border-top:solid 5px #EA514E;
+  margin-top: 4em;
+}
