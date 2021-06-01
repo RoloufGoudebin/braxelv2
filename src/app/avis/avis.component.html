@@ -13,9 +13,10 @@
                         createRange(review.rating)"><i class="bi bi-star-fill"></i></mat-icon>
                 </div>
 
-                <div class="card-text text-justify mx-auto text-center col-10 text-review pt-3" ng-class="{show: show}">
+                <div class="card-text text-justify mx-auto text-center col-10 text-review pt-3 notshow" [class.show]="show">
                     {{ review.text }}
                 </div>
+                <p class="text-center mx-auto voir" (click)="show = !show">{{ show ? 'voir moins': 'voir plus' }}</p>
                 <h6 class="text-center pt-1">{{ review.relative_time_description }}</h6>
             </ng-template>
         </ngb-carousel>

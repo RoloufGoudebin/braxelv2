@@ -1,12 +1,17 @@
 .text-card {
     font-size: 16px;
     line-height: 16px;
-    height: 175px;
+    height: auto;
     overflow: hidden;
 }
 .show {
     overflow: visible;
     height: auto !important;
+}
+
+.notshow {
+   height: 60px;
+   overflow: hidden;
 }
 
 ::ng-deep .carousel-item {
@@ -26,10 +31,6 @@
 
   *:focus {
     outline: none;
-}
-
-.carousel{
-    height: 40vh;
 }
 
 h1{
@@ -65,4 +66,8 @@ h6 {
 
 img{
   margin-top: 2em;
+}
+
+.voir{
+  cursor: pointer;
 }
