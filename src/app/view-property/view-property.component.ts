@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
 import { FirestoreService } from '../services/firebase/firestore.service';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-view-property',
