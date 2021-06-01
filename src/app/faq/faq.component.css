@@ -32,3 +32,22 @@ p{
   border-top:solid 5px #EA514E;
   margin-top: 4em;
 }
+
+.btn-outline-danger{
+  font-size: 1.1em;
+  background-color: #EE5C5A;
+  color: #ffff;
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.btn-outline-danger:hover{
+  font-size: 1.1em;
+  background-color: #b94b4a;
+  color: white;
+}
