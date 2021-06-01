@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FirestoreService } from '../services/firebase/firestore.service';
 
 import { BraxelHome } from '../braxel-home.model'
@@ -12,8 +12,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private firestore: FirestoreService) { }
 
-  numberProperty = 8 ;
+  numberProperty = 8;
   texts: BraxelHome[];
+  showChiffres= false;
 
 
   ngOnInit() {
@@ -21,9 +22,20 @@ export class HomeComponent implements OnInit {
       this.texts = data.map(e => {
         return {
           id: e.payload.doc.id,
-          ...e.payload.doc.data() as BraxelHome }
+          ...e.payload.doc.data() as BraxelHome
+        }
       })
     });
+
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  doSomething(event) {
+
+    if(window.pageYOffset > (document.getElementById('chiffres').offsetTop-500)){
+      this.showChiffres = true;
+      console.log();
+    }
   }
 
 

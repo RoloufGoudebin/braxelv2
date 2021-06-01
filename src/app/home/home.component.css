@@ -72,7 +72,7 @@
 .header p{
     font-size: 28px;
     font-weight: lighter ;
-    color: #ffff;
+    color: #233353;
     font-family: 'Source Sans Pro', sans-serif;
     margin-top: 20px;
 }
@@ -275,7 +275,7 @@ h5{
   background-position: top 45%;
 }
 
-.chiffres h1{
+.compteur{
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 5em;
