@@ -15,6 +15,7 @@ export class OmnicasaService {
 
 
   propertyList: PropertyList;
+  property: Property;
 
   getPropertyList(): Observable<PropertyList> {
 
@@ -26,6 +27,15 @@ export class OmnicasaService {
       .pipe(tap((returnedData: PropertyList) => {
         //save the returned data so we can re-use it later without making more HTTP calls
         this.propertyList = returnedData;
+        
+      }));
+  }
+
+  getPropertyByID(id: number): Observable<Property>{
+    return this.http.get<Property>("http://newapi.omnicasa.com/1.12/OmnicasaService.svc/GetPropertiesByIDsJson?json={%27IDs%27:%27"+id+"%27,%20%27LanguageId%27:2,%20%27CustomerName%27:%27braxel%27,%20%27CustomerPassword%27:%27b688E6B8FDD2%27}")
+      .pipe(tap((returnedData: Property) => {
+        //save the returned data so we can re-use it later without making more HTTP calls
+        this.property = returnedData;
         
       }));
   }

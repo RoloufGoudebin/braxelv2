@@ -3,6 +3,8 @@ import { Property, PropertyList } from '../services/omnicasa/interface';
 import { ActivatedRoute } from '@angular/router';
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
 import { FirestoreService } from '../services/firebase/firestore.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-view-property',
@@ -19,8 +21,8 @@ export class ViewPropertyComponent implements OnInit {
   long: number;
   listInfo: String[] = ["KitchenName", "WindowGlazing", "OrientationT", "HasLift", "Floor", "ConstructionYear", "SurfaceTerrace", "ConstructionName", "SurfaceGarden", "HeatingName", "MainStyleName", "ConditionName"];
 
-  constructor(private route: ActivatedRoute, public omnicasa: OmnicasaService, private firestore: FirestoreService) {
-  }
+  constructor(private route: ActivatedRoute, public omnicasa: OmnicasaService, private firestore: FirestoreService, private http: HttpClient) { }
+
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -36,56 +38,57 @@ export class ViewPropertyComponent implements OnInit {
           this.property = this.topPropertyList[i];
         }
       }
-      this.lat = +this.property.GoogleX;
-      this.long = +this.property.GoogleY;
-    });
+      if (!this.property){
+        this.omnicasa.getPropertyByID(this.id).subscribe((data: any) => {
+          this.property = data.GetPropertiesByIDsJsonResult.Value.Items[0];
+        });;
+      }
+  });
+}
 
 
+toStringPrice(price: number) {
+  let toChange = price.toString();
+  return toChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
+}
+
+getLat(lat: number) {
+  var random = Math.random();
+  return lat - 0.002;
+}
+
+getLong(long: number) {
+  var random = Math.random();
+  return long + 0.002;
+}
+
+getPEB(value: number) {
+  if (value < 15) {
+    return "assets/img/peb/peb_aplus.png";
   }
-
-  toStringPrice(price: number) {
-    let toChange = price.toString();
-    return toChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-
+  else if (value < 51) {
+    return "assets/img/peb/peb_a.png";
   }
-
-  getLat(lat: number) {
-    var random = Math.random();
-    return lat -0.002;
+  else if (value < 91) {
+    return "assets/img/peb/peb_b.png";
   }
-
-  getLong(long: number) {
-    var random = Math.random();
-    return long +0.002;
+  else if (value < 151) {
+    return "assets/img/peb/peb_c.png";
   }
-
-  getPEB(value: number) {
-    if (value < 15) {
-      return "assets/img/peb/peb_aplus.png";
-    }
-    else if (value < 51) {
-      return "assets/img/peb/peb_a.png";
-    }
-    else if (value < 91) {
-      return "assets/img/peb/peb_b.png";
-    }
-    else if (value < 151) {
-      return "assets/img/peb/peb_c.png";
-    }
-    else if (value < 231) {
-      return "assets/img/peb/peb_d.png";
-    }
-    else if (value < 331) {
-      return "assets/img/peb/peb_e.png";
-    }
-    else if (value < 451) {
-      return "assets/img/peb/peb_f.png";
-    }
-    else {
-      return "assets/img/peb/peb_g.png";
-    }
+  else if (value < 231) {
+    return "assets/img/peb/peb_d.png";
   }
+  else if (value < 331) {
+    return "assets/img/peb/peb_e.png";
+  }
+  else if (value < 451) {
+    return "assets/img/peb/peb_f.png";
+  }
+  else {
+    return "assets/img/peb/peb_g.png";
+  }
+}
 
 
 }
