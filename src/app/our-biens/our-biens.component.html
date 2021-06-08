@@ -1,54 +1,22 @@
 <app-navbar></app-navbar>
 <section id="nos-biens">
-    <div class="container-fluid pt-5 mt-5">
-        <div class="row pt-5 mt-5">
-            <h1 class="col text-center">Nos biens</h1>
-        </div>
-        <div class="row">
-            <div class="col-3 mt-0 pt-0">
-                <app-search-property class="col-3"></app-search-property>
-            </div>
-            <div class="col-6">
-                <app-view-property-list [numberProperty]="numberProperty"></app-view-property-list>
-            </div>
-            <div class="col-3">
-                <div class="container-fluid col-12">
-                    <section class="col-12 mx-auto">
-                      <div class="recherche">
-                        <div class="container-fluid full-height">
-                          <div class="row text-justify background">
-                            <div class="row">
-                              <h2>Recherche de biens immobiliers</h2>
-                              <h4>Vous êtes en quête du bien de vos rêves ou d’un investissement sûr ? Votre temps est
-                                précieux,
-                                vous
-                                souhaitez être renseignés et ne visiter que des biens répondant à vos besoins ?<br> Braxel vous
-                                offre
-                                un
-                                service qualitatif pour votre recherche, qu’il s’agisse d’achat immobilier ou de location
-                                immobilière.</h4>
-                                <hr class="left col-3">
-                              <p>Sur simple demande, nous vous renseignons les offres adéquates dont nous disposons en
-                                portefeuille,
-                                et ce en exclusivité avant commercialisation tant pour la vente immobilière que pour la
-                                location
-                                immobilière !</p>
-                              <p>Inscrire votre recherche chez nous vous permettra également d’être informé des biens
-                                immobiliers
-                                que
-                                nous proposons « off-market ».</p>
-                              <p>Cette inscription est sans engagement et s’arrête sur simple demande.</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-            </div>
-        </div>
-        <div class="row">
-            <button type="button" class="btn btn-outline-danger col-2 mx-auto text-center" (click)="addProperties()">Voir plus de propriétés</button>
-        </div>
+  <div class="container-fluid pt-5 mt-5">
+    <div class="row pt-5 mt-5">
+      <h1 class="col text-center">Nos biens</h1>
     </div>
+    <div class="row">
+      <div class="col-3 mt-0 pt-0">
+        <app-search-property class="col-3"></app-search-property>
+      </div>
+      <div class="col-8">
+        <app-view-property-list [numberProperty]="numberProperty"></app-view-property-list>
+      </div>
+      </div>
+
+      <div class="row">
+        <button type="button" class="btn btn-outline-danger col-2 mx-auto text-center" (click)="addProperties()">Voir plus de propriétés</button>
+      </div>
+    </div>
+
 </section>
 <app-footer></app-footer>
