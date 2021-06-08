@@ -25,69 +25,48 @@ export class ViewPropertyComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.firestore.getFirestoreCollection('topProperties').subscribe(data => {
-      this.topPropertyList = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as Property
-        }
-      })
-      for (let i = 0; i < this.topPropertyList.length; i++) {
-        if (this.topPropertyList[i].ID == this.id) {
-          this.property = this.topPropertyList[i];
-        }
-      }
-      if (!this.property){
-        this.omnicasa.getPropertyByID(this.id).subscribe((data: any) => {
-          this.property = data.GetPropertiesByIDsJsonResult.Value.Items[0];
-        });;
-      }
-  });
-}
+    this.omnicasa.getPropertyByID(this.id).subscribe((data: any) => {
+      this.property = data.GetPropertiesByIDsJsonResult.Value.Items[0];
+      this.lat = +this.property.GoogleX;
+      this.long = +this.property.GoogleY;
+      console.log(this.lat+"  "+this.long);
+    });;
+  }
 
 
-toStringPrice(price: number) {
-  let toChange = price.toString();
-  return toChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
-}
+  toStringPrice(price: number) {
+    let toChange = price.toString();
+    return toChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
-getLat(lat: number) {
-  var random = Math.random();
-  return lat - 0.002;
-}
+  }
 
-getLong(long: number) {
-  var random = Math.random();
-  return long + 0.002;
-}
-
-getPEB(value: number) {
-  if (value < 15) {
-    return "assets/img/peb/peb_aplus.png";
+  getPEB(value: number) {
+    if (value < 15) {
+      return "assets/img/peb/peb_aplus.png";
+    }
+    else if (value < 51) {
+      return "assets/img/peb/peb_a.png";
+    }
+    else if (value < 91) {
+      return "assets/img/peb/peb_b.png";
+    }
+    else if (value < 151) {
+      return "assets/img/peb/peb_c.png";
+    }
+    else if (value < 231) {
+      return "assets/img/peb/peb_d.png";
+    }
+    else if (value < 331) {
+      return "assets/img/peb/peb_e.png";
+    }
+    else if (value < 451) {
+      return "assets/img/peb/peb_f.png";
+    }
+    else {
+      return "assets/img/peb/peb_g.png";
+    }
   }
-  else if (value < 51) {
-    return "assets/img/peb/peb_a.png";
-  }
-  else if (value < 91) {
-    return "assets/img/peb/peb_b.png";
-  }
-  else if (value < 151) {
-    return "assets/img/peb/peb_c.png";
-  }
-  else if (value < 231) {
-    return "assets/img/peb/peb_d.png";
-  }
-  else if (value < 331) {
-    return "assets/img/peb/peb_e.png";
-  }
-  else if (value < 451) {
-    return "assets/img/peb/peb_f.png";
-  }
-  else {
-    return "assets/img/peb/peb_g.png";
-  }
-}
 
 
 }

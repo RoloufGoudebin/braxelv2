@@ -114,6 +114,12 @@ a{
   opacity:90%;
 }
 
+.bi{
+  font-size: 3em;
+  color:#233353;
+  opacity:90%;
+}
+
 .icon-cached:before {
   content: "\e904";
   font-size: 3em;

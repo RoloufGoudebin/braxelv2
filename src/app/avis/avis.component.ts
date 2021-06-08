@@ -37,5 +37,14 @@ export class AvisComponent implements AfterViewInit {
     }
     return items;
   }
+
+  isReviews(){
+    if(this.reviews.length>0){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }
 

@@ -90,19 +90,26 @@
     <h4>Particularités</h4>
     <div class="row text">
       <div class="col-12 col-md-6 col-lg-4" *ngIf="property.KitchenName"><b>Cuisine</b> : {{property.KitchenName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.WindowGlazing"><b>Vitrage</b> : {{property.WindowGlazing}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.OrientationT"><b>Orientation</b> : {{property.OrientationT}}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.WindowGlazing"><b>Vitrage</b> : {{property.WindowGlazing}}
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.OrientationT"><b>Orientation</b> : {{property.OrientationT}}
+      </div>
       <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasLift"><b>Ascensceur</b> : Oui</div>
       <div class="col-12 col-md-6 col-lg-4" *ngIf="property.Floor"><b>Étage(s)</b> : {{property.Floor}}</div>
       <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionYear"><b>Année de construction</b> :
         {{property.ConstructionYear}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.SurfaceTerrace"><b>Terrasse</b> : {{property.SurfaceTerrace}}m²</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.SurfaceTerrace"><b>Terrasse</b> :
+        {{property.SurfaceTerrace}}m²</div>
       <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionName"><b>Type de construction</b> :
         {{property.ConstructionName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasGarden"><b>Jardin</b> : Oui ({{property.SurfaceGarden}}m²)</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HeatingName"><b>Type de chauffage</b> : {{property.HeatingName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.MainStyleName"><b>Type de construction</b> : {{property.MainStyleName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConditionName"><b>État</b> : {{property.ConditionName}}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasGarden"><b>Jardin</b> : Oui
+        ({{property.SurfaceGarden}}m²)</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HeatingName"><b>Type de chauffage</b> :
+        {{property.HeatingName}}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.MainStyleName"><b>Type de construction</b> :
+        {{property.MainStyleName}}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConditionName"><b>État</b> : {{property.ConditionName}}
+      </div>
     </div>
   </div>
 
@@ -110,15 +117,13 @@
   <div class="container pb-5">
     <h4>Description</h4>
     <p class="content text-justify" *ngIf="property.DescriptionA">{{property.DescriptionB}}</p>
-    <div class="container">
-      <div *ngIf="property" class="row mx-auto">
-        <div *ngIf="lat" class="row">
-          <agm-map [latitude]="getLat(lat)" [longitude]="getLong(long)" [zoom]="14">
-            <agm-circle [latitude]="getLat(lat)" [longitude]="getLong(long)" [radius]="1100" [fillColor]="'red'">
-            </agm-circle>
-          </agm-map>
-        </div>
-      </div>
+  </div>
+  <div class="container px-3 ">
+    <div *ngIf="lat" class="row">
+      <agm-map [latitude]="lat" [longitude]="long" [zoom]="14">
+        <agm-circle [latitude]="lat" [longitude]="long" [radius]="1100" [fillColor]="'red'">
+        </agm-circle>
+      </agm-map>
     </div>
   </div>
 </div>
