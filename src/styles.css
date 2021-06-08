@@ -38,6 +38,39 @@ html, body{
 }
 
 
+.icon-email:before {
+  content: "\e900";
+}
+.icon-ring_volume:before {
+  content: "\e901";
+}
+.icon-stay_current_portrait:before {
+  content: "\e902";
+}
+.icon-check:before {
+  content: "\e903";
+}
+.icon-notifications_on:before {
+  content: "\e909";
+}
+.icon-cached:before {
+  content: "\e904";
+}
+.icon-hail:before {
+  content: "\e905";
+}
+.icon-euro:before {
+  content: "\e906";
+}
+.icon-insights:before {
+  content: "\e907";
+}
+.icon-plagiarism:before {
+  content: "\e908";
+}
+.icon-table_view:before {
+  content: "\e90a";
+}
 .icon-automobile:before {
   content: "\f1b9";
 }
