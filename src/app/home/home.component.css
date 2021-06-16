@@ -448,59 +448,18 @@ h5 {
 }
 
 .btn-outline-secondary {
-  background-color: #233353;
-  font-size: 1.1em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  color: white;
-  box-shadow: 4px 5px 5px black;
-}
-
-.btn-outline-secondary-left {
-  background-color: #233353;
-  font-size: 1.1em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  color: white;
-  border-bottom-left-radius: 20px;
-  box-shadow: 4px 5px 5px black;
-}
-
-.btn-outline-secondary-right {
-  background-color: #233353;
-  font-size: 1.1em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  color: white;
-  border-bottom-right-radius: 20px;
-  box-shadow: 4px 5px 5px black;
-}
-
-.btn-outline-secondary {
-  background-color: #233353;
-  font-size: 1.1em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  color: white;
-  box-shadow: 4px 5px 5px black;
+  color: #233353;
+  font-size: small;
+  font-weight: 600;
+  border-color: #233353;
+  padding: 0.5em;
+  border-radius: 20px;
 }
 
 .btn-outline-secondary:hover {
-  font-size: 1.1em;
-  background-color: #0e1a33;
-  color: #ffff;
-}
-
-.btn-outline-secondary-left:hover {
-  font-size: 1.1em;
-  background-color: #0e1a33;
-  color: #ffff;
-}
-
-.btn-outline-secondary-right:hover {
-  font-size: 1.1em;
-  background-color: #0e1a33;
-  color: #ffff;
+  color: white;
+  background-color: #EE5C5A;
+  border-color: #EE5C5A;
 }
 
 .recherche {
