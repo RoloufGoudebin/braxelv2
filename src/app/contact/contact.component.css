@@ -109,17 +109,17 @@ h5{
 
 
 
-.btn-outline-primary{
-    color:#233353;
-    background-color: #e8e9ea;
-    border-color: #233353;
-    padding: 10px;
-    padding-right: 20px;
-    padding-left: 20px;
+.btn-outline-primary {
+  color: #233353;
+  border-color: #233353;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 20px;
 }
 
-.btn-outline-primary:hover{
-    color: white;
-    background-color: #EE5C5A;
-    border-color: #EE5C5A;
+.btn-outline-primary:hover {
+  color: white;
+  background-color: #EE5C5A;
+  border-color: #EE5C5A;
 }
