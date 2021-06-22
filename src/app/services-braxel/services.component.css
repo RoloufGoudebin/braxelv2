@@ -282,3 +282,35 @@ a.anchor {
   top: -50px;
   visibility: hidden;
 }
+
+
+.chiffres {
+  padding: 10%;
+  background-image: url('/assets/img/banner_chiffre.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top 45%;
+}
+
+.compteur {
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 5em;
+  font-weight: 800;
+  display: inline;
+}
+
+.chiffres h2 {
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 2em;
+  font-weight: 800;
+  display: inline;
+}
+
+.chiffres p {
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.4em;
+  font-weight: 400;
+}

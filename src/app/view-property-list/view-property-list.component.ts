@@ -43,19 +43,19 @@ export class ViewPropertyListComponent implements OnInit {
 
   getColor(marquee: number) {
     if (marquee == 1) {
-      return '#233353'
+      return '#283152'
     }
     if (marquee == 2) {
-      return '#233353';
+      return '#283152';
     }
     if (marquee == 3) {
       return 'lightgrey';
     }
     if (marquee == 4) {
-      return 'green';
+      return '#26CE6C';
     }
     if (marquee == 5) {
-      return 'orange';
+      return '#FFC738';
     }
 
   }

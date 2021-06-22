@@ -71,4 +71,6 @@ img{
 
 .voir{
   cursor: pointer;
+  color: #233353;
+  font-style: italic;
 }
