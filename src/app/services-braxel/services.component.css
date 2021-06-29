@@ -330,7 +330,7 @@ a.anchor {
 .chiffres h2 {
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 800;
   display: inline;
 }
@@ -338,6 +338,6 @@ a.anchor {
 .chiffres p {
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: 400;
 }
