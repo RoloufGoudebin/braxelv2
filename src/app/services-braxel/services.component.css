@@ -338,6 +338,7 @@ a.anchor {
 .chiffres p {
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 400;
+  margin-top: 10px;
 }
