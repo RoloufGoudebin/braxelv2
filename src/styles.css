@@ -35,47 +35,61 @@ html, body{
 }
 
 
-/*ANIMATIONS*/
+
 
 .anim-wrap {
-  overflow: hidden; /* オーバーフロー部分は非表示 */
+  overflow: hidden;
 }
-.anim {
+.slideInLeft {
   opacity: 0;
 }
-/* インライン要素にアニメーションを適応させる */
+.slideInRight {
+  opacity: 0;
+}
+
 span.anim-wrap,
-span.anim {
+span.slideInLeft {
   display: inline-block;
 }
 
-.play-bsi {
-  animation-name: play;
-  animation-duration: .5s;
+span.anim-wrap,
+span.slideInRight {
+  display: inline-block;
+}
+
+
+.play-left {
+  animation-name: play-left;
+  animation-duration: .7s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.8,0,.5,1);
+  position: relative;
+  opacity: 1 !important;
+}
+
+.play-right {
+  animation-name: play-right;
+  animation-duration: .7s;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(.8,0,.5,1);
   position: relative;
   opacity: 1 !important;
 }
   
-.play-bsi:before {
-  animation-name: maskOut;
-  animation-duration: .5s;
-  animation-delay: .5s;
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(.8,0,.5,1);
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-}
 
-@keyframes play {
+@keyframes play-left {
   from {
     transform: translateX(-100%);
+  }
+  
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes play-right {
+  from {
+    transform: translateX(100%);
   }
   
   to {
@@ -92,3 +106,4 @@ span.anim {
     transform: translateX(100%);
   }
 }
+
