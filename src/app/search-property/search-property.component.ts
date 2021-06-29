@@ -60,7 +60,7 @@ export class SearchPropertyComponent implements OnInit {
       highValue: 2000000,
       options: {
         floor: 0,
-        ceil: 5000000,
+        ceil:  2000000,
         step: 10000,
         translate: (value: number): string => {
           return value + " €";
