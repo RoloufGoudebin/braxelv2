@@ -10,6 +10,7 @@
 .bgosse {
   background-size: 100%;
   background-repeat: no-repeat;
+  position: relative;
 }
 
 .intro {
@@ -22,7 +23,9 @@
   padding-left: 1em;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
+  position: relative;
   margin-top: 6em;
+  z-index: 3;
 }
 
 hr {
@@ -461,10 +464,17 @@ h5 {
   border-color: #EE5C5A;
 }
 
-.recherche {
+
+
+.bg{
   background-image: url('/assets/img/home_app.png');
-  background-position: center left 10%;
+  background-position: bottom 53% left 101%;
   background-repeat: no-repeat;
   position: relative;
-  background-size: 22%;
+  background-size: 37%;
+  z-index:2;
+}
+
+video {
+  z-index: 1;
 }
