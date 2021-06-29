@@ -9,10 +9,6 @@
     margin-bottom: 0.5em;
   }
 
-.nav-item .active{
-    font-weight: 900;
-    color:#233353;
-}
 
 .top-navbar{
     background-color: #F8F9FA;
@@ -78,4 +74,8 @@ margin: 3%;
 
 ul {
   padding-right: 10%;
+}
+
+a:hover{
+  font-weight: 800 !important;
 }
