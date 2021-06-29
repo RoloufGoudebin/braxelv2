@@ -8,7 +8,8 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-view-property',
   templateUrl: './view-property.component.html',
-  styleUrls: ['./view-property.component.css']
+  styleUrls: ['./view-property.component.css'],
+  
 })
 export class ViewPropertyComponent implements OnInit {
 

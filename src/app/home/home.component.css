@@ -45,7 +45,7 @@ hr {
   top: 0;
   bottom: 0;
   width: 90%;
-  height: 45vh;
+  height: 60vh;
   overflow: hidden;
   margin-top: 10em;
   margin-left: 7em;
@@ -468,3 +468,4 @@ h5 {
   position: relative;
   background-size: 22%;
 }
+

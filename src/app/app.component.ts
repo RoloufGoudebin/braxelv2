@@ -3,6 +3,7 @@ import { OmnicasaService } from './services/omnicasa/omnicasa.service';
 import { Property } from './services/omnicasa/interface';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
