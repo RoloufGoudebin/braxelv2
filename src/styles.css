@@ -27,3 +27,9 @@ html, body{
 .carousel-control-next-icon{
  background-image: url('https://apufpel.com.br/assets/img/seta_ult.png') !important;
 }
+.icon-chevron-right{
+  font-size: 6em;
+}
+.icon-chevron-left{
+  font-size: 6em;
+}

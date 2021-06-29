@@ -51,4 +51,5 @@ export interface Property {
     Marquee: number;
     MarqueeShowOrder: number;
     VirtualTour: string;
+    IsOffice: boolean;
 }
