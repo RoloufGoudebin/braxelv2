@@ -2,7 +2,7 @@
 <section id='reviews'>
     <div class="container pt-3">
         <h1 class="text-center">Ils l'expliquent mieux que nous</h1>
-        <ngb-carousel *ngIf="isReviews(); else loading" [interval]="5000">
+        <ngb-carousel *ngIf="isReviews(); else loading" [showNavigationArrows]="true" [interval]="5000">
             <ng-template ngbSlide *ngFor="let review of reviews" class="carousel pb-5">
                 <div class="avatar text-center pt-3">
                     <img src="{{ review.profile_photo_url }}" alt="Avatar" height="50" width="50" />

@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit} from '@angular/core';
 
 declare const google: any;
 
