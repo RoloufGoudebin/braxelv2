@@ -26,6 +26,14 @@ h4 {
   margin-top: 0.8em;
 }
 
+.porte p {
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 2em;
+  font-weight: 800;
+  display: inline;
+}
+
 hr.left {
   border-top: 2px solid #EE5C5A;
   margin-top: 1.5em;
@@ -89,6 +97,16 @@ b {
 .honoraires {
   margin-top: 12em;
   background-color: white;
+}
+
+.porte{
+  background-image: url("/assets/img/porte.jpg");
+  background-size: contain;
+  max-height: 100vh;
+  min-height: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: white !important;
 }
 
 /*Partie honoraires*/
@@ -295,7 +313,7 @@ a.anchor {
 .compteur {
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 5em;
+  font-size: 3em;
   font-weight: 800;
   display: inline;
 }
