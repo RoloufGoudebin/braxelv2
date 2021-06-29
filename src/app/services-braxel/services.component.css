@@ -105,13 +105,17 @@ b {
 }
 
 .porte{
-  background-image: url("/assets/img/porte.jpg");
-  background-size: contain;
+  background-image: url("/assets/img/porte-1.jpg");
+  background-size: cover;
   max-height: 100vh;
   min-height: 100%;
   background-repeat: no-repeat;
   background-position: center center;
   background-color: white !important;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  border: none;
 }
 
 /*Partie honoraires*/
