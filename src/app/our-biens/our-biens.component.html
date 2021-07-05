@@ -1,14 +1,14 @@
 <app-navbar></app-navbar>
 <section id="nos-biens">
   <div class="container-fluid pt-5 mt-5">
-    <div class="row pt-5 mt-5">
-      <h1 class="col text-center">Nos biens</h1>
-    </div>
     <div class="row">
-      <div class="col-3 mt-0 pt-0">
-        <app-search-property class="col-3"></app-search-property>
+      <div class="col-3 mt-5 pt-5">
+        <app-search-property class="col-3 mt-5 pt-5"></app-search-property>
       </div>
       <div class="col-8">
+        <div class="row pt-5 mt-5">
+          <h1 class="col text-center">Nos biens immobiliers</h1>
+        </div>
         <app-view-property-list [numberProperty]="numberProperty"></app-view-property-list>
       </div>
       </div>

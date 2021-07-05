@@ -86,6 +86,10 @@ a:hover{
   font-weight: 800 !important;
 }
 
+.active{
+  font-weight: 500;
+}
+
 
 
 @keyframes shakeAnim {
