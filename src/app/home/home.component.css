@@ -48,7 +48,7 @@ hr {
   top: 0;
   bottom: 0;
   width: 90%;
-  height: 45vh;
+  height: 65vh;
   overflow: hidden;
   margin-top: 10em;
   margin-left: 7em;
@@ -73,6 +73,9 @@ hr {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.buttons-bg{
 }
 
 .header h1 {
