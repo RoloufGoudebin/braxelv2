@@ -15,14 +15,14 @@ import { RealisationsComponent } from './realisations/realisations.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'agence', component: AgencyComponent },
-  { path: 'services', component: ServicesComponent },
-  { path: 'faq', component: FaqComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'biens-immobiliers/:id', component: ViewPropertyComponent },
-  { path: 'nos-biens', component: OurBiensComponent },
-  { path: 'realisations', component: RealisationsComponent},
+  { path: '', component: HomeComponent, pathMatch: 'full', data: {animationState: 'One'} },
+  { path: 'agence', component: AgencyComponent, data: { animationState: 'Two'}},
+  { path: 'services', component: ServicesComponent, data: { animationState: 'Three'}},
+  { path: 'nos-biens', component: OurBiensComponent, data: { animationState: 'Four' } },
+  { path: 'realisations', component: RealisationsComponent, data: { animationState: 'Five' }},
+  { path: 'faq', component: FaqComponent, data: { animationState: 'Six'}},
+  { path: 'contact', component: ContactComponent, data: { animationState: 'Seven' } },
+  { path: 'biens-immobiliers/:id', component: ViewPropertyComponent, data: { animationState: 'biens-immobiliers' } },
   { path: 'admin', component: SignInComponent },
   { path: 'admin/top-biens', component: TopBiensComponent, canActivate: [AuthGuard] },
 ];

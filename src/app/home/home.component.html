@@ -16,13 +16,16 @@
         </div>
 
 
-        <div class="col-5 pt-5 mt-5 bg slideInLeft">
-          <div class="row">
-            <h1 class=" intro mx-1">Vous avez trouvé vos agents immobiliers de confiance, en Brabants et à Bruxelles !
-              <hr>
-            </h1>
+        <div class="col-5 pt-5 mt-5 bg play-left">
+          <div class="row pt-5 mt-5">
+            <div class="pt-5 mt-5">
+              <h1 class=" intro mx-1 pt-5">Vous avez trouvé vos agents immobiliers de confiance, en Brabants et à
+                Bruxelles !
+                <hr>
+              </h1>
+            </div>
           </div>
-          <div class="row py-0 my-0 ml-5">
+          <div class="row py-0 my-0 ml-5 buttons-bg">
             <a class="nav-link py-0 mx-auto px-0 col-6 col-md-4" routerLinkActive="active"
               routerLink="/services"><button type="button" class="btn btn-outline-secondary col-10">Vendre</button></a>
             <a class="nav-link py-0 mx-auto px-0 col-6 col-md-4" routerLinkActive="active"
@@ -63,12 +66,16 @@
 
 
   <section class="nos-biens pt-5 mt-5">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <h2 class="mx-auto text-center">NOS BIENS IMMOBILIERS
         </h2>
       </div>
       <app-view-property-list [numberProperty]="numberProperty"></app-view-property-list>
+      <div class="row">
+        <a class="mx-auto" routerLink="/nos-biens"><button
+            type="button" class="btn btn-outline-secondary">Tous nos biens</button></a>
+      </div>
     </div>
   </section>
 
@@ -119,7 +126,7 @@
         <div class="col-md-4 col-sm-4">
           <div class="box1 pb-0 mb-0">
             <img src="assets/img/worker-3.jpg" alt="Agent immobilier à Waterloo">
-            <h3 class="title">Agent immobilier agréé I.P.I. 509.783</h3>
+            <h3 class="title">Stagiaire agent immobilier</h3>
             <ul class="icon">
               <li><a href="tel:123-456-7890"><i class="bi bi-telephone"></i></a>
               </li>
@@ -158,7 +165,7 @@
           <h2>,</h2>
           <ng2-odometer class="compteur" [number]="81" [config]="{ }"></ng2-odometer>
           <h2> %</h2>
-          <p>Négociation moyenne de prix affiché</p>
+          <p>Négociation moyenne sur prix affiché </p>
         </div>
       </div>
     </div>
