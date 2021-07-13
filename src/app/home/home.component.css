@@ -20,7 +20,7 @@
   font-size: 3em;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 800;
-  padding-left: 1em;
+  padding-left: 0em;
   padding-top: 0.2em;
   padding-bottom: 0.2em;
   position: relative;
@@ -75,8 +75,7 @@ hr {
   background-position: center center;
 }
 
-.buttons-bg{
-}
+
 
 .header h1 {
   font-weight: 900;

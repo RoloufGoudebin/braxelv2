@@ -25,7 +25,7 @@
               </h1>
             </div>
           </div>
-          <div class="row py-0 my-0 ml-5 buttons-bg">
+          <div class="row py-0 my-0 ml-5">
             <a class="nav-link py-0 mx-auto px-0 col-6 col-md-4" routerLinkActive="active"
               routerLink="/services"><button type="button" class="btn btn-outline-secondary col-10">Vendre</button></a>
             <a class="nav-link py-0 mx-auto px-0 col-6 col-md-4" routerLinkActive="active"
@@ -65,19 +65,7 @@
   </section>
 
 
-  <section class="nos-biens pt-5 mt-5">
-    <div class="container-fluid">
-      <div class="row">
-        <h2 class="mx-auto text-center">NOS BIENS IMMOBILIERS
-        </h2>
-      </div>
-      <app-view-property-list [numberProperty]="numberProperty"></app-view-property-list>
-      <div class="row">
-        <a class="mx-auto" routerLink="/nos-biens"><button
-            type="button" class="btn btn-outline-secondary">Tous nos biens</button></a>
-      </div>
-    </div>
-  </section>
+
 
   <section class="agent-immobilier pt-6 mt-6">
     <div class="container">
@@ -170,6 +158,20 @@
       </div>
     </div>
   </div>
+
+  <section class="nos-biens pt-5 mt-5">
+    <div class="container-fluid">
+      <div class="row">
+        <h2 class="mx-auto text-center">NOS BIENS IMMOBILIERS
+        </h2>
+      </div>
+      <app-view-property-list [numberProperty]="numberProperty"></app-view-property-list>
+      <div class="row">
+        <a class="mx-auto" routerLink="/nos-biens"><button
+            type="button" class="btn btn-outline-secondary">Tous nos biens</button></a>
+      </div>
+    </div>
+  </section>
 </body>
 <app-avis></app-avis>
 <app-footer></app-footer>
