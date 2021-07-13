@@ -347,7 +347,6 @@ body {
   padding: 7px 5px;
   list-style: none;
   background: #EE5C5A;
-  ;
   border-radius: 0 0 0 10px;
   top: -100%;
   right: 0;
@@ -477,8 +476,3 @@ h5 {
   background-size: 31%;
   z-index:2;
 }
-
-video {
-  z-index: 1;
-}
-
