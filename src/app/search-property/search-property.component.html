@@ -3,48 +3,54 @@
         <div class="row">
             <h2 class="text-center ml-auto col-11 mx-auto">Vous cherchez un bien ?</h2>
         </div>
-        <div class="search-form ml-auto pb-3 col-12">
-            <div class="row">
-                <div class="text-search-form col-11 text-left">
-                    <h3>Je souhaite :</h3>
-                </div>
-                <div class="col-11 mx-auto">
-                    <div class="row">
-                        <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
-                            [ngClass]="{'active': item.active}" class="btn btn-outline-primary rounded-pill
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="search-form ml-auto pb-3 col-12">
+                <div class="row">
+                    <div class="text-search-form col-11 text-left">
+                        <h3>Je souhaite :</h3>
+                    </div>
+                    <div class="col-11 mx-auto">
+                        <div class="row">
+                            <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
+                                [ngClass]="{'active': item.active}" class="btn btn-outline-primary rounded-pill
                         col mx-2">{{item.name}}</button>
+                        </div>
                     </div>
                 </div>
+                <div class="row pt-2">
+                    <label class="text-search-form col-11 text-left" for="inlineFormCustomSelectPref">Type
+                        de bien :</label>
+                    <div class="col-12">
+                        <ng-select [multiple]="true" class="custom"> 
+                            <ng-option *ngFor="let type of types" [value]="type.id">{{type.name}}</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <label class="text-search-form col-11 text-left">Localité/Code Postal :</label>
+                    <input formControlName="zip" type="text" id="zip" name="zip"
+                        class="col-11 mx-auto rounded-pill form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback ml-4">
+                        <div *ngIf="f.lastName.errors.required">Veuillez entrer une localité</div>
+                    </div>
+                    <label class="text-search-form col-2 text-left" for="radius">Rayon (km):</label>
+                    <app-slider class="col-9 mx-auto" [options]="sliderRadius"></app-slider>
+                </div>
+                <div class="row pt-2">
+                    <label class="text-search-form col-11 text-left">Chambres :</label>
+                    <app-slider class="col-11 mx-auto" [options]="sliderRooms"></app-slider>
+                </div>
+                <div class="row pt-2">
+                    <label class="text-search-form col-11 text-left">Budget :</label>
+                    <app-slider class="col-11 mx-auto" [options]="sliderBudget"></app-slider>
+                </div>
+                <div class="row pt-3 button-search">
+                    <button type="button" class="btn1 btn-outline-primary col-7 mx-auto rounded-pill py-2"
+                        (click)="onSubmit()">Voir les
+                        résultats</button>
+                </div>
             </div>
-            <div class="row pt-2">
-                <label class="text-search-form col-11 text-left" for="inlineFormCustomSelectPref">Type
-                    de bien :</label>
-                <select class="custom-select mx-auto rounded-pill col-11 borders-choices" id="inlineFormCustomSelectPref">
-                    <option value="1">Maison</option>
-                    <option value="2">Appartement</option>
-                    <option value="3">Terrain</option>
-                    <option value="4">Bureaux/Commerces</option>
-                    <option value="5">Immeubles</option>
-                    <option value="6">Garage/Parking</option>
-                </select>
-            </div>
-            <div class="row pt-2">
-                <label class="text-search-form col-11 text-left">Code Postal/Localité :</label>
-                <input type="text" id="zip" name="zip" class="col-11 mx-auto rounded-pill form-control">
-                <label class="text-search-form col-2 text-left" for="radius">Rayon (km):</label>
-                <app-slider class="col-9 mx-auto" [options]="sliderRadius"></app-slider>
-            </div>
-            <div class="row pt-2">
-                <label class="text-search-form col-11 text-left">Chambres :</label>
-                <app-slider class="col-11 mx-auto" [options]="sliderRooms"></app-slider>
-            </div>
-            <div class="row pt-2">
-                <label class="text-search-form col-11 text-left">Budget :</label>
-                <app-slider class="col-11 mx-auto" [options]="sliderBudget"></app-slider>
-            </div>
-            <div class="row pt-3 button-search">
-                <button type="button" class="btn1 btn-outline-primary col-7 mx-auto rounded-pill py-2">Voir les résultats</button>
-            </div>
-        </div>
+        </form>
     </div>
 </div>

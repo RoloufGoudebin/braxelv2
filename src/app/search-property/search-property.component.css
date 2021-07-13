@@ -63,3 +63,10 @@ h2 {
 .borders-choices:focus{
   border-radius: 15px 15px 0% 0% !important;
 }
+
+.ng-option{
+  border:10px;
+  min-height: 0px;
+  border-radius: 0;
+}
+

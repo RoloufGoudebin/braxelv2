@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Options } from "@angular-slider/ngx-slider";
+import { MustMatch } from './must-match.validators';
+import { OmnicasaService } from '../services/omnicasa/omnicasa.service'
 
 interface SliderDetails {
   minValue: number;
@@ -15,17 +18,61 @@ interface SliderDetails {
 })
 export class SearchPropertyComponent implements OnInit {
 
-  constructor() { }
+  registerForm: FormGroup;
+  cityZip;
+  submitted = false;
+
+  constructor(private formBuilder: FormBuilder, private omnicasa: OmnicasaService) { }
 
   ngOnInit(): void {
+    this.registerForm = this.formBuilder.group({
+      zip: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
+      acceptTerms: [false, Validators.requiredTrue]
+    }, {
+      validator: MustMatch('password', 'confirmPassword')
+    });
+    this.cityZip = this.omnicasa.getListOfZip;
+  }
+
+  types = [
+    { id: 1, name: 'Maison' },
+    { id: 2, name: 'Appartement', disabled: true },
+    { id: 3, name: 'Terrain' },
+    { id: 4, name: 'Bureaux/Commerces' },
+    { id: 5, name: 'Immeubles' },
+    { id: 6, name: 'Garage/Parking' },
+  ];
+
+  get f() { return this.registerForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    // display form values on success
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+  }
+
+  onReset() {
+    this.submitted = false;
+    this.registerForm.reset();
   }
 
   items = [
-    {name:'Acheter', active:false},
-    {name:'Louer', active:false}
+    { name: 'Acheter', active: false },
+    { name: 'Louer', active: false }
   ];
 
-  toggleClass(item){
+  toggleClass(item) {
     this.items[0].active = false;
     this.items[1].active = false;
     this.items[2].active = false;
@@ -60,12 +107,14 @@ export class SearchPropertyComponent implements OnInit {
       highValue: 2000000,
       options: {
         floor: 0,
-        ceil:  2000000,
+        ceil: 2000000,
         step: 10000,
         translate: (value: number): string => {
           return value + " €";
         }
       }
     }
+
+
 
 }

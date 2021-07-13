@@ -40,6 +40,10 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AuthService } from "./admin/services/auth.service";
 import { RealisationsComponent } from './realisations/realisations.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @NgModule({
   declarations: [
@@ -79,6 +83,9 @@ import { RealisationsComponent } from './realisations/realisations.component';
     AngularFirestoreModule,
     NgbModule,
     Ng2OdometerModule.forRoot(),
+    ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    NgSelectModule
   ],
   providers: [OmnicasaService,
     AngularFireAuth,

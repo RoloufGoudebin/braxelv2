@@ -35,14 +35,10 @@ margin: 3%;
   border-radius: 0 0 20px 20px;
   background-color: #233353;
   position: relative;
-  animation-name: shake;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in;
   cursor: pointer;
 }
 
-.btn-contact:hover{
+.btn-alert:hover{
     animation-name: shakeAnim;
 }
 
@@ -52,6 +48,10 @@ margin: 3%;
   background-color: #EE5C5A;
   border:none;
   border-radius: 0 0 20px 20px;
+  animation-name: shake;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
 }
 
 .btn-alert{
