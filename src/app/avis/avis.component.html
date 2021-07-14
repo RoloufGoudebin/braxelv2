@@ -5,7 +5,7 @@
         <ngb-carousel *ngIf="isReviews(); else loading" [showNavigationArrows]="true" [interval]="5000">
             <ng-template ngbSlide *ngFor="let review of reviews" class="carousel pb-5">
                 <div class="avatar text-center pt-3">
-                    <img src="{{ review.profile_photo_url }}" alt="Avatar" height="50" width="50" />
+                    <img src="/assets/img/google.png" alt="Avatar" height="50" width="50" />
                 </div>
                 <h5 class="card-title text-center author">{{ review.author_name }}</h5>
                 <div class="stars text-center pt-0 mt-0">
