@@ -1,0 +1,33 @@
+<p class="show text-center" (click)="basicModal.show()"
+  mdbWavesEffect>Lire l'avis complet</p>
+
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <mdb-card class="my-1">
+        <mdb-card-img class="col-4 mx-auto mt-5" [src]="avatar" alt="Card image cap">
+        </mdb-card-img>
+        <mdb-card-body>
+          <mdb-card-title>
+            <h4 class="text-center">{{author}}</h4>
+            <div class="stars text-center pt-0 mt-0">
+              <mat-icon *ngFor="let item of
+                        createRange(range)"><i class="bi bi-star-fill"></i></mat-icon>
+            </div>
+          </mdb-card-title>
+          <p class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0">{{text}}</p>
+          <h6 class="text-center pt-1 pb-0 mb-0">{{date}}</h6>
+          <div class="row pt-0 mt-0">
+            <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+          </div>
+        </mdb-card-body>
+      </mdb-card>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"
+          (click)="basicModal.hide()" mdbWavesEffect>Fermer</button>
+        <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Voir tous les avis</button>
+      </div>
+    </div>
+  </div>
+</div>
