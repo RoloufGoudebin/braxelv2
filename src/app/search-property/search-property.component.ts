@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { Options } from "@angular-slider/ngx-slider";
-import { MustMatch } from './must-match.validators';
+import { MustMatch, goalValidator } from './must-match.validators';
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service'
 
 interface SliderDetails {
@@ -21,18 +21,18 @@ export class SearchPropertyComponent implements OnInit {
   registerForm: FormGroup;
   cityZip;
   submitted = false;
+  goalSelect = false;
+  selectedTypes = [];
 
   constructor(private formBuilder: FormBuilder, private omnicasa: OmnicasaService) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       zip: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      goal: ['', goalValidator],
       confirmPassword: ['', Validators.required],
-      acceptTerms: [false, Validators.requiredTrue]
+      acceptTerms: [false, Validators.requiredTrue],
+      lastName: ['', Validators.required],
     }, {
       validator: MustMatch('password', 'confirmPassword')
     });
@@ -48,10 +48,17 @@ export class SearchPropertyComponent implements OnInit {
     { id: 6, name: 'Garage/Parking' },
   ];
 
+  items = [
+    { name: 'Acheter', select: false },
+    { name: 'Louer', select: false }
+  ];
+
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
     this.submitted = true;
+    this.selectedTypes = this.selectedTypes;
+    console.log(this.selectedTypes);
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
@@ -60,6 +67,8 @@ export class SearchPropertyComponent implements OnInit {
 
     // display form values on success
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+
+    
   }
 
   onReset() {
@@ -67,16 +76,11 @@ export class SearchPropertyComponent implements OnInit {
     this.registerForm.reset();
   }
 
-  items = [
-    { name: 'Acheter', active: false },
-    { name: 'Louer', active: false }
-  ];
-
   toggleClass(item) {
-    this.items[0].active = false;
-    this.items[1].active = false;
-    this.items[2].active = false;
-    item.active = "active";
+    this.items[0].select = false;
+    this.items[1].select = false;
+    item.select = !item.select;
+    this.goalSelect = true;
   }
 
   sliderRadius: SliderDetails =

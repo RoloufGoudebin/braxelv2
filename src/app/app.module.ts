@@ -39,10 +39,12 @@ import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AuthService } from "./admin/services/auth.service";
 import { RealisationsComponent } from './realisations/realisations.component';
+import { MDBBootstrapModulesPro} from 'ng-uikit-pro-standard';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ModalAvisComponent } from './avis/modal-avis/modal-avis.component';
 
 
 @NgModule({
@@ -68,6 +70,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ContactModalComponent,
     SignInComponent,
     RealisationsComponent,
+    ModalAvisComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -85,7 +88,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     Ng2OdometerModule.forRoot(),
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    NgSelectModule
+    NgSelectModule,
+    MDBBootstrapModulesPro.forRoot()
   ],
   providers: [OmnicasaService,
     AngularFireAuth,

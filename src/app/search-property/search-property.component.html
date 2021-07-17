@@ -12,8 +12,13 @@
                     <div class="col-11 mx-auto">
                         <div class="row">
                             <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
-                                [ngClass]="{'active': item.active}" class="btn btn-outline-primary rounded-pill
+                                [ngClass]="item.select ? 'select' : 'not-select'" class="btn rounded-pill
                         col mx-2">{{item.name}}</button>
+                        </div>
+                        <div class="row">
+                            <div *ngIf="submitted && !goalSelect">
+                                <div class="invalid-feedback d-block ml-2">Veuillez choisir une option</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -21,9 +26,14 @@
                     <label class="text-search-form col-11 text-left" for="inlineFormCustomSelectPref">Type
                         de bien :</label>
                     <div class="col-12">
-                        <ng-select [multiple]="true" class="custom"> 
-                            <ng-option *ngFor="let type of types" [value]="type.id">{{type.name}}</ng-option>
+                        <ng-select bindLabel="selectedTypes" [multiple]="true" class="custom" name="selectedTypes">
+                            <ng-option *ngFor="let type of types" [value]="type.id" required>{{type.name}}</ng-option>
                         </ng-select>
+                        <div class="row">
+                            <div *ngIf="submitted">
+                                <div class="invalid-feedback d-block ml-2">Veuillez entrer une localité</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row pt-2">

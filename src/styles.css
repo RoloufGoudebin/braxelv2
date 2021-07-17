@@ -11,34 +11,6 @@ html, body{
   min-height: 100vh;
 }
 
-.carousel-control-prev-icon{
-  background-image: url('https://apufpel.com.br/assets/img/seta_prim.png') !important;
-}
-.carousel-control-prev:hover.linear{
-  background: linear-gradient(to right, black, transparent) !important;
-}
-.carousel-control-next:hover.linear{
-  background: linear-gradient(to right, transparent, black) !important;
-}
-.carousel-control-next{
-  opacity: 40% !important;
-}
-.carousel-control-prev{
-  opacity: 40% !important;
-}
-.carousel-control-next-icon{
- background-image: url('https://apufpel.com.br/assets/img/seta_ult.png') !important;
-}
-.icon-chevron-right{
-  font-size: 6em;
-}
-.icon-chevron-left{
-  font-size: 6em;
-}
-
-
-
-
 .anim-wrap {
   overflow: hidden;
 }

@@ -4,32 +4,47 @@
     height: auto;
     overflow: hidden;
 }
+
 .show {
     overflow: visible;
     height: auto !important;
 }
 
+.carousel-control-prev-icon{
+  background-image: url("src/assets/img/left-chevron.png") !important;
+  background-color: black !important;
+}
+
 .notshow {
-   height: 60px;
+   height: 120px;
    overflow: hidden;
 }
 
-::ng-deep .carousel-item {
-    display: block !important;
-    position: absolute;
-    transform: translateY(100%);
-    opacity: 0;
-    transition:all  1s;
-  }
+::ng-deep .carousel-control-prev-icon {
+  margin-left: -35px !important;
+  background-image: url("src/assets/img/left-chevron.png") !important;
+}
 
-  ::ng-deep .carousel-item.active {
-    position: relative;
-    transform: translateY(0);
-    opacity: 1;
-    top: 0;
-  }
+::ng-deep .carousel-control-prev {
+  background-color: rgb(243, 242, 242);
+  max-width: 100px !important;
+  cursor: pointer;
+}
 
-  *:focus {
+::ng-deep .carousel-control-next-icon {
+  margin-left: 35px !important;
+  background-image: url("src/assets/img/right-chevron.png") !important;
+}
+
+::ng-deep .carousel-control-next {
+  background-color: rgb(243, 242, 242);
+  max-width: 100px !important;
+  cursor: pointer;
+}
+
+
+
+*:focus {
     outline: none;
 }
 
@@ -46,9 +61,6 @@ h1{
     color: rgb(255, 196, 0);
 }
 
-::ng-deep .carousel-control-prev-icon {
-    color: black;
-}
 
 h5 {
   margin-top: 1em;

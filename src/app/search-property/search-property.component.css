@@ -33,15 +33,16 @@
   background-color: #12223f;
 }
 
-.btn-outline-primary:hover,
-.btn-outline-primary:focus,
-.btn-outline-primary:active {
-  background-color: #ee5c5a !important;
+.btn:active{
   outline: none !important;
-  box-shadow: none !important;
 }
 
-.active{
+.not-select{
+  background-color: #233353 !important;
+  outline: none !important;
+}
+
+.select{
   background-color: #ee5c5a !important;
   outline: none !important;
 }

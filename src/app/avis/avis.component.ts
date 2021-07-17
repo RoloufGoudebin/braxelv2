@@ -14,6 +14,19 @@ export class AvisComponent implements AfterViewInit {
 
   constructor() {}
 
+  slides: any = [[]];
+  
+  chunk(arr, chunkSize) {
+    let R = [];
+    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
+      R.push(arr.slice(i, i + chunkSize));
+    }
+    return R;
+  }
+
+  ngOnInit(){
+  }
+
   ngAfterViewInit() {
     const request = {
       placeId: "ChIJIxgLPcrRw0cREMNq7b82f-0",
@@ -27,6 +40,8 @@ export class AvisComponent implements AfterViewInit {
   public callback = (place, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       this.reviews = place.reviews.slice();
+      this.slides = this.chunk(this.reviews, 3);
+      console.log(this.slides);
     }
   };
 

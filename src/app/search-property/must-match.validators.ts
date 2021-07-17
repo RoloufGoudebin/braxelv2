@@ -1,4 +1,7 @@
 import { FormGroup } from '@angular/forms';
+import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
+import { RouteConfigLoadEnd } from '@angular/router';
+
 
 // custom validator to check that two fields match
 export function MustMatch(controlName: string, matchingControlName: string) {
@@ -17,5 +20,18 @@ export function MustMatch(controlName: string, matchingControlName: string) {
         } else {
             matchingControl.setErrors(null);
         }
+    }
+}
+
+export function goalValidator(): ValidatorFn {
+    return (control:AbstractControl) : ValidationErrors | null => {
+
+        const value = control.value;
+
+        const goalValid = value[0].select && value[1].select;
+
+        console.log(value);
+
+        return !goalValid ? {goalSelect:true}: null;
     }
 }

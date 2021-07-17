@@ -2,25 +2,59 @@
 <section id='reviews'>
     <div class="container pt-3">
         <h1 class="text-center">Nos clients l’expliquent mieux que nous </h1>
-        <ngb-carousel *ngIf="isReviews(); else loading" [showNavigationArrows]="true" [interval]="5000">
-            <ng-template ngbSlide *ngFor="let review of reviews" class="carousel pb-5">
-                <div class="avatar text-center pt-3">
-                    <img src="{{ review.profile_photo_url }}" alt="Avatar" height="50" width="50" />
+        <!--
+        <ngb-carousel *ngIf="isReviews(); else loading" [isControls]="true" [showNavigationArrows]="true"
+            [interval]="5000" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+            [animation]="'slide'">
+            <mdb-carousel-item *ngFor="let item of slides; let i = index">
+                <div class="col-md-4" *ngFor="let review of item; let cardIndex = index">
+                    <mdb-card class="my-1">
+                        <mdb-card-img [src]="review.profile_photo_url" alt="Card image cap"></mdb-card-img>
+                        <mdb-card-body>
+                            <mdb-card-title>
+                                <h4>{{review.author_name}}</h4>
+                            </mdb-card-title>
+                            <p>{{review.text}}</p>
+                            <a href="#" mdbBtn color="primary" class="waves-light"
+                                mdbWavesEffect>{{card.buttonText}}</a>
+                        </mdb-card-body>
+                    </mdb-card>
+                    <p class="text-center mx-auto voir" (click)="show = !show">{{ show ? 'voir moins': 'voir plus' }}
+                    </p>
+                    <h6 class="text-center pt-1">{{ review.relative_time_description }}</h6>
                 </div>
-                <h5 class="card-title text-center author">{{ review.author_name }}</h5>
-                <div class="stars text-center pt-0 mt-0">
-                    <mat-icon *ngFor="let item of
-                        createRange(review.rating)"><i class="bi bi-star-fill"></i></mat-icon>
-                </div>
-
-                <div class="card-text text-justify mx-auto text-center col-10 text-review pt-3 notshow"
-                    [class.show]="show">
-                    {{ review.text }}
-                </div>
-                <p class="text-center mx-auto voir" (click)="show = !show">{{ show ? 'voir moins': 'voir plus' }}</p>
-                <h6 class="text-center pt-1">{{ review.relative_time_description }}</h6>
-            </ng-template>
+            </mdb-carousel-item>
         </ngb-carousel>
+        -->
+        <mdb-carousel [isControls]="true" [interval]="'0'" [animation]="'slide'" class="my-5">
+            <mdb-carousel-item *ngFor="let item of slides; let i = index">
+                <div class="col-md-4" *ngFor="let review of item; let cardIndex = index">
+                    <mdb-card class="my-1">
+                        <mdb-card-img class="col-4 mx-auto mt-5" [src]="review.profile_photo_url" alt="Card image cap">
+                        </mdb-card-img>
+                        <mdb-card-body>
+                            <mdb-card-title>
+                                <h4 class="text-center">{{review.author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                        createRange(review.rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{review.text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [avatar]="review.profile_photo_url" [author]="review.author_name"
+                                [range]="review.rating " [text]="review.text" [date]="review.relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{ review.relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-3 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
+            </mdb-carousel-item>
+        </mdb-carousel>
     </div>
 </section>
 

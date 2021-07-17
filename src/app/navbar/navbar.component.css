@@ -11,14 +11,22 @@
 
 
 .top-navbar{
-    background-color: #F8F9FA;
+    background-color: #F8F9FA !important;
 }
 
 .top-navbar .nav-link{
-    color: white;
+    color: white !important;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
-  }
+}
+
+.navbar-light{
+  background-color: white !important;
+}
+
+.bg-light{
+  background-color: white !important;
+}
 
 a{
   color: #233353 !important;
