@@ -22,6 +22,10 @@
                     <p class="text-center mx-auto voir" (click)="show = !show">{{ show ? 'voir moins': 'voir plus' }}
                     </p>
                     <h6 class="text-center pt-1">{{ review.relative_time_description }}</h6>
+        <ngb-carousel *ngIf="isReviews(); else loading" [showNavigationArrows]="true" [interval]="5000">
+            <ng-template ngbSlide *ngFor="let review of reviews" class="carousel pb-5">
+                <div class="avatar text-center pt-3">
+                    <img src="/assets/img/google.png" alt="Avatar" height="50" width="50" />
                 </div>
             </mdb-carousel-item>
         </ngb-carousel>

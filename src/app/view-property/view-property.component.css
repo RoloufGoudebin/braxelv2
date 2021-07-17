@@ -61,6 +61,7 @@ h6 {
   margin: 3px;
   padding-top: 10px;
   padding-bottom: 10px;
+  border-radius: 25px;
 
   margin-bottom: 20px;
 }
@@ -109,10 +110,10 @@ padding: 25px;
       column-count: 2;
       -moz-column-count: 2;
       -webkit-column-count: 2;
-      
+
     }
 }
-  
+
 .rounded {
     border-radius: 20px !important;
   }
