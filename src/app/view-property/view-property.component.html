@@ -7,8 +7,8 @@
     <div class="row">
       <h3 *ngIf="property.StartPrice" class="mr-auto col">{{toStringPrice(property.StartPrice)}}
         {{property.PriceUnitText}}</h3>
-      <a href={{property.VirtualTour}}>
-        <button *ngIf="property.VirtualTour" type="button" class="btn-primary">Visite virtuelle</button>
+      <a class="nav-link" *ngIf="property.VirtualTour">
+        <app-modal-nodal [item]="nodalLink"></app-modal-nodal>
       </a>
       <a class="nav-link">
         <app-contact-modal></app-contact-modal>
