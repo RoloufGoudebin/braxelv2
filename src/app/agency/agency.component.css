@@ -61,7 +61,7 @@ h3 {
     font-family: 'Montserrat', sans-serif;
     font-display: swap;
     margin-top: 7em;
-    border-radius: 20px;
+    border-radius: 20px 20px 20px 20px;
 }
 
 p{

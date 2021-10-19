@@ -72,13 +72,23 @@ h5 {
 
   .ribon{
       position: absolute;
-      top: 110px;
       right: -5px;
       color: #fff;
       text-transform: uppercase;
       padding: 3px 15px;
       font-weight: 600;
       top: 18px;
+}
+
+.ribon-nodal{
+  position: absolute;
+  right: -5px;
+  background-color: red;
+  color: white;
+  text-transform: uppercase;
+  padding: 3px 15px;
+  font-weight: 600;
+  top: 53px;
 }
 
   img {

@@ -19,6 +19,7 @@ export class ViewPropertyComponent implements OnInit {
   id: number;
   lat: number;
   long: number;
+  nodalLink: string;
   listInfo: String[] = ["KitchenName", "WindowGlazing", "OrientationT", "HasLift", "Floor", "ConstructionYear", "SurfaceTerrace", "ConstructionName", "SurfaceGarden", "HeatingName", "MainStyleName", "ConditionName"];
 
   constructor(private route: ActivatedRoute, public omnicasa: OmnicasaService, private firestore: FirestoreService, private http: HttpClient) { }
@@ -30,7 +31,7 @@ export class ViewPropertyComponent implements OnInit {
       this.property = data.GetPropertiesByIDsJsonResult.Value.Items[0];
       this.lat = +this.property.GoogleX;
       this.long = +this.property.GoogleY;
-      console.log(this.lat+"  "+this.long);
+      this.nodalLink = this.property.VirtualTour;
     });;
   }
 

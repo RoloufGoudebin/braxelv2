@@ -1,0 +1,21 @@
+.btn-outline-primary{
+    background-color: #EE5C5A;
+    color: white;
+    border-color: #EE5C5A;
+    border-radius: 20px;
+}
+
+.btn-outline-primary:hover{
+    background-color: #233353;
+    border-color: #233353;
+    color: white;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+.nodalview{
+    height: 95vh;
+}

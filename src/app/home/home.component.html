@@ -4,46 +4,45 @@
 
 
   <!-- Main navigation -->
-  <section class="bgintro">
-    <div class="container-fluid">
-      <div class="row col-6 mx-0 px-0">
+  <section class="bgintro fullheight">
+    <div class="row col-6 mx-0 px-0">
+      <div class="row">
+        <div class="col-12 mx-auto box pl-5">
+          <!-- Overlay -->
+          <div class="overlay">
+            <!-- Overlay inner wrapper -->
+            <div class="overlay__inner">
+              <!-- Title -->
+              <h1 class="overlay__title">
+                Vous avez trouvé vos agents immobiliers,
+                <span class="text-gradient">de confiance</span> en Brabants et à
+                Bruxelles !
+              </h1>
+              <!-- Description -->
+              <p class="overlay__description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                <strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit,"</strong>
+              </p>
+              <!-- Buttons -->
+              <div class="overlay__btns">
 
-        <!-- Canvas -->
-        <div class="orb-canvas"></div>
-        <!-- Overlay -->
-        <div class="overlay">
-          <!-- Overlay inner wrapper -->
-          <div class="overlay__inner">
-            <!-- Title -->
-            <h1 class="overlay__title">
-              Vous avez trouvé vos agents immobiliers,
-              <span class="text-gradient">de confiance</span> en Brabants et à
-              Bruxelles !
-            </h1>
-            <!-- Description -->
-            <p class="overlay__description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-              <strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit,"</strong>
-            </p>
-            <!-- Buttons -->
-            <div class="overlay__btns">
+                <button class="overlay__btn overlay__btn--transparent">
+                  <a href="" target="_blank">
 
-              <button class="overlay__btn overlay__btn--transparent">
-                <a href="" target="_blank">
+                    Acheter
+                  </a>
+                </button>
 
-                  Acheter
-                </a>
-              </button>
+                <button class="overlay__btn overlay__btn--transparent">
+                  <span>Louer</span>
+                  <span class="overlay__btn-emoji"></span>
+                </button>
 
-              <button class="overlay__btn overlay__btn--transparent">
-                <span>Louer</span>
-                <span class="overlay__btn-emoji"></span>
-              </button>
-
-              <button class="overlay__btn overlay__btn--colors">
-                <span style="white-space: nowrap;">Rechercher un bien</span>
-                <span class="overlay__btn-emoji">🔑</span>
-              </button>
+                <button class="overlay__btn overlay__btn--colors">
+                  <span style="white-space: nowrap;">Rechercher un bien</span>
+                  <span class="overlay__btn-emoji">🔑</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -165,16 +164,12 @@
           <p>Délai moyen de vente</p>
         </div>
         <div class="col-8 col-md-4 text-center mx-auto">
-          <ng2-odometer class="compteur" [number]="94" [config]="{ }"></ng2-odometer>
-          <h2>,</h2>
-          <ng2-odometer class="compteur" [number]="5" [config]="{ }"></ng2-odometer>
+          <ng2-odometer class="compteur" [number]="94.5" [format]="'(ddd),d'"></ng2-odometer>
           <h2> %</h2>
           <p>Dossiers activés et vendus</p>
         </div>
         <div class="col-8 col-md-4 text-center mx-auto">
-          <ng2-odometer class="compteur" [number]="3" [config]="{ }"></ng2-odometer>
-          <h2>,</h2>
-          <ng2-odometer class="compteur" [number]="81" [config]="{ }"></ng2-odometer>
+          <ng2-odometer class="compteur" [number]="3.81" [format]="'(ddd),d'"></ng2-odometer>
           <h2> %</h2>
           <p>Négociation moyenne sur prix affiché </p>
         </div>

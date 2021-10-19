@@ -45,6 +45,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ModalAvisComponent } from './avis/modal-avis/modal-avis.component';
+import { ModalNodalComponent } from './view-property/modal-nodal/modal-nodal.component';
+import { SafePipe } from './safe.pipe';
 
 
 @NgModule({
@@ -71,6 +73,8 @@ import { ModalAvisComponent } from './avis/modal-avis/modal-avis.component';
     SignInComponent,
     RealisationsComponent,
     ModalAvisComponent,
+    ModalNodalComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
