@@ -11,7 +11,7 @@
 
 
 .top-navbar{
-    background-color: #F8F9FA !important;
+    background-color: white !important;
 }
 
 .top-navbar .nav-link{
@@ -46,7 +46,7 @@ margin: 3%;
   cursor: pointer;
 }
 
-.btn-alert:hover{
+.btn-estimate:hover{
     animation-name: shakeAnim;
 }
 
@@ -70,6 +70,10 @@ margin: 3%;
   font-family: 'Source Sans Pro', sans-serif;
   background-color: #EE5C5A;
   border: none;
+  animation-name: shake;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
   border-radius: 0 0 20px 20px;
 }
 
