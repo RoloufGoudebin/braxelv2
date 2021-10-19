@@ -9,9 +9,7 @@
           <div class="jumbotron col-6 d-none d-lg-block my-auto porte play-left">
             <div class="row">
               <div class="col-12 text-center">
-                <ng2-odometer class="compteur" [number]="3" [config]="{ }"></ng2-odometer>
-                <p>,</p>
-                <ng2-odometer class="compteur" [number]="5" [config]="{ }"></ng2-odometer>
+                <ng2-odometer class="compteur" [number]="3.5" [format]="'(ddd),d'"></ng2-odometer>
                 <p>%</p>
               </div>
               <div class="col-12 text-center">
@@ -25,9 +23,7 @@
                 <p class="test">Durée moyenne de vente</p>
               </div>
               <div class="col-12 text-center">
-                <ng2-odometer class="compteur" [number]="94" [config]="{ }"></ng2-odometer>
-                <p>,</p>
-                <ng2-odometer class="compteur" [number]="5" [config]="{ }"></ng2-odometer>
+                <ng2-odometer class="compteur" [number]="94.5" [format]="'(ddd),d'"></ng2-odometer>
                 <p>%</p>
               </div>
               <div class="col-12 text-center">
@@ -149,10 +145,10 @@
     <div class="vente">
       <div class="container-fluid pt-5 full-height">
         <div class="row">
-          <div class="col-6 d-none d-lg-block mr-auto">
-            <img-comparison-slider class="slideInLeft my-0 py-0 ">
-              <img slot="before" src="assets/img/Base-comp.jpg" />
-              <img slot="after" src="assets/img/Final-comp.jpg" />
+          <div class="col-6 d-none d-lg-block mr-auto my-auto">
+            <img-comparison-slider class="slideInLeft my-0 py-0 coloured-slider my-auto">
+              <img slot="before" src="assets/img/Base-comp.jpg" class="img-fluid" />
+              <img slot="after" src="assets/img/Final-comp.jpg" class="img-fluid" />
             </img-comparison-slider>
           </div>
           <div class="col-12 col-lg-6 mr-auto my-auto">
@@ -419,3 +415,13 @@
             <img src="assets/img/estimation_gris.jpg" class="img-fluid my-1">
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<object data="https://nodalview.com/yivKVE6B33JoQssEhjL9RaJR" width="600" height="400">
+  <embed src="https://nodalview.com/yivKVE6B33JoQssEhjL9RaJR" width="600" height="400" />
+</object>
+
+<app-footer></app-footer>
