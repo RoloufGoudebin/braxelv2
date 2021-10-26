@@ -10,36 +10,10 @@
     height: auto !important;
 }
 
-.carousel-control-prev-icon{
-  background-image: url("src/assets/img/left-chevron.png") !important;
-  background-color: black !important;
-}
 
 .notshow {
    height: 120px;
    overflow: hidden;
-}
-
-::ng-deep .carousel-control-prev-icon {
-  margin-left: -35px !important;
-  background-image: url("src/assets/img/left-chevron.png") !important;
-}
-
-::ng-deep .carousel-control-prev {
-  background-color: rgb(243, 242, 242);
-  max-width: 100px !important;
-  cursor: pointer;
-}
-
-::ng-deep .carousel-control-next-icon {
-  margin-left: 35px !important;
-  background-image: url("src/assets/img/right-chevron.png") !important;
-}
-
-::ng-deep .carousel-control-next {
-  background-color: rgb(243, 242, 242);
-  max-width: 100px !important;
-  cursor: pointer;
 }
 
 
