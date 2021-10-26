@@ -15,7 +15,6 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-
 }
 
 .intro {
@@ -489,9 +488,10 @@ strong {
 
 .overlay {
   width: 100%;
+  margin-left:3em;
   max-width: 1140px;
   max-height: 640px;
-  padding: 7rem 5rem;
+  padding: 6rem 4rem;
   display: flex;
   align-items: center;
   background: rgba(255, 255, 255, 0.8);
@@ -512,8 +512,6 @@ strong {
   letter-spacing: -0.025em;
   margin-bottom: 2rem;
 }
-
-
 
 .overlay__description {
   font-size: 1rem;
@@ -631,5 +629,20 @@ a {
 .box{
   margin-top: 16em;
 }
+
+.video-responsive { 
+  overflow:hidden; 
+  padding-bottom:56.25%; 
+  position:relative; 
+  height:0;
+  }
+  
+  .video-responsive iframe {
+  left:0; 
+  top:0; 
+  height:100%;
+  width:100%;
+  position:absolute;
+  }
 
 
