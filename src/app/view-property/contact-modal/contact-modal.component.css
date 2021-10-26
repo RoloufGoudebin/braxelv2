@@ -3,6 +3,7 @@
     color: white;
     border-color: #EE5C5A;
     border-radius: 20px;
+    padding:0.8em;
 }
 
 .btn-outline-primary:hover{
