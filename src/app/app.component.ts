@@ -1,6 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { OmnicasaService } from './services/omnicasa/omnicasa.service';
-import { Property } from './services/omnicasa/interface';
+import { Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { routeTransitionAnimations } from './route-transition-animations';
 
@@ -16,11 +14,7 @@ import { routeTransitionAnimations } from './route-transition-animations';
 export class AppComponent{
   title = 'braxel';
 
-  constructor(public omnicasa: OmnicasaService) { }
-
-
-  propertyList: Property[]; // liste des propriétés
-
+  constructor() { }
 
   ngOnInit() {
   }

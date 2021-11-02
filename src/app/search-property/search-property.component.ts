@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Options } from "@angular-slider/ngx-slider";
 import { MustMatch, goalValidator } from './must-match.validators';
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service'
+import cities from 'src/app/services/models/cities.json'
 
 interface SliderDetails {
   minValue: number;
@@ -36,7 +37,6 @@ export class SearchPropertyComponent implements OnInit {
     }, {
       validator: MustMatch('password', 'confirmPassword')
     });
-    this.cityZip = this.omnicasa.getListOfZip;
   }
 
   types = [

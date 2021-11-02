@@ -44,6 +44,7 @@
                     <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback ml-4">
                         <div *ngIf="f.lastName.errors.required">Veuillez entrer une localité</div>
                     </div>
+                    
                     <label class="text-search-form col-2 text-left" for="radius">Rayon (km):</label>
                     <app-slider class="col-9 mx-auto" [options]="sliderRadius"></app-slider>
                 </div>

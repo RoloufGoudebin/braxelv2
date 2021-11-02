@@ -2,7 +2,6 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service'
 import { Property } from '../services/omnicasa/interface';
 import { FirestoreService } from '../services/firebase/firestore.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-view-property-list',
@@ -49,7 +48,7 @@ export class ViewPropertyListComponent implements OnInit {
       return '#283152';
     }
     if (marquee == 3) {
-      return 'lightgrey';
+      return '#D3D3D3';
     }
     if (marquee == 4) {
       return '#26CE6C';
