@@ -189,7 +189,8 @@
         <h2 class="mx-auto text-center">NOS BIENS IMMOBILIERS
         </h2>
       </div>
-      <app-view-property-list [numberProperty]="numberProperty"></app-view-property-list>
+      <app-view-property-list [numberProperty]="6" [collectionName]="'activeProperties'" [propertyList]="toShow">
+      </app-view-property-list>
       <div class="row">
         <a class="mx-auto" routerLink="/nos-biens"><button type="button" class="btn btn-outline-secondary">Tous nos
             biens</button></a>

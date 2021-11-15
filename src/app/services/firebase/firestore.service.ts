@@ -1,10 +1,9 @@
+import { FocusTrapManager } from '@angular/cdk/a11y/focus-trap/focus-trap-manager';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Property, PropertyList } from '../omnicasa/interface';
+import { Listener } from 'selenium-webdriver';
+import { Property } from '../omnicasa/interface';
 import { OmnicasaService } from '../omnicasa/omnicasa.service';
-import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
-
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +15,11 @@ export class FirestoreService {
   propertyList: Property[];
   propertyListTop: Property[];
   collection: any;
+  topPropertyList: Property[];
 
 
 
-  
+
 
   getFirestoreCollection(collection) {
     return this.firestore.collection(collection).snapshotChanges();
@@ -36,19 +36,72 @@ export class FirestoreService {
   }
 
 
-  createPropertyList() {
+  searchProperty(goal: number, status: number, type: number[], zip: number, minRoom: number, maxRoom: number, minPrice: number, maxPrice: number) {
+    var toReturn: Property[];
+    toReturn = [];
+    for (let i = this.topPropertyList.length - 1; i > 0; i--) {
+      if (this.topPropertyList[i].Goal == goal && this.topPropertyList[i].SubStatus == status) {
+        for (let j = 0; j < type.length; j++) {
+          if (type[j] == this.topPropertyList[i].WebID) {
+            if (this.topPropertyList[i].Zip == zip) {
+              if (this.topPropertyList[i].NumberOfBedRooms) {
+                if (this.topPropertyList[i].NumberOfBedRooms > minRoom && this.topPropertyList[i].NumberOfBedRooms < maxRoom) {
+                  if (this.topPropertyList[i].Price > minPrice && this.topPropertyList[i].Price < maxPrice) {
+                    toReturn.push(this.topPropertyList[i]);
+                  }
+                }
+              }
+              else if (this.topPropertyList[i].Price > minPrice && this.topPropertyList[i].Price < maxPrice) {
+                toReturn.push(this.topPropertyList[i]);
+              }
+            }
+          }
+        }
+      }
+    }
+    return toReturn;
+  }
+
+
+  createPropertyListSell() {
+    console.log("tki")
     this.omnicasaService.getPropertyList()
       .subscribe((data: any) => {
         this.propertyList = data.GetPropertyListJsonResult.Value.Items;
         return new Promise<Property>((resolve, reject) => {
-          for (let i = 0; i < 10; i++)
+          for (let i = 0; i < this.propertyList.length; i++) {
+             console.log(i)
+            if(i>150 && this.propertyList[i].SubStatus != 2){
+              console.log("oki")
             this.firestore
-              .collection("topProperties")
+              .collection("sellProperties")
               .doc(i.toString())
               .set(this.propertyList[i])
+            }
+          }
         });
       });
   }
+
+  createPropertyListActive() {
+    this.omnicasaService.getPropertyList()
+      .subscribe((data: any) => {
+        this.propertyList = data.GetPropertyListJsonResult.Value.Items;
+        return new Promise<Property>((resolve, reject) => {
+          for (let i = 0; i < this.propertyList.length; i++) {
+            if (this.propertyList[i].SubStatus == 2) {
+              console.log("kikou");
+              this.firestore
+                .collection("activeProperties")
+                .doc(i.toString())
+                .set(this.propertyList[i])
+            }
+          }
+        });
+      });
+  }
+
+
 
 
 

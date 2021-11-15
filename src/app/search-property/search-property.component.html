@@ -22,36 +22,48 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="row pt-2">
-                    <label class="text-search-form col-11 text-left" for="inlineFormCustomSelectPref">Type
+                    <label class="text-search-form col-11 text-left" for="selected">Type
                         de bien :</label>
                     <div class="col-12">
-                        <ng-select bindLabel="selectedTypes" [multiple]="true" class="custom" name="selectedTypes">
+                        <ng-select bindLabel="selected" [multiple]="true" class="custom" name="selected"
+                            formControlName="selected">
                             <ng-option *ngFor="let type of types" [value]="type.id" required>{{type.name}}</ng-option>
                         </ng-select>
                         <div class="row">
-                            <div *ngIf="submitted">
-                                <div class="invalid-feedback d-block ml-2">Veuillez entrer une localité</div>
+                            <div *ngIf="selected.invalid && submitted" class="text-danger">
+                                <div *ngIf="selected.errors?.required">
+                                    <div class="invalid-feedback d-block ml-2">Veuillez choisir une option</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="row pt-2">
-                    <label class="text-search-form col-11 text-left">Localité/Code Postal :</label>
-                    <input formControlName="zip" type="text" id="zip" name="zip"
-                        class="col-11 mx-auto rounded-pill form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
-                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback ml-4">
-                        <div *ngIf="f.lastName.errors.required">Veuillez entrer une localité</div>
+                    <label class="text-search-form col-12 text-left">Localité/Code Postal :</label>
+                    <div class="col-12">
+                        <input class="col-12 mx-auto rounded-pill form-control" formControlName="zip" type="text"
+                            name="zip" />
+                        <div class="row">
+                            <div *ngIf="zip.invalid && submitted" class="text-danger">
+                                <div *ngIf="zip.errors?.required">
+                                    <div class="invalid-feedback d-block ml-2">Veuillez entre une localité</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <label class="text-search-form col-2 text-left" for="radius">Rayon (km):</label>
-                    <app-slider class="col-9 mx-auto" [options]="sliderRadius"></app-slider>
+
                 </div>
+
                 <div class="row pt-2">
                     <label class="text-search-form col-11 text-left">Chambres :</label>
                     <app-slider class="col-11 mx-auto" [options]="sliderRooms"></app-slider>
                 </div>
+
                 <div class="row pt-2">
                     <label class="text-search-form col-11 text-left">Budget :</label>
                     <app-slider class="col-11 mx-auto" [options]="sliderBudget"></app-slider>

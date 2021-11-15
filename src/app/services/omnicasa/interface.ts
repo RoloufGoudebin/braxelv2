@@ -13,6 +13,7 @@ export interface Items{
 export interface Property {
     GetPropertyListJsonResult : any;
     Status : number;
+    SubStatus: number;
     Goal : number;
     City : string;
     ID: number;
@@ -52,4 +53,5 @@ export interface Property {
     MarqueeShowOrder: number;
     VirtualTour: string;
     IsOffice: boolean;
+    WebID: number;
 }

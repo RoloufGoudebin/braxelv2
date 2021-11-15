@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { FirestoreService } from '../services/firebase/firestore.service';
+import { Property } from '../services/omnicasa/interface';
 
 import { BraxelHome } from '../braxel-home.model'
 
@@ -15,18 +16,17 @@ export class HomeComponent implements OnInit {
   numberProperty = 9;
   texts: BraxelHome[];
   showChiffres= false;
+  toShow: Property[]
 
 
   ngOnInit() {
-    this.firestore.getFirestoreCollection("home").subscribe(data => {
-      this.texts = data.map(e => {
+    this.firestore.getFirestoreCollection('activeProperties').subscribe(data=>
+      this.toShow = data.map(e => {
         return {
           id: e.payload.doc.id,
-          ...e.payload.doc.data() as BraxelHome
+          ...e.payload.doc.data() as Property
         }
-      })
-    });
-
+    }));
   }
 
   @HostListener('window:scroll', ['$event'])

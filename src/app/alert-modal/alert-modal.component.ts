@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Options } from '@angular-slider/ngx-slider';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 interface SliderDetails {
   minValue: number;
@@ -16,10 +17,28 @@ interface SliderDetails {
 })
 export class AlertModalComponent {
   closeResult = '';
+  goal: number;
+  goalSelect= false;
+
+  alertForm = new FormGroup({
+    goal: new FormControl('', [Validators.required]),
+    selected: new FormControl('', [Validators.required]),
+    zip: new FormControl('', [Validators.required])
+  });
 
   items = [
-    { name: 'Acheter', active: false },
-    { name: 'Louer', active: false },
+    { name: 'Acheter', select: false },
+    { name: 'Louer', select: false },
+  ];
+
+  types = [
+    { id: 1, name: 'Maison' },
+    { id: 2, name: 'Appartement' },
+    { id: 3, name: 'Studio'},
+    { id: 4, name: 'Terrain' },
+    { id: 5, name: 'Immeubles' },
+    { id: 6, name: 'Bureaux/Commerces' },
+    { id: 7, name: 'Garage/Parking' },
   ];
 
   constructor(private modalService: NgbModal) { }
@@ -30,6 +49,9 @@ export class AlertModalComponent {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+  }
+
+  onSubmit(){
   }
 
   private getDismissReason(reason: any): string {
@@ -43,9 +65,16 @@ export class AlertModalComponent {
   }
 
   toggleClass(item) {
-    this.items[0].active = false;
-    this.items[1].active = false;
-    item.active = "active";
+    this.items[0].select = false;
+    this.items[1].select = false;
+    item.select = !item.select;
+    if (this.items[0]) {
+      this.goal = 0;
+    }
+    else {
+      this.goal = 1;
+    }
+    this.goalSelect = true;
   }
 
   sliderRooms: SliderDetails =

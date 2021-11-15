@@ -94,3 +94,77 @@ button {
   background-color: #b94b4a;
   color: white;
 }
+
+.search-form {
+  background: #F8F9FA;
+
+}
+
+.search-form p {
+  color: white;
+  opacity: 1 !important;
+}
+
+.text-search-form {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding-left: 8%;
+}
+
+.text-search-form H3 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 1em;
+}
+
+.btn {
+  background-color: #233353;
+  color: white;
+  border: none;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.btn:hover {
+  background-color: #12223f;
+}
+
+.btn:active{
+  outline: none !important;
+}
+
+.not-select{
+  background-color: #233353 !important;
+  outline: none !important;
+}
+
+.select{
+  background-color: #ee5c5a !important;
+  outline: none !important;
+}
+
+.btn1 {
+  background-color: #233353;
+  color: white;
+  border: none;
+}
+
+h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.5em;
+  font-weight: 800;
+  margin: -3em;
+  color: white;
+}
+
+.borders-choices:focus{
+  border-radius: 15px 15px 0% 0% !important;
+}
+
+.ng-option{
+  border:10px;
+  min-height: 0px;
+  border-radius: 0;
+}
+

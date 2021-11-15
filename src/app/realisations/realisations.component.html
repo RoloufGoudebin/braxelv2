@@ -4,11 +4,16 @@
 <app-avis ></app-avis>
 <section id="realisations">
     <div class="container-fluid">
+        <div class="row pt-5 mt-5">
+            <h1 class="col text-center">Nos réalisations</h1>
+          </div>
         <div class="row">
             <div class="col-12">
-                <app-view-property-list [numberProperty]="numberProperty"></app-view-property-list>
+                <app-view-property-list  [numberProperty]="numberProperty" [propertyList]="toShow"></app-view-property-list>
             </div>
         </div>
     </div>
 
 </section>
+
+<app-footer></app-footer>

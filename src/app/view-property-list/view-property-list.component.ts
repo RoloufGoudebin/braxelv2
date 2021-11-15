@@ -11,73 +11,56 @@ import { FirestoreService } from '../services/firebase/firestore.service';
 })
 export class ViewPropertyListComponent implements OnInit {
 
-  topPropertyList: Property[];
-  topPropertyListID: number[];
-  propertyList: Property[];
-  mergeList: Property[];
   @Input() numberProperty: number;
+  @Input() collectionName: string;
+  @Input() propertyList: Property[];
+  @Input() search: any[];
 
-  constructor(private omnicasaService: OmnicasaService, private firestore: FirestoreService) { }
+  constructor(public firestore: FirestoreService) { }
 
   ngOnInit(): void {
-
-    this.firestore.getFirestoreCollection("topProperties").subscribe(data => {
-      this.topPropertyList = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as Property
-        }
-      })
-    });
-
-    this.omnicasaService.getPropertyList()
-      .subscribe((data: any) => {
-        this.propertyList = data.GetPropertyListJsonResult.Value.Items;
-        for (let i = this.propertyList.length - 1; i >= 0; i--) {
-          this.topPropertyList.push(this.propertyList[i]);
-        }
-      });
-
   }
 
-  getColor(marquee: number) {
-    if (marquee == 1) {
+
+
+  getColor(goal: number, subStatus: number) {
+    if (goal==0 && subStatus==2) {
       return '#283152'
     }
-    if (marquee == 2) {
+    if (goal==1 && subStatus==2) {
       return '#283152';
     }
-    if (marquee == 3) {
+    if (goal==0 && subStatus==3) {
       return '#D3D3D3';
     }
-    if (marquee == 4) {
+    if (goal==0 && subStatus==6) {
       return '#26CE6C';
     }
-    if (marquee == 5) {
+    if (goal==1 && subStatus==13) {
       return '#FFC738';
     }
 
   }
 
-  getStatus(marquee: number){
-    if (marquee == 1){
+  getStatus(goal: number, subStatus: number) {
+    if (goal==0 && subStatus==2) {
       return 'À VENDRE';
     }
-    if (marquee == 2){
+    if (goal==1 && subStatus==2) {
       return 'À LOUER';
     }
-    if (marquee == 3){
+    if (goal==0 && subStatus==3) {
       return 'SOUS OPTION';
     }
-    if (marquee == 4){
+    if (goal==0 && subStatus==6) {
       return 'VENDU';
     }
-    if (marquee == 5){
+    if (goal==1 && subStatus==13) {
       return 'LOUÉ';
     }
   }
 
-  toStringPrice(price: number){
+  toStringPrice(price: number) {
     let toChange = price.toString();
     return toChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 

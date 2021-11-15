@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { Options } from "@angular-slider/ngx-slider";
-import { MustMatch, goalValidator } from './must-match.validators';
+import { Property } from '../services/omnicasa/interface';
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service'
+import { FirestoreService } from '../services/firebase/firestore.service';
+import { Output, EventEmitter } from '@angular/core';
 import cities from 'src/app/services/models/cities.json'
 
 interface SliderDetails {
@@ -12,6 +14,7 @@ interface SliderDetails {
   options: Options;
 }
 
+
 @Component({
   selector: 'app-search-property',
   templateUrl: './search-property.component.html',
@@ -19,33 +22,34 @@ interface SliderDetails {
 })
 export class SearchPropertyComponent implements OnInit {
 
-  registerForm: FormGroup;
+  @Output() newItemEvent = new EventEmitter<string[]>();
+
+  registerForm = new FormGroup({
+    goal: new FormControl('', [Validators.required]),
+    selected: new FormControl('', [Validators.required]),
+    zip: new FormControl('', [Validators.required])
+  });
+
   cityZip;
   submitted = false;
   goalSelect = false;
   selectedTypes = [];
+  goal;
+  topPropertyList: Property[];
 
-  constructor(private formBuilder: FormBuilder, private omnicasa: OmnicasaService) { }
+  constructor(private formBuilder: FormBuilder, private firestore: FirestoreService, private omnicasaService: OmnicasaService) { }
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      zip: ['', Validators.required],
-      goal: ['', goalValidator],
-      confirmPassword: ['', Validators.required],
-      acceptTerms: [false, Validators.requiredTrue],
-      lastName: ['', Validators.required],
-    }, {
-      validator: MustMatch('password', 'confirmPassword')
-    });
   }
 
   types = [
     { id: 1, name: 'Maison' },
-    { id: 2, name: 'Appartement', disabled: true },
-    { id: 3, name: 'Terrain' },
-    { id: 4, name: 'Bureaux/Commerces' },
+    { id: 2, name: 'Appartement' },
+    { id: 3, name: 'Studio'},
+    { id: 4, name: 'Terrain' },
     { id: 5, name: 'Immeubles' },
-    { id: 6, name: 'Garage/Parking' },
+    { id: 6, name: 'Bureaux/Commerces' },
+    { id: 7, name: 'Garage/Parking' },
   ];
 
   items = [
@@ -57,18 +61,16 @@ export class SearchPropertyComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.selectedTypes = this.selectedTypes;
-    console.log(this.selectedTypes);
+    this.selectedTypes = this.registerForm.value.selected;
+    this.cityZip = this.registerForm.value.zip;
+    console.log(this.sliderRooms.minValue);
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     }
 
-    // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
-
-    
+    this.topPropertyList = this.omnicasaService.propertyList;
   }
 
   onReset() {
@@ -80,6 +82,12 @@ export class SearchPropertyComponent implements OnInit {
     this.items[0].select = false;
     this.items[1].select = false;
     item.select = !item.select;
+    if (this.items[0]) {
+      this.goal = 0;
+    }
+    else {
+      this.goal = 1;
+    }
     this.goalSelect = true;
   }
 
@@ -118,6 +126,9 @@ export class SearchPropertyComponent implements OnInit {
         }
       }
     }
+
+  get selected() { return this.registerForm.get('selected'); }
+  get zip() { return this.registerForm.get('zip'); }
 
 
 
