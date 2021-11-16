@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { SendmailService } from 'src/app/services/sendmail.service';
 
 @Component({
   selector: 'app-contact-modal',
@@ -10,8 +12,18 @@ export class ContactModalComponent {
 
 
   closeResult = '';
+  notConfirm = true;
   
-  constructor(private modalService: NgbModal) { }
+  @Input() id = '';
+
+  contactForm = new FormGroup({
+    firstname: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required]),
+    mail: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required])
+  });
+  
+  constructor(private modalService: NgbModal, private sendmail: SendmailService) { }
 
   open(content) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
@@ -29,6 +41,13 @@ export class ContactModalComponent {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  onSubmit(){
+    let user = {
+      message: "<p>Message venant de : " + this.contactForm.value.name + " " + this.contactForm.value.firstname + "</p><br><p> Email : " + this.contactForm.value.mail + "</p><br>" + "<p>Numéro de téléphone : " + this.contactForm.value.phone + "</p><br>" + "<p>Bonjour, pouvez vous me conacter pour le bien n°"+ this.id + "</p>"
+    }
+    this.sendmail.sendMail(user);
   }
   
 

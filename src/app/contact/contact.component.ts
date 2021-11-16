@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { SendmailService } from '../services/sendmail.service';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sendMail: SendmailService) { }
+
+  contactForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    mail: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required]),
+    message: new FormControl('', [Validators.required])
+  });
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    let user = {
+      message: "<p> Message venant de " + this.contactForm.value.name + "</p><br><p>Mail : " + this.contactForm.value.mail + "</p><br><p>Numéro de téléphone : " + this.contactForm.value.phone + "</p><br> <p>Concerne : " + this.contactForm.value.message + "</p>"
+    }
+    this.sendMail.sendMail(user);
   }
 
 }

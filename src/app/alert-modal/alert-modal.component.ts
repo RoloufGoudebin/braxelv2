@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Options } from '@angular-slider/ngx-slider';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { ViewChild } from '@angular/core';
-import { ElementRef } from '@angular/core';
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
 
 interface SliderDetails {

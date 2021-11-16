@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { routeTransitionAnimations } from './route-transition-animations';
@@ -15,7 +16,7 @@ import { FirestoreService } from './services/firebase/firestore.service';
 export class AppComponent{
   title = 'braxel';
 
-  constructor(private firestore: FirestoreService) { }
+  constructor(private firestore: FirestoreService, private http: HttpClient) { }
 
   ngOnInit() {
   }
