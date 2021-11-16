@@ -17,9 +17,6 @@
 
     <div class="modal-body">
         <div *ngIf="notConfirm">
-            <ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage = ''">{{
-                successMessage }}
-            </ngb-alert>
             <form [formGroup]="alertForm" (ngSubmit)="onSubmit()">
                 <div class="row">
                     <label class="text-search-form col-10 text-left">Je souhaite</label>
@@ -30,16 +27,15 @@
 
                 <div class="row mt-2">
                     <label class="text-search-form col-10 text-left">Type de bien</label>
-                    <ng-select bindLabel="selected" [multiple]="true" class="col-11 mx-auto" name="selected"
-                        formControlName="selected">
+                    <ng-select [multiple]="true" class="col-11 mx-auto" formControlName="selected">
                         <ng-option *ngFor="let type of types" [value]="type.id" class="col-11" required>{{type.name}}
                         </ng-option>
                     </ng-select>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left" formControlName="zip" >Code Postal:</label>
-                    <input type="text" id="zip" name="zip" class="col-10 mx-auto rounded-pill form-control">
+                    <label class="text-search-form col-10 text-left">Code Postal:</label>
+                    <input type="text" formControlName="zip" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Chambres :</label>
@@ -55,23 +51,23 @@
                 </div>
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Autres particularités :</label>
-                    <textarea class="form-control rounded col-10 mx-auto" rows="5" formControlName="comment"></textarea>
+                    <textarea class="form-control rounded col-10 mx-auto" rows="5" formControlName="zip"></textarea>
                 </div>
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Votre nom : </label>
-                    <input type="name" id="surname" name="surname" formControlName="surname" class="col-10 mx-auto rounded-pill form-control">
+                    <input type="name" formControlName="name" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Votre prénom : </label>
-                    <input type="name" id="name" name="name" formControlName="name" class="col-10 mx-auto rounded-pill form-control">
+                    <input type="name" formControlName="firstname" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Votre email : </label>
-                    <input type="name" id="mail" name="mail" formControlName="mail" class="col-10 mx-auto rounded-pill form-control">
+                    <input type="name" formControlName="mail" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Téléphone : </label>
-                    <input type="name" id="phone" name="phone" formControlName="phone "class="col-10 mx-auto rounded-pill form-control">
+                    <input type="name" formControlName="phone" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row">
                     <p class="col-10 mx-auto text-justify conditions">

@@ -38,6 +38,7 @@ export class OmnicasaService {
       }));
   }
 
-
-
+  demandRegister(name: string, firstname: string, typesID: number[], mail: string, phone: string, zip: string, priceMin: number, priceMax: number, minRooms: number, maxRooms: number, comment: string, surfaceMin: number){
+    return "http://newapi.omnicasa.com/1.12/OmnicasaService.svc/DemandRegisterJson?json={%27Name%27:%27"+ name +"%27,%20%27FirstName%27:%27"+ firstname +" %27,%20%27Email%27:%27" + mail + "%27,%20%27TypeOfPropertyIDs%27:%27"+ typesID + "%27,%20%27PhoneNumber%27:%27"+ phone +"%27,%20%27Zips%27:%27"+ zip +"%27,%20%27PriceMin%27:"+ priceMin +",%20%27PriceMax%27:"+ priceMax+",%20%27MinRooms%27:"+ minRooms +",%20%27MaxRooms%27:"+ maxRooms +",%20%27Comment%27:%27"+ comment +"%27,%20%27LivingArea%27:0,%20%27CustomerName%27:%27braxel%27,%20%27CustomerPassword%27:%27b688E6B8FDD2%27}";
+  }
 }

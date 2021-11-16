@@ -5,6 +5,7 @@ import { Options } from '@angular-slider/ngx-slider';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
+import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
 
 interface SliderDetails {
   minValue: number;
@@ -28,9 +29,10 @@ export class AlertModalComponent {
     goal: new FormControl('', [Validators.required]),
     selected: new FormControl('', [Validators.required]),
     zip: new FormControl('', [Validators.required]),
+    firstname: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
-    surname: new FormControl('', [Validators.required]),
-    mail: new FormControl('',[Validators.required])
+    mail: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required])
   });
 
   items = [
@@ -48,13 +50,16 @@ export class AlertModalComponent {
     { id: 7, name: 'Garage/Parking' },
   ];
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private omnicasaService: OmnicasaService) { }
 
   openScrollableContent(longContent) {
     this.modalService.open(longContent, { scrollable: true });
   }
 
   onSubmit(){
+    console.log(this.omnicasaService.demandRegister(this.alertForm.value.name, this.alertForm.value.firstname, this.alertForm.value.selected, this.alertForm.value.mail,
+      this.alertForm.value.phone, this.alertForm.value.zip, this.sliderPrice.minValue, this.sliderPrice.highValue, this.sliderRooms.minValue, this.sliderRooms.highValue, this.alertForm.value.comment,
+      this.sliderSurface.minValue))
     this.notConfirm = false;
     }
 
