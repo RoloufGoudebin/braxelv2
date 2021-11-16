@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Options } from '@angular-slider/ngx-slider';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ViewChild } from '@angular/core';
+import { ElementRef } from '@angular/core';
 
 interface SliderDetails {
   minValue: number;
@@ -19,11 +21,16 @@ export class AlertModalComponent {
   closeResult = '';
   goal: number;
   goalSelect= false;
+  successMessage: string;
+  notConfirm = true;
 
   alertForm = new FormGroup({
     goal: new FormControl('', [Validators.required]),
     selected: new FormControl('', [Validators.required]),
-    zip: new FormControl('', [Validators.required])
+    zip: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required]),
+    surname: new FormControl('', [Validators.required]),
+    mail: new FormControl('',[Validators.required])
   });
 
   items = [
@@ -43,16 +50,13 @@ export class AlertModalComponent {
 
   constructor(private modalService: NgbModal) { }
 
-  open(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  openScrollableContent(longContent) {
+    this.modalService.open(longContent, { scrollable: true });
   }
 
   onSubmit(){
-  }
+    this.notConfirm = false;
+    }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -120,5 +124,6 @@ export class AlertModalComponent {
         step: 1,
       }
     }
+
 
 }

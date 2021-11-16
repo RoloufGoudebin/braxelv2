@@ -1,88 +1,107 @@
-<ng-template #content let-modal>
+<ng-template #longContent let-modal>
 
 
-    <form [formGroup]="alertForm" (ngSubmit)="onSubmit()">
-        <div class="modal-header" style="background:#F2F2F2">
-            <div class="container">
-                <div class="row">
-                    <h1 class="modal-title" id="modal-basic-title">Être alerté</h1>
-                </div>
-                <div class="row">
-                    <p>Soyez le premier alerté des nouveaux biens correspondant à vos critères de recherche.</p>
-                </div>
-            </div>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-
+    <div class="modal-header" style="background:#F2F2F2">
+        <div class="container">
             <div class="row">
-                <label class="text-search-form col-12 text-left">Je souhaite</label>
-                <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
-                    [ngClass]="{'active': item.active}" class="btn btn-outline-primary rounded-pill
+                <h1 class="modal-title" id="modal-basic-title">Être alerté</h1>
+            </div>
+            <div class="row">
+                <p>Soyez le premier alerté des nouveaux biens correspondant à vos critères de recherche.</p>
+            </div>
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div *ngIf="notConfirm">
+            <ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage = ''">{{
+                successMessage }}
+            </ngb-alert>
+            <form [formGroup]="alertForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <label class="text-search-form col-10 text-left">Je souhaite</label>
+                    <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
+                        [ngClass]="{'active': item.active}" class="btn btn-outline-primary rounded-pill
                         col-5 mx-auto">{{item.name}}</button>
-            </div>
-
-            <div class="row mt-2">
-                <label class="text-search-form col-12 text-left">Type de bien</label>
-                <ng-select bindLabel="selected" [multiple]="true" class="col-12" name="selected"
-                    formControlName="selected">
-                    <ng-option *ngFor="let type of types" [value]="type.id" required>{{type.name}}</ng-option>
-                </ng-select>
-            </div>
-
-            <div class="row pt-1">
-                <label class="text-search-form col-12 text-left">Code Postal:</label>
-                <input type="text" id="zip" name="zip" class="col-11 mx-auto rounded-pill form-control">
-            </div>
-            <div class="row pt-1">
-                <label class="text-search-form col-12 text-left">Chambres :</label>
-                <app-slider class="col-11 mx-auto" [options]="sliderRooms"></app-slider>
-            </div>
-            <div class="row pt-1">
-                <label class="text-search-form col-12 text-left">Budget :</label>
-                <app-slider class="col-11 mx-auto" [options]="sliderPrice"></app-slider>
-            </div>
-            <div class="row pt-1">
-                <label class="text-search-form col-12 text-left">Surface (m²):</label>
-                <app-slider class="col-11 mx-auto" [options]="sliderSurface"></app-slider>
-            </div>
-            <div class="row pt-1">
-                <label class="text-search-form col-12 text-left">Autres particularités :</label>
-                <textarea class="form-control rounded col-11 mx-auto" rows="5"></textarea>
-            </div>
-            <div class="row pt-1">
-                <label class="text-search-form col-12 text-left">Votre nom : </label>
-                <input type="name" id="name" name="zip" class="col-11 mx-auto rounded-pill form-control">
-            </div>
-            <div class="row pt-1">
-                <label class="text-search-form col-12 text-left">Votre email : </label>
-                <input type="name" id="mail" name="mail" class="col-11 mx-auto rounded-pill form-control">
-            </div>
-            <div class="row pt-1">
-                <label class="text-search-form col-12 text-left">Téléphone : </label>
-                <input type="name" id="phone" name="phone" class="col-11 mx-auto rounded-pill form-control">
-            </div>
-            <div class="row">
-                <p class="col-11 mx-auto text-justify conditions">
-                    En soumettant ce formulaire, j'accepte que les informations saisies dans ce formulaire soient
-                    utilisées, exploitées, traitées dans le cadre de la relation commerciale.
-                </p>
-            </div>
-            <div class="row">
-                <div class="form-check col-10 mx-auto">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">M'inscrire à la newsletter</label>
                 </div>
-            </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">Créer une
-                    alerte</button>
-            </div>
+                <div class="row mt-2">
+                    <label class="text-search-form col-10 text-left">Type de bien</label>
+                    <ng-select bindLabel="selected" [multiple]="true" class="col-11 mx-auto" name="selected"
+                        formControlName="selected">
+                        <ng-option *ngFor="let type of types" [value]="type.id" class="col-11" required>{{type.name}}
+                        </ng-option>
+                    </ng-select>
+                </div>
+
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left" formControlName="zip" >Code Postal:</label>
+                    <input type="text" id="zip" name="zip" class="col-10 mx-auto rounded-pill form-control">
+                </div>
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Chambres :</label>
+                    <app-slider class="col-10 mx-auto" [options]="sliderRooms"></app-slider>
+                </div>
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Budget :</label>
+                    <app-slider class="col-10 mx-auto" [options]="sliderPrice"></app-slider>
+                </div>
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Surface (m²):</label>
+                    <app-slider class="col-10 mx-auto" [options]="sliderSurface"></app-slider>
+                </div>
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Autres particularités :</label>
+                    <textarea class="form-control rounded col-10 mx-auto" rows="5" formControlName="comment"></textarea>
+                </div>
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Votre nom : </label>
+                    <input type="name" id="surname" name="surname" formControlName="surname" class="col-10 mx-auto rounded-pill form-control">
+                </div>
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Votre prénom : </label>
+                    <input type="name" id="name" name="name" formControlName="name" class="col-10 mx-auto rounded-pill form-control">
+                </div>
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Votre email : </label>
+                    <input type="name" id="mail" name="mail" formControlName="mail" class="col-10 mx-auto rounded-pill form-control">
+                </div>
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Téléphone : </label>
+                    <input type="name" id="phone" name="phone" formControlName="phone "class="col-10 mx-auto rounded-pill form-control">
+                </div>
+                <div class="row">
+                    <p class="col-10 mx-auto text-justify conditions">
+                        En soumettant ce formulaire, j'accepte que les informations saisies dans ce formulaire soient
+                        utilisées, exploitées, traitées dans le cadre de la relation commerciale.
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="form-check col-10 mx-auto">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">M'inscrire à la newsletter</label>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
+        <div *ngIf="!notConfirm">
+            <p>Alerte créée avec succès</p>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div *ngIf="notConfirm">
+            <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">Créer une
+                alerte</button>
+        </div>
+        <div *ngIf="!notConfirm">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Fermer</button>
+        </div>
+    </div>
 </ng-template>
 
-<div class="clickable shake" (click)="open(content)"><i class="bi bi-megaphone"></i> Créer une alerte </div>
+<div class="clickable shake" (click)="openScrollableContent(longContent)"><i class="bi bi-megaphone"></i> Créer une
+    alerte </div>
