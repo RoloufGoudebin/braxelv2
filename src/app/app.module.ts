@@ -47,6 +47,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ModalAvisComponent } from './avis/modal-avis/modal-avis.component';
 import { ModalNodalComponent } from './view-property/modal-nodal/modal-nodal.component';
 import { SafePipe } from './safe.pipe';
+import { ProutComponent } from './prout/prout.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { SafePipe } from './safe.pipe';
     ModalAvisComponent,
     ModalNodalComponent,
     SafePipe,
+    ProutComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
