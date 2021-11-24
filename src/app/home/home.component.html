@@ -2,61 +2,94 @@
 
 <body style="background-color:#F6F6F6;">
 
-  <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
-    <mdb-carousel-item class="video-responsive">
-      <iframe width="1080" height="900"
-        src="https://www.youtube.com/embed/2_0ncYLM7N8? rel=0&version=3&controls=0&loop=1&playlist=2_0ncYLM7N8&autoplay=1&controls=0&modestbranding=1"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-    </mdb-carousel-item>
+  <!--Carousel Wrapper-->
+  <mdb-carousel [isControls]="true" class="carousel slide back" [animation]="'slide'">
+    <!--First slide-->
     <mdb-carousel-item>
-      <img class="img-fluid" src="/assets/img/hp.jpg">
+      <!--Mask color-->
+      <div class="view">
+        <!--Video source-->
+        <video class="video-fluid" autoplay loop>
+          <source src="../assets/img/home_6.mp4" type="video/mp4" />
+        </video>
+        <div class="mask rgba-indigo-light waves-light" mdbWavesEffect></div>
+      </div>
+
+
     </mdb-carousel-item>
-    <div class="row col-6 mx-auto">
-      <div class="row">
-        <div class="col-12 mx-auto box">
-          <div class="overlay mt-6 pt-2">
-            <!-- Overlay inner wrapper -->
-            <div class="overlay__inner pt-5 mx-auto">
-              <!-- Title -->
-              <h1 class="overlay__title">
-                Vous avez trouvé vos agents immobiliers,
-                <span class="text-gradient">de confiance</span> en Brabants et à
-                Bruxelles !
-                <hr class="blue">
-              </h1>
-              <!-- Buttons -->
-              <div class="overlay__btns mx-auto">
+    <!--/First slide-->
+    <!--Second slide-->
+    <mdb-carousel-item>
+      <!--Mask color-->
+      <div class="view">
+        <!--Video source-->
+        <video class="video-fluid" autoplay loop>
+          <source src="https://mdbootstrap.com/img/video/animation-intro.mp4" type="video/mp4" />
+        </video>
+        <div class="mask rgba-purple-slight waves-light" mdbWavesEffect></div>
+      </div>
 
-                <button class="overlay__btn overlay__btn--transparent">
-                  <a routerLinkActive="active" routerLink="/nos-biens">
-                    Acheter
-                  </a>
-                </button>
 
-                <button class="overlay__btn overlay__btn--transparent">
-                  <a routerLinkActive="active" routerLink="/nos-biens">
-                    <span>Louer</span>
-                    <span class="overlay__btn-emoji"></span>
-                  </a>
-                </button>
+    </mdb-carousel-item>
+    <!--/Second slide-->
+    <!--Third slide-->
+    <mdb-carousel-item>
+      <!--Mask color-->
+      <div class="view">
+        <!--Video source-->
+        <video class="video-fluid" autoplay loop>
+          <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
+        </video>
+        <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+      </div>
 
-                <button class="overlay__btn overlay__btn--colors">
-                  <a routerLinkActive="active" routerLink="/nos-biens">
-                    <span style="white-space: nowrap;" class="text-white">Rechercher un bien</span>
-                    <span class="overlay__btn-emoji">🔑</span>
-                  </a>
-                </button>
-              </div>
+
+    </mdb-carousel-item>
+    <!--/Third slide-->
+
+    <!--Carousel Wrapper-->
+
+
+  </mdb-carousel>
+  <div class="row col-6 mx-auto front">
+    <div class="row">
+      <div class="col-12 mx-auto box">
+        <div class="overlay mt-6 pt-2">
+          <!-- Overlay inner wrapper -->
+          <div class="overlay__inner pt-5 mx-auto">
+            <!-- Title -->
+            <h1 class="overlay__title">
+              Vous avez trouvé vos agents immobiliers,
+              <span class="text-gradient">de confiance</span> en Brabants et à
+              Bruxelles !
+              <hr class="blue">
+            </h1>
+            <!-- Buttons -->
+            <div class="overlay__btns mx-auto">
+
+              <button class="overlay__btn overlay__btn--transparent">
+                <a href="" target="_blank">
+
+                  Acheter
+                </a>
+              </button>
+
+              <button class="overlay__btn overlay__btn--transparent">
+                <span>Louer</span>
+                <span class="overlay__btn-emoji"></span>
+              </button>
+
+              <button class="overlay__btn overlay__btn--colors">
+                <span style="white-space: nowrap;">Rechercher un bien</span>
+                <span class="overlay__btn-emoji">🔑</span>
+              </button>
             </div>
           </div>
         </div>
+
       </div>
     </div>
-  </mdb-carousel>
-
-
+  </div>
 
   <!--- <div class="row py-0 my-0 ml-5">
             <a class="nav-link py-0 mx-auto px-0 col-6 col-md-4" routerLinkActive="active"
@@ -192,8 +225,7 @@
         <h2 class="mx-auto text-center">NOS BIENS IMMOBILIERS
         </h2>
       </div>
-      <app-view-property-list [numberProperty]="6" [collectionName]="'activeProperties'" [propertyList]="toShow">
-      </app-view-property-list>
+      <app-view-property-list [numberProperty]="numberProperty"></app-view-property-list>
       <div class="row">
         <a class="mx-auto" routerLink="/nos-biens"><button type="button" class="btn btn-outline-secondary">Tous nos
             biens</button></a>
