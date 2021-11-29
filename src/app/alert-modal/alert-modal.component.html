@@ -21,8 +21,8 @@
                 <div class="row">
                     <label class="text-search-form col-10 text-left">Je souhaite</label>
                     <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
-                        [ngClass]="{'active': item.active}" class="btn btn-outline-primary rounded-pill
-                        col-5 mx-auto">{{item.name}}</button>
+                        [ngClass]="item.select ? 'select' : 'not-select'" class="btn rounded-pill
+                              col-4 mx-auto">{{item.name}}</button>
                 </div>
 
                 <div class="row mt-2">

@@ -2,7 +2,7 @@
 <section id="nos-biens">
   <div class="container-fluid pt-5 mt-5">
     <div class="row">
-      <div class="col-3 mt-5 pt-5">
+      <div class="col-12 col-lg-3 mt-5 pt-5">
         <div class="container">
           <div class="col-11">
             <div class="row">
@@ -17,13 +17,11 @@
                   <div class="col-11 mx-auto">
                     <div class="row">
                       <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
-                        [ngClass]="item.select ? 'select' : 'not-select'" class="btn rounded-pill
-                              col mx-2">{{item.name}}</button>
+                        [ngClass]="item.select ? 'select' : 'not-select'"
+                        class="btn rounded-pill col mx-2 mb-2">{{item.name}}</button>
                     </div>
-                    <div class="row">
-                      <div *ngIf="submitted && !goalSelect">
-                        <div class="invalid-feedback d-block ml-2">Veuillez choisir une option</div>
-                      </div>
+                    <div class="row py-0 my-0" *ngIf="submitted && !goalSelect">
+                      <div class="invalid-feedback d-block ml-2">Veuillez choisir une option</div>
                     </div>
                   </div>
                 </div>
@@ -74,7 +72,7 @@
                   <app-slider class="col-11 mx-auto" [options]="sliderBudget"></app-slider>
                 </div>
                 <div class="row pt-3 button-search">
-                  <button type="button" class="btn1 btn-outline-primary col-7 mx-auto rounded-pill py-2"
+                  <button type="button" class="btn1 btn-outline-danger col-7 mx-auto rounded-pill py-2 mb-2"
                     (click)="onSubmit()" [disabled]="!registerForm.valid">Voir les
                     résultats</button>
                 </div>
@@ -83,7 +81,7 @@
           </div>
         </div>
       </div>
-      <div class="col-8">
+      <div class="col-12 col-lg-8">
         <div class="row pt-5 mt-5">
           <h1 class="col text-center">Nos biens immobiliers</h1>
         </div>
@@ -91,14 +89,14 @@
         </app-view-property-list>
         <div class="row" *ngIf="toShow">
           <button *ngIf="lowerThan(numberProperty, toShow.length)" type="button"
-            class="btn btn-outline-danger col-2 mx-auto text-center" (click)="addProperties()">Voir plus
+            class="btn btn-outline-danger col-4 col-lg-3 mx-auto text-center" (click)="addProperties()">Voir plus
             de propriétés</button>
         </div>
         <div *ngIf="toShow.length==0">
           Aucune propriété trouvée
         </div>
 
-        
+
 
       </div>
     </div>

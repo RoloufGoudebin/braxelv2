@@ -71,3 +71,15 @@ animation-timing-function: ease-in;
   6% {left: 3px}
   7% {left: 0}
 }
+
+.not-select{
+  background-color: #233353 !important;
+  outline: none !important;
+  color: white !important;
+}
+
+.select{
+  background-color: #ee5c5a !important;
+  outline: none !important;
+  color: white !important;
+}

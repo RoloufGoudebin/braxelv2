@@ -9,7 +9,9 @@
     margin-bottom: 0.5em;
   }
 
-
+.alerttt{
+  z-index: 100;
+}
 .top-navbar{
     background-color: white !important;
 }
