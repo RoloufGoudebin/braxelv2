@@ -90,7 +90,7 @@
 
     <div class="modal-footer">
         <div *ngIf="notConfirm">
-            <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">Créer une
+            <button class="btn btn-outline-dark" [disabled]="!alertForm.valid" type="submit">Créer une
                 alerte</button>
         </div>
         <div *ngIf="!notConfirm">
