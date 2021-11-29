@@ -669,3 +669,13 @@ a {
   }
 
 
+.front {
+  position:relative;
+  margin-bottom: 5em;
+ 
+}
+
+.back {
+
+  position: absolute;
+  }
