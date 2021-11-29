@@ -18,24 +18,16 @@
       <p class="price col"> Hors droits et taxes diverses</p>
     </div>
   </div>
-  <div id="carouselExampleControls" class="carousel slide" data-interval="false">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
+
+
+  <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'fade'">
+      <mdb-carousel-item>
         <img class="d-block w-100 img-fluid rounded" src="{{property.LargePicture}}">
-      </div>
-      <div class="carousel-item" *ngFor="let picture of property.LargePictures | slice: 1;">
+      </mdb-carousel-item>
+      <mdb-carousel-item *ngFor="let picture of property.LargePictures | slice: 1;">
         <img class="d-block w-100 img-fluid rounded" src="{{picture}}">
-      </div>
-    </div>
-    <a class="carousel-control-prev linear" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="arrow bi bi-arrow-left-circle-fill"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="linear carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="arrow bi bi-arrow-right-circle-fill"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+      </mdb-carousel-item>
+  </mdb-carousel>
 
   <div class="container-fluid py-4">
     <div class="row text">
