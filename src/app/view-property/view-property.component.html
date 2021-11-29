@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div *ngIf="property" class="container mt-5 pt-5">
+<div *ngIf="property; else loading" class="container mt-5 pt-5">
   <div class="pt-5 mt-5">
     <h1 *ngIf="property.TypeDescription">{{property.TypeDescription}}</h1>
     <h2 *ngIf="property.City">{{property.Zip}} {{property.City}}</h2>
@@ -52,37 +52,37 @@
 
   <div class="container">
     <ul class="row px-0 mx-0">
-      <div class="col-12 col-md card text-center">
+      <div class="col-6 col-md card text-center mx-auto">
         <span class="icon-object-ungroup icon"></span>
         <li class="titlecard">Superficie
           <hr> {{property.SurfaceTotal}}
         </li>
       </div>
-      <div class="col-12 col-md card text-center">
+      <div class="col-6 col-md card text-center mx-1 mx-auto">
         <span class="icon-bed icon"></span>
         <li>Chambres
           <hr> {{property.NumberOfBedRooms}}
         </li>
       </div>
-      <div class="col-12 col-md card text-center">
+      <div class="col-6 col-md card text-center mx-auto">
         <span class="icon-bath icon"></span>
         <li>Salle(s) de bains
           <hr> {{property.NumberOfBathRooms}}
         </li>
       </div>
-      <div class="col-12 col-md card text-center">
+      <div class="col-6 col-md card text-center mx-auto">
         <span class="icon-shower icon"></span>
         <li>Salle(s) de douche
           <hr> {{property.NumberOfShowerRooms}}
         </li>
       </div>
-      <div class="col-12 col-md card text-center">
+      <div class="col-6 col-md card text-center mx-auto">
         <span class="icon-automobile icon"></span>
         <li>Garage(s)
           <hr> {{property.NumberOfGarages}}
         </li>
       </div>
-      <div class="col-12 col-md card text-center">
+      <div class="col-6 col-md card text-center mx-auto">
         <span class="icon-desktop_windows icon"></span>
         <li>Bureau(x)
           <hr>
@@ -135,4 +135,8 @@
     </div>
   </div>
 </div>
+
+<ng-template #loading>
+<app-loading #loading></app-loading>
+</ng-template>
 <app-footer></app-footer>

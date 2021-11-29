@@ -81,9 +81,12 @@ export class SearchPropertyComponent implements OnInit {
   toggleClass(item) {
     this.items[0].select = false;
     this.items[1].select = false;
+    this.sliderBudget.options.ceil=20000;
+    console.log("con")
     item.select = !item.select;
     if (this.items[0]) {
       this.goal = 0;
+
     }
     else {
       this.goal = 1;

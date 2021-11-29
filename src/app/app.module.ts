@@ -48,6 +48,7 @@ import { ModalAvisComponent } from './avis/modal-avis/modal-avis.component';
 import { ModalNodalComponent } from './view-property/modal-nodal/modal-nodal.component';
 import { SafePipe } from './safe.pipe';
 import { ProutComponent } from './prout/prout.component';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import { ProutComponent } from './prout/prout.component';
     ModalNodalComponent,
     SafePipe,
     ProutComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

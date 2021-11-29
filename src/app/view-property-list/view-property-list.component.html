@@ -1,20 +1,24 @@
 <div *ngIf="propertyList" class="container-fluid">
-  <div class="row row-eq-height">
-    <div class="card-deck">
-      <a *ngFor="let Items of this.propertyList | slice: 0:numberProperty;" class="col-12 col-md-4 col-xl-4 px-1 my-3"
-        routerLinkActive="active" routerLink="/biens-immobiliers/{{Items.ID}}">
-        <div class="card">
-          <img class="card-img-top" src={{Items.LargePicture}} alt="Card image cap">
-          <span class="ribon" [ngStyle]="{'background':getColor(Items.Goal, Items.SubStatus)}"> {{getStatus(Items.Goal, Items.SubStatus)}} </span>
-          <span class="ribon-nodal" *ngIf="Items.VirtualTour"> Visite Virtuelle </span>
-          <div class="card-block">
-            <h5 class="card-title">{{Items.TypeDescription}}</h5>
-            <p class="card-text">{{Items.Zip}} {{Items.City}}</p>
-            <hr>
-            <h6>{{toStringPrice(Items.Price)}} {{Items.PriceUnitText}}</h6>
-          </div>
+  <div class="row">
+
+    <a *ngFor="let Items of this.propertyList | slice: 0:numberProperty;" class="col-10 col-md-4 mx-auto"
+      routerLinkActive="active" routerLink="/biens-immobiliers/{{Items.ID}}">
+      <div class="card">
+        <img class="card-img-top" src={{Items.LargePicture}} alt="Card image cap">
+        <span class="ribon" [ngStyle]="{'background':getColor(Items.Goal, Items.SubStatus)}"> {{getStatus(Items.Goal,
+          Items.SubStatus)}} </span>
+        <span class="ribon-nodal" *ngIf="Items.VirtualTour"> Visite Virtuelle </span>
+        <div class="card-block">
+          <h5 class="card-title">{{Items.TypeDescription}}</h5>
+          <p class="card-text">{{Items.Zip}} {{Items.City}}</p>
+          <hr>
+          <h6>{{toStringPrice(Items.Price)}} {{Items.PriceUnitText}}</h6>
         </div>
-      </a>
-    </div>
+      </div>
+    </a>
   </div>
 </div>
+
+<ng-template>
+  Aucune propriété trouvée.
+</ng-template>

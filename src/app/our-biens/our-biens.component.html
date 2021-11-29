@@ -49,7 +49,7 @@
 
 
                 <div class="row pt-2">
-                  <label class="text-search-form col-12 text-left">Localité/Code Postal :</label>
+                  <label class="text-search-form col-12 text-left">Code Postal :</label>
                   <div class="col-12">
                     <input class="col-12 mx-auto rounded-pill form-control" formControlName="zip" type="text"
                       name="zip" />
@@ -75,7 +75,7 @@
                 </div>
                 <div class="row pt-3 button-search">
                   <button type="button" class="btn1 btn-outline-primary col-7 mx-auto rounded-pill py-2"
-                    (click)="onSubmit()">Voir les
+                    (click)="onSubmit()" [disabled]="!registerForm.valid">Voir les
                     résultats</button>
                 </div>
               </div>
@@ -89,13 +89,20 @@
         </div>
         <app-view-property-list [numberProperty]="numberProperty" [propertyList]="toShow">
         </app-view-property-list>
+        <div class="row" *ngIf="toShow">
+          <button *ngIf="lowerThan(numberProperty, toShow.length)" type="button"
+            class="btn btn-outline-danger col-2 mx-auto text-center" (click)="addProperties()">Voir plus
+            de propriétés</button>
+        </div>
+        <div *ngIf="toShow.length==0">
+          Aucune propriété trouvée
+        </div>
+
+        
+
       </div>
     </div>
 
-    <div class="row">
-      <button type="button" class="btn btn-outline-danger col-2 mx-auto text-center" (click)="addProperties()">Voir plus
-        de propriétés</button>
-    </div>
   </div>
 
 </section>

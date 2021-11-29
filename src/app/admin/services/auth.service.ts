@@ -8,34 +8,21 @@ import { AngularFireAuth } from "@angular/fire/auth";
   providedIn: 'root'
 })
 export class AuthService {
-  user: User;
-
-  constructor(public afAuth: AngularFireAuth, public router: Router, public ngZone: NgZone) {
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.user = user;
-        localStorage.setItem('user', JSON.stringify(this.user));
-      } else {
-        localStorage.setItem('user', null);
-      }
-    })
-  }
-
-  async login(email: string, password: string) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['admin/top-biens']);
-        });
-      }).catch((error) => {
-        window.alert(error.message)
-      })
-  }
+  logged = false;
+  constructor(private router: Router) { }
 
   get isLoggedIn(): boolean {
-    const  user  =  JSON.parse(localStorage.getItem('user'));
-    return  user  !==  null;
-}
+      return this.logged;
+    }
+
+    signIn(mail: string, pwd: string){
+      console.log("con")
+      if (mail == "admin" && pwd == "Braxel12345") {
+        console.log("coucou")
+        this.logged = true;
+        this.router.navigate(['/admin/top-biens']);
+      }
+    }
 
 
 }

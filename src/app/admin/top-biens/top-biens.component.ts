@@ -28,6 +28,13 @@ export class TopBiensComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPropertyList();
+    this.firestore.getFirestoreCollection('activeProperties').subscribe(data=>
+      this.topPropertyList = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as Property
+        }
+    }));
   }
 
   save(){

@@ -34,7 +34,7 @@
             <mdb-carousel-item *ngFor="let item of slides; let i = index">
                 <div class="col-md-4" *ngFor="let review of item; let cardIndex = index">
                     <mdb-card class="my-1">
-                        <mdb-card-img class="col-4 mx-auto mt-5" [src]="review.profile_photo_url" alt="Card image cap">
+                        <mdb-card-img class=" mx-auto mt-5" [src]="review.profile_photo_url" alt="Card image cap">
                         </mdb-card-img>
                         <mdb-card-body>
                             <mdb-card-title>
@@ -57,18 +57,12 @@
                         </mdb-card-body>
                     </mdb-card>
                 </div>
-                <div class="col-md-4 my-auto">
-                    <mdb-card class="my-1">
-                        <mdb-card-body>
-                            <div class="row pt-0 mt-0">
-                                <a href="https://www.google.com/search?q=avis+braxel&oq=avis+braxel&aqs=chrome..69i57j0i22i30l2.4138j0j7&sourceid=chrome&ie=UTF-8#lrd=0x47c3d1ca3d0b1823:0xed7f36bfed6ac310,1,,,">Voir tous les avis </a>
-                                <img src="assets/img/google.png" class="col-3 ml-auto pt-0 mt-0">
-                            </div>
-                        </mdb-card-body>
-                    </mdb-card>
-                </div>
             </mdb-carousel-item>
         </mdb-carousel>
+
+    
+
+
     </div>
 </section>
 

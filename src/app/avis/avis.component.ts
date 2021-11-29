@@ -1,4 +1,4 @@
-import { Component, AfterViewInit} from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 
 declare const google: any;
 
@@ -11,11 +11,12 @@ export class AvisComponent implements AfterViewInit {
   service;
   public reviews = [];
   show = false;
+  public innerWidth: any;
 
-  constructor() {}
+  constructor() { }
 
   slides: any = [[]];
-  
+
   chunk(arr, chunkSize) {
     let R = [];
     for (let i = 0, len = arr.length; i < len; i += chunkSize) {
@@ -24,7 +25,8 @@ export class AvisComponent implements AfterViewInit {
     return R;
   }
 
-  ngOnInit(){
+  ngOnInit() {
+    this.innerWidth = window.innerWidth;
   }
 
   ngAfterViewInit() {
@@ -40,8 +42,16 @@ export class AvisComponent implements AfterViewInit {
   public callback = (place, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       this.reviews = place.reviews.slice();
-      this.slides = this.chunk(this.reviews, 3);
-      console.log(this.slides);
+      if (this.innerWidth > 1000) {
+        this.slides = this.chunk(this.reviews, 3);
+      }
+      if (this.innerWidth > 600 && this.innerWidth < 1000) {
+        this.slides = this.chunk(this.reviews, 2);
+      }
+
+      if (this.innerWidth < 600 && this.innerWidth < 1000) {
+        this.slides = this.chunk(this.reviews, 1);
+      }
     }
   };
 
@@ -53,11 +63,11 @@ export class AvisComponent implements AfterViewInit {
     return items;
   }
 
-  isReviews(){
-    if(this.reviews.length>0){
+  isReviews() {
+    if (this.reviews.length > 0) {
       return true;
     }
-    else{
+    else {
       return false;
     }
   }

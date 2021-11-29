@@ -17,6 +17,11 @@
   background-repeat: no-repeat;
 }
 
+.bg-min{
+  z-index: 1;
+  background-position: 40% 20%;
+  background-image:url("/assets/img/banner_bg2.jpg");
+}
 .intro {
   color: white;
   border-radius: 30px;
@@ -205,8 +210,8 @@ li {
 }
 
 .btn-outline-primary {
-  color: #233353;
-  border-color: #233353;
+  color: #233353 !important;
+  border-color: #233353 !important;
   padding: 10px;
   padding-right: 20px;
   padding-left: 20px;
@@ -214,9 +219,9 @@ li {
 }
 
 .btn-outline-primary:hover {
-  color: white;
-  background-color: #EE5C5A;
-  border-color: #EE5C5A;
+  color: white !important;
+  background-color: #EE5C5A !important;
+  border-color: #EE5C5A !important;
 }
 
 .btn-outline-danger:active {
@@ -491,7 +496,7 @@ strong {
   font-weight: 600;
 }
 
-.overlay {
+.overlay{
   z-index: 1;
   width: 100%;
   margin-left:3em;
@@ -506,6 +511,16 @@ strong {
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.125);
   position: relative;
+}
+
+.overlay-min {
+  z-index: 100;
+  max-width: 1140px;
+  max-height: 640px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
 .overlay__inner {

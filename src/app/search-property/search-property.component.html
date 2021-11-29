@@ -3,7 +3,7 @@
         <div class="row">
             <h2 class="text-center ml-auto col-11 mx-auto">Vous cherchez un bien ?</h2>
         </div>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="registerForm">
             <div class="search-form ml-auto pb-3 col-12">
                 <div class="row">
                     <div class="text-search-form col-11 text-left">
@@ -69,7 +69,7 @@
                     <app-slider class="col-11 mx-auto" [options]="sliderBudget"></app-slider>
                 </div>
                 <div class="row pt-3 button-search">
-                    <button type="button" class="btn1 btn-outline-primary col-7 mx-auto rounded-pill py-2"
+                    <button type="submit" class="btn1 btn-outline-primary col-7 mx-auto rounded-pill py-2" [disabled]="!registerForm.valid"
                         (click)="onSubmit()">Voir les
                         résultats</button>
                 </div>
