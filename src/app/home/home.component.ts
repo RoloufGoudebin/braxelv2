@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private firestore: FirestoreService) { }
 
-  numberProperty = 9;
+  numberProperty = 6;
   texts: BraxelHome[];
   showChiffres= false;
   toShow: Property[]

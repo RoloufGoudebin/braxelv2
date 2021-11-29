@@ -17,6 +17,10 @@
   background-repeat: no-repeat;
 }
 
+.bg-max{
+  background-image:url("/assets/img/banner_bg.jpg");
+  background-size: 100%;
+}
 .bg-min{
   z-index: 1;
   background-position: 40% 20%;
@@ -57,7 +61,7 @@ hr {
   top: 0;
   bottom: 0;
   width: 90%;
-  height: 65vh;
+  height: 100vh;
   overflow: hidden;
   margin-top: 10em;
   margin-left: 7em;
