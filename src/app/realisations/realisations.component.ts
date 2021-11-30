@@ -28,4 +28,8 @@ export class RealisationsComponent implements OnInit {
     this.numberProperty = this.numberProperty+9;
   }
 
+  lowerThan(one: number, two: number) {
+    return one < two;
+  }
+
 }

@@ -3,44 +3,38 @@
 <body style="background-color:#F6F6F6;">
 
   <div class="bg-max fullheight d-none d-lg-block">
-    <div class="row col-6 mx-auto front">
-      <div class="row">
-        <div class="col-12 mx-auto box">
-          <div class="overlay mt-6 pt-2">
-            <!-- Overlay inner wrapper -->
-            <div class="overlay__inner pt-5 mx-auto">
-              <!-- Title -->
-              <h1 class="overlay__title">
-                Vous avez trouvé vos agents immobiliers,
-                <span class="text-gradient">de confiance</span> en Brabants et à
-                Bruxelles !
-                <hr class="blue">
-              </h1>
-              <!-- Buttons -->
-              <div class="overlay__btns mx-auto">
+    <div class="row">
+      <div class="col-12 mx-auto">
+        <div class="overlay mt-6 pt-2 col-9 mx-auto">
+          <!-- Overlay inner wrapper -->
+          <div class="overlay__inner pt-5 mx-auto">
+            <!-- Title -->
+            <h1 class="overlay__title">
+              Vous avez trouvé vos agents immobiliers,
+              <span class="text-gradient">de confiance</span> en Brabants et à
+              Bruxelles !
+              <hr class="blue">
+            </h1>
+            <!-- Buttons -->
+            <div class="overlay__btns mx-auto">
 
-                <button class="overlay__btn overlay__btn--transparent" routerLinkActive="active"
-                  routerLink="/nos-biens">
-                  <a href="" target="_blank">
+              <button class="overlay__btn overlay__btn--transparent" routerLinkActive="active" routerLink="/services">
+                <span>
+                  Vendre
+                </span>
+              </button>
 
-                    Acheter
-                  </a>
-                </button>
+              <button class="overlay__btn overlay__btn--transparent" routerLinkActive="active" routerLink="/services">
+                <span>Louer</span>
+                <span class="overlay__btn-emoji"></span>
+              </button>
 
-                <button class="overlay__btn overlay__btn--transparent" routerLinkActive="active"
-                  routerLink="/nos-biens">
-                  <span>Louer</span>
-                  <span class="overlay__btn-emoji"></span>
-                </button>
-
-                <button class="overlay__btn overlay__btn--colors" routerLinkActive="active" routerLink="/nos-biens">
-                  <span style="white-space: nowrap;">Rechercher un bien</span>
-                  <span class="overlay__btn-emoji">🔑</span>
-                </button>
-              </div>
+              <button class="overlay__btn overlay__btn--colors" routerLinkActive="active" routerLink="/nos-biens">
+                <span style="white-space: nowrap;">Rechercher un bien</span>
+                <span class="overlay__btn-emoji">🔑</span>
+              </button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -145,7 +139,8 @@
             <img src="assets/img/worker-1.jpg" alt="Braxel, agence immobiliere à Waterloo">
             <h3 class="title">Agent immobilier agréé I.P.I. 508.871</h3>
             <ul class="icon d-lg-block">
-              <li class="d-none d-lg-block"><a href="https://www.linkedin.com/in/thomas-offergeld-89277b137/"><i class="bi bi-linkedin"></i></a>
+              <li class="d-none d-lg-block"><a href="https://www.linkedin.com/in/thomas-offergeld-89277b137/"><i
+                    class="bi bi-linkedin"></i></a>
               </li>
               <li class="d-lg-none"><a href="tel:+32 479 49 81 36"><i class="bi bi-telephone"></i></a>
               </li>
@@ -164,7 +159,8 @@
             <img src="assets/img/worker-2.jpg" alt="Agent immobilier à Bruxelles">
             <h3 class="title">Agent immobilier agréé I.P.I. 509.783</h3>
             <ul class="icon">
-              <li class="d-none d-lg-block"><a href="https://www.linkedin.com/in/thomas-offergeld-89277b137/"><i class="bi bi-linkedin"></i></a>
+              <li class="d-none d-lg-block"><a href="https://www.linkedin.com/in/thomas-offergeld-89277b137/"><i
+                    class="bi bi-linkedin"></i></a>
               </li>
               <li class="d-lg-none"><a href="tel:+32 495 94 80 77"><i class="bi bi-telephone"></i></a>
               </li>
@@ -183,7 +179,8 @@
             <img src="assets/img/worker-3.jpg" alt="Agent immobilier à Waterloo">
             <h3 class="title">Stagiaire agent immobilier</h3>
             <ul class="icon">
-              <li class="d-none d-lg-block"><a href="https://www.linkedin.com/in/francois-baets-b42b5b117/"><i class="bi bi-linkedin"></i></a>
+              <li class="d-none d-lg-block"><a href="https://www.linkedin.com/in/francois-baets-b42b5b117/"><i
+                    class="bi bi-linkedin"></i></a>
               </li>
               <li class="d-lg-none"><a href="tel:+32 479 49 81 36"><i class="bi bi-telephone"></i></a>
               </li>
@@ -202,11 +199,11 @@
   </section>
 
 
-  <div id="chiffres" class="chiffres container-fluid mb-0">
+  <div id="chiffres" class="chiffres container-fluid mb-5">
     <div *ngIf="showChiffres">
       <div class="row">
         <div class="col-8 col-md-4 text-center mx-auto">
-          <ng2-odometer class="compteur" [number]="42" [config]="{ }"></ng2-odometer>
+          <ng2-odometer class="compteur" [number]="23" [config]="{ }"></ng2-odometer>
           <h2> jours</h2>
           <p>Délai moyen de vente</p>
         </div>

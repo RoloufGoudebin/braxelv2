@@ -10,7 +10,7 @@ export class SendmailService {
 
   sendMail(message: any){
     console.log(message)
-    this.http.post("http://51.75.251.225/sendmail", message).subscribe(
+    this.http.post("http://localhost:3000/sendmail", message).subscribe(
       data => {
         let res: any = data;
         console.log(

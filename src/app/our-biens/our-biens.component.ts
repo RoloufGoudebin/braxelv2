@@ -43,10 +43,29 @@ export class OurBiensComponent implements OnInit {
   search: any[];
   toShow: Property[];
   toSearch: Property[];
+  types: any;
+  items: any;
+
+
 
   constructor(public firestore: FirestoreService) { }
 
   ngOnInit(): void {
+    this.types = [
+      { id: 1, name: 'Maison' },
+      { id: 2, name: 'Appartement' },
+      { id: 3, name: 'Studio' },
+      { id: 4, name: 'Terrain' },
+      { id: 5, name: 'Immeubles' },
+      { id: 6, name: 'Bureaux/Commerces' },
+      { id: 7, name: 'Garage/Parking' },
+    ];
+
+    this.items = [
+      { name: 'Acheter', select: false },
+      { name: 'Louer', select: false }
+    ];
+
     this.firestore.getFirestoreCollection('activeProperties').subscribe(data =>
       this.toShow = data.map(e => {
         return {
@@ -63,20 +82,9 @@ export class OurBiensComponent implements OnInit {
       }));
   }
 
-  types = [
-    { id: 1, name: 'Maison' },
-    { id: 2, name: 'Appartement' },
-    { id: 3, name: 'Studio' },
-    { id: 4, name: 'Terrain' },
-    { id: 5, name: 'Immeubles' },
-    { id: 6, name: 'Bureaux/Commerces' },
-    { id: 7, name: 'Garage/Parking' },
-  ];
+  
 
-  items = [
-    { name: 'Acheter', select: false },
-    { name: 'Louer', select: false }
-  ];
+  
 
   get f() { return this.registerForm.controls; }
 
@@ -152,7 +160,10 @@ export class OurBiensComponent implements OnInit {
         ceil: 2000000,
         step: 10000,
         translate: (value: number): string => {
-          return value + " €";
+          if(value==2000000){
+            return "+" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
+          }
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
         }
       }
     }

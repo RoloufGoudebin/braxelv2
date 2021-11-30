@@ -7,8 +7,8 @@
 }
 
 .btn-outline-primary:hover{
-    background-color: #233353 !important;
-    border-color: #233353 !important;
+    background-color: #233353;
+    border-color: #233353;
     color: white;
 }
 
@@ -16,3 +16,9 @@
     outline: none;
     box-shadow: none;
   }
+
+button:disabled {
+    color: white !important;
+    background-color: lightgrey !important;
+    border: lightgrey !important;
+}

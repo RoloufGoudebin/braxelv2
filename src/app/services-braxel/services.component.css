@@ -366,3 +366,8 @@ img-comparison-slider:focus {
 .slider-example-opacity-and-size:focus {
   --default-handle-opacity: 1;
 }
+
+.nodalview{
+  height: 350px;
+  border: none;
+}

@@ -17,18 +17,11 @@ export class ModalNodalComponent implements OnInit{
   @Input() item = '';
 
   url ;
-
-  itsSafe: SafeUrl;
-
-      // Private properties
-  private safePipe: SafePipe = new SafePipe(this.domSanitizer);
   
   constructor(private modalService: NgbModal, private domSanitizer: DomSanitizer) { }
 
   ngOnInit(){
-    console.log(this.item);
-    this.url = this.domSanitizer.bypassSecurityTrustResourceUrl(this.item)
-    console.log(this.itsSafe);
+    this.url = this.domSanitizer.bypassSecurityTrustResourceUrl(this.item);
   }
 
   open(content) {

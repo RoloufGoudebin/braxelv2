@@ -2,9 +2,9 @@
 
 
 <div class="container-fluid">
-  <div class="col-12 col-lg-10 pt-lg-à mx-auto">
+  <div class="col-12 col-lg-10 mx-auto">
     <div class="honoraires pb-5">
-      <div class="container-fluid pt-lg-5">
+      <div class="container-fluid">
         <div class="row">
           <div class="jumbotron col-6 d-none d-lg-block my-auto porte play-left">
             <div class="row">
@@ -16,7 +16,7 @@
                 <p class="test">Taux de négociation moyen</p>
               </div>
               <div class="col-12 text-center">
-                <ng2-odometer class="compteur" [number]="42" [config]="{ }" [format]="'d'"></ng2-odometer>
+                <ng2-odometer class="compteur" [number]="23" [config]="{ }" [format]="'d'"></ng2-odometer>
                 <p class="test"> jours</p>
               </div>
               <div class="col-12 text-center ">
@@ -77,11 +77,11 @@
             <hr class="right col-3">
           </div>
           <div class="col-6 d-none d-lg-block slideInRight">
-            <img src="assets/img/estimation_gris.jpg" class="img-fluid my-1">
+            <iframe [src]="url" class="nodalview col-12 rounded"></iframe>
           </div>
         </div>
         <div class="row pt-0">
-          <div class="col-12 col-lg-11 mx-auto">
+          <div class="col-12 col-lg-12 mx-auto">
             <div class="row">
               <div class="col-12 col-lg-6">
                 <p class="text-justify"> <b>Humainement</b>: Cette première entrevue est une opportunité :
@@ -385,7 +385,7 @@
 </div>
 
 
-<div class="container-fluid" style="background-color:#F5F5F5">
+<div class="container-fluid pb-5" style="background-color:#F5F5F5">
   <section class="col-12 col-lg-10 pt-lg-5 mx-auto">
     <div class="estimation mt-3">
       <div class="container-fluid">
@@ -412,7 +412,7 @@
 
           </div>
           <div class="col-6 d-none d-lg-block slideInRight">
-            <img src="assets/img/network_blue.jpg" class="img-fluid my-1">
+            <img src="assets/img/network_blue.jpg" class="col-12 img-fluid my-1">
           </div>
         </div>
       </div>

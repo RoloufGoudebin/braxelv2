@@ -168,3 +168,8 @@ h2 {
   border-radius: 0;
 }
 
+button:disabled{
+  color: white !important;
+  background-color: lightgrey !important;
+  border: lightgrey !important;
+}

@@ -24,6 +24,11 @@
                         [ngClass]="item.select ? 'select' : 'not-select'" class="btn rounded-pill
                               col-4 mx-auto">{{item.name}}</button>
                 </div>
+                <div class="row ml-1">
+                    <div *ngIf="items[0].select==false && items[1].select==false" class="text-danger">
+                        <div class="invalid-feedback d-block ml-2">Veuillez faire un choix</div>
+                    </div>
+                </div>
 
                 <div class="row mt-2">
                     <label class="text-search-form col-10 text-left">Type de bien</label>
@@ -32,43 +37,94 @@
                         </ng-option>
                     </ng-select>
                 </div>
+                <div class="row ml-1">
+                    <div *ngIf="selected.invalid" class="text-danger">
+                        <div *ngIf="selected.errors?.required">
+                            <div class="invalid-feedback d-block ml-2">Veuillez faire au moins un choix</div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Code Postal:</label>
                     <input type="text" formControlName="zip" class="col-10 mx-auto rounded-pill form-control">
                 </div>
+                <div class="row ml-1">
+                    <div *ngIf="zip.invalid" class="text-danger">
+                        <div *ngIf="zip.errors?.required">
+                            <div class="invalid-feedback d-block ml-2">Veuillez faire au moins un choix</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Chambres :</label>
                     <app-slider class="col-10 mx-auto" [options]="sliderRooms"></app-slider>
                 </div>
+
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Budget :</label>
                     <app-slider class="col-10 mx-auto" [options]="sliderPrice"></app-slider>
                 </div>
+
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Surface (m²):</label>
+                    <label class="text-search-form col-10 text-left">Surface:</label>
                     <app-slider class="col-10 mx-auto" [options]="sliderSurface"></app-slider>
                 </div>
+
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Autres particularités :</label>
-                    <textarea class="form-control rounded col-10 mx-auto" rows="5" formControlName="zip"></textarea>
+                    <textarea class="form-control rounded col-10 mx-auto" rows="5" formControlName="particularites"></textarea>
                 </div>
+
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Votre nom : </label>
                     <input type="name" formControlName="name" class="col-10 mx-auto rounded-pill form-control">
                 </div>
+                <div class="row ml-1">
+                    <div *ngIf="name.invalid" class="text-danger">
+                        <div *ngIf="name.errors?.required">
+                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre nom</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Votre prénom : </label>
-                    <input type="name" formControlName="firstname" class="col-10 mx-auto rounded-pill form-control">
+                    <input type="firstname" formControlName="firstname" class="col-10 mx-auto rounded-pill form-control">
                 </div>
+                <div class="row ml-1">
+                    <div *ngIf="firstname.invalid" class="text-danger">
+                        <div *ngIf="firstname.errors?.required">
+                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre prénom</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Votre email : </label>
-                    <input type="name" formControlName="mail" class="col-10 mx-auto rounded-pill form-control">
+                    <input type="mail" formControlName="mail" class="col-10 mx-auto rounded-pill form-control">
                 </div>
+                <div class="row ml-1">
+                    <div *ngIf="mail.invalid" class="text-danger">
+                        <div *ngIf="mail.errors?.required">
+                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre email</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Téléphone : </label>
-                    <input type="name" formControlName="phone" class="col-10 mx-auto rounded-pill form-control">
+                    <input type="phone" formControlName="phone" class="col-10 mx-auto rounded-pill form-control">
                 </div>
+                <div class="row ml-1">
+                    <div *ngIf="phone.invalid" class="text-danger">
+                        <div *ngIf="phone.errors?.required">
+                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre nom</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <p class="col-10 mx-auto text-justify conditions">
                         En soumettant ce formulaire, j'accepte que les informations saisies dans ce formulaire soient
@@ -90,7 +146,7 @@
 
     <div class="modal-footer">
         <div *ngIf="notConfirm">
-            <button class="btn btn-outline-dark" [disabled]="!alertForm.valid" type="submit">Créer une
+            <button class="btn btn-outline-primary" [disabled]="!alertForm.valid" type="submit" (click)="onSubmit()">Créer une
                 alerte</button>
         </div>
         <div *ngIf="!notConfirm">

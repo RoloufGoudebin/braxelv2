@@ -69,9 +69,7 @@ export class FirestoreService {
         this.propertyList = data.GetPropertyListJsonResult.Value.Items;
         return new Promise<Property>((resolve, reject) => {
           for (let i = 0; i < this.propertyList.length; i++) {
-            console.log(i)
             if (i > 150 && this.propertyList[i].SubStatus != 2) {
-              console.log("oki")
               this.firestore
                 .collection("sellProperties")
                 .doc(i.toString())

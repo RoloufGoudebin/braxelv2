@@ -20,6 +20,8 @@
 .bg-max{
   background-image:url("/assets/img/banner_bg.jpg");
   background-size: 100%;
+  background-size: cover;
+  background-position: center bottom;
 }
 .bg-min{
   z-index: 1;
@@ -502,13 +504,9 @@ strong {
 
 .overlay{
   z-index: 1;
-  width: 100%;
-  margin-left:3em;
-  max-width: 1140px;
-  max-height: 640px;
-  padding: 4rem 2rem;
-  margin-top: 20em;
-  display: flex;
+  margin-left:1em;
+  padding: 1rem 1rem;
+  margin-top: 35%;
   align-items: center;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
@@ -525,10 +523,6 @@ strong {
   box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.125);
-}
-
-.overlay__inner {
-  max-width: 36rem;
 }
 
 .overlay__title {

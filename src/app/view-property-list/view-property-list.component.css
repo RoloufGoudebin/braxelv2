@@ -53,6 +53,15 @@ h5 {
 
   .container-fluid { max-width: 1250px; }
 
+  .card-img-top{
+    min-height: 250px;
+    max-height: 250px;
+    width: auto;
+  }
+
+  .card-title{
+    min-height: 75px;
+  }
 
   .card {
     border:none;

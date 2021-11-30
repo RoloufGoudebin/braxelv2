@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div *ngIf="property; else loading" class="container mt-5 pt-5">
+<div *ngIf="property; else loading" class="container mt-5 pt-5 animated fadeIn">
   <div class="pt-5 mt-5">
     <h1 *ngIf="property.TypeDescription">{{property.TypeDescription}}</h1>
     <h2 *ngIf="property.City">{{property.Zip}} {{property.City}}</h2>
@@ -20,7 +20,7 @@
   </div>
 
 
-  <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'fade'">
+  <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'fade'" >
       <mdb-carousel-item>
         <img class="d-block w-100 img-fluid rounded" src="{{property.LargePicture}}">
       </mdb-carousel-item>
@@ -28,6 +28,7 @@
         <img class="d-block w-100 img-fluid rounded" src="{{picture}}">
       </mdb-carousel-item>
   </mdb-carousel>
+
 
   <div class="container-fluid py-4">
     <div class="row text">
@@ -129,6 +130,6 @@
 </div>
 
 <ng-template #loading>
-<app-loading #loading></app-loading>
+<app-loading></app-loading>
 </ng-template>
 <app-footer></app-footer>

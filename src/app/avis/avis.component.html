@@ -1,6 +1,6 @@
 <div id="googleReviews"></div>
 <section id='reviews'>
-    <div class="container pt-3">
+    <div class="container">
         <h1 class="text-center">Nos clients l’expliquent mieux que nous </h1>
         <!--
         <ngb-carousel *ngIf="isReviews(); else loading" [isControls]="true" [showNavigationArrows]="true"
@@ -30,13 +30,11 @@
             </mdb-carousel-item>
         </ngb-carousel>
         -->
-        <mdb-carousel [isControls]="true" [interval]="'0'" [animation]="'slide'" class="my-5">
+        <mdb-carousel [isControls]="true" [interval]="'0'" [animation]="'slide'" class="my-5" *ngIf="reviews; else loading">
             <mdb-carousel-item *ngFor="let item of slides; let i = index">
                 <div class="col-md-4" *ngFor="let review of item; let cardIndex = index">
-                    <mdb-card class="my-1">
-                        <mdb-card-img class=" mx-auto mt-5" [src]="review.profile_photo_url" alt="Card image cap">
-                        </mdb-card-img>
-                        <mdb-card-body>
+                    <mdb-card class="my-1 rounded">
+                        <mdb-card-body class="mt-2">
                             <mdb-card-title>
                                 <h4 class="text-center">{{review.author_name}}</h4>
                                 <div class="stars text-center pt-0 mt-0">
@@ -52,7 +50,7 @@
                             </app-modal-avis>
                             <h6 class="text-center pt-1 pb-0 mb-0">{{ review.relative_time_description }}</h6>
                             <div class="row pt-0 mt-0">
-                                <img src="assets/img/google.png" class="col-3 ml-auto pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
                             </div>
                         </mdb-card-body>
                     </mdb-card>
@@ -67,7 +65,5 @@
 </section>
 
 <ng-template #loading>
-    <div class="spinner-border text-center" role="status">
-        <span class="sr-only">Loading...</span>
-    </div>
+    <mdb-spinner spinnerColor="blue"></mdb-spinner>
 </ng-template>

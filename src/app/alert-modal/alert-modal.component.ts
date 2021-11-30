@@ -4,6 +4,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Options } from '@angular-slider/ngx-slider';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
+import { SendmailService } from '../services/sendmail.service';
+import { TypeScriptEmitter } from '@angular/compiler';
 
 interface SliderDetails {
   minValue: number;
@@ -24,9 +26,10 @@ export class AlertModalComponent {
   notConfirm = true;
 
   alertForm = new FormGroup({
-    goal: new FormControl('', [Validators.required]),
+    goal: new FormControl('',),
     selected: new FormControl('', [Validators.required]),
     zip: new FormControl('', [Validators.required]),
+    particularites: new FormControl(''),
     firstname: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     mail: new FormControl('', [Validators.required]),
@@ -48,16 +51,63 @@ export class AlertModalComponent {
     { id: 7, name: 'Garage/Parking' },
   ];
 
-  constructor(private modalService: NgbModal, private omnicasaService: OmnicasaService) { }
+  constructor(private modalService: NgbModal, private omnicasaService: OmnicasaService, private sendmail: SendmailService) { }
 
   openScrollableContent(longContent) {
     this.modalService.open(longContent, { scrollable: true });
   }
 
   onSubmit(){
-    console.log(this.omnicasaService.demandRegister(this.alertForm.value.name, this.alertForm.value.firstname, this.alertForm.value.selected, this.alertForm.value.mail,
-      this.alertForm.value.phone, this.alertForm.value.zip, this.sliderPrice.minValue, this.sliderPrice.highValue, this.sliderRooms.minValue, this.sliderRooms.highValue, this.alertForm.value.comment,
-      this.sliderSurface.minValue))
+    //console.log(this.omnicasaService.demandRegister(this.alertForm.value.name, this.alertForm.value.firstname, this.alertForm.value.selected, this.alertForm.value.mail,
+     // this.alertForm.value.phone, this.alertForm.value.zip, this.sliderPrice.minValue, this.sliderPrice.highValue, this.sliderRooms.minValue, this.sliderRooms.highValue, this.alertForm.value.comment,
+      //this.sliderSurface.minValue))
+      let goal, type, budget, surface;
+
+      if (this.alertForm.value.goal == 0){
+        goal = "acheter";
+      }
+      else if (this.alertForm.value.goal == 1){
+        goal = "louer";
+      }
+
+      for (let i = 0; i<this.alertForm.value.selected.length; i++){
+        if (type){
+          type = type + ", " + this.types[this.alertForm.value.selected[i]-1].name
+        }
+        else{
+          type = this.types[this.alertForm.value.selected[i]-1].name
+        }
+      }
+
+      if (this.sliderPrice.highValue == 2000000){
+        budget = "+2 000 000"
+      }
+      else {
+        budget = this.sliderPrice.highValue
+      }
+
+      if (this.sliderSurface.highValue == 500){
+        surface = "+ 500"
+      }
+      else {
+        surface = this.sliderSurface.highValue
+      }
+
+      let user = {
+        message : "<p>Alerte pour des biens à " + goal +"</p>" + 
+        "<p>Type(s) de biens: " + type + "</p>" +
+        "<p>Codes postaux : " + this.alertForm.value.zip + "</p>" +
+        "<p>Nombre de chambres : entre " + this.sliderRooms.minValue + " et " + this.sliderRooms.highValue + "</p>" +
+        "<p>Budget : entre " +this.sliderPrice.minValue + " et " + budget + "</p>" +
+        "<p>Surface : entre " + this.sliderSurface.minValue + " et " + surface + "</p>" +
+        "<p>Autre particularités : " + this.alertForm.value.particularites + "</p>" +
+        "<p>Nom : " + this.alertForm.value.name + "</p>" +
+        "<p>Prénom : " + this.alertForm.value.firstname + "</p>" +
+        "<p>Mail : " + this.alertForm.value.mail + "</p>" +
+        "<p>Téléphone : " + this.alertForm.value.phone + "</p>"
+      }
+      this.sendmail.sendMail(user)
+
     this.notConfirm = false;
     }
 
@@ -103,6 +153,12 @@ export class AlertModalComponent {
         floor: 0,
         ceil: 500,
         step: 10,
+        translate: (value: number): string => {
+          if(value==500){
+            return "+" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " m²";
+          }
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " m²";
+        }
       }
     }
 
@@ -114,7 +170,14 @@ export class AlertModalComponent {
         floor: 0,
         ceil: 2000000,
         step: 10000,
+        translate: (value: number): string => {
+          if(value==2000000){
+            return "+" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
+          }
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
+        }
       }
+      
     }
 
   sliderRadius: SliderDetails =
@@ -126,6 +189,28 @@ export class AlertModalComponent {
         ceil: 100,
         step: 1,
       }
+    }
+
+    get selected(){
+      return this.alertForm.get('selected');
+    }
+    get zip(){
+      return this.alertForm.get('zip');
+    }
+    get particularites(){
+      return this.alertForm.get('particularites')
+    }
+    get name(){
+      return this.alertForm.get('name');
+    }
+    get firstname(){
+      return this.alertForm.get('firstname');
+    }
+    get mail(){
+      return this.alertForm.get('mail');
+    }
+    get phone(){
+      return this.alertForm.get('phone');
     }
 
 

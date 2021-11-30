@@ -11,9 +11,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 
 @Pipe({name: 'safeHtml'})
+
+
 export class ServicesComponent implements OnInit {
 
+  constructor(private domSanitizer: DomSanitizer){}
+
+  url: any;
+
   ngOnInit(): void {
+    this.url = this.domSanitizer.bypassSecurityTrustResourceUrl("https://nodalview.com/hsfAGKoz1CDKyi6HTgvySvsi");
   }
 
 
