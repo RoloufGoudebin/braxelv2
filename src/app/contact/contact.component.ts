@@ -26,10 +26,11 @@ export class ContactComponent implements OnInit {
       message: "<p> Message venant de " + this.contactForm.value.name + "</p><br><p>Mail : " + this.contactForm.value.mail + "</p><br><p>Numéro de téléphone : " + this.contactForm.value.phone + "</p><br> <p>Concerne : " + this.contactForm.value.message + "</p>"
     }
     this.sendMail.sendMail(user);
+    this.contactForm.reset();
   }
 
   get name(){
-    return this.contactForm.get('message')
+    return this.contactForm.get('name')
   }
   get mail(){
     return this.contactForm.get('mail')

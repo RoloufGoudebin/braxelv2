@@ -77,12 +77,13 @@
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="nomPrenom">NOM ET PRÉNOM</label>
-            <input class="form-control rounded-pill" formControlName="name" aria-describedby="emailHelp" placeholder="Nom et prénom">
+            <input class="form-control rounded-pill" formControlName="name" aria-describedby="emailHelp"
+              placeholder="Nom et prénom">
             <div *ngIf="name.invalid" class="text-danger">
               <div *ngIf="name.errors?.required">
-                  <div class="invalid-feedback d-block ml-2">Veuillez entrer votre nom et prénom</div>
+                <div class="invalid-feedback d-block ml-2">Veuillez entrer votre nom et prénom</div>
               </div>
-          </div>
+            </div>
           </div>
           <div class="row">
             <div class="form-group col-6">
@@ -90,18 +91,18 @@
               <input class="form-control rounded-pill" formControlName="phone" placeholder="Téléphone">
               <div *ngIf="phone.invalid" class="text-danger">
                 <div *ngIf="phone.errors?.required">
-                    <div class="invalid-feedback d-block ml-2">Veuillez entrer votre numéro de téléphone</div>
+                  <div class="invalid-feedback d-block ml-2">Veuillez entrer votre numéro de téléphone</div>
                 </div>
-            </div>
+              </div>
             </div>
             <div class="form-group col-6">
               <label for="exampleInputPassword1">EMAIL</label>
               <input class="form-control rounded-pill" formControlName="mail" placeholder="Email">
               <div *ngIf="mail.invalid" class="text-danger">
                 <div *ngIf="mail.errors?.required">
-                    <div class="invalid-feedback d-block ml-2">Veuillez entrer votre adresse mail</div>
+                  <div class="invalid-feedback d-block ml-2">Veuillez entrer votre adresse mail</div>
                 </div>
-            </div>
+              </div>
             </div>
           </div>
           <div class="form-group">
@@ -109,20 +110,35 @@
             <textarea class="form-control rounded" rows="5" formControlName="message"></textarea>
             <div *ngIf="message.invalid" class="text-danger">
               <div *ngIf="message.errors?.required">
-                  <div class="invalid-feedback d-block ml-2">Veuillez entrer un message</div>
+                <div class="invalid-feedback d-block ml-2">Veuillez entrer un message</div>
               </div>
-          </div>
+            </div>
           </div>
           <p>
             En soumettant ce formulaire, j'accepte que les informations saisies dans ce formulaire soient
             utilisées, exploitées, traitées dans le cadre de la relation commerciale.
           </p>
-          <div class="form-check">
+          <div class="form-check pb-3">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Je souhaite m'inscrire à la
               newsletter</label>
           </div>
-          <button type="submit" class="btn btn-primary my-3">Envoyer</button>
+          <button type="submit" class="btn btn-outline-primary" [disabled]="!contactForm.valid" (click)="basicModal.show()"
+            mdbWavesEffect>Envoyer</button>
+          <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
+            aria-labelledby="myBasicModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                  <h4 class="modal-title w-100" id="myModalLabel">Messaye envoyé avec succès</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </form>
       </div>
     </div>
@@ -194,5 +210,9 @@
       width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   </div>
 </section>
+
+
+
+
 
 <app-footer></app-footer>

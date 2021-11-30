@@ -51,8 +51,8 @@ export class ContactModalComponent{
     let user = {
       message: "<p>Message venant de : " + this.contactForm.value.name + " " + this.contactForm.value.firstname + "</p><p> Email : " + this.contactForm.value.mail + "</p><p>Numéro de téléphone : " + this.contactForm.value.phone + "</p><p>Bonjour, pouvez vous me contacter pour le bien n°"+ this.id + "</p><p>Demande(s) spécifique(s) : " + this.contactForm.value.questions + "</p>"
     }
-    console.log(user);
     this.sendmail.sendMail(user);
+    this.notConfirm=false;
   }
 
   get firstname(){

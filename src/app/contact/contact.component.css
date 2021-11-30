@@ -109,18 +109,25 @@ h5{
 
 
 
-.btn-outline-primary {
-  color: #233353 !important;
-  border-color: #233353 !important;
-  padding: 10px !important;
-  padding-right: 20px !important;
-  padding-left: 20px !important;
-  border-radius: 20px !important;
+button:disabled{
+  color: white !important;
+  background-color: lightgrey !important;
+  border: lightgrey !important;
+  cursor: default;
 }
 
-.btn-outline-primary:hover {
-  color: white !important;
+.btn-outline-primary{
   background-color: #EE5C5A !important;
+  color: white !important;
   border-color: #EE5C5A !important;
+  border-radius: 20px;
+  padding:0.8em;
 }
+
+.btn-outline-primary:hover{
+  background-color: #233353;
+  border-color: #233353;
+  color: white;
+}
+
 
