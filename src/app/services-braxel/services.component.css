@@ -367,7 +367,12 @@ img-comparison-slider:focus {
   --default-handle-opacity: 1;
 }
 
+
 .nodalview{
+  border: 4px solid #000;
+-moz-border-radius: 15px;
+border-radius: 15px;
+overflow: hidden;
   height: 350px;
   border: none;
 }

@@ -149,7 +149,9 @@
       <div class="container-fluid pt-5 full-height">
         <div class="row">
           <div class="col-6 d-none d-lg-block mr-auto my-auto">
-            <iframe [src]="url" class="nodalview col-12 rounded"></iframe>
+            <div style="padding:10px;background:#000;webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;margin:0 auto;overflow:hidden;">
+            <iframe [src]="url" class="nodalview col-12" frameborder="0"></iframe>
+            </div>
           </div>
           <div class="col-12 col-lg-6 mr-auto my-auto">
             <h2>Vente immobilière</h2>
