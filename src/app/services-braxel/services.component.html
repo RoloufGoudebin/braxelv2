@@ -77,7 +77,10 @@
             <hr class="right col-3">
           </div>
           <div class="col-6 d-none d-lg-block slideInRight">
-            <iframe [src]="url" class="nodalview col-12 rounded"></iframe>
+            <img-comparison-slider class="slideInLeft my-0 py-0 coloured-slider my-auto">
+              <img slot="before" src="assets/img/Base-comp.jpg" class="img-fluid" />
+              <img slot="after" src="assets/img/Final-comp.jpg" class="img-fluid" />
+            </img-comparison-slider>
           </div>
         </div>
         <div class="row pt-0">
@@ -146,15 +149,14 @@
       <div class="container-fluid pt-5 full-height">
         <div class="row">
           <div class="col-6 d-none d-lg-block mr-auto my-auto">
-            <img-comparison-slider class="slideInLeft my-0 py-0 coloured-slider my-auto">
-              <img slot="before" src="assets/img/Base-comp.jpg" class="img-fluid" />
-              <img slot="after" src="assets/img/Final-comp.jpg" class="img-fluid" />
-            </img-comparison-slider>
+            <iframe [src]="url" class="nodalview col-12 rounded"></iframe>
           </div>
           <div class="col-12 col-lg-6 mr-auto my-auto">
             <h2>Vente immobilière</h2>
-            <h4 class="text-justify">Comment vendre votre bien au meilleur prix tout en respectant le délai souhaité ? </h4>
-            <h4 class="text-justify">La vente immobilière performante réussie ne s’improvise pas. Elle nécessite un travail
+            <h4 class="text-justify">Comment vendre votre bien au meilleur prix tout en respectant le délai souhaité ?
+            </h4>
+            <h4 class="text-justify">La vente immobilière performante réussie ne s’improvise pas. Elle nécessite un
+              travail
               pointu de
               préparation
               ainsi qu’une solide expérience commerciale. Ce travail est mené à 100% par votre

@@ -78,20 +78,40 @@
           <div class="form-group">
             <label for="nomPrenom">NOM ET PRÉNOM</label>
             <input class="form-control rounded-pill" formControlName="name" aria-describedby="emailHelp" placeholder="Nom et prénom">
+            <div *ngIf="name.invalid" class="text-danger">
+              <div *ngIf="name.errors?.required">
+                  <div class="invalid-feedback d-block ml-2">Veuillez entrer votre nom et prénom</div>
+              </div>
+          </div>
           </div>
           <div class="row">
             <div class="form-group col-6">
               <label for="exampleInputPassword1">TÉLÉPHONE</label>
               <input class="form-control rounded-pill" formControlName="phone" placeholder="Téléphone">
+              <div *ngIf="phone.invalid" class="text-danger">
+                <div *ngIf="phone.errors?.required">
+                    <div class="invalid-feedback d-block ml-2">Veuillez entrer votre numéro de téléphone</div>
+                </div>
+            </div>
             </div>
             <div class="form-group col-6">
               <label for="exampleInputPassword1">EMAIL</label>
               <input class="form-control rounded-pill" formControlName="mail" placeholder="Email">
+              <div *ngIf="mail.invalid" class="text-danger">
+                <div *ngIf="mail.errors?.required">
+                    <div class="invalid-feedback d-block ml-2">Veuillez entrer votre adresse mail</div>
+                </div>
+            </div>
             </div>
           </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1">MESSAGE</label>
             <textarea class="form-control rounded" rows="5" formControlName="message"></textarea>
+            <div *ngIf="message.invalid" class="text-danger">
+              <div *ngIf="message.errors?.required">
+                  <div class="invalid-feedback d-block ml-2">Veuillez entrer un message</div>
+              </div>
+          </div>
           </div>
           <p>
             En soumettant ce formulaire, j'accepte que les informations saisies dans ce formulaire soient

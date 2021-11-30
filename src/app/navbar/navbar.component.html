@@ -7,11 +7,13 @@
                 <a routerLink="/contact"><button type="button" class="btn-contact nav-link"><i class="bi bi-envelope-open"></i>  Nous contacter</button></a>
             <li class="nav-item py-0 ml-auto ml-lg-0">
                 <a> <button type="button" class="btn-contact nav-link">
-                    <app-alert-modal ></app-alert-modal></button>
+                    <app-alert-modal></app-alert-modal></button>
                 </a>
             </li>
-            <li class="nav-item py-0 d-none d-lg-block">
-                <a> <button type="button" class="nav-link btn-estimate" routerLink="/contact"><i class="bi bi-calculator"></i>  Estimer mon bien  </button></a>
+            <li class="nav-item py-0 d-none d-lg-block shake">
+                <a> <button type="button" class="nav-link btn-estimate">
+                    <app-estimation-modal></app-estimation-modal></button>
+                </a>
             </li>
         </ul>
     </div>

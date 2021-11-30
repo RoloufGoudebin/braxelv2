@@ -1,1 +1,148 @@
-<p>estimation-modal works!</p>
+<ng-template #longContent let-modal>
+
+
+    <div class="modal-header" style="background:#F2F2F2">
+        <div class="container">
+            <div class="row">
+                <h1 class="modal-title" id="modal-basic-title">Estimer mon bien</h1>
+            </div>
+            <div class="row">
+                <p>Contactez nous et nous vous recontacterons dans les plus brefs délais pour estimer votre bien</p>
+            </div>
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div *ngIf="notConfirm">
+            <form [formGroup]="alertForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <label class="text-search-form col-10 text-left">Je souhaite</label>
+                    <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
+                        [ngClass]="item.select ? 'select' : 'not-select'" class="btn rounded-pill
+                              col-4 mx-auto">{{item.name}}</button>
+                </div>
+                <div class="row ml-1">
+                    <div *ngIf="items[0].select==false && items[1].select==false" class="text-danger">
+                        <div class="invalid-feedback d-block ml-2">Veuillez faire un choix</div>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <label class="text-search-form col-10 text-left">Type de bien</label>
+                    <ng-select [multiple]="true" class="col-11 mx-auto" formControlName="selected">
+                        <ng-option *ngFor="let type of types" [value]="type.id" class="col-11" required>{{type.name}}
+                        </ng-option>
+                    </ng-select>
+                </div>
+                <div class="row ml-1">
+                    <div *ngIf="selected.invalid" class="text-danger">
+                        <div *ngIf="selected.errors?.required">
+                            <div class="invalid-feedback d-block ml-2">Veuillez faire au moins un choix</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Code Postal du bien : </label>
+                    <input type="text" formControlName="zip" class="col-10 mx-auto rounded-pill form-control">
+                </div>
+                <div class="row ml-1">
+                    <div *ngIf="zip.invalid" class="text-danger">
+                        <div *ngIf="zip.errors?.required">
+                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre code postal</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Rue + numéro du bien : </label>
+                    <input type="text" formControlName="street" class="col-10 mx-auto rounded-pill form-control">
+                </div>
+                <div class="row ml-1">
+                    <div *ngIf="street.invalid" class="text-danger">
+                        <div *ngIf="street.errors?.required">
+                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre adresse</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Autres particularités :</label>
+                    <textarea class="form-control rounded col-10 mx-auto" rows="5" formControlName="particularites"></textarea>
+                </div>
+
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Votre nom : </label>
+                    <input type="name" formControlName="name" class="col-10 mx-auto rounded-pill form-control">
+                </div>
+                <div class="row ml-1">
+                    <div *ngIf="name.invalid" class="text-danger">
+                        <div *ngIf="name.errors?.required">
+                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre nom</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Votre prénom : </label>
+                    <input type="firstname" formControlName="firstname" class="col-10 mx-auto rounded-pill form-control">
+                </div>
+                <div class="row ml-1">
+                    <div *ngIf="firstname.invalid" class="text-danger">
+                        <div *ngIf="firstname.errors?.required">
+                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre prénom</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Votre email : </label>
+                    <input type="mail" formControlName="mail" class="col-10 mx-auto rounded-pill form-control">
+                </div>
+                <div class="row ml-1">
+                    <div *ngIf="mail.invalid" class="text-danger">
+                        <div *ngIf="mail.errors?.required">
+                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre email</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pt-1">
+                    <label class="text-search-form col-10 text-left">Téléphone : </label>
+                    <input type="phone" formControlName="phone" class="col-10 mx-auto rounded-pill form-control">
+                </div>
+                <div class="row ml-1">
+                    <div *ngIf="phone.invalid" class="text-danger">
+                        <div *ngIf="phone.errors?.required">
+                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre nom</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <p class="col-10 mx-auto text-justify conditions">
+                        En soumettant ce formulaire, j'accepte que les informations saisies dans ce formulaire soient
+                        utilisées, exploitées, traitées dans le cadre de la relation commerciale.
+                    </p>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="!notConfirm">
+            <p>Estimation demandée avec succès</p>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div *ngIf="notConfirm">
+            <button class="btn btn-outline-primary" [disabled]="!alertForm.valid" type="submit" (click)="onSubmit()">Demander une estimation</button>
+        </div>
+        <div *ngIf="!notConfirm">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Fermer</button>
+        </div>
+    </div>
+</ng-template>
+
+<div (click)="openScrollableContent(longContent)"><i class="bi bi-calculator"></i>Estimer mon bien</div>

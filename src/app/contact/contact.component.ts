@@ -28,4 +28,17 @@ export class ContactComponent implements OnInit {
     this.sendMail.sendMail(user);
   }
 
+  get name(){
+    return this.contactForm.get('message')
+  }
+  get mail(){
+    return this.contactForm.get('mail')
+  }
+  get phone(){
+    return this.contactForm.get('phone')
+  }
+  get message(){
+    return this.contactForm.get('message')
+  }
+
 }

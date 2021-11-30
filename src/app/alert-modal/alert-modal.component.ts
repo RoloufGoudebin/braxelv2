@@ -95,7 +95,7 @@ export class AlertModalComponent {
 
       let user = {
         message : "<p>Alerte pour des biens à " + goal +"</p>" + 
-        "<p>Type(s) de biens: " + type + "</p>" +
+        "<p>Type(s) de bien(s): " + type + "</p>" +
         "<p>Codes postaux : " + this.alertForm.value.zip + "</p>" +
         "<p>Nombre de chambres : entre " + this.sliderRooms.minValue + " et " + this.sliderRooms.highValue + "</p>" +
         "<p>Budget : entre " +this.sliderPrice.minValue + " et " + budget + "</p>" +
