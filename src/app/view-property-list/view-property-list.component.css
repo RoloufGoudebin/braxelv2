@@ -60,7 +60,7 @@ h5 {
   }
 
   .card-title{
-    min-height: 75px;
+    min-height: 75px !important;
   }
 
   .card {
