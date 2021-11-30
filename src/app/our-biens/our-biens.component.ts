@@ -5,6 +5,10 @@ import { Options } from "@angular-slider/ngx-slider";
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service'
 import { FirestoreService } from '../services/firebase/firestore.service';
 import { Property } from '../services/omnicasa/interface';
+import { Observable, Subject } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
+
+import data from '../json/zip.json'
 
 
 interface SliderDetails {
@@ -15,12 +19,19 @@ interface SliderDetails {
 
 
 
+
+
 @Component({
   selector: 'app-our-biens',
   templateUrl: './our-biens.component.html',
   styleUrls: ['./our-biens.component.css']
 })
 export class OurBiensComponent implements OnInit {
+
+  listOfZips = data;
+  searchText = new Subject();
+  results: Observable<string[]>;
+
 
   numberProperty = 9;
 
@@ -45,12 +56,14 @@ export class OurBiensComponent implements OnInit {
   toSearch: Property[];
   types: any;
   items: any;
+  ceilBudget
 
 
 
   constructor(public firestore: FirestoreService) { }
 
   ngOnInit(): void {
+
     this.types = [
       { id: 1, name: 'Maison' },
       { id: 2, name: 'Appartement' },
@@ -82,9 +95,9 @@ export class OurBiensComponent implements OnInit {
       }));
   }
 
-  
 
-  
+
+
 
   get f() { return this.registerForm.controls; }
 
@@ -103,7 +116,9 @@ export class OurBiensComponent implements OnInit {
   toggleClass(item) {
     this.items[0].select = false;
     this.items[1].select = false;
+    this.sliderBudget.options.ceil = 20000;
     item.select = !item.select;
+    console.log(this.sliderBudget.options.ceil)
     if (this.items[0].select) {
       this.goal = 0;
     }
@@ -113,23 +128,25 @@ export class OurBiensComponent implements OnInit {
     this.goalSelect = true;
   }
 
-  searchProperty(goal: number, status: number, type: number[], zip: number, minRoom: number, maxRoom: number, minPrice: number, maxPrice: number) {
+  searchProperty(goal: number, status: number, type: number[], zip: number[], minRoom: number, maxRoom: number, minPrice: number, maxPrice: number) {
     var toReturn: Property[];
     toReturn = [];
     for (let i = this.toSearch.length - 1; i >= 0; i--) {
       if (this.toSearch[i].Goal == goal && this.toSearch[i].SubStatus == status) {
         for (let j = 0; j < type.length; j++) {
           if (type[j] == this.toSearch[i].WebID) {
-            if (this.toSearch[i].Zip == zip) {
-              if (this.toSearch[i].NumberOfBedRooms) {
-                if (this.toSearch[i].NumberOfBedRooms >= minRoom && this.toSearch[i].NumberOfBedRooms <= maxRoom) {
-                  if (this.toSearch[i].Price >= minPrice && this.toSearch[i].Price <= maxPrice) {
-                    toReturn.push(this.toSearch[i]);
+            for (let k = 0; k < zip.length; k++) {
+              if (this.toSearch[i].Zip == zip[k]) {
+                if (this.toSearch[i].NumberOfBedRooms) {
+                  if (this.toSearch[i].NumberOfBedRooms >= minRoom && this.toSearch[i].NumberOfBedRooms <= maxRoom) {
+                    if (this.toSearch[i].Price >= minPrice && this.toSearch[i].Price <= maxPrice) {
+                      toReturn.push(this.toSearch[i]);
+                    }
                   }
                 }
-              }
-              else if (this.toSearch[i].Price >= minPrice && this.toSearch[i].Price <= maxPrice) {
-                toReturn.push(this.toSearch[i]);
+                else if (this.toSearch[i].Price >= minPrice && this.toSearch[i].Price <= maxPrice) {
+                  toReturn.push(this.toSearch[i]);
+                }
               }
             }
           }
@@ -160,10 +177,10 @@ export class OurBiensComponent implements OnInit {
         ceil: 2000000,
         step: 10000,
         translate: (value: number): string => {
-          if(value==2000000){
+          if (value == 2000000) {
             return "+" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
           }
-            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
+          return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
         }
       }
     }
@@ -171,6 +188,7 @@ export class OurBiensComponent implements OnInit {
   lowerThan(one: number, two: number) {
     return one < two;
   }
+
 
   get selected() { return this.registerForm.get('selected'); }
   get zip() { return this.registerForm.get('zip'); }

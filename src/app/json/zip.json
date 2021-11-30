@@ -1,0 +1,1530 @@
+[
+    {
+        "localite": "BRAINE-L'ALLEUD (1420)",
+        "zip": "1420"
+    },
+    {
+        "localite": "WATERLOO (1410)",
+        "zip": "1410"
+    },
+    {
+        "localite": "UCCLE (1180)",
+        "zip": "1180"
+    },
+    {
+        "localite": "LASNE (1380)",
+        "zip": "1380"
+    },
+    {
+        "localite": "RHODE-SAINT-GENÈSE (1640)",
+        "zip": "1640"
+    },
+    {
+        "localite": "NIVELLES (1400)",
+        "zip": "1400"
+    },
+    {
+        "localite": "BRAINE-LE-CHÂTEAU (1440)",
+        "zip": "1440"
+    },
+    {
+        "localite": "GANSHOREN (1083)",
+        "zip": "1083"
+    },
+    {
+        "localite": "MOLENBEEK-SAINT-JEAN (1080)",
+        "zip": "1080"
+    },
+    {
+        "localite": "WATERMAEL-BOITSFORT (1170)",
+        "zip": "1170"
+    },
+    {
+        "localite": "ANDERLECHT (1070)",
+        "zip": "1070"
+    },
+    {
+        "localite": "AUDERGHEM (1160)",
+        "zip": "1160"
+    },
+    {
+        "localite": "WOLUWE-SAINT-PIERRE (1150)",
+        "zip": "1150"
+    },
+    {
+        "localite": "EVERE (1140)",
+        "zip": "1140"
+    },
+    {
+        "localite": "JETTE (1090)",
+        "zip": "1090"
+    },
+    {
+        "localite": "WOLUWE-SAINT-LAMBERT (1200)",
+        "zip": "1200"
+    },
+    {
+        "localite": "BRUXELLES (1000)",
+        "zip": "1000"
+    },
+    {
+        "localite": "FOREST (1190)",
+        "zip": "1190"
+    },
+    {
+        "localite": "Haren (1130)",
+        "zip": "1130"
+    },
+    {
+        "localite": "SAINT-GILLES (1060)",
+        "zip": "1060"
+    },
+    {
+        "localite": "Neder-Over-Heembeek (1120)",
+        "zip": "1120"
+    },
+    {
+        "localite": "IXELLES (1050)",
+        "zip": "1050"
+    },
+    {
+        "localite": "Laeken (1020)",
+        "zip": "1020"
+    },
+    {
+        "localite": "SCHAERBEEK (1030)",
+        "zip": "1030"
+    },
+    {
+        "localite": "BERCHEM-SAINTE-AGATHE (1082)",
+        "zip": "1082"
+    },
+    {
+        "localite": "ETTERBEEK (1040)",
+        "zip": "1040"
+    },
+    {
+        "localite": "SAINT-JOSSE-TEN-NOODE (1210)",
+        "zip": "1210"
+    },
+    {
+        "localite": "KOEKELBERG (1081)",
+        "zip": "1081"
+    },
+    {
+        "localite": "Clabecq (1480)",
+        "zip": "1480"
+    },
+    {
+        "localite": "Grand-Rosière-Hottomont (1367)",
+        "zip": "1367"
+    },
+    {
+        "localite": "Noduwez (1350)",
+        "zip": "1350"
+    },
+    {
+        "localite": "Pietrain (1370)",
+        "zip": "1370"
+    },
+    {
+        "localite": "Maransart (1380)",
+        "zip": "1380"
+    },
+    {
+        "localite": "Tourinnes-La-Grosse (1320)",
+        "zip": "1320"
+    },
+    {
+        "localite": "Wauthier-Braine (1440)",
+        "zip": "1440"
+    },
+    {
+        "localite": "CHAUMONT-GISTOUX (1325)",
+        "zip": "1325"
+    },
+    {
+        "localite": "Corroy-Le-Grand (1325)",
+        "zip": "1325"
+    },
+    {
+        "localite": "Folx-Les-Caves (1350)",
+        "zip": "1350"
+    },
+    {
+        "localite": "Lillois-Witterzee (1428)",
+        "zip": "1428"
+    },
+    {
+        "localite": "Oisquercq (1480)",
+        "zip": "1480"
+    },
+    {
+        "localite": "Plancenoit (1380)",
+        "zip": "1380"
+    },
+    {
+        "localite": "Bousval (1470)",
+        "zip": "1470"
+    },
+    {
+        "localite": "Cortil-Noirmont (1450)",
+        "zip": "1450"
+    },
+    {
+        "localite": "Jauche (1350)",
+        "zip": "1350"
+    },
+    {
+        "localite": "ORP-JAUCHE (1350)",
+        "zip": "1350"
+    },
+    {
+        "localite": "RAMILLIES (1367)",
+        "zip": "1367"
+    },
+    {
+        "localite": "Saint-Remy-Geest (1370)",
+        "zip": "1370"
+    },
+    {
+        "localite": "Lasne-Chapelle-Saint-Lambert (1380)",
+        "zip": "1380"
+    },
+    {
+        "localite": "Melin (1370)",
+        "zip": "1370"
+    },
+    {
+        "localite": "Opprebais (1315)",
+        "zip": "1315"
+    },
+    {
+        "localite": "REBECQ (1430)",
+        "zip": "1430"
+    },
+    {
+        "localite": "COURT-SAINT-ETIENNE (1490)",
+        "zip": "1490"
+    },
+    {
+        "localite": "LA HULPE (1310)",
+        "zip": "1310"
+    },
+    {
+        "localite": "Louvain-La-Neuve (1348)",
+        "zip": "1348"
+    },
+    {
+        "localite": "Thines (1402)",
+        "zip": "1402"
+    },
+    {
+        "localite": "Bonlez (1325)",
+        "zip": "1325"
+    },
+    {
+        "localite": "Malèves-Sainte-Marie-Wastinnes (1360)",
+        "zip": "1360"
+    },
+    {
+        "localite": "OTTIGNIES-LOUVAIN-LA-NEUVE (1340)",
+        "zip": "1340"
+    },
+    {
+        "localite": "Virginal-Samme (1460)",
+        "zip": "1460"
+    },
+    {
+        "localite": "WAVRE (1300)",
+        "zip": "1300"
+    },
+    {
+        "localite": "Baulers (1401)",
+        "zip": "1401"
+    },
+    {
+        "localite": "Bomal (1367)",
+        "zip": "1367"
+    },
+    {
+        "localite": "Hamme-Mille (1320)",
+        "zip": "1320"
+    },
+    {
+        "localite": "Mont-Saint-Andre (1367)",
+        "zip": "1367"
+    },
+    {
+        "localite": "VILLERS-LA-VILLE (1495)",
+        "zip": "1495"
+    },
+    {
+        "localite": "WALHAIN (1457)",
+        "zip": "1457"
+    },
+    {
+        "localite": "Quenast (1430)",
+        "zip": "1430"
+    },
+    {
+        "localite": "TUBIZE (1480)",
+        "zip": "1480"
+    },
+    {
+        "localite": "ITTRE (1460)",
+        "zip": "1460"
+    },
+    {
+        "localite": "Nil-Saint-Vincent-Saint-Martin (1457)",
+        "zip": "1457"
+    },
+    {
+        "localite": "Autre-Eglise (1367)",
+        "zip": "1367"
+    },
+    {
+        "localite": "Enines (1350)",
+        "zip": "1350"
+    },
+    {
+        "localite": "Glabais (1473)",
+        "zip": "1473"
+    },
+    {
+        "localite": "Neerheylissem (1357)",
+        "zip": "1357"
+    },
+    {
+        "localite": "Rebecq-Rognon (1430)",
+        "zip": "1430"
+    },
+    {
+        "localite": "Couture-Saint-Germain (1380)",
+        "zip": "1380"
+    },
+    {
+        "localite": "Glimes (1315)",
+        "zip": "1315"
+    },
+    {
+        "localite": "JODOIGNE (1370)",
+        "zip": "1370"
+    },
+    {
+        "localite": "Ceroux-Mousty (1341)",
+        "zip": "1341"
+    },
+    {
+        "localite": "Dongelberg (1370)",
+        "zip": "1370"
+    },
+    {
+        "localite": "GREZ-DOICEAU (1390)",
+        "zip": "1390"
+    },
+    {
+        "localite": "Linsmeau (1357)",
+        "zip": "1357"
+    },
+    {
+        "localite": "Nodebais (1320)",
+        "zip": "1320"
+    },
+    {
+        "localite": "Pietrebais (1315)",
+        "zip": "1315"
+    },
+    {
+        "localite": "Saint-Jean-Geest (1370)",
+        "zip": "1370"
+    },
+    {
+        "localite": "Tourinnes-Saint-Lambert (1457)",
+        "zip": "1457"
+    },
+    {
+        "localite": "Vieux-Genappe (1472)",
+        "zip": "1472"
+    },
+    {
+        "localite": "Walhain-Saint-Paul (1457)",
+        "zip": "1457"
+    },
+    {
+        "localite": "Ways (1474)",
+        "zip": "1474"
+    },
+    {
+        "localite": "CHASTRE (1450)",
+        "zip": "1450"
+    },
+    {
+        "localite": "RIXENSART (1330)",
+        "zip": "1330"
+    },
+    {
+        "localite": "Saintes (1480)",
+        "zip": "1480"
+    },
+    {
+        "localite": "Marilles (1350)",
+        "zip": "1350"
+    },
+    {
+        "localite": "Ottignies (1340)",
+        "zip": "1340"
+    },
+    {
+        "localite": "Tilly (1495)",
+        "zip": "1495"
+    },
+    {
+        "localite": "Bierghes (1430)",
+        "zip": "1430"
+    },
+    {
+        "localite": "Bossut-Gottechain (1390)",
+        "zip": "1390"
+    },
+    {
+        "localite": "Chastre-Villeroux-Blanmont (1450)",
+        "zip": "1450"
+    },
+    {
+        "localite": "Genval (1332)",
+        "zip": "1332"
+    },
+    {
+        "localite": "Gerompont (1367)",
+        "zip": "1367"
+    },
+    {
+        "localite": "INCOURT (1315)",
+        "zip": "1315"
+    },
+    {
+        "localite": "Jauchelette (1370)",
+        "zip": "1370"
+    },
+    {
+        "localite": "Limelette (1342)",
+        "zip": "1342"
+    },
+    {
+        "localite": "Bornival (1404)",
+        "zip": "1404"
+    },
+    {
+        "localite": "Haut-Ittre (1461)",
+        "zip": "1461"
+    },
+    {
+        "localite": "Jodoigne-Souveraine (1370)",
+        "zip": "1370"
+    },
+    {
+        "localite": "Limal (1300)",
+        "zip": "1300"
+    },
+    {
+        "localite": "Loupoigne (1471)",
+        "zip": "1471"
+    },
+    {
+        "localite": "GENAPPE (1470)",
+        "zip": "1470"
+    },
+    {
+        "localite": "Monstreux (1400)",
+        "zip": "1400"
+    },
+    {
+        "localite": "Roux-Miroir (1315)",
+        "zip": "1315"
+    },
+    {
+        "localite": "Mellery (1495)",
+        "zip": "1495"
+    },
+    {
+        "localite": "Thorembais-Saint-Trond (1360)",
+        "zip": "1360"
+    },
+    {
+        "localite": "Zetrud-Lumay (1370)",
+        "zip": "1370"
+    },
+    {
+        "localite": "Houtain-Le-Val (1476)",
+        "zip": "1476"
+    },
+    {
+        "localite": "Marbais (1495)",
+        "zip": "1495"
+    },
+    {
+        "localite": "Corbais (1435)",
+        "zip": "1435"
+    },
+    {
+        "localite": "Ophain-Bois-Seigneur-Isaac (1421)",
+        "zip": "1421"
+    },
+    {
+        "localite": "Opheylissem (1357)",
+        "zip": "1357"
+    },
+    {
+        "localite": "Orbais (1360)",
+        "zip": "1360"
+    },
+    {
+        "localite": "Biez (1390)",
+        "zip": "1390"
+    },
+    {
+        "localite": "Longueville (1325)",
+        "zip": "1325"
+    },
+    {
+        "localite": "Sart-Dames-Avelines (1495)",
+        "zip": "1495"
+    },
+    {
+        "localite": "BEAUVECHAIN (1320)",
+        "zip": "1320"
+    },
+    {
+        "localite": "Hevillers (1435)",
+        "zip": "1435"
+    },
+    {
+        "localite": "Huppaye (1367)",
+        "zip": "1367"
+    },
+    {
+        "localite": "Jandrain-Jandrenouille (1350)",
+        "zip": "1350"
+    },
+    {
+        "localite": "Nethen (1390)",
+        "zip": "1390"
+    },
+    {
+        "localite": "Thorembais-Les-Beguines (1360)",
+        "zip": "1360"
+    },
+    {
+        "localite": "Rosières (1331)",
+        "zip": "1331"
+    },
+    {
+        "localite": "Saint-Gery (1450)",
+        "zip": "1450"
+    },
+    {
+        "localite": "Baisy-Thy (1470)",
+        "zip": "1470"
+    },
+    {
+        "localite": "Dion-Valmont (1325)",
+        "zip": "1325"
+    },
+    {
+        "localite": "MONT-SAINT-GUIBERT (1435)",
+        "zip": "1435"
+    },
+    {
+        "localite": "Ohain (1380)",
+        "zip": "1380"
+    },
+    {
+        "localite": "Orp-Le-Grand (1350)",
+        "zip": "1350"
+    },
+    {
+        "localite": "Archennes (1390)",
+        "zip": "1390"
+    },
+    {
+        "localite": "Bierges (1301)",
+        "zip": "1301"
+    },
+    {
+        "localite": "PERWEZ (1360)",
+        "zip": "1360"
+    },
+    {
+        "localite": "L'Ecluse (1320)",
+        "zip": "1320"
+    },
+    {
+        "localite": "Geest-Gerompont-Petit-Rosière (1367)",
+        "zip": "1367"
+    },
+    {
+        "localite": "Gentinnes (1450)",
+        "zip": "1450"
+    },
+    {
+        "localite": "HeLeCINE (1357)",
+        "zip": "1357"
+    },
+    {
+        "localite": "Lathuy (1370)",
+        "zip": "1370"
+    },
+    {
+        "localite": "Attenhoven (3404)",
+        "zip": "3404"
+    },
+    {
+        "localite": "BEKKEVOORT (3460)",
+        "zip": "3460"
+    },
+    {
+        "localite": "Heverlee (3001)",
+        "zip": "3001"
+    },
+    {
+        "localite": "KEERBERGEN (3140)",
+        "zip": "3140"
+    },
+    {
+        "localite": "Waanrode (3473)",
+        "zip": "3473"
+    },
+    {
+        "localite": "Berg (1910)",
+        "zip": "1910"
+    },
+    {
+        "localite": "Kumtich (3300)",
+        "zip": "3300"
+    },
+    {
+        "localite": "LUBBEEK (3210)",
+        "zip": "3210"
+    },
+    {
+        "localite": "Strijtem (1760)",
+        "zip": "1760"
+    },
+    {
+        "localite": "Werchter (3118)",
+        "zip": "3118"
+    },
+    {
+        "localite": "HERNE (1540)",
+        "zip": "1540"
+    },
+    {
+        "localite": "KAMPENHOUT (1910)",
+        "zip": "1910"
+    },
+    {
+        "localite": "KORTENAKEN (3470)",
+        "zip": "3470"
+    },
+    {
+        "localite": "Leerbeek (1755)",
+        "zip": "1755"
+    },
+    {
+        "localite": "Ottenburg (3040)",
+        "zip": "3040"
+    },
+    {
+        "localite": "Outgaarden (3321)",
+        "zip": "3321"
+    },
+    {
+        "localite": "Sint-Martens-Lennik (1750)",
+        "zip": "1750"
+    },
+    {
+        "localite": "Borchtlombeek (1761)",
+        "zip": "1761"
+    },
+    {
+        "localite": "Brussegem (1785)",
+        "zip": "1785"
+    },
+    {
+        "localite": "Goetsenhoven (3300)",
+        "zip": "3300"
+    },
+    {
+        "localite": "LANDEN (3400)",
+        "zip": "3400"
+    },
+    {
+        "localite": "LINKEBEEK (1630)",
+        "zip": "1630"
+    },
+    {
+        "localite": "Overwinden (3400)",
+        "zip": "3400"
+    },
+    {
+        "localite": "Perk (1820)",
+        "zip": "1820"
+    },
+    {
+        "localite": "Sint-Joris-Winge (3390)",
+        "zip": "3390"
+    },
+    {
+        "localite": "Tildonk (3150)",
+        "zip": "3150"
+    },
+    {
+        "localite": "Tollembeek (1570)",
+        "zip": "1570"
+    },
+    {
+        "localite": "Wange (3400)",
+        "zip": "3400"
+    },
+    {
+        "localite": "MEISE (1860)",
+        "zip": "1860"
+    },
+    {
+        "localite": "Nieuwrode (3221)",
+        "zip": "3221"
+    },
+    {
+        "localite": "TERVUREN (3080)",
+        "zip": "3080"
+    },
+    {
+        "localite": "Vossem (3080)",
+        "zip": "3080"
+    },
+    {
+        "localite": "Wolvertem (1861)",
+        "zip": "1861"
+    },
+    {
+        "localite": "Buizingen (1501)",
+        "zip": "1501"
+    },
+    {
+        "localite": "GALMAARDEN (1570)",
+        "zip": "1570"
+    },
+    {
+        "localite": "Groot-Bijgaarden (1702)",
+        "zip": "1702"
+    },
+    {
+        "localite": "Itterbeek (1701)",
+        "zip": "1701"
+    },
+    {
+        "localite": "Kapellen (3381)",
+        "zip": "3381"
+    },
+    {
+        "localite": "Meensel-Kiezegem (3391)",
+        "zip": "3391"
+    },
+    {
+        "localite": "Neerhespen (3350)",
+        "zip": "3350"
+    },
+    {
+        "localite": "Neerlinter (3350)",
+        "zip": "3350"
+    },
+    {
+        "localite": "Oplinter (3300)",
+        "zip": "3300"
+    },
+    {
+        "localite": "OUD-HEVERLEE (3050)",
+        "zip": "3050"
+    },
+    {
+        "localite": "Rillaar (3202)",
+        "zip": "3202"
+    },
+    {
+        "localite": "Rumsdorp (3400)",
+        "zip": "3400"
+    },
+    {
+        "localite": "Vertrijk (3370)",
+        "zip": "3370"
+    },
+    {
+        "localite": "AFFLIGEM (1790)",
+        "zip": "1790"
+    },
+    {
+        "localite": "Averbode (3271)",
+        "zip": "3271"
+    },
+    {
+        "localite": "Bekkerzeel (1730)",
+        "zip": "1730"
+    },
+    {
+        "localite": "BOORTMEERBEEK (3190)",
+        "zip": "3190"
+    },
+    {
+        "localite": "Mollem (1730)",
+        "zip": "1730"
+    },
+    {
+        "localite": "Nederokkerzeel (1910)",
+        "zip": "1910"
+    },
+    {
+        "localite": "Orsmaal-Gussenhoven (3350)",
+        "zip": "3350"
+    },
+    {
+        "localite": "Walsbets (3401)",
+        "zip": "3401"
+    },
+    {
+        "localite": "Wambeek (1741)",
+        "zip": "1741"
+    },
+    {
+        "localite": "Zichem (3271)",
+        "zip": "3271"
+    },
+    {
+        "localite": "Bunsbeek (3380)",
+        "zip": "3380"
+    },
+    {
+        "localite": "Houwaart (3390)",
+        "zip": "3390"
+    },
+    {
+        "localite": "Huizingen (1654)",
+        "zip": "1654"
+    },
+    {
+        "localite": "Leefdaal (3061)",
+        "zip": "3061"
+    },
+    {
+        "localite": "LENNIK (1750)",
+        "zip": "1750"
+    },
+    {
+        "localite": "Assent (3460)",
+        "zip": "3460"
+    },
+    {
+        "localite": "Hoeleden (3471)",
+        "zip": "3471"
+    },
+    {
+        "localite": "Mazenzele (1745)",
+        "zip": "1745"
+    },
+    {
+        "localite": "Molenstede (3294)",
+        "zip": "3294"
+    },
+    {
+        "localite": "Neerwinden (3400)",
+        "zip": "3400"
+    },
+    {
+        "localite": "Sterrebeek (1933)",
+        "zip": "1933"
+    },
+    {
+        "localite": "Wezeren (3401)",
+        "zip": "3401"
+    },
+    {
+        "localite": "Wezemaal (3111)",
+        "zip": "3111"
+    },
+    {
+        "localite": "Ramsdonk (1880)",
+        "zip": "1880"
+    },
+    {
+        "localite": "Vaalbeek (3054)",
+        "zip": "3054"
+    },
+    {
+        "localite": "Humbeek (1851)",
+        "zip": "1851"
+    },
+    {
+        "localite": "Korbeek-Lo (3360)",
+        "zip": "3360"
+    },
+    {
+        "localite": "Laar (3400)",
+        "zip": "3400"
+    },
+    {
+        "localite": "Linden (3210)",
+        "zip": "3210"
+    },
+    {
+        "localite": "Lovenjoel (3360)",
+        "zip": "3360"
+    },
+    {
+        "localite": "BEGIJNENDIJK (3130)",
+        "zip": "3130"
+    },
+    {
+        "localite": "Meerbeek (3078)",
+        "zip": "3078"
+    },
+    {
+        "localite": "Neerijse (3040)",
+        "zip": "3040"
+    },
+    {
+        "localite": "PEPINGEN (1670)",
+        "zip": "1670"
+    },
+    {
+        "localite": "TIELT-WINGE (3390)",
+        "zip": "3390"
+    },
+    {
+        "localite": "Walshoutem (3401)",
+        "zip": "3401"
+    },
+    {
+        "localite": "Wijgmaal (3018)",
+        "zip": "3018"
+    },
+    {
+        "localite": "Rummen (3454)",
+        "zip": "3454"
+    },
+    {
+        "localite": "Schepdaal (1703)",
+        "zip": "1703"
+    },
+    {
+        "localite": "Scherpenheuvel (3270)",
+        "zip": "3270"
+    },
+    {
+        "localite": "TERNAT (1740)",
+        "zip": "1740"
+    },
+    {
+        "localite": "Willebringen (3370)",
+        "zip": "3370"
+    },
+    {
+        "localite": "Bost (3300)",
+        "zip": "3300"
+    },
+    {
+        "localite": "Helen-Bos (3440)",
+        "zip": "3440"
+    },
+    {
+        "localite": "Kobbegem (1730)",
+        "zip": "1730"
+    },
+    {
+        "localite": "Loonbeek (3040)",
+        "zip": "3040"
+    },
+    {
+        "localite": "MACHELEN (1830)",
+        "zip": "1830"
+    },
+    {
+        "localite": "Oudenaken (1600)",
+        "zip": "1600"
+    },
+    {
+        "localite": "Sint-Margriete-Houtem (3470)",
+        "zip": "3470"
+    },
+    {
+        "localite": "TIENEN (3300)",
+        "zip": "3300"
+    },
+    {
+        "localite": "Baal (3128)",
+        "zip": "3128"
+    },
+    {
+        "localite": "BOUTERSEM (3370)",
+        "zip": "3370"
+    },
+    {
+        "localite": "KORTENBERG (3070)",
+        "zip": "3070"
+    },
+    {
+        "localite": "Langdorp (3201)",
+        "zip": "3201"
+    },
+    {
+        "localite": "Sint-Ulriks-Kapelle (1700)",
+        "zip": "1700"
+    },
+    {
+        "localite": "Strombeek-Bever (1853)",
+        "zip": "1853"
+    },
+    {
+        "localite": "Veltem-Beisem (3020)",
+        "zip": "3020"
+    },
+    {
+        "localite": "Weerde (1982)",
+        "zip": "1982"
+    },
+    {
+        "localite": "Beigem (1852)",
+        "zip": "1852"
+    },
+    {
+        "localite": "Blanden (3052)",
+        "zip": "3052"
+    },
+    {
+        "localite": "Budingen (3440)",
+        "zip": "3440"
+    },
+    {
+        "localite": "Duisburg (3080)",
+        "zip": "3080"
+    },
+    {
+        "localite": "Eppegem (1980)",
+        "zip": "1980"
+    },
+    {
+        "localite": "OPWIJK (1745)",
+        "zip": "1745"
+    },
+    {
+        "localite": "Kaggevinne (3293)",
+        "zip": "3293"
+    },
+    {
+        "localite": "SCHERPENHEUVEL-ZICHEM (3270)",
+        "zip": "3270"
+    },
+    {
+        "localite": "ZOUTLEEUW (3440)",
+        "zip": "3440"
+    },
+    {
+        "localite": "Melsbroek (1820)",
+        "zip": "1820"
+    },
+    {
+        "localite": "HALLE (1500)",
+        "zip": "1500"
+    },
+    {
+        "localite": "Kester (1755)",
+        "zip": "1755"
+    },
+    {
+        "localite": "Lembeek (1502)",
+        "zip": "1502"
+    },
+    {
+        "localite": "Sint-Pieters-Rode (3220)",
+        "zip": "3220"
+    },
+    {
+        "localite": "STEENOKKERZEEL (1820)",
+        "zip": "1820"
+    },
+    {
+        "localite": "ZAVENTEM (1930)",
+        "zip": "1930"
+    },
+    {
+        "localite": "DIEST (3290)",
+        "zip": "3290"
+    },
+    {
+        "localite": "GOOIK (1755)",
+        "zip": "1755"
+    },
+    {
+        "localite": "Hekelgem (1790)",
+        "zip": "1790"
+    },
+    {
+        "localite": "Pellenberg (3212)",
+        "zip": "3212"
+    },
+    {
+        "localite": "ROOSDAAL (1760)",
+        "zip": "1760"
+    },
+    {
+        "localite": "SINT-PIETERS-LEEUW (1600)",
+        "zip": "1600"
+    },
+    {
+        "localite": "Tielt (3390)",
+        "zip": "3390"
+    },
+    {
+        "localite": "Zellik (1731)",
+        "zip": "1731"
+    },
+    {
+        "localite": "HERENT (3020)",
+        "zip": "3020"
+    },
+    {
+        "localite": "HOEGAARDEN (3320)",
+        "zip": "3320"
+    },
+    {
+        "localite": "Opvelp (3360)",
+        "zip": "3360"
+    },
+    {
+        "localite": "VILVOORDE (1800)",
+        "zip": "1800"
+    },
+    {
+        "localite": "Vissenaken (3300)",
+        "zip": "3300"
+    },
+    {
+        "localite": "AARSCHOT (3200)",
+        "zip": "3200"
+    },
+    {
+        "localite": "Dormaal (3440)",
+        "zip": "3440"
+    },
+    {
+        "localite": "DROGENBOS (1620)",
+        "zip": "1620"
+    },
+    {
+        "localite": "Dworp (1653)",
+        "zip": "1653"
+    },
+    {
+        "localite": "Elingen (1671)",
+        "zip": "1671"
+    },
+    {
+        "localite": "Hever (3191)",
+        "zip": "3191"
+    },
+    {
+        "localite": "HOEILAART (1560)",
+        "zip": "1560"
+    },
+    {
+        "localite": "Kessel Lo (3010)",
+        "zip": "3010"
+    },
+    {
+        "localite": "Neervelp (3370)",
+        "zip": "3370"
+    },
+    {
+        "localite": "Oorbeek (3300)",
+        "zip": "3300"
+    },
+    {
+        "localite": "Relegem (1731)",
+        "zip": "1731"
+    },
+    {
+        "localite": "Sint-Laureins-Berchem (1600)",
+        "zip": "1600"
+    },
+    {
+        "localite": "WEZEMBEEK-OPPEM (1970)",
+        "zip": "1970"
+    },
+    {
+        "localite": "BIERBEEK (3360)",
+        "zip": "3360"
+    },
+    {
+        "localite": "BIeVÈNE (1547)",
+        "zip": "1547"
+    },
+    {
+        "localite": "Ezemaal (3400)",
+        "zip": "3400"
+    },
+    {
+        "localite": "Gelrode (3200)",
+        "zip": "3200"
+    },
+    {
+        "localite": "GRIMBERGEN (1850)",
+        "zip": "1850"
+    },
+    {
+        "localite": "Halle-Booienhoven (3440)",
+        "zip": "3440"
+    },
+    {
+        "localite": "KAPELLE-OP-DEN-BOS (1880)",
+        "zip": "1880"
+    },
+    {
+        "localite": "MERCHTEM (1785)",
+        "zip": "1785"
+    },
+    {
+        "localite": "Sint-Stevens-Woluwe (1932)",
+        "zip": "1932"
+    },
+    {
+        "localite": "Waasmont (3401)",
+        "zip": "3401"
+    },
+    {
+        "localite": "Winksele (3020)",
+        "zip": "3020"
+    },
+    {
+        "localite": "Ransberg (3470)",
+        "zip": "3470"
+    },
+    {
+        "localite": "Sint-Martens-Bodegem (1700)",
+        "zip": "1700"
+    },
+    {
+        "localite": "Sint-Pieters-Kapelle (1541)",
+        "zip": "1541"
+    },
+    {
+        "localite": "Messelbroek (3272)",
+        "zip": "3272"
+    },
+    {
+        "localite": "Molenbeek-Wersbeek (3461)",
+        "zip": "3461"
+    },
+    {
+        "localite": "Sint-Kwintens-Lennik (1750)",
+        "zip": "1750"
+    },
+    {
+        "localite": "Teralfene (1790)",
+        "zip": "1790"
+    },
+    {
+        "localite": "WEMMEL (1780)",
+        "zip": "1780"
+    },
+    {
+        "localite": "Alsemberg (1652)",
+        "zip": "1652"
+    },
+    {
+        "localite": "Everberg (3078)",
+        "zip": "3078"
+    },
+    {
+        "localite": "LINTER (3350)",
+        "zip": "3350"
+    },
+    {
+        "localite": "BERTEM (3060)",
+        "zip": "3060"
+    },
+    {
+        "localite": "DILBEEK (1700)",
+        "zip": "1700"
+    },
+    {
+        "localite": "Gaasbeek (1750)",
+        "zip": "1750"
+    },
+    {
+        "localite": "Haasrode (3053)",
+        "zip": "3053"
+    },
+    {
+        "localite": "HULDENBERG (3040)",
+        "zip": "3040"
+    },
+    {
+        "localite": "Onze-Lieve-Vrouw-Lombeek (1760)",
+        "zip": "1760"
+    },
+    {
+        "localite": "Pamel (1760)",
+        "zip": "1760"
+    },
+    {
+        "localite": "Bogaarden (1670)",
+        "zip": "1670"
+    },
+    {
+        "localite": "Hofstade (1981)",
+        "zip": "1981"
+    },
+    {
+        "localite": "Korbeek-Dijle (3060)",
+        "zip": "3060"
+    },
+    {
+        "localite": "Meldert (3320)",
+        "zip": "3320"
+    },
+    {
+        "localite": "Nieuwenrode (1880)",
+        "zip": "1880"
+    },
+    {
+        "localite": "Buken (1910)",
+        "zip": "1910"
+    },
+    {
+        "localite": "Eliksem (3400)",
+        "zip": "3400"
+    },
+    {
+        "localite": "Erps-Kwerps (3071)",
+        "zip": "3071"
+    },
+    {
+        "localite": "Hakendover (3300)",
+        "zip": "3300"
+    },
+    {
+        "localite": "LEUVEN (3000)",
+        "zip": "3000"
+    },
+    {
+        "localite": "Neerlanden (3404)",
+        "zip": "3404"
+    },
+    {
+        "localite": "Vollezele (1570)",
+        "zip": "1570"
+    },
+    {
+        "localite": "Attenrode (3384)",
+        "zip": "3384"
+    },
+    {
+        "localite": "GLABBEEK (3380)",
+        "zip": "3380"
+    },
+    {
+        "localite": "Grazen (3450)",
+        "zip": "3450"
+    },
+    {
+        "localite": "Kersbeek-Miskom (3472)",
+        "zip": "3472"
+    },
+    {
+        "localite": "LONDERZEEL (1840)",
+        "zip": "1840"
+    },
+    {
+        "localite": "Nossegem (1930)",
+        "zip": "1930"
+    },
+    {
+        "localite": "Ruisbroek (1601)",
+        "zip": "1601"
+    },
+    {
+        "localite": "TREMELO (3120)",
+        "zip": "3120"
+    },
+    {
+        "localite": "Testelt (3272)",
+        "zip": "3272"
+    },
+    {
+        "localite": "Webbekom (3290)",
+        "zip": "3290"
+    },
+    {
+        "localite": "ZEMST (1980)",
+        "zip": "1980"
+    },
+    {
+        "localite": "ASSE (1730)",
+        "zip": "1730"
+    },
+    {
+        "localite": "BEERSEL (1650)",
+        "zip": "1650"
+    },
+    {
+        "localite": "Beert (1673)",
+        "zip": "1673"
+    },
+    {
+        "localite": "Essene (1790)",
+        "zip": "1790"
+    },
+    {
+        "localite": "LIEDEKERKE (1770)",
+        "zip": "1770"
+    },
+    {
+        "localite": "Wilsele (3012)",
+        "zip": "3012"
+    },
+    {
+        "localite": "Herfelingen (1540)",
+        "zip": "1540"
+    },
+    {
+        "localite": "Malderen (1840)",
+        "zip": "1840"
+    },
+    {
+        "localite": "OVERIJSE (3090)",
+        "zip": "3090"
+    },
+    {
+        "localite": "Peutie (1800)",
+        "zip": "1800"
+    },
+    {
+        "localite": "Bellingen (1674)",
+        "zip": "1674"
+    },
+    {
+        "localite": "Elewijt (1982)",
+        "zip": "1982"
+    },
+    {
+        "localite": "KRAAINEM (1950)",
+        "zip": "1950"
+    },
+    {
+        "localite": "Lot (1651)",
+        "zip": "1651"
+    },
+    {
+        "localite": "Oetingen (1755)",
+        "zip": "1755"
+    },
+    {
+        "localite": "Roosbeek (3370)",
+        "zip": "3370"
+    },
+    {
+        "localite": "ROTSELAAR (3110)",
+        "zip": "3110"
+    },
+    {
+        "localite": "Sint-Margriete-Houtem (3300)",
+        "zip": "3300"
+    },
+    {
+        "localite": "Steenhuffel (1840)",
+        "zip": "1840"
+    },
+    {
+        "localite": "Vlezenbeek (1602)",
+        "zip": "1602"
+    },
+    {
+        "localite": "Wommersom (3350)",
+        "zip": "3350"
+    },
+    {
+        "localite": "Diegem (1831)",
+        "zip": "1831"
+    },
+    {
+        "localite": "Drieslinter (3350)",
+        "zip": "3350"
+    },
+    {
+        "localite": "HAACHT (3150)",
+        "zip": "3150"
+    },
+    {
+        "localite": "Kerkom (3370)",
+        "zip": "3370"
+    },
+    {
+        "localite": "Schaffen (3290)",
+        "zip": "3290"
+    },
+    {
+        "localite": "Sint-Katherina-Lombeek (1742)",
+        "zip": "1742"
+    },
+    {
+        "localite": "Betekom (3130)",
+        "zip": "3130"
+    },
+    {
+        "localite": "Binkom (3211)",
+        "zip": "3211"
+    },
+    {
+        "localite": "Deurne (3290)",
+        "zip": "3290"
+    },
+    {
+        "localite": "GEETBETS (3450)",
+        "zip": "3450"
+    },
+    {
+        "localite": "Hamme (1785)",
+        "zip": "1785"
+    },
+    {
+        "localite": "Heikruis (1670)",
+        "zip": "1670"
+    },
+    {
+        "localite": "HOLSBEEK (3220)",
+        "zip": "3220"
+    },
+    {
+        "localite": "Kortrijk-Dutsel (3220)",
+        "zip": "3220"
+    },
+    {
+        "localite": "Melkwezer (3350)",
+        "zip": "3350"
+    },
+    {
+        "localite": "Overhespen (3350)",
+        "zip": "3350"
+    },
+    {
+        "localite": "Sint-Agatha-Rode (3040)",
+        "zip": "3040"
+    },
+    {
+        "localite": "Sint-Joris-Weert (3051)",
+        "zip": "3051"
+    },
+    {
+        "localite": "Wespelaar (3150)",
+        "zip": "3150"
+    }
+]

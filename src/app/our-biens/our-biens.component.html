@@ -21,7 +21,7 @@
                         class="btn rounded-pill col mx-2 mb-2">{{item.name}}</button>
                     </div>
                     <div class="row py-0 my-0" *ngIf="!goalSelect">
-                      <div class="invalid-feedback d-block ml-2">Veuillez choisir une option</div>
+                      <div class="invalid-feedback d-block ml-1">Veuillez choisir une option</div>
                     </div>
                   </div>
                 </div>
@@ -31,35 +31,35 @@
                   <label class="text-search-form col-11 text-left" for="selected">Type
                     de bien :</label>
                   <div class="col-12">
-                    <ng-select bindLabel="selected" [multiple]="true" class="custom" name="selected"
+                    <ng-select bindLabel="selected" class="custom" name="selected" [multiple]="true"
                       formControlName="selected">
                       <ng-option *ngFor="let type of types" [value]="type.id" required>{{type.name}}</ng-option>
                     </ng-select>
                     <div class="row">
-                      <div *ngIf="selected.invalid" class="text-danger">
+                      <div *ngIf="selected.invalid" class="text-danger ml-3">
                         <div *ngIf="selected.errors?.required">
-                          <div class="invalid-feedback d-block ml-2">Veuillez choisir une option</div>
+                          <div class="invalid-feedback d-block">Veuillez choisir une option</div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-
-                <div class="row pt-2">
-                  <label class="text-search-form col-12 text-left">Code Postal :</label>
+                <div class="row">
+                  <label class="text-search-form col-11 text-left" for="zip">Localité/Code Postal</label>
                   <div class="col-12">
-                    <input class="col-12 mx-auto rounded-pill form-control" formControlName="zip" type="text"
-                      name="zip" />
+                    <ng-select class="custom" name="zip" [items]="listOfZips " bindLabel="localite" bindValue="zip"
+                      [multiple]="true" formControlName="zip" [minTermLength]="2"
+                      typeToSearchText="Please enter 2 or more characters" >
+                    </ng-select>
                     <div class="row">
-                      <div *ngIf="zip.invalid" class="text-danger">
+                      <div *ngIf="zip.invalid" class="text-danger ml-3">
                         <div *ngIf="zip.errors?.required">
-                          <div class="invalid-feedback d-block ml-2">Veuillez entre une localité</div>
+                          <div class="invalid-feedback d-block">Veuillez entrer une localité au moins</div>
                         </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
 
                 <div class="row pt-2">
