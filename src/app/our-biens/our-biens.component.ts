@@ -86,6 +86,7 @@ export class OurBiensComponent implements OnInit {
           ...e.payload.doc.data() as Property
         }
       }));
+
     this.firestore.getFirestoreCollection('activeProperties').subscribe(data =>
       this.toSearch = data.map(e => {
         return {
@@ -102,6 +103,7 @@ export class OurBiensComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
+    console.log(this.toShow);
     this.submitted = true;
     this.selectedTypes = this.registerForm.value.selected;
     this.cityZip = this.registerForm.value.zip;

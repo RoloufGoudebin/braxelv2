@@ -2,7 +2,7 @@ import { FocusTrapManager } from '@angular/cdk/a11y/focus-trap/focus-trap-manage
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Listener } from 'selenium-webdriver';
-import { Property } from '../omnicasa/interface';
+import { Property, PropertyList } from '../omnicasa/interface';
 import { OmnicasaService } from '../omnicasa/omnicasa.service';
 
 @Injectable({
@@ -84,13 +84,18 @@ export class FirestoreService {
     this.omnicasaService.getPropertyList()
       .subscribe((data: any) => {
         this.propertyList = data.GetPropertyListJsonResult.Value.Items;
+        let invertPropertyList: Property[];
+        invertPropertyList = [] ;
+        for (let i = 0, j=this.propertyList.length-1; i<this.propertyList.length; i++,j--){
+          invertPropertyList[i] = this.propertyList[j];
+        }
         return new Promise<Property>((resolve, reject) => {
-          for (let i = 0; i < this.propertyList.length; i++) {
-            if (this.propertyList[i].SubStatus == 2) {
+          for (let i = 0; i < invertPropertyList.length; i++) {
+            if (invertPropertyList[i].SubStatus == 2 || invertPropertyList[i].SubStatus == 3) {
               this.firestore
                 .collection("activeProperties")
                 .doc(i.toString())
-                .set(this.propertyList[i])
+                .set(invertPropertyList[i])
             }
           }
         });

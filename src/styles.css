@@ -2,13 +2,13 @@
 
 html, body{
     font-size: 14px;
-    min-height: 100vh;
-    height: auto;
+    height: 100%;
     margin: 0;
 }
 
 .fullheight {
-  min-height: 100vh;
+  min-height: 100%;
+  height: 100vh
 }
 
 .anim-wrap {
@@ -92,3 +92,5 @@ span.slideInRight {
   display: -ms-flexbox;
   display: flex;
 }
+
+

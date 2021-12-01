@@ -43,7 +43,7 @@ async function sendMail(user, callback) {
 
   let mailOptions = {
     from: `Demande d'informations`, // sender address
-    to: ["info@braxel.be","goudeloufrobin@gmail.com","edouard@braxel.be"], // list of receivers
+    to: ["info@braxel.be","goudeloufrobin@gmail.com","edouard@braxel.be","thomas@braxel.be","valentin@braxel.be","francois@braxel.be"], // list of receivers
     subject: "Demande d'informations", // Subject line
     html: `${user.message}`
 

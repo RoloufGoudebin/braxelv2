@@ -1,11 +1,11 @@
 <app-navbar></app-navbar>
-<section class="mission ">
+<section class="mission fullheight">
     <div class="container-fluid">
         <div class="row">
             <div class="col-10 mx-auto">
                 <div class="row">
                     <div class="col-5 d-none d-md-block">
-                        <div class="banner fullheight"></div>
+                        <div class="banner"></div>
                     </div>
                     <div class="col-12 col-md-7 my-auto">
                         <h1>
@@ -95,13 +95,16 @@
             </div>
         </div>
     </div>
+    <div class="field mx-auto mt-5 pt-5">
+        <a mdbPageScroll href="#charte" [pageScrollDuration]="550" class="scroll"></a>
+    </div>
 </section>
 
-<section class="charte pt-5 mt-5">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-10 mx-auto">
-                <div class="row">
+<section class="charte fullheight" id="charte">
+    <div class="container-fluid d-flex h-100">
+        <div class="row justify-content-center align-self-center h-100">
+            <div class="col-10 d-flex h-100">
+                <div class="row h-100 justify-content-center align-self-center">
                     <div class="col-12 col-md-6 my-auto">
                         <h2>
                             Charte de notre agence immobilière
@@ -173,22 +176,25 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-6 d-none d-md-block banner">
-                        <div class="py-5 "></div>
+                    <div class="col-6 d-none d-md-block my-auto">
+                        <img class="img-fluid rounded charte" src="/assets/img/charte-2.jpg">
                     </div>
+                </div>
+                <div class="field mx-auto d-flex">
+                    <a mdbPageScroll href="#presentation" [pageScrollDuration]="550" class="scroll" [pageScrollOffset]="150"></a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="presentation pb-5 mb-5">
+<section class="presentation fullheight" id="presentation">
 
     <!--For >lg bootstrap-->
-    <div class="container-fluid d-none d-lg-block">
-        <div class="row" id="edouard">
-            <div class="col-10 mx-auto">
-                <div class="row">
+    <div class="container-fluid d-flex h-100 d-none d-lg-block">
+        <div class="row h-100r" id="edouard">
+            <div class="col-10 mx-auto h-100">
+                <div class="row align-self-center">
                     <div class="col-6">
                         <div class="row">
                             <div class="col-4 my-auto">
@@ -219,13 +225,16 @@
                                     travaillant activement à son développement, avant de fonder en 2017 avec Thomas
                                     l’agence
                                     immobilière
-                                    Braxel. Sa faculté d’apporter le résultat escompté à vos projets a pour origine, la
+                                    Braxel. Sa faculté d’apporter le résultat escompté à vos projets a pour origine,
+                                    la
                                     préférence
                                     de se
-                                    consacrer exclusivement au courtage immobilier. Ce choix professionnel lui a permis
+                                    consacrer exclusivement au courtage immobilier. Ce choix professionnel lui a
+                                    permis
                                     de
                                     développer
-                                    les compétences adéquates pour toute opération de vente ou de location immobilière.
+                                    les compétences adéquates pour toute opération de vente ou de location
+                                    immobilière.
                                     C’est
                                     avec
                                     le
@@ -259,18 +268,22 @@
                                     </li>
                                 </ul>
                                 <p class="text-justify">
-                                    Actif dans le secteur de l’immobilier depuis 2014. Son expérience dans la location,
+                                    Actif dans le secteur de l’immobilier depuis 2014. Son expérience dans la
+                                    location,
                                     la vente
                                     résidentielle et la promotion neuve lui permettra de vous conseiller avec
                                     pertinence.
                                     Diplômé
                                     d'un
-                                    Master en sciences de gestion à la LSM (UCL), Thomas s’est d’abord orienté vers le
+                                    Master en sciences de gestion à la LSM (UCL), Thomas s’est d’abord orienté vers
+                                    le
                                     domaine
                                     de
-                                    l’enseignement avant de se tourner vers l’immobilier. Il a alors évolué dans la plus
+                                    l’enseignement avant de se tourner vers l’immobilier. Il a alors évolué dans la
+                                    plus
                                     importante
-                                    structure immobilière de Belgique durant plusieurs années et y a appris le métier
+                                    structure immobilière de Belgique durant plusieurs années et y a appris le
+                                    métier
                                     par une
                                     approche
                                     professionnelle et complète.
@@ -278,7 +291,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 mt-md-5">
                         <div class="row">
                             <div class="col-4 my-auto fadeIn">
                                 <img src="assets/img/worker-3.jpg" class="img-fluid zoom">
@@ -302,19 +315,23 @@
                                     </li>
                                 </ul>
                                 <p class="text-justify">
-                                    Bercé dans le monde de l’immobilier depuis son enfance, François décide de rejoindre
+                                    Bercé dans le monde de l’immobilier depuis son enfance, François décide de
+                                    rejoindre
                                     Braxel
                                     durant
-                                    l’année 2019. Passionné et jusqu’au-boutiste, ses priorités sont l’obtention d’un
+                                    l’année 2019. Passionné et jusqu’au-boutiste, ses priorités sont l’obtention
+                                    d’un
                                     résultat
                                     fort pour
-                                    ses clients et la satisfaction de ces derniers en toutes circonstances. Formé depuis
+                                    ses clients et la satisfaction de ces derniers en toutes circonstances. Formé
+                                    depuis
                                     ses
                                     débuts par
                                     Edouard & Thomas, François a spontanément adopté la « philosophie Braxel » comme
                                     standard.
                                     Ses
-                                    compétences et sa motivation à toute épreuve lui confèrent une polyvalence accrue
+                                    compétences et sa motivation à toute épreuve lui confèrent une polyvalence
+                                    accrue
                                     pour
                                     tous
                                     types de
@@ -330,7 +347,7 @@
 
     <!--For <lg bootstrap-->
     <div class="container d-lg-none">
-        <div class="row">
+        <div class="row ">
             <div class="col-4 my-auto">
                 <img src="assets/img/worker-1.jpg" class="img-fluid">
             </div>
@@ -400,9 +417,12 @@
             </div>
             <p class="text-justify col-12">
                 Bercé dans le monde de l’immobilier depuis son enfance, François décide de rejoindre Braxel durant
-                l’année 2019. Passionné et jusqu’au-boutiste, ses priorités sont l’obtention d’un résultat fort pour ses
-                clients et la satisfaction de ces derniers en toutes circonstances. Formé depuis ses débuts par Edouard
-                & Thomas, François a spontanément adopté la « philosophie Braxel » comme standard. Ses compétences et sa
+                l’année 2019. Passionné et jusqu’au-boutiste, ses priorités sont l’obtention d’un résultat fort pour
+                ses
+                clients et la satisfaction de ces derniers en toutes circonstances. Formé depuis ses débuts par
+                Edouard
+                & Thomas, François a spontanément adopté la « philosophie Braxel » comme standard. Ses compétences
+                et sa
                 motivation à toute épreuve lui confèrent une polyvalence accrue pour tous types de dossier.
             </p>
         </div>

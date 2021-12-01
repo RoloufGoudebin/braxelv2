@@ -26,6 +26,7 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
+              "src/styles.scss",
               "src/assets/css/bootstrap.min.css",
               "src/fonts/style.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",

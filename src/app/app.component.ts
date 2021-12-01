@@ -19,7 +19,7 @@ export class AppComponent{
   constructor(private firestore: FirestoreService, private http: HttpClient) { }
 
   ngOnInit() {
-    //this.firestore.createPropertyListActive();
+    this.firestore.createPropertyListActive();
   }
 
   prepareRoute(outlet: RouterOutlet) {
