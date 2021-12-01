@@ -1,5 +1,91 @@
 <app-navbar></app-navbar>
 
+
+<!--Carousel Wrapper-->
+<mdb-carousel [isControls]="true" class="carousel slide" [animation]="'slide'">
+  <!--Caption-->
+  <div class="carousel-caption">
+    <div class=" fullheight d-none d-lg-block">
+      <div class="row">
+        <div class="col-12 mx-auto">
+          <div class="overlay mt-6 pt-2 col-9 mx-auto">
+            <!-- Overlay inner wrapper -->
+            <div class="overlay__inner pt-5 mx-auto">
+              <!-- Title -->
+              <h1 class="overlay__title">
+                Vous avez trouvé vos agents immobiliers,
+                <span class="text-gradient">de confiance</span> en Brabants et à
+                Bruxelles !
+                <hr class="blue">
+              </h1>
+              <!-- Buttons -->
+              <div class="overlay__btns mx-auto">
+  
+                <button class="overlay__btn overlay__btn--transparent" routerLinkActive="active" routerLink="/services">
+                  <span>
+                    Vendre
+                  </span>
+                </button>
+  
+                <button class="overlay__btn overlay__btn--transparent" routerLinkActive="active" routerLink="/services">
+                  <span>Louer</span>
+                  <span class="overlay__btn-emoji"></span>
+                </button>
+  
+                <button class="overlay__btn overlay__btn--colors" routerLinkActive="active" routerLink="/nos-biens">
+                  <span style="white-space: nowrap;">Rechercher un bien</span>
+                  <span class="overlay__btn-emoji">🔑</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  <!--First slide-->
+  <mdb-carousel-item>
+      <!--Mask color-->
+      <div class="view">
+          <!--Video source-->
+          <video class="video-fluid" autoplay loop>
+              <source src="../assets/img/home-enfant.mp4" type="video/mp4" />
+          </video>
+          <div class="mask rgba-indigo-light waves-light" mdbWavesEffect></div>
+      </div>
+
+    
+  </mdb-carousel-item>
+  <!--/First slide-->
+  <!--Second slide-->
+  <mdb-carousel-item>
+      <!--Mask color-->
+      <div class="view">
+          <!--Video source-->
+          <video class="video-fluid" autoplay loop>
+              <source src="../assets/img/waterloo.mp4" type="video/mp4" />
+          </video>
+          <div class="mask rgba-purple-slight waves-light" mdbWavesEffect></div>
+      </div>
+
+  </mdb-carousel-item>
+  <!--/Second slide-->
+  <!--Third slide-->
+  <mdb-carousel-item>
+      <!--Mask color-->
+      <div class="view">
+          <!--Video source-->
+          <img class="img-fluid" src="../assets/img/banner_bg.jpg" alt="braxel, agence immobilière à Waterloo">
+          <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+      </div>
+
+      
+     
+  </mdb-carousel-item>
+  <!--/Third slide-->
+</mdb-carousel>
+<!--Carousel Wrapper-->
+
 <body style="background-color:#F6F6F6;">
 
   <div class="bg-max fullheight d-none d-lg-block">
