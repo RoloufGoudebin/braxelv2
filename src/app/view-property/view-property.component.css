@@ -53,16 +53,16 @@ h6 {
 }
 
 .card {
-  background-color: #E4E4E4;
+ background-color: #23335300 !important;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1.0em;
   border:none;
-  font-style: #233353;
+  color: white !important;
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 25px;
-
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 ul {
@@ -70,7 +70,7 @@ ul {
 }
 
 li {
-  color: #233353;
+  color: white;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1.3em;
   list-style-type: none;
@@ -115,4 +115,16 @@ padding: 25px;
 
 .rounded {
     border-radius: 20px !important;
+  }
+
+  .bg{
+
+    background-color: #233353 !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    box-shadow: 7px 9px 18px -10px rgba(0,0,0,0.75);
+-webkit-box-shadow: 7px 9px 18px -10px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 9px 18px -10px rgba(0,0,0,0.75);
+
   }
