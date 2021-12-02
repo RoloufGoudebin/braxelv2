@@ -1,13 +1,11 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
 html, body{
-    font-size: 14px;
     height: 100%;
-    margin: 0;
 }
 
+
 .fullheight {
-  min-height: 100%;
   height: 100vh
 }
 
@@ -91,6 +89,20 @@ span.slideInRight {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.btn-braxel-rouge{
+  font-size: 1.1em !important;
+  background-color: #EE5C5A !important;
+  color: #ffff !important;
+  border-radius: 20px !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.btn-outline-danger:hover{
+  font-size: 1.1em;
+  background-color: #b94b4a;
+  color: white;
 }
 
 

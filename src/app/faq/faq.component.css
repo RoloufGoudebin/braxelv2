@@ -33,15 +33,6 @@ p{
   margin-top: 4em;
 }
 
-.btn-outline-danger{
-  font-size: 1.1em !important;
-  background-color: #EE5C5A !important;
-  color: #ffff !important;
-  border-radius: 20px !important;
-  font-family: 'Montserrat', sans-serif !important;
-}
-
-
 .btn-outline-danger:hover{
   font-size: 1.1em;
   background-color: #b94b4a;

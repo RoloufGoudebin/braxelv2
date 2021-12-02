@@ -1,4 +1,4 @@
-<ng-template #longContent let-modal>
+<ng-template class="wow slideInLeft" #longContent let-modal>
 
 
     <div class="modal-header" style="background:#F2F2F2">
@@ -45,36 +45,58 @@
                     </div>
                 </div>
 
-                <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Code Postal:</label>
-                    <input type="text" formControlName="zip" class="col-10 mx-auto rounded-pill form-control">
+                <div class="row mt-2">
+                    <label class="text-search-form col-10 text-left" for="zip">Localité/Code Postal</label>
+                    <ng-select class="col-11 mx-auto" name="zip" [items]="listOfZips " bindLabel="localite"
+                        bindValue="zip" [multiple]="true" formControlName="zip" [minTermLength]="2"
+                        typeToSearchText="Please enter 2 or more characters">
+                    </ng-select>
                 </div>
-                <div class="row ml-1">
+                <div class="row ml-2">
                     <div *ngIf="zip.invalid" class="text-danger">
                         <div *ngIf="zip.errors?.required">
-                            <div class="invalid-feedback d-block ml-2">Veuillez faire au moins un choix</div>
+                            <div class="invalid-feedback d-block">Veuillez entrer une localité au moins</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Chambres :</label>
-                    <app-slider class="col-10 mx-auto" [options]="sliderRooms"></app-slider>
+                    <app-slider class="col-10 mx-auto" [options]="sliderRooms" (click)="touch('room')"></app-slider>
                 </div>
+                <div class="row ml-1">
+                    <div *ngIf="!roomTouch" class="text-danger">
+                        <div class="invalid-feedback d-block ml-2">Veuillez faire un choix</div>
+                    </div>
+                </div>
+
 
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Budget :</label>
-                    <app-slider class="col-10 mx-auto" [options]="sliderPrice"></app-slider>
+                    <app-slider class="col-10 mx-auto" [options]="sliderPrice" (click)="touch('budget')"></app-slider>
+                </div>
+                <div class="row ml-1">
+                    <div *ngIf="!budgetTouch" class="text-danger">
+                        <div class="invalid-feedback d-block ml-2">Veuillez faire un choix</div>
+                    </div>
                 </div>
 
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Surface:</label>
-                    <app-slider class="col-10 mx-auto" [options]="sliderSurface"></app-slider>
+                    <app-slider class="col-10 mx-auto" [options]="sliderSurface" (click)="touch('surface')">
+                    </app-slider>
                 </div>
+                <div class="row ml-1">
+                    <div *ngIf="!surfaceTouch" class="text-danger">
+                        <div class="invalid-feedback d-block ml-2">Veuillez faire un choix</div>
+                    </div>
+                </div>
+
 
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Autres particularités :</label>
-                    <textarea class="form-control rounded col-10 mx-auto" rows="5" formControlName="particularites"></textarea>
+                    <textarea class="form-control rounded col-10 mx-auto" rows="5"
+                        formControlName="particularites"></textarea>
                 </div>
 
                 <div class="row pt-1">
@@ -91,7 +113,8 @@
 
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Votre prénom : </label>
-                    <input type="firstname" formControlName="firstname" class="col-10 mx-auto rounded-pill form-control">
+                    <input type="firstname" formControlName="firstname"
+                        class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="firstname.invalid" class="text-danger">
@@ -146,11 +169,12 @@
 
     <div class="modal-footer">
         <div *ngIf="notConfirm">
-            <button class="btn btn-outline-primary" [disabled]="!alertForm.valid" type="submit" (click)="onSubmit()">Créer une
+            <button class="btn btn-outline-primary" [disabled]="!alertForm.valid || !roomTouch || !budgetTouch || !surfaceTouch" type="submit"
+                (click)="onSubmit()">Créer une
                 alerte</button>
         </div>
         <div *ngIf="!notConfirm">
-            <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Fermer</button>
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close(); notConfirm=true">Fermer</button>
         </div>
     </div>
 </ng-template>

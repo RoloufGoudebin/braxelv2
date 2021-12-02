@@ -4,15 +4,18 @@
 
 
             <li class="nav-item py-0 ml-auto d-none d-lg-block">
-                <a routerLink="/contact"><button type="button" class="btn-contact nav-link"><i class="bi bi-envelope-open"></i>  Nous contacter</button></a>
+                <a routerLink="/contact"><button type="button" class="btn-contact nav-link"><i
+                            class="bi bi-envelope-open"></i> Nous contacter</button></a>
             <li class="nav-item py-0 ml-auto ml-lg-0">
                 <a> <button type="button" class="btn-contact nav-link">
-                    <app-alert-modal></app-alert-modal></button>
+                        <app-alert-modal></app-alert-modal>
+                    </button>
                 </a>
             </li>
             <li class="nav-item py-0 d-none d-lg-block shake">
                 <a> <button type="button" class="nav-link btn-estimate">
-                    <app-estimation-modal></app-estimation-modal></button>
+                        <app-estimation-modal></app-estimation-modal>
+                    </button>
                 </a>
             </li>
         </ul>
@@ -21,7 +24,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mt-5 shadow-sm">
     <div class="container-fluid">
-        <a class="navbar-brand " routerLinkActive="active" routerLink="/"><img  src='assets/img/logo-top-inverse.png'
+        <a class="navbar-brand " routerLinkActive="active" routerLink="/"><img src='assets/img/logo-top-inverse.png'
                 style="max-height:75px; margin-top: -30px;"></a>
         <button class="navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed">
             <span class="navbar-toggler-icon"></span>
@@ -30,7 +33,8 @@
         <div class='navbar navbar-collapse' [ngbCollapse]="isNavbarCollapsed" id="navbarCollapse">
             <ul class="navbar-nav ml-md-auto">
                 <li class="nav-item my-auto">
-                    <a class="nav-link py-0" routerLinkActive="active" routerLink="/"><i class="bi bi-house-fill"></i></a>
+                    <a class="nav-link py-0" routerLinkActive="active" routerLink="/"><i
+                            class="bi bi-house-fill"></i></a>
                 </li>
                 <li class="nav-item my-auto">
                     <a class="nav-link py-0" routerLinkActive="active" routerLink="/agence">L'AGENCE</a>
@@ -54,4 +58,3 @@
         </div>
     </div>
 </nav>
-

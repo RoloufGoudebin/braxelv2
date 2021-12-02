@@ -7,6 +7,8 @@ import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
 import { SendmailService } from '../services/sendmail.service';
 import { TypeScriptEmitter } from '@angular/compiler';
 
+import data from '../json/zip.json'
+
 interface SliderDetails {
   minValue: number;
   highValue: number;
@@ -24,6 +26,11 @@ export class AlertModalComponent {
   goalSelect= false;
   successMessage: string;
   notConfirm = true;
+  roomTouch = false;
+  budgetTouch = false;
+  surfaceTouch = false;
+
+  listOfZips = data;
 
   alertForm = new FormGroup({
     goal: new FormControl('',),
@@ -31,6 +38,7 @@ export class AlertModalComponent {
     zip: new FormControl('', [Validators.required]),
     particularites: new FormControl(''),
     firstname: new FormControl('', [Validators.required]),
+    rooms: new FormControl('',),
     name: new FormControl('', [Validators.required]),
     mail: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required])
@@ -118,6 +126,18 @@ export class AlertModalComponent {
       return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
+    }
+  }
+
+  touch(name: string){
+    if(name=="room"){
+      this.roomTouch=true;
+    }
+    if(name=="budget"){
+      this.budgetTouch=true;
+    }
+    if(name=="surface"){
+      this.surfaceTouch=true;
     }
   }
 

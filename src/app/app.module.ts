@@ -50,6 +50,7 @@ import { SafePipe } from './safe.pipe';
 import { ProutComponent } from './prout/prout.component';
 import { LoadingComponent } from './loading/loading.component';
 import { EstimationModalComponent } from './estimation-modal/estimation-modal.component';
+import { CarouselHomeComponent } from './home/carousel-home/carousel-home.component';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import { EstimationModalComponent } from './estimation-modal/estimation-modal.co
     ProutComponent,
     LoadingComponent,
     EstimationModalComponent,
+    CarouselHomeComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

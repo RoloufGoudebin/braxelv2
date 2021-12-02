@@ -1,113 +1,6 @@
 <app-navbar></app-navbar>
 
-
-<!--Carousel Wrapper-->
-<mdb-carousel [isControls]="true" [allowswipe]="true" [noPause]="true" [interval]="6000"class="carousel carousel-fade slide" [animation]="'fade'">
-  <!--First slide-->
-    <mdb-carousel-item>
-      <!--Mask color-->
-      <div class="view">
-        <!--Video source-->
-        <video class="video-fluid" playsinline autoplay muted loop>
-          <source src="../assets/img/home-enfant.mp4" type="video/mp4" />
-        </video>
-        <div class="mask rgba-indigo-light waves-light" mdbWavesEffect></div>
-      </div>
-    </mdb-carousel-item>
-    <!--/First slide-->
-    <!--Second slide-->
-    <mdb-carousel-item>
-      <!--Mask color-->
-      <div class="view">
-        <!--Video source-->
-        <video class="video-fluid" playsinline autoplay muted loop>
-          <source src="../assets/img/waterloo.mp4" type="video/mp4" />
-        </video>
-        <div class="mask rgba-purple-slight waves-light" mdbWavesEffect></div>
-      </div>
-    </mdb-carousel-item>
-    <!--/Second slide-->
-    <!--Third slide-->
-    <mdb-carousel-item>
-      <!--Mask color-->
-      <div class="view">
-        <!--Video source-->
-        <img class="img-fluid" src="../assets/img/banner_bg.jpg" alt="braxel, agence immobilière à Waterloo">
-        <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
-      </div>
-    </mdb-carousel-item>
-    <!--/Third slide-->
-
-    <div class="carousel-caption">
-      <div class="row">
-        <div class="overlay mt-6 pt-0 col-10 mx-auto">
-          <!-- Overlay inner wrapper -->
-          <div class="overlay__inner pt-3 mx-auto">
-            <!-- Title -->
-            <h1 class="overlay__title">
-              Vous avez trouvé vos agents immobiliers,
-              <span class="text-gradient">de confiance</span> en Brabants et à
-              Bruxelles !
-              <hr class="blue">
-            </h1>
-            <!-- Buttons -->
-            <div class="overlay__btns mx-auto">
-
-              <button class="overlay__btn overlay__btn--transparent" routerLinkActive="active" routerLink="/services">
-                <span>Vendre/Louer</span>
-                <span class="overlay__btn-emoji"></span>
-              </button>
-
-              <button class="overlay__btn overlay__btn--colors" routerLinkActive="active" routerLink="/nos-biens">
-                <span style="white-space: nowrap;">Rechercher un bien</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-</mdb-carousel>
-<!--Carousel Wrapper-->
-
-
-
-<!--- <div class="row py-0 my-0 ml-5">
-            <a class="nav-link py-0 mx-auto px-0 col-6 col-md-4" routerLinkActive="active"
-              routerLink="/services"><button type="button" class="btn btn-outline-secondary col-10">Vendre</button></a>
-            <a class="nav-link py-0 mx-auto px-0 col-6 col-md-4" routerLinkActive="active"
-              routerLink="/services"><button type="button" class="col-10 btn btn-outline-secondary">Louer</button></a>
-            <a class="nav-link py-0 mx-auto px-0 col-6 col-md-4" routerLinkActive="active"
-              routerLink="/nos-biens"><button type="button" class="col-10 btn btn-outline-secondary">Rechercher
-                des
-                biens</button></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="header fullheight">
-
-      <div class="container-fluid mt-md-5 pt-lg-0 pt-xl-3 pt-5 pt-md-0">
-        <div class="row mt-md-5 pt-lg-3 pt-xl-4 col-md-9 mx-auto pb-5">
-          <div class="col-12 col-lg-8 col-xl-6 pt-lg-5 pt-3">
-            <h3>BRAXEL</h3>
-            <h1 *ngFor="let text of texts">{{text.titre1}}</h1>
-            <p>Vous avez trouvé vos agents immobiliers de confiance, en Brabants et à Bruxelles !</p>
-            <a routerLinkActive="active" routerLink="/agence"><button type="button"
-                class="btn btn-outline-danger col-10 col-lg-7">Découvrez notre méthode</button></a>
-            <a routerLinkActive="active" routerLink="/services"><button type="button"
-                class="btn btn-outline-safe mx-lg-3 col-10 col-lg-4">Vendre/Louer</button></a>
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-    -->
-
-
-
+<app-carousel-home></app-carousel-home>
 
 
 
@@ -129,7 +22,7 @@
             <li class="d-none d-lg-block"><a href="https://www.linkedin.com/in/thomas-offergeld-89277b137/"><i
                   class="bi bi-linkedin"></i></a>
             </li>
-            <li class="d-lg-none"><a href="tel:+32 479 49 81 36"><i class="bi bi-telephone"></i></a>
+            <li><a href="tel:+32 479 49 81 36"><i class="bi bi-telephone"></i></a>
             </li>
             <li><a href="mailto:edouard@braxel.be"><i class="bi bi-envelope-fill"></i></a></li>
           </ul>

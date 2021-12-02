@@ -376,3 +376,7 @@ overflow: hidden;
   height: 350px;
   border: none;
 }
+
+.network{
+  border-radius: 35px !important;
+}

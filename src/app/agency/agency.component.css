@@ -47,7 +47,6 @@ h3 {
 }
 
 .charte .banner {
-    image: url("/assets/img/charte-2.jpg");
     font-family: 'Montserrat', sans-serif;
     font-display: swap;
     border-radius: 20px 20px 20px 20px;

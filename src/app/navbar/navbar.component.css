@@ -48,8 +48,9 @@ margin: 3%;
   cursor: pointer;
 }
 
-.btn-estimate:hover{
-    animation-name: shakeAnim;
+.shake{
+  animation: shake-animation 3.5s ease infinite;
+  transform-origin: 50% 50%;
 }
 
 .btn-alert{
@@ -58,7 +59,6 @@ margin: 3%;
   background-color: #EE5C5A;
   border:none;
   border-radius: 0 0 20px 20px;
-  animation-name: shake;
   animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in;
@@ -72,7 +72,6 @@ margin: 3%;
   font-family: 'Source Sans Pro', sans-serif;
   background-color: #EE5C5A;
   border: none;
-  animation-name: shakeAnim !important;
   animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in;
@@ -105,25 +104,13 @@ a:hover{
 }
 
 
-
-@keyframes shakeAnim {
-  0% {left: 0}
-  1% {left: -3px}
-  2% {left: 5px}
-  3% {left: -8px}
-  4% {left: 8px}
-  5% {left: -5px}
-  6% {left: 3px}
-  7% {left: 0}
-}
-
-@keyframes shake {
-  0% {left: 0}
-  1% {left: -3px}
-  2% {left: 5px}
-  3% {left: -8px}
-  4% {left: 8px}
-  5% {left: -5px}
-  6% {left: 3px}
-  7% {left: 0}
+@keyframes shake-animation {
+  0% { transform:translate(0,0) }
+ 1.78571% { transform:translate(5px,0) }
+ 3.57143% { transform:translate(0,0) }
+ 5.35714% { transform:translate(5px,0) }
+ 7.14286% { transform:translate(0,0) }
+ 8.92857% { transform:translate(5px,0) }
+ 10.71429% { transform:translate(0,0) }
+ 100% { transform:translate(0,0) }
 }
