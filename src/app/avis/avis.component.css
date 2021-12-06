@@ -12,7 +12,7 @@
 
 
 .notshow {
-   height: 120px;
+   height: 115px;
    overflow: hidden;
 }
 
@@ -59,3 +59,12 @@ img{
   color: #233353;
   font-style: italic;
 }
+
+
+::ng-deep span.carousel-control-next-icon {
+	background-image: none;
+  }
+  
+::ng-deep span.carousel-control-prev-icon {
+	background-image: none;
+  }

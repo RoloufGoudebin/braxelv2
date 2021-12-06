@@ -30,7 +30,8 @@
             </mdb-carousel-item>
         </ngb-carousel>
         -->
-        <mdb-carousel [isControls]="true" [interval]="'0'" [animation]="'slide'" class="my-5" *ngIf="reviews; else loading">
+        <mdb-carousel [isControls]="true" [interval]="'0'" [animation]="'slide'" class="my-5"
+            *ngIf="reviews; else loading">
             <mdb-carousel-item *ngFor="let item of slides; let i = index">
                 <div class="col-md-4" *ngFor="let review of item; let cardIndex = index">
                     <mdb-card class="my-1 rounded">
@@ -42,7 +43,8 @@
                                         createRange(review.rating)"><i class="bi bi-star-fill"></i></mat-icon>
                                 </div>
                             </mdb-card-title>
-                            <p class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
                                 {{review.text}}</p>
                             <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
                             <app-modal-avis [avatar]="review.profile_photo_url" [author]="review.author_name"
@@ -55,10 +57,30 @@
                         </mdb-card-body>
                     </mdb-card>
                 </div>
+                <div class="col-md-4 my-auto">
+                    <mdb-card class="my-1">
+                        <mdb-card-body>
+                            <div class="row pt-0 mt-0">
+                                <a
+                                    href="https://www.google.com/search?q=avis+braxel&oq=avis+braxel&aqs=chrome..69i57j0i22i30l2.4138j0j7&sourceid=chrome&ie=UTF-8#lrd=0x47c3d1ca3d0b1823:0xed7f36bfed6ac310,1,,,">Voir
+                                    tous les avis </a>
+                                <img src="assets/img/google.png" class="col-3 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
+                <a class="carousel-control-prev linear" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="mr-5 pr-5 arrow bi bi-arrow-left-circle-fill"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="linear carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="ml-5 pl-5 arrow bi bi-arrow-right-circle-fill"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
             </mdb-carousel-item>
         </mdb-carousel>
 
-    
+
 
 
     </div>
