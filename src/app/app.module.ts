@@ -51,6 +51,7 @@ import { ProutComponent } from './prout/prout.component';
 import { LoadingComponent } from './loading/loading.component';
 import { EstimationModalComponent } from './estimation-modal/estimation-modal.component';
 import { CarouselHomeComponent } from './home/carousel-home/carousel-home.component';
+import { AgentsComponent } from './home/agents/agents.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { CarouselHomeComponent } from './home/carousel-home/carousel-home.compon
     LoadingComponent,
     EstimationModalComponent,
     CarouselHomeComponent,
+    AgentsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

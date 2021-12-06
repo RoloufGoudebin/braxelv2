@@ -5,7 +5,11 @@
   "projects": {
     "braxelv2": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -24,14 +28,11 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "src/styles.scss",
-              "src/assets/css/bootstrap.min.css",
               "src/fonts/style.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "node_modules/animate.css/animate.css"
-
             ],
             "scripts": [
               "src/assets/js/jquery.min.js",
