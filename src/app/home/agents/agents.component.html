@@ -12,11 +12,10 @@
           <div class="box1 pb-0 mb-0">
             <img src="assets/img/worker-1.jpg" alt="Agent immobilier en Brabant Wallon">
             <h3 class="title">Agent immobilier agréé I.P.I. 508.871</h3>
-            <ul class="icon d-lg-block">
-              <li class="d-none d-lg-block"><a href="https://www.linkedin.com/in/thomas-offergeld-89277b137/"><i
-                    class="bi bi-linkedin"></i></a>
+            <ul class="icon">
+              <li class="d-none d-lg-block"><a (click)="changePhone('0479/49.81.36');basicModal.show()"><i class="bi bi-telephone"></i></a>
               </li>
-              <li><a href="tel:+32 479 49 81 36"><i class="bi bi-telephone"></i></a>
+              <li class="d-lg-none"><a href="tel:+32 479 49 81 36"><i class="bi bi-telephone"></i></a>
               </li>
               <li><a href="mailto:edouard@braxel.be"><i class="bi bi-envelope-fill"></i></a></li>
             </ul>
@@ -33,8 +32,7 @@
             <img src="assets/img/worker-2.jpg" alt="Agent immobilier à Bruxelles">
             <h3 class="title">Agent immobilier agréé I.P.I. 509.783</h3>
             <ul class="icon">
-              <li class="d-none d-lg-block"><a href="https://www.linkedin.com/in/thomas-offergeld-89277b137/"><i
-                    class="bi bi-linkedin"></i></a>
+              <li class="d-none d-lg-block"><a (click)="changePhone('0495/94.80.77');basicModal.show()"><i class="bi bi-telephone"></i></a>
               </li>
               <li class="d-lg-none"><a href="tel:+32 495 94 80 77"><i class="bi bi-telephone"></i></a>
               </li>
@@ -53,8 +51,7 @@
             <img src="assets/img/worker-3.jpg" alt="Agent immobilier à Waterloo">
             <h3 class="title">Stagiaire agent immobilier</h3>
             <ul class="icon">
-              <li class="d-none d-lg-block"><a href="https://www.linkedin.com/in/francois-baets-b42b5b117/"><i
-                    class="bi bi-linkedin"></i></a>
+              <li class="d-none d-lg-block"><a (click)="changePhone('0471/44.00.19');basicModal.show()"><i class="bi bi-telephone"></i></a>
               </li>
               <li class="d-lg-none"><a href="tel:+32 471 44 00 19"><i class="bi bi-telephone"></i></a>
               </li>
@@ -71,3 +68,17 @@
       </div>
     </div>
   </section>
+
+
+  <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">{{phone}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>

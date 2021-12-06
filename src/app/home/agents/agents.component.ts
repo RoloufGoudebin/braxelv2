@@ -9,7 +9,13 @@ export class AgentsComponent implements OnInit {
 
   constructor() { }
 
+  phone: string;
+
   ngOnInit(): void {
+  }
+
+  changePhone(number: string){
+    this.phone= number;
   }
 
 }
