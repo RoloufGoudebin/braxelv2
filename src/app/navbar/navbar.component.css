@@ -95,9 +95,7 @@ ul {
   padding-right: 10%;
 }
 
-a:hover{
-  font-weight: 800 !important;
-}
+
 
 .active{
   text-decoration: underline;
@@ -114,3 +112,77 @@ a:hover{
  10.71429% { transform:translate(0,0) }
  100% { transform:translate(0,0) }
 }
+
+@keyframes shakeAnim {
+  0% {left: 0}
+  1% {left: -3px}
+  2% {left: 5px}
+  3% {left: -8px}
+  4% {left: 8px}
+  5% {left: -5px}
+  6% {left: 3px}
+  7% {left: 0}
+}
+
+@keyframes shake {
+  0% {left: 0}
+  1% {left: -3px}
+  2% {left: 5px}
+  3% {left: -8px}
+  4% {left: 8px}
+  5% {left: -5px}
+  6% {left: 3px}
+  7% {left: 0}
+}
+
+
+/*menu du bas*/
+
+.nav {
+  position: fixed;
+  border-top: solid 1px rgb(240, 240, 240) ;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #ffffff;
+  display: flex;
+  overflow-x: auto;
+  z-index: 1;
+}
+
+.nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  min-width: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: sans-serif;
+  font-size: 13px;
+  color: #444444;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.1s ease-in-out;
+}
+
+
+.nav__link:active {
+  border-top:2.2px solid #233353 !important;
+}
+
+i {
+  font-size: 1.5em;
+}
+
+
+#tapbar 
+ {
+  position: fixed;
+  bottom: 0;
+  -webkit-transition: bottom 0.9s, top 0.9s;
+  transition: bottom 0.9s, top 0.9s;
+ 
+
+ }

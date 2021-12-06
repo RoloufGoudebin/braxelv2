@@ -25,7 +25,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mt-5 shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand " routerLinkActive="active" routerLink="/"><img src='assets/img/logo-top-inverse.png'
-                style="max-height:75px; margin-top: -30px;"></a>
+                style="max-height:55px; margin-top: -30px;"></a>
         <button class="navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -58,3 +58,30 @@
         </div>
     </div>
 </nav>
+
+
+
+<nav class="nav d-block d-sm-none d-flex " id="tapbar">
+    <a class="nav__link nav__link--active" routerLinkActive="active" routerLink="/nos-biens">
+    <i class="bi bi-house"></i>
+    <span class="nav__text">Nos biens</span>
+  </a>
+ 
+  <a href="#" class="nav__link">
+    <i class="bi bi-megaphone"></i>
+    <span class="nav__text">Créer une alerte</span>
+  </a>
+
+  <a href="#" class="nav__link nav__link--active">
+    <i class="bi bi-calculator"></i>
+    <span class="nav__text">Estimer mon bien</span>
+  </a>
+
+  <a class="nav__link" routerLinkActive="active" routerLink="/contact">   
+    <i class="bi bi-envelope-open"></i>
+ <span class="nav__text">Contact</span>
+</a>
+</nav>
+
+
+ 
