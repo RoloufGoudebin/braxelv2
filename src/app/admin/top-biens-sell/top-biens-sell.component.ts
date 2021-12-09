@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FirestoreService } from '../../services/firebase/firestore.service';
-import { Property } from '../../services/omnicasa/interface';
-import { OmnicasaService } from '../../services/omnicasa/omnicasa.service'
-import { NgbPaginationNumber } from '@ng-bootstrap/ng-bootstrap';
+import { Property } from 'src/app/services/omnicasa/interface';
+import { FirestoreService } from 'src/app/services/firebase/firestore.service';
+import { OmnicasaService } from 'src/app/services/omnicasa/omnicasa.service';
 
 @Component({
-  selector: 'app-top-biens',
-  templateUrl: './top-biens.component.html',
-  styleUrls: ['./top-biens.component.css', '../../view-property-list/view-property-list.component.css']
+  selector: 'app-top-biens-sell',
+  templateUrl: './top-biens-sell.component.html',
+  styleUrls: ['./top-biens-sell.component.css', '../../view-property-list/view-property-list.component.css']
 })
-export class TopBiensComponent implements OnInit {
+export class TopBiensSellComponent implements OnInit {
 
-  topPropertyList: Property[];
+  propertyListSell: Property[];
   propertyList: Property[];
   newList: Array<Property> = [];
   listTemp: Array<Property> = [];
@@ -23,13 +22,11 @@ export class TopBiensComponent implements OnInit {
   propertyListToChange: number;
   show= false;
 
-
   constructor(private firestore: FirestoreService, private omnicasa: OmnicasaService) { }
 
-
   ngOnInit(): void {
-    this.firestore.getFirestoreCollection('activeProperties').subscribe(data =>
-      this.topPropertyList = data.map(e => {
+    this.firestore.getFirestoreCollection('sellProperties').subscribe(data =>
+      this.propertyListSell = data.map(e => {
         return {
           id: Number(e.payload.doc.id),
           ...e.payload.doc.data() as Property
@@ -38,29 +35,29 @@ export class TopBiensComponent implements OnInit {
   }
 
   save() {
-    console.log(this.topPropertyList);
-    this.firestore.savePropertyTop(this.topPropertyList);
+    console.log(this.propertyListSell);
+    this.firestore.savePropertySell(this.propertyListSell);
     setTimeout(() => {
-      this.topPropertyList.sort(function (a, b) {
+      this.propertyListSell.sort(function (a, b) {
         return a.id - b.id;
       });;
     },
-      1500);
+      15000);
   }
 
   sort(){
-    this.topPropertyList.sort(function (a, b) {
+    this.propertyListSell.sort(function (a, b) {
       return a.id - b.id;
     });;
     setTimeout(() => {
-      console.log(this.topPropertyList);
+      console.log(this.propertyListSell);
     },
       3000);
     this.show = true;
   }
 
   update(newID: number, oldID: number) {
-    this.topPropertyList[oldID] = this.topPropertyList[newID];
+    this.propertyListSell[oldID] = this.propertyListSell[newID];
   }
 
   getPropertyList() {
@@ -88,17 +85,17 @@ export class TopBiensComponent implements OnInit {
   }
 
   swap() {
-    let tmp = this.topPropertyList[this.toSwap[0]];
-    let tmpid = this.topPropertyList[this.toSwap[0]].id;
-    let tmpidBis = this.topPropertyList[this.toSwap[1]].id;
+    let tmp = this.propertyListSell[this.toSwap[0]];
+    let tmpid = this.propertyListSell[this.toSwap[0]].id;
+    let tmpidBis = this.propertyListSell[this.toSwap[1]].id;
     console.log(tmp)
-    this.topPropertyList[this.toSwap[0]] = this.topPropertyList[this.toSwap[1]];
-    this.topPropertyList[this.toSwap[0]].id = tmpid;
-    this.topPropertyList[this.toSwap[1]] = tmp;
-    this.topPropertyList[this.toSwap[1]].id = tmpidBis;
+    this.propertyListSell[this.toSwap[0]] = this.propertyListSell[this.toSwap[1]];
+    this.propertyListSell[this.toSwap[0]].id = tmpid;
+    this.propertyListSell[this.toSwap[1]] = tmp;
+    this.propertyListSell[this.toSwap[1]].id = tmpidBis;
     this.toSwap[0] = -1;
     this.toSwap[1] = -1;
-    console.log(this.topPropertyList);
+    console.log(this.propertyListSell);
   }
 
 

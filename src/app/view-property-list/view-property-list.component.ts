@@ -19,6 +19,9 @@ export class ViewPropertyListComponent implements OnInit {
   constructor(public firestore: FirestoreService) { }
 
   ngOnInit(): void {
+    this.propertyList.sort(function (a, b) {
+      return a.id - b.id;
+    });;
   }
 
 

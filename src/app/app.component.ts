@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { routeTransitionAnimations } from './route-transition-animations';
 import { FirestoreService } from './services/firebase/firestore.service';
@@ -13,20 +13,45 @@ import { FirestoreService } from './services/firebase/firestore.service';
   animations: [routeTransitionAnimations]
 
 })
-export class AppComponent{
+export class AppComponent {
   title = 'braxel';
+  date;
 
   constructor(private firestore: FirestoreService, private http: HttpClient) { }
 
   ngOnInit() {
     //this.firestore.createPropertyListActive();
+    //this.firestore.createPropertyListSell();
+    this.firestore.getDateRefresh().subscribe(data=>
+      this.date= data.map(e => {
+        return {
+          ...e.payload.doc.data() as any
+        }
+    }));
+    setTimeout(() => {
+      if(Date.now() - this.date[0].lastRefresh > 3600){
+        this.firestore.updatePropertyListActive();
+      }
+    },
+      3000);
   }
 
   prepareRoute(outlet: RouterOutlet) {
-    return outlet && 
-      outlet.activatedRouteData && 
+    return outlet &&
+      outlet.activatedRouteData &&
       outlet.activatedRouteData['animationState'];
-   }
+  }
+
+
+  getRefresh = () =>
+    this.firestore
+      .getDateRefresh()
+      .subscribe(data =>
+        this.date = data.map(e => {
+          return {
+            ...e.payload.doc.data() as any
+          }
+        }));;
 
 
 }

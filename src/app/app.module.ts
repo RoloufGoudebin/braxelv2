@@ -34,6 +34,7 @@ import { SliderComponent } from './slider/slider.component';
 import { SearchPropertyComponent } from './search-property/search-property.component';
 import { OurBiensComponent } from './our-biens/our-biens.component';
 import { AvisComponent } from './avis/avis.component';
+import { AvisComponent as AvisAdminComponent } from './admin/avis/avis.component';
 import { ContactModalComponent } from './view-property/contact-modal/contact-modal.component';
 import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { AngularFireAuth } from "@angular/fire/auth";
@@ -52,6 +53,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { EstimationModalComponent } from './estimation-modal/estimation-modal.component';
 import { CarouselHomeComponent } from './home/carousel-home/carousel-home.component';
 import { AgentsComponent } from './home/agents/agents.component';
+import { TopBiensSellComponent } from './admin/top-biens-sell/top-biens-sell.component';
 
 
 @NgModule({
@@ -74,6 +76,7 @@ import { AgentsComponent } from './home/agents/agents.component';
     SearchPropertyComponent,
     OurBiensComponent,
     AvisComponent,
+    AvisAdminComponent,
     ContactModalComponent,
     SignInComponent,
     RealisationsComponent,
@@ -85,6 +88,7 @@ import { AgentsComponent } from './home/agents/agents.component';
     EstimationModalComponent,
     CarouselHomeComponent,
     AgentsComponent,
+    TopBiensSellComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

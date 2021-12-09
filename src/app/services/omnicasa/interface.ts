@@ -11,6 +11,7 @@ export interface Items{
 }
 
 export interface Property {
+    id: number;
     GetPropertyListJsonResult : any;
     Status : number;
     SubStatus: number;

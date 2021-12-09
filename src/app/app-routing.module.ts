@@ -7,8 +7,10 @@ import { ServicesComponent } from './services-braxel/services.component';
 import { FaqComponent } from './faq/faq.component';
 import { ContactComponent } from './contact/contact.component';
 import { TopBiensComponent } from './admin/top-biens/top-biens.component';
+import { TopBiensSellComponent } from './admin/top-biens-sell/top-biens-sell.component';
 import { OurBiensComponent } from './our-biens/our-biens.component';
 import { SignInComponent } from './admin/sign-in/sign-in.component';
+import { AvisComponent as AvisAdminComponent } from './admin/avis/avis.component';
 import { AuthGuard } from './admin/guard/auth.guard';
 import { RealisationsComponent } from './realisations/realisations.component';
 
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: 'biens-immobiliers/:id', component: ViewPropertyComponent, data: { animationState: 'biens-immobiliers' } },
   { path: 'admin', component: SignInComponent },
   { path: 'admin/top-biens', component: TopBiensComponent, canActivate: [AuthGuard] },
+  { path: 'admin/top-biens-sell', component: TopBiensSellComponent, canActivate: [AuthGuard] },
+  { path: 'admin/avis', component: AvisAdminComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

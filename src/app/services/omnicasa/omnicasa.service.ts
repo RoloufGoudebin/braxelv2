@@ -12,7 +12,7 @@ export class OmnicasaService {
   constructor(public http: HttpClient) { }
 
   link = "https://newapi.omnicasa.com/1.12/OmnicasaService.svc/GetPropertyListJson?json={%27LanguageId%27:2,%20%27CustomerName%27:%27braxel%27,%20%27CustomerPassword%27:%27b688E6B8FDD2%27}";
-
+  linkActive= ""
 
   propertyList: Property[];
   property: Property;
@@ -27,6 +27,15 @@ export class OmnicasaService {
       }));
     return this.toReturn;
 
+  }
+
+  getPropertyListActive(): Observable<any>{
+    this.toReturn = this.http.get<PropertyList>(this.linkActive)
+      .pipe(tap((returnedData: any) => {
+        //save the returned data so we can re-use it later without making more HTTP calls
+        this.propertyList = returnedData;
+      }));
+    return this.toReturn;
   }
 
 

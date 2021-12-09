@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     this.firestore.getFirestoreCollection('activeProperties').subscribe(data=>
       this.toShow = data.map(e => {
         return {
-          id: e.payload.doc.id,
+          id: Number(e.payload.doc.id),
           ...e.payload.doc.data() as Property
         }
     }));
@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
 
     if(window.pageYOffset > (document.getElementById('chiffres').offsetTop-500)){
       this.showChiffres = true;
-      console.log();
     }
   }
 
