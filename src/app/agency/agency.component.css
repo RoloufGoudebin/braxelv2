@@ -54,6 +54,7 @@ h3 {
 
 .charte{
   border-radius: 20px 20px 20px 20px !important;
+  margin-top: 12em;
 }
 
 p{
@@ -131,4 +132,7 @@ div.slide-right p {
     width: 100%;
   }
 }
+
+
+
 
