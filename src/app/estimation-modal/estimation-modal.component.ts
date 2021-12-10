@@ -38,8 +38,8 @@ export class EstimationModalComponent {
   });
 
   items = [
-    { name: 'Vente', select: false },
-    { name: 'Location', select: false },
+    { name: 'Vendre', select: false },
+    { name: 'Louer', select: false },
   ];
 
   types = [

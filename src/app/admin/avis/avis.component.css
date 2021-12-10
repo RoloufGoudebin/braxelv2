@@ -1,0 +1,61 @@
+.text-card {
+    font-size: 16px;
+    line-height: 16px;
+    height: auto;
+    overflow: hidden;
+}
+
+.show {
+    overflow: visible;
+    height: auto !important;
+}
+
+
+.notshow {
+   height: 115px;
+   overflow: hidden;
+}
+
+
+
+*:focus {
+    outline: none;
+}
+
+h1{
+    color: #233353;
+    font-size: 46px;
+    font-weight: 600;
+    line-height: 51px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.stars{
+    color: rgb(255, 196, 0);
+}
+
+
+h5 {
+  margin-top: 1em;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight:600;
+}
+
+h6 {
+  font-size: 0.8em;
+  font-style: italic;
+  color: grey;
+  margin-top: 1em;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-bottom: 2em;
+}
+
+img{
+  margin-top: 2em;
+}
+
+.voir{
+  cursor: pointer;
+  color: #233353;
+  font-style: italic;
+}

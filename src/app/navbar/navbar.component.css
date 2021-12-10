@@ -26,6 +26,11 @@
   background-color: white !important;
 }
 
+.logo-navbar{
+  max-height:55px; 
+  margin-top: -30px;
+}
+
 .bg-light{
   background-color: white !important;
 }

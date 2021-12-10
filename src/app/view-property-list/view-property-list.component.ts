@@ -34,7 +34,7 @@ export class ViewPropertyListComponent implements OnInit {
       return '#283152';
     }
     if (goal==0 && subStatus==3) {
-      return '#D3D3D3';
+      return '#26CE6C';
     }
     if (goal==0 && subStatus==6) {
       return '#26CE6C';

@@ -60,11 +60,11 @@ img{
   font-style: italic;
 }
 
+.pr-6{
+  padding-right: 5em !important;
+}
 
-::ng-deep span.carousel-control-next-icon {
-	background-image: none;
-  }
-  
-::ng-deep span.carousel-control-prev-icon {
-	background-image: none;
-  }
+.pl-6{
+  padding-left: 5em !important;
+}
+

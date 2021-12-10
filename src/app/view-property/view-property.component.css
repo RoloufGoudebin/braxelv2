@@ -151,10 +151,6 @@ li {
 	opacity: 100%;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-	width: 50px;
-}
 
 .thumbnail-img{
   max-height: 150px;
