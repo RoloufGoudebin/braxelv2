@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
-<div class="pt-lg-5 mt-lg-5"></div>
-<div class="pt-lg-5 mt-5"></div>
-<app-avis></app-avis>
+<div class="row"> 
+<app-avis></app-avis></div>
+
 <section id="realisations">
     <div class="container-fluid">
         <div class="row pt-5 mt-5">
@@ -13,7 +13,7 @@
                 </app-view-property-list>
             </div>
             <button *ngIf="lowerThan(numberProperty, toShow.length)" type="button"
-                class="btn btn-outline-danger col-4 col-lg-3 mx-auto text-center mx-auto" (click)="addProperties()">Voir
+                class="btn btn-secondary col-4 col-lg-3 text-center mx-auto" (click)="addProperties()">Voir
                 plus
                 de propriétés</button>
         </div>

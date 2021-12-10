@@ -48,22 +48,6 @@ h3 {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-body {
-  background-color: #f1f1f2
-}
-
-.mt-30 {
-  margin-top: 30px
-}
-
-.mt-40 {
-  margin-top: 40px
-}
-
-.mb-30 {
-  margin-bottom: 30px
-}
-
 
 h4 {
   font-weight: bold;
@@ -106,51 +90,5 @@ h5 {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1.4em;
   font-weight: 400;
-}
-
-.search {
-  background-color: #F6F6F6;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.opacity {
-  background-color: lightgrey;
-  margin-top: -3em;
-  font-size: 1.8em;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  box-shadow: 4px 5px 5px black;
-}
-
-.btn-outline-secondary {
-  color: #233353 !important;
-  font-size: 1.3em !important;
-  font-weight: 500 !important;
-  border-color: #233353 !important;
-  text-transform: none;
-  padding: 0.5em !important;
-  border-radius: 20px !important;
-  margin-bottom: 4em;
-  margin-top:1em;
-}
-
-.btn-outline-secondary:hover {
-  color: white !important;
-  background-color: #EE5C5A !important;
-  border-color: #EE5C5A !important;
-}
-
-
-
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-
-
-
-strong {
-  font-weight: 600;
 }
 

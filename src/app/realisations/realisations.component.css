@@ -25,3 +25,11 @@ h1{
     background-color: #b94b4a !important;
     color: white !important;
   }
+
+  .btn-secondary {
+    font-size: 1em;
+    background-color: #233353 !important;
+    color: white !important;
+    border: #233353;
+    
+    }
