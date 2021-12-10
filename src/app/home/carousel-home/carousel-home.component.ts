@@ -20,12 +20,7 @@ export class CarouselHomeComponent implements OnInit {
         "type": "video",
         "src": "../assets/img/waterloo.mp4"
       },
-      {
-        "name": "terrasse",
-        "type": "img",
-        "src": "../assets/img/banner_bg.jpg",
-        "alt": "braxel, agence immobilière à Waterloo"
-      }
+      
   ]
 
   ngOnInit(): void {
