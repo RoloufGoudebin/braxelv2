@@ -179,4 +179,10 @@ button:disabled{
   border: lightgrey !important;
 }
 
+.btn-outline-danger {
+  background-color:white !important;
+  color: #12223f !important;
+  border-color: #12223f !important;
+  font-size: 1em !important;
+}
 
