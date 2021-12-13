@@ -1,13 +1,5 @@
 [
-    {
-        "localite": "BRAINE-L'ALLEUD (1420)",
-        "zip": "1420"
-    },
-    {
-        "localite": "WATERLOO (1410)",
-        "zip": "1410"
-    },
-    {
+        {
         "localite": "UCCLE (1180)",
         "zip": "1180"
     },
@@ -16,36 +8,45 @@
         "zip": "1380"
     },
     {
-        "localite": "RHODE-SAINT-GENÈSE (1640)",
-        "zip": "1640"
-    },
-    {
         "localite": "NIVELLES (1400)",
         "zip": "1400"
     },
+    {
+        "localite": "WATERLOO (1410)",
+        "zip": "1410"
+    },
+    {
+        "localite": "BRAINE-L'ALLEUD (1420)",
+        "zip": "1420"
+    },
+
     {
         "localite": "BRAINE-LE-CHÂTEAU (1440)",
         "zip": "1440"
     },
     {
-        "localite": "GANSHOREN (1083)",
-        "zip": "1083"
-    },
-    {
-        "localite": "MOLENBEEK-SAINT-JEAN (1080)",
-        "zip": "1080"
-    },
-    {
-        "localite": "WATERMAEL-BOITSFORT (1170)",
-        "zip": "1170"
+        "localite": "RHODE-SAINT-GENÈSE (1640)",
+        "zip": "1640"
     },
     {
         "localite": "ANDERLECHT (1070)",
         "zip": "1070"
     },
     {
+        "localite": "MOLENBEEK-SAINT-JEAN (1080)",
+        "zip": "1080"
+    },
+    {
+        "localite": "GANSHOREN (1083)",
+        "zip": "1083"
+    },
+    {
         "localite": "AUDERGHEM (1160)",
         "zip": "1160"
+    },
+    {
+        "localite": "WATERMAEL-BOITSFORT (1170)",
+        "zip": "1170"
     },
     {
         "localite": "WOLUWE-SAINT-PIERRE (1150)",
