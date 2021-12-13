@@ -19,19 +19,13 @@ export class AvisComponent {
   slides: any = [[]];
   cards: any;
 
-  chunk(arr, chunkSize) {
-    let R = [];
-    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
-      R.push(arr.slice(i, i + chunkSize));
-    }
-    return R;
-  }
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;
     setTimeout(() => {
-      this.firestore.createAvis(this.cards);
-      this.slides = this.chunk(this.cards, 3);
+      this.cards.sort(function (a, b) {
+        return a.id - b.id;
+      });;
     },
       1500);
     this.firestore.getFirestoreCollection('avis').subscribe(data =>

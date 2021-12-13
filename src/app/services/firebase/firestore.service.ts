@@ -124,6 +124,7 @@ export class FirestoreService {
 
   createAvis(avis: any[]) {
     for (let i = 0; i < avis.length; i++) {
+      avis[i].id = i;
       this.firestore
         .collection("avis")
         .doc(i.toString())
@@ -183,7 +184,7 @@ export class FirestoreService {
 
   }
 
-  createDateRefresh() {
+  updateDateRefresh() {
     this.firestore
       .collection("refresh")
       .doc("1")
@@ -222,6 +223,7 @@ export class FirestoreService {
               j++;
             }
           }
+          this.updateDateRefresh();
         });
       });
   }

@@ -1,27 +1,40 @@
 <app-navbar-admin></app-navbar-admin>
-<div *ngIf="cards">
-    <div class="row">
+<div *ngIf="show; else notShow">
+    <div class="row" *ngIf="show; else notShow">
         <div class="col-10">
             <div class="row">
                 <div class="col-md-2" *ngFor="let review of cards; let cardIndex = index">
-                    <mdb-card class="my-1 rounded">
-                        <mdb-card-body class="mt-2">
-                            <mdb-card-title>
-                                <h4 class="text-center">{{review.author_name}}</h4>
-                                <div class="stars text-center pt-0 mt-0">
-                                    <mat-icon>{{review.rating}}<i class="bi bi-star-fill"></i></mat-icon>
-                                </div>
-                            </mdb-card-title>
-                            <p
-                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
-                                {{review.text}}</p>
-                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
-                            <h6 class="text-center pt-1 pb-0 mb-0">{{ review.relative_time_description }}</h6>
-                        </mdb-card-body>
-                    </mdb-card>
+                    <div class="card my-3" (click)="selectSwap(cardIndex)"
+                        [ngClass]="{'select': toSwap[0]===cardIndex || toSwap[1]===cardIndex}">
+                        <div class="card-title">
+                            <h4 class="text-center">{{review.author_name}}</h4>
+                            <div class="stars text-center pt-0 mt-0">
+                                <mat-icon>{{review.rating}}<i class="bi bi-star-fill"></i></mat-icon>
+                            </div>
+                        </div>
+                        <p
+                            class="text-justify text-card mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                            {{review.text}}</p>
+                        <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                        <h6 class="text-center pt-1 pb-0 mb-0">{{ review.relative_time_description }}</h6>
+                    </div>
                 </div>
             </div>
         </div>
-        
+        <div class="col-2">
+            <div class="row mb-5">
+                <button type="button" class="btn btn-primary col-6" (click)="swap()">Échanger</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-primary col-6" (click)="save()">Sauvegarder</button>
+            </div>
+        </div>
     </div>
 </div>
+
+<ng-template #notShow>
+    <div class="mt-5 pt-5">
+        <button type="button" *ngIf="cards" class="btn btn-primary col-6" (click)="sort()">Voir les
+            avis</button>
+    </div>
+</ng-template>

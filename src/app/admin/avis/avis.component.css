@@ -12,8 +12,8 @@
 
 
 .notshow {
-   height: 115px;
-   overflow: hidden;
+   max-height: 115px !important;
+   overflow: hidden !important;
 }
 
 
@@ -59,3 +59,11 @@ img{
   color: #233353;
   font-style: italic;
 }
+
+.select{
+    background: green !important;
+    color: white !important;
+    box-shadow: 0px 16px 9px -5px rgba(0, 0, 0,0.2) !important;
+    transform: scale(1.10, 1.10) !important;
+}
+
