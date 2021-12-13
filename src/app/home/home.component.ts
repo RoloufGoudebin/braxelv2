@@ -30,9 +30,10 @@ export class HomeComponent implements OnInit {
   }
 
   @HostListener('window:scroll', ['$event'])
-  doSomething(event) {
+  doSomething(event: any) {
 
     if(window.pageYOffset > (document.getElementById('chiffres').offsetTop-500)){
+      console.log("eeeoo")
       this.showChiffres = true;
     }
   }

@@ -142,6 +142,15 @@ li {
 	opacity: 100%;
 }
 
+#carousel-thumbs img {
+	opacity: 80%;
+	border: 3px solid transparent;
+	cursor: pointer;
+}
+#carousel-thumbs .selected img {
+	opacity: 100%;
+}
+
 
 .thumbnail-img{
   max-height: 150px;
