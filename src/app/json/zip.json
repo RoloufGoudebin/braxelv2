@@ -19,7 +19,6 @@
         "localite": "BRAINE-L'ALLEUD (1420)",
         "zip": "1420"
     },
-
     {
         "localite": "BRAINE-LE-CHÂTEAU (1440)",
         "zip": "1440"
@@ -27,6 +26,14 @@
     {
         "localite": "RHODE-SAINT-GENÈSE (1640)",
         "zip": "1640"
+    },
+    {
+        "localite": "BRUXELLES (1000)",
+        "zip": "1000"
+    },
+    {
+        "localite": "SAINT-GILLES (1060)",
+        "zip": "1060"
     },
     {
         "localite": "ANDERLECHT (1070)",
@@ -41,6 +48,22 @@
         "zip": "1083"
     },
     {
+        "localite": "JETTE (1090)",
+        "zip": "1090"
+    },
+    {
+        "localite": "Haren (1130)",
+        "zip": "1130"
+    },
+    {
+        "localite": "EVERE (1140)",
+        "zip": "1140"
+    },
+    {
+        "localite": "WOLUWE-SAINT-PIERRE (1150)",
+        "zip": "1150"
+    },
+    {
         "localite": "AUDERGHEM (1160)",
         "zip": "1160"
     },
@@ -49,36 +72,12 @@
         "zip": "1170"
     },
     {
-        "localite": "WOLUWE-SAINT-PIERRE (1150)",
-        "zip": "1150"
-    },
-    {
-        "localite": "EVERE (1140)",
-        "zip": "1140"
-    },
-    {
-        "localite": "JETTE (1090)",
-        "zip": "1090"
-    },
-    {
-        "localite": "WOLUWE-SAINT-LAMBERT (1200)",
-        "zip": "1200"
-    },
-    {
-        "localite": "BRUXELLES (1000)",
-        "zip": "1000"
-    },
-    {
         "localite": "FOREST (1190)",
         "zip": "1190"
     },
     {
-        "localite": "Haren (1130)",
-        "zip": "1130"
-    },
-    {
-        "localite": "SAINT-GILLES (1060)",
-        "zip": "1060"
+        "localite": "WOLUWE-SAINT-LAMBERT (1200)",
+        "zip": "1200"
     },
     {
         "localite": "Neder-Over-Heembeek (1120)",
