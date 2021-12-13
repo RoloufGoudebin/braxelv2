@@ -79,6 +79,14 @@ export class OurBiensComponent implements OnInit {
       { name: 'Louer', select: false }
     ];
 
+    this.listOfZips.sort(function (a: any, b:any){
+      return a.zip - b.zip;
+    })
+
+    for(let i=0; i<this.listOfZips.length; i++){
+      this.listOfZips[i].localite = this.listOfZips[i].localite.toUpperCase();
+    }
+
     this.firestore.getFirestoreCollection('activeProperties').subscribe(data =>
       this.toShow = data.map(e => {
         return {
