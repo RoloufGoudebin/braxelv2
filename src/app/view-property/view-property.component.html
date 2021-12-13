@@ -5,7 +5,7 @@
     <h2 *ngIf="property.City">{{property.Zip}} {{property.City}}</h2>
     <hr>
     <div class="row">
-      <h3 *ngIf="property.StartPrice" class="mr-auto col">{{toStringPrice(property.StartPrice)}}
+      <h3 *ngIf="property.StartPrice" class="mr-auto col">{{toStringPrice(property.Price)}}
         {{property.PriceUnitText}}</h3>
       <a class="nav-link" *ngIf="property.VirtualTour">
         <app-modal-nodal [item]="nodalLink"></app-modal-nodal>

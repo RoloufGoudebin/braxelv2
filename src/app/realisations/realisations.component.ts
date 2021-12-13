@@ -13,8 +13,10 @@ export class RealisationsComponent implements OnInit {
 
   toShow: Property[]
   numberProperty=12;
+  ready= false;
 
   ngOnInit(): void {
+
     this.firestore.getFirestoreCollection('sellProperties').subscribe(data=>
       this.toShow = data.map(e => {
         return {
@@ -22,6 +24,7 @@ export class RealisationsComponent implements OnInit {
           ...e.payload.doc.data() as Property
         }
     }));
+    this.ready=true;
   }
 
   addProperties(){

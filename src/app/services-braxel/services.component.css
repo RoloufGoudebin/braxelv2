@@ -340,7 +340,7 @@ a.anchor {
 
 img-comparison-slider:focus {
   --divider-width: 2px;
-  --divider-color: red;
+  --divider-color: white;
   --default-handle-opacity: 0.5;
   --default-handle-width: 50px;
   --handle-opacity-active: 0.5;
@@ -349,14 +349,14 @@ img-comparison-slider:focus {
 
 
 .coloured-slider {
-  --divider-color: red;
-  --default-handle-color: red;
+  --divider-color: white;
+  --default-handle-color: white;
   --default-handle-opacity: 0;
 }
 
 .coloured-slider:focus {
-  --divider-color: red;
-  --default-handle-color: red;
+  --divider-color: white;
+  --default-handle-color: white;
 }
 
 .handle{

@@ -75,7 +75,6 @@ button {
   margin-bottom: 5em;
 }
 
-
 .btn-outline-danger{
   font-size: 1.1em !important;
   background-color: #EE5C5A !important;
@@ -90,6 +89,12 @@ button {
 
 
 .btn-outline-danger:hover{
+  font-size: 1.1em !important;
+  background-color: #b94b4a !important;
+  color: white !important;
+}
+
+.btn-outline-danger:active{
   font-size: 1.1em !important;
   background-color: #b94b4a !important;
   color: white !important;

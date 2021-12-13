@@ -33,3 +33,7 @@ h1{
     border: #233353;
     
     }
+
+    .pt-lg-6{
+      padding-top: 10em !important;
+    }
