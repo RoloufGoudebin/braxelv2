@@ -138,18 +138,6 @@ li {
 	background: #f0f0f0;
 	padding: 0 50px;
 }
-#carousel-thumbs img:hover {
-	opacity: 100%;
-}
-
-#carousel-thumbs img {
-	opacity: 80%;
-	border: 3px solid transparent;
-	cursor: pointer;
-}
-#carousel-thumbs .selected img {
-	opacity: 100%;
-}
 
 
 .thumbnail-img{
