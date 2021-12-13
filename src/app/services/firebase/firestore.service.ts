@@ -87,7 +87,7 @@ export class FirestoreService {
         }
         return new Promise<Property>((resolve, reject) => {
           for (let i = 0, j = 0; i < this.propertyList.length; i++) {
-            if (invertPropertyList[i].SubStatus != 2 && invertPropertyList[i].ID > 200 && invertPropertyList[i].SubStatus != 3) {
+            if (invertPropertyList[i].SubStatus != 2 && invertPropertyList[i].SubStatus != 3) {
               this.firestore
                 .collection("sellProperties")
                 .doc(j.toString())

@@ -204,8 +204,8 @@ li {
 }
 
 .carousel-img{
+  min-height:100%;
   max-height: 900px;
-  height: 900px;
   width: auto;
 }
 
