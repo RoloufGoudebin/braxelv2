@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<section class="mission fullheight">
+<section class="mission">
     <div class="container-fluid">
         <div class="row">
             <div class="col-10 mx-auto">
@@ -98,8 +98,8 @@
 </section>
 
 
-<section class="charte fullheight" id="charte">
-    <div class="field mx-auto mt-5 pt-5">
+<section class="charte " id="charte">
+    <div class="field mx-auto mt-5 pt-5 d-none col-lg-block">
         <a mdbPageScroll href="#charte" [pageScrollDuration]="550" class="scroll"></a>
         </div>
     <div class="container-fluid d-flex h-100">
@@ -181,7 +181,7 @@
                         <img class="img-fluid charte" src="/assets/img/charte-2.jpg">
                     </div>
                 </div>
-                <div class="field mx-auto d-flex">
+                <div class="field mx-auto d-none d-lg-block">
                     <a mdbPageScroll href="#presentation" [pageScrollDuration]="550" class="scroll" [pageScrollOffset]="150"></a>
                 </div>
             </div>
@@ -189,11 +189,11 @@
     </div>
 </section>
 
-<section class="presentation fullheight" id="presentation">
+<section class="presentation" id="presentation">
 
     <!--For >lg bootstrap-->
-    <div class="container-fluid d-flex h-100 d-none d-lg-block">
-        <div class="row h-100r" id="edouard">
+    <div class="container-fluid d-none d-lg-block">
+        <div class="row h-100" id="edouard">
             <div class="col-10 mx-auto h-100">
                 <div class="row align-self-center">
                     <div class="col-6">
