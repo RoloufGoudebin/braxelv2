@@ -1,0 +1,41 @@
+<app-navbar-admin></app-navbar-admin>
+
+<div class="container-fluid">
+    <div class="col-10 mx-auto">
+        <h2>Actuel : </h2>
+        <div class="row">
+            <img src="{{carousel[0].url}}" class="img-thumbnail col-6" alt="...">
+        </div>
+
+        <h2 class="pt-4">Disponibles : </h2>
+        <div class="row pt-5">
+            <div class="col-10">
+                <img *ngFor="let file of files; let i = index;" src="{{file.url}}" class="img-thumbnail col-2" (click)="chose(i)">
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-primary" (click)="save()">
+                    Valider
+                </button>
+            </div>
+        </div>
+
+        <div class="container pt-5 mt-5">
+            <div class="card">
+                <div class="card-header">
+                    Ajouter un fichier
+                </div>
+                <div class="card-body">
+                    <input type="file" (change)="upload($event)" />
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                        [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
+                File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
+            </div>
+        </div>
+    </div>
+</div>

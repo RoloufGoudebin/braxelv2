@@ -132,6 +132,20 @@ export class FirestoreService {
     }
   }
 
+  addFileRef(fileRef: any) {
+    this.firestore
+      .collection("files")
+      .doc(fileRef.name)
+      .set(fileRef)
+  }
+
+  choseCarousel(file: any){
+    this.firestore
+      .collection("home-carousel")
+      .doc("the-best")
+      .set(file)
+  }
+
   updatePropertyListActive() {
     this.setPropertyListActiveFire();
     this.setPropertyListActiveOmni();

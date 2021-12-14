@@ -13,6 +13,7 @@ import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { AvisComponent as AvisAdminComponent } from './admin/avis/avis.component';
 import { AuthGuard } from './admin/guard/auth.guard';
 import { RealisationsComponent } from './realisations/realisations.component';
+import { StorageComponent } from './admin/storage/storage.component';
 
 
 
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'admin', component: SignInComponent },
   { path: 'admin/top-biens', component: TopBiensComponent, canActivate: [AuthGuard] },
   { path: 'admin/top-biens-sell', component: TopBiensSellComponent, canActivate: [AuthGuard] },
-  { path: 'admin/avis', component: AvisAdminComponent, canActivate: [AuthGuard] }
+  { path: 'admin/avis', component: AvisAdminComponent, canActivate: [AuthGuard] },
+  { path: 'admin/storage', component: StorageComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

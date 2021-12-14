@@ -14,7 +14,11 @@
       <!--<img *ngIf="slide.type==='img'" class="img-fluid" src="{{slide.src}}" alt="{{slide.alt}}">-->
       <!--end image-->
     </div>
-
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <div class="view">
+      <img *ngIf="carouselImg" class="img-fluid" src="{{carouselImg[0].url}}">
+    </div>
   </mdb-carousel-item>
 
   <div class="carousel-caption">
