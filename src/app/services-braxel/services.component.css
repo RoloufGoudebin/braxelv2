@@ -339,19 +339,24 @@ a.anchor {
 
 
 img-comparison-slider:focus {
-  --divider-width: 2px;
+  --divider-width: 4px;
   --divider-color: white;
-  --default-handle-opacity: 0.5;
+  --default-handle-opacity: 1 !important;
   --default-handle-width: 50px;
   --handle-opacity-active: 0.5;
+  --default-handle-color: white;
   outline: none;
 }
 
 
-.coloured-slider {
+img-comparison-slider.coloured-slider {
+  --divider-width: 4px;
   --divider-color: white;
+  --default-handle-opacity: 1 !important;
+  --default-handle-width: 50px;
+  --handle-opacity-active: 0.5;
   --default-handle-color: white;
-  --default-handle-opacity: 0;
+  outline: none;
 }
 
 .coloured-slider:focus {

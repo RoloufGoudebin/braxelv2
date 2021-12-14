@@ -1,6 +1,6 @@
 <div id="googleReviews"></div>
-<section id='reviews' *ngIf="cards">
-    <div class="container-fluid px-5">
+<section id='reviews'>
+    <div class="container-fluid">
         <h1 class="text-center">Nos clients l’expliquent mieux que nous </h1>
         <!--
         <ngb-carousel *ngIf="isReviews(); else loading" [isControls]="true" [showNavigationArrows]="true"
@@ -30,8 +30,8 @@
             </mdb-carousel-item>
         </ngb-carousel>
         -->
-        <div id="recipeCarousel" class="carousel slide col-11 mx-auto pt-5 d-none d-lg-block" data-ride="carousel">
-            <div class="carousel-inner mx-auto" role="listbox">
+        <div id="recipeCarousel" class="carousel slide col-11 mx-auto pt-5 d-none d-lg-block" data-ride="carousel" *ngIf="cards">
+            <div class="carousel-inner mx-auto">
                 <div class="carousel-item row active no-gutters">
                     <mdb-card class="my-1 rounded col-md-3 mx-auto">
                         <mdb-card-body class="mt-2">
@@ -416,12 +416,9 @@
 
     </div>
 
-    <div class="row">
-        <a class="mx-auto" href="https://www.google.com/search?q=braxel+avis&oq=braxel+avis&aqs=edge..69i57j69i60.2803j1j4&sourceid=chrome&ie=UTF-8#lrd=0x47c3d1ca3d0b1823:0xed7f36bfed6ac310,1,,," target="_blank"><button type="button" class="btn btn-outline-secondary mx-auto text-center mx-auto">Tous nos
-            avis</button></a>
-      </div>
+    <div class="row no-gutters pt-5">
+        <a class="mx-auto"
+            href="https://www.google.com/search?q=braxel+avis&oq=braxel+avis&aqs=edge..69i57j69i60.2803j1j4&sourceid=chrome&ie=UTF-8#lrd=0x47c3d1ca3d0b1823:0xed7f36bfed6ac310,1,,,"
+            target="_blank"><button type="button" class="btn btn-outline-secondary">Tous nos avis</button></a>
+    </div>
 </section>
-
-<ng-template #loading>
-    <mdb-spinner spinnerColor="blue"></mdb-spinner>
-</ng-template>

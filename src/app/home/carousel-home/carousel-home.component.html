@@ -5,13 +5,13 @@
     
     <div class="view">
       <!--Video source-->
-      <video *ngIf="slide.type==='video'" class="video-fluid" playsinline autoplay muted loop>
+      <video *ngIf="slide.type==='video'" class="video-fluid" [muted]="true" playsinline autoplay loop>
         <source src="{{slide.src}}" type="video/mp4" />
       </video>
       <!--end video-->
 
-      <!--Image source
-      <img *ngIf="slide.type==='img'" class="img-fluid" src="{{slide.src}}" alt="{{slide.alt}}">
+      <!--Image source-->
+      <!--<img *ngIf="slide.type==='img'" class="img-fluid" src="{{slide.src}}" alt="{{slide.alt}}">-->
       <!--end image-->
     </div>
 
