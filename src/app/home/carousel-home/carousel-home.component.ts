@@ -26,7 +26,8 @@ export class CarouselHomeComponent implements OnInit {
       {
         "name":"image terrasse braxel",
         "type": "img",
-        "src" : "../src/assets/img/hp.jpg"
+        "src" : "../assets/img/hp.jpg",
+        "alt" : "agents immobiliers brabant wallon"
       }
       
   ]
