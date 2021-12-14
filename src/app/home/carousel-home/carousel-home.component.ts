@@ -23,6 +23,11 @@ export class CarouselHomeComponent implements OnInit {
         "type": "video",
         "src": "../assets/img/waterloo.mp4"
       },
+      {
+        "name":"image terrasse braxel",
+        "type": "img",
+        "src" : "../src/assets/img/hp.jpg"
+      }
       
   ]
 
