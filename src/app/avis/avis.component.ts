@@ -9,19 +9,14 @@ declare const google: any;
   styleUrls: ['./avis.component.css']
 })
 export class AvisComponent {
-  service;
   public reviews = [];
-  show = false;
-  public innerWidth: any;
 
   constructor(private firestore: FirestoreService) { }
 
   slides: any = [[]];
   cards: any;
 
-
   ngOnInit() {
-    this.innerWidth = window.innerWidth;
     setTimeout(() => {
       this.cards.sort(function (a, b) {
         return a.id - b.id;
@@ -38,34 +33,6 @@ export class AvisComponent {
 
   }
 
-  /**
-  ngAfterViewInit() {
-    const request = {
-      placeId: "ChIJIxgLPcrRw0cREMNq7b82f-0",
-      fields: ['reviews']
-    };
-    this.service = new google.maps.places.PlacesService(document.getElementById('googleReviews'));
-
-    this.service.getDetails(request, this.callback);
-  }
-
-  public callback = (place, status) => {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      this.reviews = place.reviews.slice();
-      console.log(this.slides);
-      if (this.innerWidth > 1000) {
-        this.slides = this.chunk(this.reviews, 3);
-      }
-      if (this.innerWidth > 600 && this.innerWidth < 1000) {
-        this.slides = this.chunk(this.reviews, 2);
-      }
-
-      if (this.innerWidth < 600 && this.innerWidth < 1000) {
-        this.slides = this.chunk(this.reviews, 1);
-      }
-    }
-  };**/
-
   createRange(number) {
     const items: number[] = [];
     for (let i = 1; i <= number; i++) {
@@ -74,13 +41,5 @@ export class AvisComponent {
     return items;
   }
 
-  isReviews() {
-    if (this.reviews.length > 0) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
 }
 

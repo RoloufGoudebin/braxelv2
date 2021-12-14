@@ -24,6 +24,7 @@ export class RealisationsComponent implements OnInit {
           ...e.payload.doc.data() as Property
         }
     }));
+    
     this.ready=true;
   }
 

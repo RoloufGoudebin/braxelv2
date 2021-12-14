@@ -24,6 +24,8 @@ import { FaqComponent } from './faq/faq.component';
 import { environment } from "../environments/environment";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFireStorageModule } from "@angular/fire/storage";
+
 import { AdminComponent } from './admin/admin.component';
 import { NavbarAdminComponent } from './admin/navbar-admin/navbar-admin.component';
 import { TopBiensComponent } from './admin/top-biens/top-biens.component';
@@ -54,6 +56,7 @@ import { EstimationModalComponent } from './estimation-modal/estimation-modal.co
 import { CarouselHomeComponent } from './home/carousel-home/carousel-home.component';
 import { AgentsComponent } from './home/agents/agents.component';
 import { TopBiensSellComponent } from './admin/top-biens-sell/top-biens-sell.component';
+import { StorageComponent } from './admin/storage/storage.component';
 
 
 @NgModule({
@@ -89,6 +92,7 @@ import { TopBiensSellComponent } from './admin/top-biens-sell/top-biens-sell.com
     CarouselHomeComponent,
     AgentsComponent,
     TopBiensSellComponent,
+    StorageComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -102,6 +106,7 @@ import { TopBiensSellComponent } from './admin/top-biens-sell/top-biens-sell.com
     }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     NgbModule,
     Ng2OdometerModule.forRoot(),
     ReactiveFormsModule,

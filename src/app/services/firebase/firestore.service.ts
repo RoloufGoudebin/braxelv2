@@ -87,7 +87,7 @@ export class FirestoreService {
         }
         return new Promise<Property>((resolve, reject) => {
           for (let i = 0, j = 0; i < this.propertyList.length; i++) {
-            if (invertPropertyList[i].SubStatus != 2 && invertPropertyList[i].ID > 200 && invertPropertyList[i].SubStatus != 3) {
+            if (invertPropertyList[i].SubStatus != 2 && invertPropertyList[i].SubStatus != 3) {
               this.firestore
                 .collection("sellProperties")
                 .doc(j.toString())
@@ -130,6 +130,20 @@ export class FirestoreService {
         .doc(i.toString())
         .set(avis[i])
     }
+  }
+
+  addFileRef(fileRef: any) {
+    this.firestore
+      .collection("files")
+      .doc(fileRef.name)
+      .set(fileRef)
+  }
+
+  choseCarousel(file: any){
+    this.firestore
+      .collection("home-carousel")
+      .doc("the-best")
+      .set(file)
   }
 
   updatePropertyListActive() {

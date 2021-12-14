@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from 'src/app/services/firebase/firestore.service';
 
 @Component({
   selector: 'app-carousel-home',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private firestore: FirestoreService) {}
+
+  carouselImg: any[];
 
   carousel = [
       {
@@ -24,6 +27,12 @@ export class CarouselHomeComponent implements OnInit {
   ]
 
   ngOnInit(): void {
+    this.firestore.getFirestoreCollection('home-carousel').subscribe(data=>
+      this.carouselImg = data.map(e => {
+        return {
+          ...e.payload.doc.data() as any
+        }
+    }));
   }
 
 }

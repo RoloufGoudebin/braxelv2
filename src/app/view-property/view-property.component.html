@@ -27,10 +27,10 @@
         <div id="carousel" class="carousel slide gallery" data-ride="carousel">
           <div class="carousel-inner rounded">
             <div class="carousel-item active" data-slide-number="0" data-toggle="lightbox" data-gallery="gallery">
-              <img src="{{property.LargePicture}}" class="d-block w-100 img-fluid rounded carousel-img">
+              <img src="{{property.LargePicture}}" class="d-block rounded carousel-img">
             </div>
             <div  *ngFor="let picture of property.LargePictures | slice: 1; let i = index" class="carousel-item" data-slide-number="i" data-toggle="lightbox" data-gallery="gallery">
-              <img src="{{picture}}" class="d-block w-100 img-fluid rounded carousel-img" alt="...">
+              <img src="{{picture}}" class="d-block rounded " alt="...">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
