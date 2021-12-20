@@ -19,16 +19,16 @@ export class NavbarComponent implements OnInit {
 
 
 
-var lastScrollTop = 0;
-/*
+let lastScrollTop = 0;
+
 window.addEventListener("scroll", function(){  
-   var st = window.pageYOffset || document.documentElement.scrollTop;  
+   var st = window.pageYOffset;  
    if (st > lastScrollTop){
        document.getElementById("tapbar").style.bottom = "-100%";
    } else {
       document.getElementById("tapbar").style.bottom = "0";
    }
    lastScrollTop = st;
-}, false);*/
+}, false);
 
 

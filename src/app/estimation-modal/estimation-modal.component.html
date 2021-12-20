@@ -71,7 +71,8 @@
 
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Autres particularités :</label>
-                    <textarea class="form-control rounded col-10 mx-auto" rows="5" formControlName="particularites"></textarea>
+                    <textarea class="form-control rounded col-10 mx-auto" rows="5"
+                        formControlName="particularites"></textarea>
                 </div>
 
                 <div class="row pt-1">
@@ -88,7 +89,8 @@
 
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">Votre prénom : </label>
-                    <input type="firstname" formControlName="firstname" class="col-10 mx-auto rounded-pill form-control">
+                    <input type="firstname" formControlName="firstname"
+                        class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="firstname.invalid" class="text-danger">
@@ -137,7 +139,8 @@
 
     <div class="modal-footer">
         <div *ngIf="notConfirm">
-            <button class="btn btn-outline-primary" [disabled]="!alertForm.valid" type="submit" (click)="onSubmit()">Demander une estimation</button>
+            <button class="btn btn-outline-primary" [disabled]="!alertForm.valid" type="submit"
+                (click)="onSubmit()">Demander une estimation</button>
         </div>
         <div *ngIf="!notConfirm">
             <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Fermer</button>
@@ -145,4 +148,15 @@
     </div>
 </ng-template>
 
-<div (click)="openScrollableContent(longContent)"><i class="bi bi-calculator"></i>Estimer mon bien</div>
+<div (click)="openScrollableContent(longContent)">
+    <div class="d-none d-lg-block">
+        <i class="bi bi-calculator"></i>
+        Estimer mon bien
+    </div>
+    <div class="d-lg-none mx-auto text-center">
+        <i class="bi bi-calculator"></i>
+        <div>
+            Estimer mon bien
+        </div>
+    </div>
+</div>

@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
   doSomething(event: any) {
 
     if(window.pageYOffset > (document.getElementById('chiffres').offsetTop-500)){
-      console.log("eeeoo")
       this.showChiffres = true;
     }
   }
