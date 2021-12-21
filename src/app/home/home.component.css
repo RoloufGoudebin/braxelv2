@@ -48,7 +48,7 @@ h3 {
   padding: 0.5em !important;
   border-radius: 20px !important;
   margin-bottom: 4em;
-  margin-top:1em;
+  margin-top: 1em;
 }
 
 .btn-outline-secondary:hover {
@@ -110,3 +110,44 @@ h5 {
   font-weight: 400;
 }
 
+.btn-outline-danger {
+  padding:none !important;
+  text-transform: none !important;
+  font-size: 1.1em !important;
+  background-color: #EE5C5A !important;
+  color: #ffff !important;
+  border-radius: 20px !important;
+  margin-top: 20px !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.btn-outline-danger:focus {
+  padding:none !important;
+  text-transform: none !important;
+  font-size: 1.1em !important;
+  background-color: #EE5C5A !important;
+  color: #ffff !important;
+  border-radius: 20px !important;
+  margin-top: 20px !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.btn-outline-danger:active {
+  padding:none !important;
+  text-transform: none !important;
+  font-size: 1.1em !important;
+  background-color: #EE5C5A !important;
+  color: #ffff !important;
+  border-radius: 20px !important;
+  margin-top: 20px !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+
+.btn-outline-danger:hover {
+  padding:none !important;
+  text-transform: none !important;
+  font-size: 1.1em !important;
+  background-color: #b94b4a !important;
+  color: white !important;
+}

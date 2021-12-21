@@ -22,14 +22,7 @@ export class CarouselHomeComponent implements OnInit {
         "name": "vidéo du lion",
         "type": "video",
         "src": "../assets/img/waterloo.mp4"
-      },
-      {
-        "name":"image terrasse braxel",
-        "type": "img",
-        "src" : "../assets/img/hp.jpg",
-        "alt" : "agents immobiliers brabant wallon"
       }
-      
   ]
 
   ngOnInit(): void {

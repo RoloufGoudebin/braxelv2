@@ -12,43 +12,34 @@ h1{
   background-color: #EE5C5A !important;
   color: #ffff !important;
   border-radius: 20px !important;
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-  padding-right: 15px !important;
   margin-top: 20px!important;
   font-family: 'Montserrat', sans-serif !important;
-}
-
-.btn-outline-danger:focus{
+  }
+  
+  .btn-outline-danger:focus{
   font-size: 1.1em !important;
   background-color: #EE5C5A !important;
   color: #ffff !important;
   border-radius: 20px !important;
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-  padding-right: 15px !important;
   margin-top: 20px!important;
   font-family: 'Montserrat', sans-serif !important;
-}
-
-.btn-outline-danger:active{
+  }
+  
+  .btn-outline-danger:active{
   font-size: 1.1em !important;
   background-color: #EE5C5A !important;
   color: #ffff !important;
   border-radius: 20px !important;
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-  padding-right: 15px !important;
   margin-top: 20px!important;
   font-family: 'Montserrat', sans-serif !important;
-}
-
-
-.btn-outline-danger:hover{
+  }
+  
+  
+  .btn-outline-danger:hover{
   font-size: 1.1em !important;
   background-color: #b94b4a !important;
   color: white !important;
-}
+  }
 
   .btn-secondary {
     font-size: 1em;

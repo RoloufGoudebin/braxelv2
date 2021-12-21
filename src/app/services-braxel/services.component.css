@@ -343,7 +343,17 @@ img-comparison-slider:focus {
   --divider-color: white;
   --default-handle-opacity: 1 !important;
   --default-handle-width: 50px;
-  --handle-opacity-active: 0.5;
+  --handle-opacity-active: 1 !important;
+  --default-handle-color: white;
+  outline: none;
+}
+
+img-comparison-slider{
+  --divider-width: 4px;
+  --divider-color: white;
+  --default-handle-opacity: 1 !important;
+  --default-handle-width: 50px;
+  --handle-opacity-active: 1 !important;
   --default-handle-color: white;
   outline: none;
 }
@@ -354,10 +364,11 @@ img-comparison-slider.coloured-slider {
   --divider-color: white;
   --default-handle-opacity: 1 !important;
   --default-handle-width: 50px;
-  --handle-opacity-active: 0.5;
+  --handle-opacity-active: 1 !important;
   --default-handle-color: white;
   outline: none;
 }
+
 
 .coloured-slider:focus {
   --divider-color: white;
@@ -369,7 +380,7 @@ img-comparison-slider.coloured-slider {
 }
 
 .slider-example-opacity-and-size:focus {
-  --default-handle-opacity: 1;
+  --default-handle-opacity: 1 !important;
 }
 
 

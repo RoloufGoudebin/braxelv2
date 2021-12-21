@@ -7,7 +7,7 @@
           ET
           VOUS ACCUEILLENT AVEC PASSION.</p>
       </div>
-      <div class="row slideInLeft">
+      <div class="row slideInLeft mb-3">
         <div class="col-md-4 col-sm-4">
           <div class="box1 pb-0 mb-0">
             <img src="assets/img/worker-1.jpg" alt="Agent immobilier en Brabant Wallon">
@@ -22,8 +22,11 @@
           </div>
           <div class="text-center">
             <h4 class="mt-3">Edouard Chevalier</h4>
-            <a routerLink="/agence" [fragment]="'edouard'">
-              <H5><button type="button" class="btn btn-outline-primary">Plus d'infos</button></H5>
+            <a routerLink="/agence" [fragment]="'edouard-xs'" class="d-lg-none">
+              <button type="button" class="btn btn-outline-danger">Plus d'infos</button>
+            </a>
+            <a routerLink="/agence" [fragment]="'edouard-lg'" class="d-none d-lg-block">
+              <button type="button" class="btn btn-outline-danger">Plus d'infos</button>
             </a>
           </div>
         </div>
@@ -41,8 +44,11 @@
           </div>
           <div class="text-center">
             <h4 class="mt-3">Thomas Offergeld</h4>
-            <a routerLink="/agence" [fragment]="'edouard'">
-              <H5><button type="button" class="btn btn-outline-primary">Plus d'infos</button></H5>
+            <a routerLink="/agence" [fragment]="'thomas-xs'" class="d-lg-none">
+              <button type="button" class="btn btn-outline-danger">Plus d'infos</button>
+            </a>
+            <a routerLink="/agence" [fragment]="'thomas-lg'" class="d-none d-lg-block">
+              <button type="button" class="btn btn-outline-danger">Plus d'infos</button>
             </a>
           </div>
         </div>
@@ -60,8 +66,11 @@
           </div>
           <div class="text-center">
             <h4 class="mt-3">François Baets</h4>
-            <a routerLink="/agence" [fragment]="'edouard'">
-              <H5><button type="button" class="btn btn-outline-primary">Plus d'infos</button></H5>
+            <a routerLink="/agence" [fragment]="'francois-xs'" class="d-lg-none">
+              <button type="button" class="btn btn-outline-danger">Plus d'infos</button>
+            </a>
+            <a routerLink="/agence" [fragment]="'francois-lg'" class="d-none d-lg-block">
+              <button type="button" class="btn btn-outline-danger">Plus d'infos</button>
             </a>
           </div>
         </div>
