@@ -31,7 +31,7 @@
                   <label class="text-search-form col-11 text-left" for="selected">Type
                     de bien :</label>
                   <div class="col-12">
-                    <ng-select bindLabel="selected" class="custom white" name="selected" [multiple]="true"
+                    <ng-select bindLabel="selected" class="custom" name="selected" [multiple]="true"
                       formControlName="selected">
                       <ng-option *ngFor="let type of types" [value]="type.id" required>{{type.name}}</ng-option>
                     </ng-select>

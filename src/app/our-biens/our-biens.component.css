@@ -163,9 +163,14 @@ border-radius: 15px 15px 0% 0% !important;
 }
 
 .ng-option{
+background-color: white !important;
 border:10px;
 min-height: 0px;
 border-radius: 0;
+}
+
+.input{
+  background-color: white !important;
 }
 
 button:disabled{
