@@ -1,8 +1,8 @@
 <mdb-carousel [isControls]="true" [allowswipe]="true" [noPause]="true" [interval]="6000"
-  class="carousel carousel-fade slide" [animation]="'fade'">
-  
+  class="carousel carousel-fade mt-5 mt-lg-0" [animation]="'fade'">
+
   <mdb-carousel-item *ngFor="let slide of carousel">
-    
+
     <div class="view">
       <!--Video source-->
       <video *ngIf="slide.type==='video'" class="video-fluid" [muted]="true" playsinline autoplay loop>
@@ -21,11 +21,11 @@
     </div>
   </mdb-carousel-item>
 
-  <div class="carousel-caption">
+  <div class="carousel-caption d-none d-lg-block">
     <div class="row">
       <div class="overlay mt-6 pt-0 col-10 mx-auto">
         <!-- Overlay inner wrapper -->
-        <div class="overlay__inner pt-3 mx-auto">
+        <div class="overlay__inner pt-0 mx-auto">
           <!-- Title -->
           <h1 class="overlay__title">
             Vous avez trouvé vos agents immobiliers, de confiance en Brabants et à Bruxelles !
@@ -49,4 +49,29 @@
   </div>
 
 </mdb-carousel>
+
+<div class="row no-gutters">
+  <div class="overlay pt-0 col-12 mx-auto">
+    <!-- Overlay inner wrapper -->
+    <div class="pt-0 mx-auto">
+      <!-- Title -->
+      <h1 class="overlay__title col-12 text-center mt-3">
+        Vous avez trouvé vos agents immobiliers, de confiance en Brabants et à Bruxelles !
+        <hr class="blue">
+      </h1>
+      <!-- Buttons -->
+      <div class="overlay__btns mx-auto">
+
+        <button class="overlay__btn overlay__btn--transparent col-5 mx-auto" routerLinkActive="active" routerLink="/services">
+          <span>Vendre/Louer</span>
+          <span class="overlay__btn-emoji"></span>
+        </button>
+
+        <button class="overlay__btn overlay__btn--colors col-5 mx-auto" routerLinkActive="active" routerLink="/nos-biens">
+          <span style="white-space: nowrap;">Rechercher un bien</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 <!--Carousel Wrapper-->
