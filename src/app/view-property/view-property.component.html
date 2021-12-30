@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div *ngIf="property" class="container mt-5 pt-5 animated fadeIn">
+<div *ngIf="property" class="container mt-5 pt-5">
   <div class="pt-5 mt-5">
     <h1 *ngIf="property.TypeDescription">{{property.TypeDescription}}</h1>
     <h2 *ngIf="property.City">{{property.Zip}} {{property.City}}</h2>
@@ -264,8 +264,4 @@
       </div>
     </div>
   </div>
-
-  <ng-template #loading>
-    <app-loading></app-loading>
-  </ng-template>
   <app-footer></app-footer>
