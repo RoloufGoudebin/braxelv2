@@ -202,3 +202,19 @@ a {
     height: 100vh;
   }
 }
+
+.overlay__btn-small {
+  width: 50%;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  background-color: #EE5C5A;
+  border: none;
+  border-radius: 0.5rem;
+  transition: transform 150ms ease;
+  outline-color: hsl(var(--hue), 95%, 50%);
+}

@@ -50,19 +50,24 @@
 
 </mdb-carousel>
 
-<div class="row no-gutters d-md-none">
+<div class="row no-gutters d-md-none pt-0 mt-n5">
   <div class="overlay pt-0 col-12 mx-auto">
     <!-- Overlay inner wrapper -->
     <div class="pt-0 mx-auto">
       <!-- Title -->
-      <h1 class="overlay__title col-12 text-center mt-3">
+      <h1 class="overlay__title col-10 mt-3 text-justify mx-auto text-center">
         Vous avez trouvé vos agents immobiliers, de confiance en Brabants et à Bruxelles !
         <hr class="blue">
       </h1>
       <!-- Buttons -->
       <div class="overlay__btns mx-auto">
 
-        <button class="overlay__btn overlay__btn--transparent col-5 mx-auto" routerLinkActive="active" routerLink="/services">
+        <button class="overlay__btn overlay__btn--transparent col-5 mx-auto d-none d-lg-block" routerLinkActive="active" routerLink="/services">
+          <span>Vendre/Louer</span>
+          <span class="overlay__btn-emoji"></span>
+        </button>
+
+        <button class="col-5 mx-auto overlay__btn-small d-lg-none" routerLinkActive="active" routerLink="/services">
           <span>Vendre/Louer</span>
           <span class="overlay__btn-emoji"></span>
         </button>

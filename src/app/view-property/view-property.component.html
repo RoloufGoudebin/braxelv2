@@ -1,13 +1,13 @@
 <app-navbar></app-navbar>
 <div *ngIf="property" class="container mt-5 pt-5">
   <div class="pt-5 mt-5">
-    <h1 *ngIf="property.TypeDescription">{{property.TypeDescription}}</h1>
-    <h2 *ngIf="property.City">{{property.Zip}} {{property.City}}</h2>
+    <h2 *ngIf="property.TypeDescription">{{property.TypeDescription}}</h2>
+    <h3 *ngIf="property.City">{{property.Zip}} {{property.City}}</h3>
     <hr>
     <div class="row">
       <h3 *ngIf="property.StartPrice" class="mr-auto col-12 col-lg">{{toStringPrice(property.Price)}}
         {{property.PriceUnitText}}</h3>
-      <a class="nav-link d-none d-lg-block" *ngIf="property.VirtualTour">
+      <a class="nav-link" *ngIf="property.VirtualTour">
         <app-modal-nodal class="col-5 col-lg-3 ml-auto" [item]="nodalLink"></app-modal-nodal>
       </a>
       <a class="nav-link">
@@ -219,6 +219,50 @@
         </div>
       </div>
     </div>
+
+    <div class="container bg">
+      <ul class="row px-0 mx-0">
+        <div class="col-6 col-md card text-center mx-auto">
+          <span class="icon-object-ungroup icon"></span>
+          <li class="titlecard">Superficie
+            <hr> {{property.SurfaceTotal}}
+          </li>
+        </div>
+        <div class="col-6 col-md card text-center mx-1 mx-auto">
+          <span class="icon-bed icon"></span>
+          <li>Chambres
+            <hr> {{property.NumberOfBedRooms}}
+          </li>
+        </div>
+        <div class="col-6 col-md card text-center mx-auto">
+          <span class="icon-bath icon"></span>
+          <li>Salle(s) de bains
+            <hr> {{property.NumberOfBathRooms}}
+          </li>
+        </div>
+        <div class="col-6 col-md card text-center mx-auto">
+          <span class="icon-shower icon"></span>
+          <li>Salle(s) de douche
+            <hr> {{property.NumberOfShowerRooms}}
+          </li>
+        </div>
+        <div class="col-6 col-md card text-center mx-auto">
+          <span class="icon-automobile icon"></span>
+          <li>Garage(s)
+            <hr> {{property.NumberOfGarages}}
+          </li>
+        </div>
+        <div class="col-6 col-md card text-center mx-auto">
+          <span class="icon-desktop_windows icon"></span>
+          <li>Bureau(x)
+            <hr>
+            <div *ngIf="property.IsOffice; else elseBlock">1</div>
+            <ng-template #elseBlock>0</ng-template>
+          </li>
+        </div>
+      </ul>
+    </div>
+  
 
 
     <div class="container pb-3 pt-3">

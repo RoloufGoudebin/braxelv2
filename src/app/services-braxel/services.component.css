@@ -106,9 +106,17 @@ b {
   margin-top: 1em;
 }
 
-.honoraires {
-  margin-top: 12em;
-  background-color: white;
+
+@media screen and (min-width: 992px) {
+  .honoraires {
+    margin-top: 12em;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .honoraires {
+    margin-top: 6em;
+  }
 }
 
 .porte {
@@ -357,36 +365,14 @@ a.anchor {
 }
 
 
-img-comparison-slider:focus {
-  --divider-width: 4px;
-  --divider-color: white;
-  --default-handle-opacity: 1 !important;
-  --default-handle-width: 50px;
-  --handle-opacity-active: 1 !important;
-  --default-handle-color: white;
-  outline: none;
-}
 
-img-comparison-slider {
+.slider {
+  --default-handle-width: 100px;
   --divider-width: 4px;
-  --divider-color: white;
-  --default-handle-opacity: 1 !important;
-  --default-handle-width: 50px;
-  --handle-opacity-active: 1 !important;
-  --default-handle-color: white;
   outline: none;
 }
 
 
-img-comparison-slider.coloured-slider {
-  --divider-width: 4px;
-  --divider-color: white;
-  --default-handle-opacity: 1 !important;
-  --default-handle-width: 50px;
-  --handle-opacity-active: 1 !important;
-  --default-handle-color: white;
-  outline: none;
-}
 
 
 .coloured-slider:focus {

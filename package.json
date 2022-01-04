@@ -47,7 +47,7 @@
     "express": "^4.15.2",
     "firebase": "^7.13.2",
     "hammerjs": "^2.0.8",
-    "img-comparison-slider": "^3.0.4",
+    "img-comparison-slider": "^7.4.0",
     "jquery": "^3.6.0",
     "ng-uikit-pro-standard": "file:ng-uikit-pro-standard-8.8.2.tgz",
     "ng2-odometer": "^1.1.3",

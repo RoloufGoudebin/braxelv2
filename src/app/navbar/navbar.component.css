@@ -197,4 +197,10 @@ i {
    color: #233353;
  }
 
+ @media screen and (max-width: 992px) {
+  .mt-n6 {
+    margin-top: -350px;
+  }
+}
+
 
