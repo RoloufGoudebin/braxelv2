@@ -17,8 +17,9 @@ export class StorageComponent implements OnInit {
   uploadState: Observable<string>;
   downloadURL: Observable<string>;
   files: any[];
-  carousel: any[]
-
+  carousel: any[];
+  chosen= -1;
+  toChange: any;
 
 
   constructor(private afStorage: AngularFireStorage, private firestore: FirestoreService) { }
@@ -55,18 +56,24 @@ export class StorageComponent implements OnInit {
             "url": url
           };
           this.firestore.addFileRef(file);
-          this.firestore.choseCarousel(file);
         });
       })
     ).subscribe();
   }
 
   chose(i: number){
-    this.carousel[0] = this.files[i];
+    this.toChange = this.files[i];
+    this.chosen = i ;
+    console.log(this.carousel[0])
   }
 
-  save(){
-    this.firestore.choseCarousel(this.carousel[0]);
+  save(i : number){
+    this.firestore.choseCarousel(this.toChange, i);
+  }
+
+  delete(){
+    console.log(this.toChange)
+    this.firestore.deleteFile(this.toChange);
   }
 
 
