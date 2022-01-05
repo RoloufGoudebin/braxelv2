@@ -139,11 +139,26 @@ export class FirestoreService {
       .set(fileRef)
   }
 
-  choseCarousel(file: any){
+  choseCarousel(file: any, pos: number) {
+    if (pos == 3) {
+      this.firestore
+        .collection("home-carousel")
+        .doc("the-best-3")
+        .set(file)
+    }
+    else if (pos==4){
+      this.firestore
+        .collection("home-carousel")
+        .doc("the-best-4")
+        .set(file)
+    }
+  }
+
+  deleteFile(fileRef: any){
     this.firestore
-      .collection("home-carousel")
-      .doc("the-best")
-      .set(file)
+      .collection("files")
+      .doc(fileRef.name)
+      .delete()
   }
 
   updatePropertyListActive() {

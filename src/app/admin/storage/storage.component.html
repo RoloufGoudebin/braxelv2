@@ -1,41 +1,58 @@
 <app-navbar-admin></app-navbar-admin>
 
-<div class="container-fluid">
-    <div class="col-10 mx-auto">
-        <h2>Actuel : </h2>
-        <div class="row">
-            <img src="{{carousel[0].url}}" class="img-thumbnail col-6" alt="...">
-        </div>
-
-        <h2 class="pt-4">Disponibles : </h2>
-        <div class="row pt-5">
-            <div class="col-10">
-                <img *ngFor="let file of files; let i = index;" src="{{file.url}}" class="img-thumbnail col-2" (click)="chose(i)">
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>3 ème photo actuelle : </h2>
+            <div class="row">
+                <img src="{{carousel[0].url}}" class="img-thumbnail col-12" alt="...">
             </div>
-            <div class="col-2">
-                <button type="button" class="btn btn-primary" (click)="save()">
-                    Valider
+        </div>
+        <div class="col-6">
+            <h2>4 ème photo actuelle : </h2>
+            <div class="row">
+                <img src="{{carousel[1].url}}" class="img-thumbnail col-12" alt="...">
+            </div>
+        </div>
+    </div>
+
+    <h2 class="pt-4">Disponibles : </h2>
+    <div class="row pt-5">
+        <div class="col-9">
+            <img *ngFor="let file of files; let i = index;" src="{{file.url}}" class="img-thumbnail col-2"
+                [ngClass]="{'active': i===chosen}" (click)="chose(i)">
+        </div>
+        <div *ngIf="chosen != -1" class="col-3">
+            <div class="row">
+                <button type="button" class="col-12 btn btn-primary mb-3" (click)="save(3)">
+                    Valider 3ème photo
+                </button>
+                <button type="button" class="col-12 btn btn-primary mb-3" (click)="save(4)">
+                    Valider 4ème photo
+                </button>
+                <button type="button" class="col-12 btn btn-primary" (click)="delete()">
+                    Supprimer photo
                 </button>
             </div>
         </div>
+    </div>
+</div>
 
-        <div class="container pt-5 mt-5">
-            <div class="card">
-                <div class="card-header">
-                    Ajouter un fichier
-                </div>
-                <div class="card-body">
-                    <input type="file" (change)="upload($event)" />
-                </div>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                        [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-            <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
-                File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
-            </div>
+<div class="container pt-5 mt-5">
+    <div class="card">
+        <div class="card-header">
+            Ajouter un fichier
         </div>
+        <div class="card-body">
+            <input type="file" (change)="upload($event)" />
+        </div>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)"
+                aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+    <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
+        File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
     </div>
 </div>

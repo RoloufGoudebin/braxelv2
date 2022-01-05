@@ -32,6 +32,10 @@ export class CarouselHomeComponent implements OnInit {
           ...e.payload.doc.data() as any
         }
     }));
+    setTimeout(() => {
+      console.log(this.carouselImg);
+    },
+      5000);
   }
 
 }

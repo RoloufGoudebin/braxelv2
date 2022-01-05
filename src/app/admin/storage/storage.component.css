@@ -1,0 +1,7 @@
+.active{
+    background-color: chartreuse;
+}
+
+.img-thumbnail{
+    cursor: pointer;
+}
