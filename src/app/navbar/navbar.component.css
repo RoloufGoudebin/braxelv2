@@ -2,11 +2,15 @@
 
 .nav-item{
     font-size: 1em;
+    font-size: 1.1vw;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
     line-height: 26px;
     padding-left:12px;
     margin-bottom: 0.5em;
+    white-space: nowrap !important;
+    text-size-adjust: container !important;
+ 
   }
 
 .alerttt{
@@ -20,6 +24,7 @@
     color: white !important;
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
+    
 }
 
 .navbar-light{
@@ -174,6 +179,7 @@ ul {
   display: flex;
   overflow-x: auto;
   z-index: 1;
+  
 }
 
 .nav__link {
