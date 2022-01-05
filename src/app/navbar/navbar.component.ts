@@ -24,7 +24,7 @@ let lastScrollTop = 0;
 window.addEventListener("scroll", function(){  
    var st = window.pageYOffset;  
    if (st > lastScrollTop){
-       document.getElementById("tapbar").style.bottom = "-100%";
+       document.getElementById("tapbar").style.bottom = "-20%";
    } else {
       document.getElementById("tapbar").style.bottom = "0";
    }
