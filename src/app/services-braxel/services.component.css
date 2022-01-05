@@ -17,6 +17,58 @@ h2 {
   padding-bottom: 10px;
 }
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  h2 {
+    font-size: 2em !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px;
+    display: block;
+    color: #233353;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left !important;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  h2 {
+    font-size: 2em !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px;
+    display: block;
+    color: #233353;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left !important
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  h2 {
+    font-size: 2em !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px;
+    display: block;
+    color: #233353;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left !important
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  h2 {
+    font-size: 3em !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px;
+    display: block;
+    color: #233353;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left !important
+  }
+}
+
 h4 {
   font-size: 1.6em;
   color: #233353;
@@ -25,6 +77,58 @@ h4 {
   padding-bottom: 0.6em;
   margin-top: 0.8em;
   font-weight: 900;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  h4 {
+    font-size: 1.3em !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px;
+    display: block;
+    color: #233353;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left !important;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  h4 {
+    font-size: 1.5em !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px;
+    display: block;
+    color: #233353;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left !important;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  h4 {
+    font-size: 1.5em !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px;
+    display: block;
+    color: #233353;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left !important;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  h4 {
+    font-size: 1.5em !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px;
+    display: block;
+    color: #233353;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left !important;
+  }
 }
 
 h5 {
@@ -381,31 +485,31 @@ a.anchor {
 }
 
 .before,
-  .after {
-    margin: 0;
-  }
+.after {
+  margin: 0;
+}
 
-  .before figcaption,
-  .after figcaption {
-    background: #fff;
-    border: 1px solid #c0c0c0;
-    border-radius: 12px;
-    color: #2e3452;
-    opacity: 0.8;
-    padding: 12px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    line-height: 100%;
-  }
+.before figcaption,
+.after figcaption {
+  background: #fff;
+  border: 1px solid #c0c0c0;
+  border-radius: 12px;
+  color: #2e3452;
+  opacity: 0.8;
+  padding: 12px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 100%;
+}
 
-  .before figcaption {
-    left: 12px;
-  }
+.before figcaption {
+  left: 12px;
+}
 
-  .after figcaption {
-    right: 12px;
-  }
+.after figcaption {
+  right: 12px;
+}
 
 .handle {
   cursor: pointer !important;
@@ -427,4 +531,33 @@ a.anchor {
 
 .network {
   border-radius: 60px !important;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  p {
+    text-align: left !important;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  p {
+    text-align: left !important;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  p {
+    text-align: left !important;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  p {
+    text-align: left !important;
+  }
 }

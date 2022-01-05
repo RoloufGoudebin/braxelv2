@@ -5,23 +5,92 @@
 }
 
 h1 {
-font-size: 3em;
+font-size: 2em;
 font-weight: 800;
 letter-spacing: 1px;
 display: block;
 color: #233353;
 font-family: 'Montserrat', sans-serif;
 }
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) { h1 {font-size: 1.6em !important;
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: block;
+    color: #233353;
+    font-family: 'Montserrat', sans-serif;} 
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) { h1 {font-size: 1.6em !important;
+  font-weight: 800;
+  letter-spacing: 1px;
+  display: block;
+  color: #233353;
+  font-family: 'Montserrat', sans-serif;} 
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) { h1 {font-size: 1.6em !important;
+  font-weight: 800;
+  letter-spacing: 1px;
+  display: block;
+  color: #233353;
+  font-family: 'Montserrat', sans-serif;} 
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) { h1 {font-size: 2em !important;
+  font-weight: 800;
+  letter-spacing: 1px;
+  display: block;
+  color: #233353;
+  font-family: 'Montserrat', sans-serif;} 
+}
 
 h2 {
 font-size: 2em;
 letter-spacing: 1px;
 display: block;
-color: #EE5C5A;
 font-family: 'Montserrat', sans-serif;
-margin-bottom: 20px !important;
+margin-bottom: 15px !important;
 padding-bottom: 3px;
 margin-right: 10px;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) { h2 {font-size: 1.6em !important;
+  font-weight: 800 !important;
+  letter-spacing: 1px;
+  display: block;
+  color: #233353;
+  font-family: 'Montserrat', sans-serif;} 
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) { h2 {font-size: 1.6em  !important;
+font-weight: 800 !important;
+letter-spacing: 1px;
+display: block;
+color: #233353;
+font-family: 'Montserrat', sans-serif;} 
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) { h2 {font-size: 1.6em  !important;
+font-weight: 800 !important;
+letter-spacing: 1px;
+display: block;
+color: #233353;
+font-family: 'Montserrat', sans-serif;} 
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) { h2 {font-size: 2em  !important;
+font-weight: 800 !important;
+letter-spacing: 1px;
+display: block;
+color: #233353;
+font-family: 'Montserrat', sans-serif;} 
 }
 
 h4 {
