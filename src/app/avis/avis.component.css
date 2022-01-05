@@ -29,6 +29,30 @@ h1{
     line-height: 51px;
     font-family: 'Source Sans Pro', sans-serif;
 }
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) { h1 {font-size: 1.7em !important;
+  font-weight: 600 !important;
+
+}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) { h1 {font-size: 2em  !important;
+font-weight: 600 !important;
+
+} 
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) { h1 {font-size: 2em  !important;
+font-weight: 600 !important;
+} 
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) { h1 {font-size: 46px  !important;
+font-weight: 600 !important;} 
+}
 
 .stars{
     color: rgb(255, 196, 0);

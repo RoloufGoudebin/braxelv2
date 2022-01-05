@@ -1,69 +1,157 @@
-.mission .banner{
-    max-height: 100vh;
-    min-height: 90%;
-    background-image: url("/assets/img/porte.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    font-family: 'Montserrat', sans-serif;
-    font-display: swap;
-    margin-right: 4%;
-    margin-top: 10em;
-    border-radius: 20px;
+.mission .banner {
+  max-height: 100vh;
+  min-height: 90%;
+  background-image: url("/assets/img/porte.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-family: 'Montserrat', sans-serif;
+  font-display: swap;
+  margin-right: 4%;
+  margin-top: 10em;
+  border-radius: 20px;
 
 }
 
-h1{
+h1 {
   font-size: 42px;
   color: #EE5C5A;
-  font-family:'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   padding-top: 5em;
   padding-bottom: 0.5em;
-  }
+}
 
-h2{
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 30px !important;
+    color: #EE5C5A;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 2em !important;
+    padding-top: 5em;
+    padding-bottom: 0.5em;
+
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  h1 {
+    font-size: 38px !important;
+    color: #EE5C5A;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 5em;
+    padding-bottom: 0.5em;
+
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  h1 {
+    text-align: left !important;
+    font-size: 42px;
+    color: #EE5C5A;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 5em;
+    padding-bottom: 0.5em;
+    ;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  h1 {
+    text-align: left !important;
+    font-size: 42px;
+    color: #EE5C5A;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 5em;
+    padding-bottom: 0.5em;
+
+  }
+}
+
+h2 {
   font-family: 'Source Sans Pro', sans-serif;
   color: #233353;
 }
 
-.mission h2{
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  h2 {
+    font-size: 30px !important;
+    margin-top: -0.5em !important;
+
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  h2 {
+    font-size: 38px !important;
+
+
+
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  h2 {
+    font-size: 42px;
+
+
+    ;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  h2 { 
+    font-size: 42px;
+
+  }
+}
+
+.mission h2 {
   font-family: 2.5em;
   color: #EE5C5A;
-  font-family:'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   padding-bottom: 0.5em;
 }
 
 h3 {
   font-size: 1.4em;
   color: #EE5C5A;
-  font-family:'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 800;
 }
 
-.charte h2{
+.charte h2 {
   font-size: 2.5em;
   color: #EE5C5A;
-  font-family:'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .charte .banner {
-    font-family: 'Montserrat', sans-serif;
-    font-display: swap;
-    border-radius: 20px 20px 20px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-display: swap;
+  border-radius: 20px 20px 20px 20px;
 }
 
-.charte{
+.charte {
   border-radius: 20px 20px 20px 20px !important;
   margin-top: 6em;
 }
 
-p{
-      font-family: 'Source Sans Pro', sans-serif;
-      font-size: 1.1em;
-      color: #233353;
+p {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.1em;
+  color: #233353;
 }
 
-b{
+b {
   color: #EE5C5A;
   font-style: 800;
 
@@ -77,12 +165,11 @@ ul {
   margin-top: 2em;
 }
 
-ul.icon li:before
-{
-	font-family: bullets;
-	content: "\e905";
-	float: left;
-	width: 1.4em;
+ul.icon li:before {
+  font-family: bullets;
+  content: "\e905";
+  float: left;
+  width: 1.4em;
 }
 
 .intro {
@@ -91,32 +178,34 @@ ul.icon li:before
 }
 
 
-hr{
+hr {
   border-bottom: 1px solid #F0f0f0;
 }
 
-a{
-  color:#233353;
+a {
+  color: #233353;
   font-weight: bold;
 }
 
 
-.icon{
+.icon {
   margin-bottom: 0.4em;
   margin-top: 0.4em;
   font-size: 3em;
-  color:#233353;
+  color: #233353;
 }
 
 .zoom:hover {
-  transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1.2);
+  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   transition: transform .5s ease;
 }
 
 div.slide-right {
-  width:100%;
-  overflow:hidden;
+  width: 100%;
+  overflow: hidden;
 }
+
 div.slide-right p {
   animation: 10s slide-right;
 }
@@ -135,6 +224,66 @@ div.slide-right p {
 
 .marge {
   margin-top: 1em !important;
- }
+}
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  p {
+    text-align: left !important;
 
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  p {
+    text-align: justify !important;
+
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  p {
+    text-align: justify !important;
+    ;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  p {
+    text-align: justify !important;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  ul {
+    text-align: left !important;
+
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  ul {
+    text-align: left !important;
+
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  ul {
+    text-align: left !important;
+    ;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  p {
+    text-align: justify !important;
+  }
+}
