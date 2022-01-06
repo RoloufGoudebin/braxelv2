@@ -22,7 +22,6 @@ margin-right: auto;
 
 } }
 
-/
 .alerttt{
   z-index: 100;
 }
@@ -37,11 +36,6 @@ margin-right: auto;
     
 }
 
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) { .top-navbar {margin-bottom: 3em !important;
-  } 
-}
 
 .navbar-light{
   background-color: white !important;
