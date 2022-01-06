@@ -9,10 +9,20 @@
     padding-left:12px;
     margin-bottom: 0.5em;
     white-space: nowrap !important;
-    text-size-adjust: container !important;
+  
  
   }
 
+  /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px){ .nav-item{font-size :1.2em !important;
+font-size : 4.5vw !important;
+margin-left: auto;
+margin-right: auto;
+
+
+} }
+
+/
 .alerttt{
   z-index: 100;
 }
@@ -25,6 +35,12 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) { .top-navbar {margin-bottom: 3em !important;
+  } 
 }
 
 .navbar-light{
