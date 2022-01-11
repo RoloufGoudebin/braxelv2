@@ -39,7 +39,7 @@
   .btn-outline-danger {
     padding:none !important;
     text-transform: none !important;
-    font-size: 1.1em !important;
+    font-size: 1em !important;
     background-color: #EE5C5A !important;
     color: #ffff !important;
     border-radius: 20px !important;
@@ -50,7 +50,7 @@
   .btn-outline-danger:focus {
     padding:none !important;
     text-transform: none !important;
-    font-size: 1.1em !important;
+    font-size: 1em !important;
     background-color: #EE5C5A !important;
     color: #ffff !important;
     border-radius: 20px !important;
@@ -61,7 +61,7 @@
   .btn-outline-danger:active {
     padding:none !important;
     text-transform: none !important;
-    font-size: 1.1em !important;
+    font-size: 1em !important;
     background-color: #EE5C5A !important;
     color: #ffff !important;
     border-radius: 20px !important;
@@ -73,7 +73,7 @@
   .btn-outline-danger:hover {
     padding:none !important;
     text-transform: none !important;
-    font-size: 1.1em !important;
+    font-size: 1em !important;
     background-color: #b94b4a !important;
     color: white !important;
   }

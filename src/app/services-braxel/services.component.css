@@ -474,15 +474,13 @@ a.anchor {
   --default-handle-width: 100px;
   --divider-width: 4px;
   outline: none;
+  color:white;
 }
 
 
 
 
-.coloured-slider:focus {
-  --divider-color: white;
-  --default-handle-color: white;
-}
+
 
 .before,
 .after {
@@ -511,14 +509,17 @@ a.anchor {
   right: 12px;
 }
 
-.handle {
-  cursor: pointer !important;
+.coloured-slider {
+  --divider-color: #233353;
+  --default-handle-color: #233353;
 }
+
+
+
 
 .slider-example-opacity-and-size:focus {
-  --default-handle-opacity: 1 !important;
+  --default-handle-opacity: 0;
 }
-
 
 .nodalview {
   border: 4px solid #000;

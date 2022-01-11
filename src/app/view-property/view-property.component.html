@@ -4,7 +4,7 @@
     <h3 *ngIf="property.TypeDescription" class="col-12">{{property.TypeDescription}}</h3>
     <h2 *ngIf="property.City" class="col-5">{{property.Zip}} {{property.City}}</h2>
     <a class="nav-link col-6" *ngIf="property.VirtualTour">
-      <app-modal-nodal class="ml-auto" [item]="nodalLink" [ngStyle]="{display: 'line'}"></app-modal-nodal>
+      <app-modal-nodal class="ml-auto" [item]="nodalLink"></app-modal-nodal>
     </a>
     <hr class="col-10">
 
@@ -17,184 +17,181 @@
   </div>
 
   <div class="row">
-    <div class="col-12">
-      <!-- Carousel -->
-      <div id="carousel" class="carousel slide gallery" data-ride="carousel">
-        <div class="carousel-inner rounded">
-          <div class="carousel-item active" data-slide-number="0" data-toggle="lightbox" data-gallery="gallery">
-            <img src="{{property.LargePicture}}" class="d-block rounded carousel-img img-fluid">
-          </div>
-          <div *ngFor="let picture of property.LargePictures | slice: 1; let i = index" class="carousel-item "
-            data-slide-number="i" data-toggle="lightbox" data-gallery="gallery">
-            <img src="{{picture}}" class="d-block rounded img-fluid">
-          </div>
+    <!-- Carousel -->
+    <div id="carousel" class="carousel slide gallery" data-ride="carousel">
+      <div class="carousel-inner rounded">
+        <div class="carousel-item active" data-slide-number="0" data-toggle="lightbox" data-gallery="gallery">
+          <img src="{{property.LargePicture}}" class="d-block rounded carousel-img img-fluid">
         </div>
-        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-          <span class="arrow bi bi-arrow-left-circle-fill" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="linear carousel-control-next" href="#carousel" role="button" data-slide="next">
-          <span class="arrow bi bi-arrow-right-circle-fill" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-
-      <!-- Carousel Navigatiom -->
-      <div id="carousel-thumbs" class="carousel slide mt-3 rounded" data-ride="carouselThumb" id="carouselThumb">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row mx-0 justify-content-center">
-              <div *ngIf="property.LargePictures[0]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="0">
-                <img src="{{property.LargePictures[0]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[1]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="1">
-                <img src="{{property.LargePictures[1]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[2]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="2">
-                <img src="{{property.LargePictures[2]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[3]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="3">
-                <img src="{{property.LargePictures[3]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[4]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="4">
-                <img src="{{property.LargePictures[4]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[5]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="5">
-                <img src="{{property.LargePictures[5]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item" *ngIf="property.LargePictures[6]">
-            <div class="row mx-0 justify-content-center">
-              <div *ngIf="property.LargePictures[6]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="6">
-                <img src="{{property.LargePictures[6]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[7]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="7">
-                <img src="{{property.LargePictures[7]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[8]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="8">
-                <img src="{{property.LargePictures[8]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[9]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="9">
-                <img src="{{property.LargePictures[9]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[10]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="10">
-                <img src="{{property.LargePictures[10]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[11]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="11">
-                <img src="{{property.LargePictures[11]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item" *ngIf="property.LargePictures[12]">
-            <div class="row mx-0 justify-content-center">
-              <div *ngIf="property.LargePictures[12]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="12">
-                <img src="{{property.LargePictures[12]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[13]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="13">
-                <img src="{{property.LargePictures[13]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[14]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="14">
-                <img src="{{property.LargePictures[6]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[15]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="15">
-                <img src="{{property.LargePictures[15]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[16]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="16">
-                <img src="{{property.LargePictures[16]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[17]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="17">
-                <img src="{{property.LargePictures[17]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item" *ngIf="property.LargePictures[18]">
-            <div class="row mx-0 justify-content-center">
-              <div *ngIf="property.LargePictures[18]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="18">
-                <img src="{{property.LargePictures[18]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[19]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="19">
-                <img src="{{property.LargePictures[19]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[20]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="20">
-                <img src="{{property.LargePictures[20]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[21]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="21">
-                <img src="{{property.LargePictures[21]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[22]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="22">
-                <img src="{{property.LargePictures[18]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[23]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="19">
-                <img src="{{property.LargePictures[19]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item" *ngIf="property.LargePictures[24]">
-            <div class="row mx-0 justify-content-center">
-              <div *ngIf="property.LargePictures[24]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="24">
-                <img src="{{property.LargePictures[24]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[25]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="25">
-                <img src="{{property.LargePictures[25]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[26]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="26">
-                <img src="{{property.LargePictures[26]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[27]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="27">
-                <img src="{{property.LargePictures[27]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[28]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="28">
-                <img src="{{property.LargePictures[28]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-              <div *ngIf="property.LargePictures[29]" id="carousel-selector-0"
-                class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="29">
-                <img src="{{property.LargePictures[29]}}" class="img-fluid mx-auto rounded thumbnail-img">
-              </div>
-            </div>
-          </div>
-          <a class="carousel-control-prev " href="#carouselThumb" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon mr-5 px-0" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="linear carousel-control-next" href="#carouselThumb" role="button" data-slide="next">
-            <span class="carousel-control-next-icon ml-5 px-0" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+        <div *ngFor="let picture of property.LargePictures | slice: 1; let i = index" class="carousel-item "
+          data-slide-number="i" data-toggle="lightbox" data-gallery="gallery">
+          <img src="{{picture}}" class="d-block rounded img-fluid">
         </div>
       </div>
+      <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+        <span class="arrow bi bi-arrow-left-circle-fill" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="linear carousel-control-next" href="#carousel" role="button" data-slide="next">
+        <span class="arrow bi bi-arrow-right-circle-fill" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
   </div>
 
+  <!-- Carousel Navigatiom -->
+  <div id="carousel-thumbs" class="carousel slide mt-3 rounded" data-ride="carouselThumb" id="carouselThumb">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row mx-0 justify-content-center">
+          <div *ngIf="property.LargePictures[0]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="0">
+            <img src="{{property.LargePictures[0]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[1]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="1">
+            <img src="{{property.LargePictures[1]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[2]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="2">
+            <img src="{{property.LargePictures[2]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[3]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="3">
+            <img src="{{property.LargePictures[3]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[4]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="4">
+            <img src="{{property.LargePictures[4]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[5]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="5">
+            <img src="{{property.LargePictures[5]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" *ngIf="property.LargePictures[6]">
+        <div class="row mx-0 justify-content-center">
+          <div *ngIf="property.LargePictures[6]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="6">
+            <img src="{{property.LargePictures[6]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[7]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="7">
+            <img src="{{property.LargePictures[7]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[8]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="8">
+            <img src="{{property.LargePictures[8]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[9]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="9">
+            <img src="{{property.LargePictures[9]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[10]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="10">
+            <img src="{{property.LargePictures[10]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[11]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="11">
+            <img src="{{property.LargePictures[11]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" *ngIf="property.LargePictures[12]">
+        <div class="row mx-0 justify-content-center">
+          <div *ngIf="property.LargePictures[12]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="12">
+            <img src="{{property.LargePictures[12]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[13]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="13">
+            <img src="{{property.LargePictures[13]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[14]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="14">
+            <img src="{{property.LargePictures[6]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[15]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="15">
+            <img src="{{property.LargePictures[15]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[16]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="16">
+            <img src="{{property.LargePictures[16]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[17]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="17">
+            <img src="{{property.LargePictures[17]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" *ngIf="property.LargePictures[18]">
+        <div class="row mx-0 justify-content-center">
+          <div *ngIf="property.LargePictures[18]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="18">
+            <img src="{{property.LargePictures[18]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[19]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="19">
+            <img src="{{property.LargePictures[19]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[20]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="20">
+            <img src="{{property.LargePictures[20]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[21]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="21">
+            <img src="{{property.LargePictures[21]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[22]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="22">
+            <img src="{{property.LargePictures[18]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[23]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="19">
+            <img src="{{property.LargePictures[19]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" *ngIf="property.LargePictures[24]">
+        <div class="row mx-0 justify-content-center">
+          <div *ngIf="property.LargePictures[24]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="24">
+            <img src="{{property.LargePictures[24]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[25]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="25">
+            <img src="{{property.LargePictures[25]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[26]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="26">
+            <img src="{{property.LargePictures[26]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[27]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="27">
+            <img src="{{property.LargePictures[27]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[28]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="28">
+            <img src="{{property.LargePictures[28]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+          <div *ngIf="property.LargePictures[29]" id="carousel-selector-0"
+            class="thumb px-1 py-2 selected text-center col-2" data-target="#carousel" data-slide-to="29">
+            <img src="{{property.LargePictures[29]}}" class="img-fluid mx-auto rounded thumbnail-img">
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev " href="#carouselThumb" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon mr-5 px-0" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="linear carousel-control-next" href="#carouselThumb" role="button" data-slide="next">
+        <span class="carousel-control-next-icon ml-5 px-0" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
 
 
   <div class="container bg">
@@ -284,4 +281,5 @@
       </agm-map>
     </div>
   </div>
-  <app-footer></app-footer>
+</div>
+<app-footer></app-footer>

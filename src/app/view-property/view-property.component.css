@@ -172,6 +172,7 @@ li {
   font-size: 2em;
   margin-bottom: 0.4em;
   margin-top: 0.4em;
+  color:#233353;
 
 }
 
@@ -367,7 +368,7 @@ agm-map {
 
 p {
   color: #233353;
-  font-size: 15px;
+  font-size: 1.1em;
   font-family: "Source Sans Pro", sans-serif;
 }
 
@@ -416,7 +417,7 @@ h6 {
   background-color: #23335300 !important;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1.0em;
-  border: none;
+  border: none !important;
   color: white !important;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -430,9 +431,9 @@ ul {
 }
 
 li {
-  color: white;
+  color: #233353;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 1.3em;
+  font-size: 1.1em;
   list-style-type: none;
 }
 
@@ -448,6 +449,7 @@ li {
   font-size: 2em;
   margin-bottom: 0.4em;
   margin-top: 0.4em;
+  color:#233353;
 
 }
 
@@ -479,12 +481,17 @@ li {
 
 .bg {
 
-  background-color: #233353 !important;
+  background-color: white !important;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 20px;
-  box-shadow: 7px 9px 18px -10px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 7px 9px 18px -10px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 7px 9px 18px -10px rgba(0, 0, 0, 0.75);
+  padding-top: 1.5em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-bottom: 1em;
+  margin-bottom: 2em;
+  box-shadow:
+  0  5px 10px rgba(154,160,185,0.05),
+  0 15px 40px rgba(166,173,201,0.2);
 
 }
