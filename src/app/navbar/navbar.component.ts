@@ -13,22 +13,21 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    document.getElementById("tapbar").style.bottom = "-20%";
   }
 
 }
 
 
 
-let lastScrollTop = 0;
 
-window.addEventListener("scroll", function(){  
-   var st = window.pageYOffset;  
-   if (st > lastScrollTop){
-       document.getElementById("tapbar").style.bottom = "-20%";
-   } else {
-      document.getElementById("tapbar").style.bottom = "0";
-   }
-   lastScrollTop = st;
+window.addEventListener("scroll", function () {
+  if (window.pageYOffset == 0) {
+    document.getElementById("tapbar").style.bottom = "-20%";
+  }
+  else {
+    document.getElementById("tapbar").style.bottom = "0%";
+  }
 }, false);
 
 

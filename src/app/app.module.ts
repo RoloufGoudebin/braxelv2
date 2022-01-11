@@ -58,6 +58,8 @@ import { AgentsComponent } from './home/agents/agents.component';
 import { TopBiensSellComponent } from './admin/top-biens-sell/top-biens-sell.component';
 import { StorageComponent } from './admin/storage/storage.component';
 
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -112,6 +114,7 @@ import { StorageComponent } from './admin/storage/storage.component';
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     NgSelectModule,
+    RouterModule,
     MDBBootstrapModulesPro.forRoot()
   ],
   providers: [OmnicasaService,
