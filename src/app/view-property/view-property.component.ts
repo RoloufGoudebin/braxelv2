@@ -9,10 +9,9 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-view-property',
   templateUrl: './view-property.component.html',
   styleUrls: ['./view-property.component.css'],
-  
+
 })
 export class ViewPropertyComponent implements OnInit {
-
   propertyList: Property[];
   topPropertyList: Property[];
   property: Property;
