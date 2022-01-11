@@ -27,6 +27,7 @@ h2 {
   font-size: 1.7em;
   color: #233353;
   line-height: 1.2em !important;
+  display:inline;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -36,9 +37,11 @@ h2 {
     font-style: 800 !important;
     font-size: 1.3em !important;
     color: #233353;
-    text-align: left !important ;
-    margin-top: -3em;
   }
+}
+
+a{
+  display: inline !important;
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
