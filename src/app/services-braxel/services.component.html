@@ -77,9 +77,19 @@
             <h5 class="service">Braxel mène à bien cette étape en 5 points :</h5>
           </div>
           <div class="col-6 d-none d-lg-block slideInRight">
-            <img-comparison-slider class="slider">
-              <img slot="before" src="assets/img/Base-comp.jpg" class="img-fluid" />
-              <img slot="after" src="assets/img/Final-comp.jpg" class="img-fluid" />
+            <img-comparison-slider class="slideInLeft my-0 py-0 my-auto">
+              <svg slot="handle" xmlns="http://www.w3.org/2000/svg" width="100" viewBox="-8 -3 16 6">
+                <path stroke="#C2C1BF" d="M -5 -2 L -7 0 L -5 2 M -5 -2 L -5 2 M 5 -2 L 7 0 L 5 2 M 5 -2 L 5 2"
+                  stroke-width="1" fill="#fff" vector-effect="non-scaling-stroke"></path>
+              </svg>
+              <figure slot="first" class="before">
+                <img width="100%" src="assets/img/Base-comp.jpg">
+                <figcaption>Before</figcaption>
+              </figure>
+              <figure slot="second" class="after">
+                <img width="100%" src="assets/img/Final-comp.jpg">
+                <figcaption>After</figcaption>
+              </figure>
             </img-comparison-slider>
           </div>
         </div>
@@ -147,7 +157,7 @@
         <div class="row">
           <div class="col-6 d-none d-lg-block mr-auto my-auto">
             <div
-              style="padding:10px;background:#000;webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;margin:0 auto;overflow:hidden;">
+              style="padding:10px;background:#233353;webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;margin:0 auto;overflow:hidden;">
               <iframe [src]="url" class="nodalview col-12" frameborder="0"></iframe>
             </div>
           </div>
@@ -285,9 +295,19 @@
             <h5 class="service">Notre service est complet :</h5>
           </div>
           <div class="col-6 d-none d-lg-block slideInRight">
-            <img-comparison-slider class="slideInLeft my-0 py-0 coloured-slider my-auto">
-              <img slot="before" src="assets/img/homestag_1.jpg" class="img-fluid" />
-              <img slot="after" src="assets/img/homestag_2.jpg" class="img-fluid" />
+            <img-comparison-slider class="slideInLeft my-0 py-0 my-auto">
+              <svg slot="handle" xmlns="http://www.w3.org/2000/svg" width="100" viewBox="-8 -3 16 6">
+                <path stroke="#C2C1BF" d="M -5 -2 L -7 0 L -5 2 M -5 -2 L -5 2 M 5 -2 L 7 0 L 5 2 M 5 -2 L 5 2"
+                  stroke-width="1" fill="#fff" vector-effect="non-scaling-stroke"></path>
+              </svg>
+              <figure slot="first" class="before">
+                <img width="100%" src="assets/img/homestag_1.jpg">
+                <figcaption>Before</figcaption>
+              </figure>
+              <figure slot="second" class="after">
+                <img width="100%" src="assets/img/homestag_2.jpg">
+                <figcaption>After</figcaption>
+              </figure>
             </img-comparison-slider>
           </div>
         </div>
