@@ -27,7 +27,7 @@ h2 {
   font-size: 1.7em;
   color: #233353;
   line-height: 1.2em !important;
-  display:inline;
+  display: inline;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -40,7 +40,7 @@ h2 {
   }
 }
 
-a{
+a {
   display: inline !important;
 }
 
@@ -172,7 +172,7 @@ li {
   font-size: 2em;
   margin-bottom: 0.4em;
   margin-top: 0.4em;
-  color:#233353;
+  color: #233353;
 
 }
 
@@ -449,7 +449,7 @@ li {
   font-size: 2em;
   margin-bottom: 0.4em;
   margin-top: 0.4em;
-  color:#233353;
+  color: #233353;
 
 }
 
@@ -482,16 +482,16 @@ li {
 .bg {
 
   background-color: white !important;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 20px;
-  padding-top: 1.5em;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
-  padding-bottom: 1em;
-  margin-bottom: 2em;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  border-radius: 20px !important;
+  padding-top: 1.5em !important;
+  padding-left: 1.5em !important;
+  padding-right: 1.5em !important;
+  padding-bottom: 1em !important;
+  margin-bottom: 2em !important;
   box-shadow:
-  0  5px 10px rgba(154,160,185,0.05),
-  0 15px 40px rgba(166,173,201,0.2);
+    0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2) !important;
 
 }
