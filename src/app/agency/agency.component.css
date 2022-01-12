@@ -187,6 +187,8 @@ a {
   font-weight: bold;
 }
 
+.margin-bottom {
+margin-bottom: 2em !important;}
 
 .icon {
   margin-bottom: 0.4em;
