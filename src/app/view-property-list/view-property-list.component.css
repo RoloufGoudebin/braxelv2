@@ -66,12 +66,6 @@ h5 {
 
   }
 
-  .card:hover {
-    background:#233353;
-    box-shadow: 0px 16px 9px -5px rgba(0, 0, 0,0.2);
-      transform: scale(1.10, 1.10);
-
-  }
 
   .ribon{
       position: absolute;
