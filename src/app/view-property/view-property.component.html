@@ -37,7 +37,7 @@
           <span class="arrow bi bi-arrow-left-circle-fill" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
-        <a class="linear carousel-control-next" href="#carousel" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
           <span class="arrow bi bi-arrow-right-circle-fill" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
@@ -188,11 +188,11 @@
           </div>
         </div>
         <a class="carousel-control-prev " href="#carouselThumb" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon mr-5 px-0" aria-hidden="true"></span>
+          <span class="carousel-control-prev-icon mr-5 px-0 mt-4" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
         <a class="linear carousel-control-next" href="#carouselThumb" role="button" data-slide="next">
-          <span class="carousel-control-next-icon ml-5 px-0" aria-hidden="true"></span>
+          <span class="carousel-control-next-icon ml-5 px-0 mt-4" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
       </div>
@@ -213,27 +213,27 @@
             <hr> {{property.NumberOfBedRooms}}
           </li>
         </div>
-        <div class="col-6 col-md card text-center mx-auto"  style="box-shadow: none;">
+        <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
           <span class="icon-bath icon"></span>
-          <li  class="titlecard">Salle(s) de bains
+          <li class="titlecard">Salle(s) de bains
             <hr> {{property.NumberOfBathRooms}}
           </li>
         </div>
-        <div class="col-6 col-md card text-center mx-auto"  style="box-shadow: none;">
+        <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
           <span class="icon-shower icon"></span>
-          <li  class="titlecard">Salle(s) de douche
+          <li class="titlecard">Salle(s) de douche
             <hr> {{property.NumberOfShowerRooms}}
           </li>
         </div>
-        <div class="col-6 col-md card text-center mx-auto"  style="box-shadow: none;">
+        <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
           <span class="icon-automobile icon"></span>
-          <li  class="titlecard">Garage(s)
+          <li class="titlecard">Garage(s)
             <hr> {{property.NumberOfGarages}}
           </li>
         </div>
-        <div class="col-6 col-md card text-center mx-auto"  style="box-shadow: none;">
+        <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
           <span class="icon-desktop_windows icon"></span>
-          <li  class="titlecard">Bureau(x)
+          <li class="titlecard">Bureau(x)
             <hr>
             <div *ngIf="property.IsOffice; else elseBlock">1</div>
             <ng-template #elseBlock>0</ng-template>

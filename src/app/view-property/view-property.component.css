@@ -435,3 +435,10 @@ li {
   margin-top:0.7em;
 
 }
+
+
+.arrow{
+  position: absolute !important;
+  top:45% !important;
+  left : 25%!important;
+}
