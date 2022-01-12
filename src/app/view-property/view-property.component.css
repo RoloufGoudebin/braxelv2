@@ -136,14 +136,10 @@ h6 {
   color: #233353;
 }
 
-<<<<<<< HEAD
-
-=======
 .card {
-  background-color: #23335300 !important;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1.0em;
-  border: none;
+  border: none !important;
   color: white !important;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -151,7 +147,6 @@ h6 {
   margin-bottom: 20px;
   margin-top: 20px;
 }
->>>>>>> parent of e8630ea (bug des bordures qui apparaissent parfois parfois pas GROSSES CHIENNES)
 
 ul {
   color: #233353;
@@ -426,12 +421,17 @@ li {
   overflow-x:hidden !important;
   border-radius: 20px !important;
   padding-top: 1.3em !important;
-  padding-left: 1.3em !important;
-  padding-right: 1.3em !important;
+  padding-left: 1.5em !important;
+  padding-right: 1.5em !important;
   padding-bottom: 2em !important;
   margin-bottom: 2em !important;
   box-shadow:
     0 5px 10px rgba(154, 160, 185, 0.05),
     0 15px 40px rgba(166, 173, 201, 0.2) ;
+
+}
+
+.titlecard {
+  margin-top:0.7em;
 
 }

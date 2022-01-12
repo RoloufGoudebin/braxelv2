@@ -201,39 +201,39 @@
 
     <div class="container ">
       <ul class="row px-0 mx-0">
-        <div class="col-6 col-md card text-center mx-auto">
+        <div class="col-6 col-md card text-center mx-auto " style="box-shadow: none;">
           <span class="icon-object-ungroup icon"></span>
           <li class="titlecard">Superficie
             <hr> {{property.SurfaceTotal}}
           </li>
         </div>
-        <div class="col-6 col-md card text-center mx-1 mx-auto">
+        <div class="col-6 col-md card text-center mx-1 mx-auto" style="box-shadow: none;">
           <span class="icon-bed icon"></span>
-          <li>Chambres
+          <li class="titlecard">Chambres
             <hr> {{property.NumberOfBedRooms}}
           </li>
         </div>
-        <div class="col-6 col-md card text-center mx-auto">
+        <div class="col-6 col-md card text-center mx-auto"  style="box-shadow: none;">
           <span class="icon-bath icon"></span>
-          <li>Salle(s) de bains
+          <li  class="titlecard">Salle(s) de bains
             <hr> {{property.NumberOfBathRooms}}
           </li>
         </div>
-        <div class="col-6 col-md card text-center mx-auto">
+        <div class="col-6 col-md card text-center mx-auto"  style="box-shadow: none;">
           <span class="icon-shower icon"></span>
-          <li>Salle(s) de douche
+          <li  class="titlecard">Salle(s) de douche
             <hr> {{property.NumberOfShowerRooms}}
           </li>
         </div>
-        <div class="col-6 col-md card text-center mx-auto">
+        <div class="col-6 col-md card text-center mx-auto"  style="box-shadow: none;">
           <span class="icon-automobile icon"></span>
-          <li>Garage(s)
+          <li  class="titlecard">Garage(s)
             <hr> {{property.NumberOfGarages}}
           </li>
         </div>
-        <div class="col-6 col-md card text-center mx-auto">
+        <div class="col-6 col-md card text-center mx-auto"  style="box-shadow: none;">
           <span class="icon-desktop_windows icon"></span>
-          <li>Bureau(x)
+          <li  class="titlecard">Bureau(x)
             <hr>
             <div *ngIf="property.IsOffice; else elseBlock">1</div>
             <ng-template #elseBlock>0</ng-template>
