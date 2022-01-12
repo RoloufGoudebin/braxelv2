@@ -384,4 +384,10 @@ i {
 }
 
 
-
+@media screen and (max-width:982px) {
+  .navbar-collapse ul {
+    position: relative;
+    height: 100vh;
+    top: 90px;
+  }
+}
