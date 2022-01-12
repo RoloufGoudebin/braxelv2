@@ -136,7 +136,22 @@ h6 {
   color: #233353;
 }
 
+<<<<<<< HEAD
 
+=======
+.card {
+  background-color: #23335300 !important;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.0em;
+  border: none;
+  color: white !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+>>>>>>> parent of e8630ea (bug des bordures qui apparaissent parfois parfois pas GROSSES CHIENNES)
 
 ul {
   color: #233353;
