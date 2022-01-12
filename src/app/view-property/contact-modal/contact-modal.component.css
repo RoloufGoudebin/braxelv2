@@ -44,9 +44,9 @@ button:disabled {
     background-color: #EE5C5A !important;
     color: #ffff !important;
     border-radius: 20px !important;
-    margin-top: 20px !important;
+    margin-top: 10px !important;
     font-family: 'Montserrat', sans-serif !important;
-    font-size: 1em !important;
+    font-size: 0.8em !important;
   }
   
   .btn-outline-danger:focus {
@@ -55,7 +55,7 @@ button:disabled {
     background-color: #EE5C5A !important;
     color: #ffff !important;
     border-radius: 20px !important;
-    margin-top: 20px !important;
+    margin-top: 10px !important;
     font-family: 'Montserrat', sans-serif !important;
   }
   
@@ -65,7 +65,7 @@ button:disabled {
     background-color: #EE5C5A !important;
     color: #ffff !important;
     border-radius: 20px !important;
-    margin-top: 20px !important;
+    margin-top: 10px !important;
     font-family: 'Montserrat', sans-serif !important;
   }
   

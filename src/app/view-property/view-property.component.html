@@ -1,19 +1,22 @@
 <app-navbar></app-navbar>
+
 <div *ngIf="property" class="container mt-5 pt-5">
   <div class="row pt-lg-5 mt-lg-5">
     <h3 *ngIf="property.TypeDescription" class="col-12">{{property.TypeDescription}}</h3>
     <h2 *ngIf="property.City" class="col-5">{{property.Zip}} {{property.City}}</h2>
-    <a class="nav-link col-6" *ngIf="property.VirtualTour">
-      <app-modal-nodal class="ml-auto" [item]="nodalLink"></app-modal-nodal>
-    </a>
-    <hr class="col-10">
 
-    <h2 *ngIf="property.StartPrice" class="mr-auto col-12">{{toStringPrice(property.Price)}}
-      {{property.PriceUnitText}}</h2>
-    <a class="nav-link ">
-      <app-contact-modal class="ml-auto" [id]="property.ID"></app-contact-modal>
-    </a>
-    <p class="price col-12"> Hors droits et taxes diverses</p>
+    <hr class="col-10">
+    <div class="col-10 row">
+      <h2 *ngIf="property.StartPrice" class="mr-auto col-12">{{toStringPrice(property.Price)}}
+        {{property.PriceUnitText}}</h2>
+      <p class="price col-12"> Hors droits et taxes diverses</p>
+      <a class="nav-link">
+        <app-contact-modal class="ml-auto" [id]="property.ID"></app-contact-modal>
+      </a>
+      <a class="nav-link" *ngIf="property.VirtualTour">
+        <app-modal-nodal class="ml-auto" [item]="nodalLink"></app-modal-nodal>
+      </a>
+    </div>
   </div>
 
 

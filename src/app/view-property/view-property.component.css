@@ -202,17 +202,7 @@ li {
   border-radius: 20px !important;
 }
 
-.bg {
 
-  background-color: #233353 !important;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 20px;
-  box-shadow: 7px 9px 18px -10px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 7px 9px 18px -10px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 7px 9px 18px -10px rgba(0, 0, 0, 0.75);
-
-}
 
 .carousel {
   position: relative;
@@ -319,48 +309,6 @@ li {
   border-color: #EE5C5A !important;
 }
 
-.btn-outline-danger {
-  padding: none !important;
-  text-transform: none !important;
-  font-size: 1.1em !important;
-  background-color: #EE5C5A !important;
-  color: #ffff !important;
-  border-radius: 20px !important;
-  margin-top: 20px !important;
-  font-family: 'Montserrat', sans-serif !important;
-}
-
-.btn-outline-danger:focus {
-  padding: none !important;
-  text-transform: none !important;
-  font-size: 1.1em !important;
-  background-color: #EE5C5A !important;
-  color: #ffff !important;
-  border-radius: 20px !important;
-  margin-top: 20px !important;
-  font-family: 'Montserrat', sans-serif !important;
-}
-
-.btn-outline-danger:active {
-  padding: none !important;
-  text-transform: none !important;
-  font-size: 1.1em !important;
-  background-color: #EE5C5A !important;
-  color: #ffff !important;
-  border-radius: 20px !important;
-  margin-top: 20px !important;
-  font-family: 'Montserrat', sans-serif !important;
-}
-
-
-.btn-outline-danger:hover {
-  padding: none !important;
-  text-transform: none !important;
-  font-size: 1.1em !important;
-  background-color: #b94b4a !important;
-  color: white !important;
-}
-
 agm-map {
   height: 60vh;
   width: 100%;
@@ -413,18 +361,7 @@ h6 {
   color: #233353;
 }
 
-.card {
-  background-color: #23335300 !important;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 1.0em;
-  border: none !important;
-  color: white !important;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 25px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
+
 
 ul {
   color: #233353;
@@ -482,16 +419,15 @@ li {
 .bg {
 
   background-color: white !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
+  overflow-x:hidden !important;
   border-radius: 20px !important;
-  padding-top: 1.5em !important;
-  padding-left: 1.5em !important;
-  padding-right: 1.5em !important;
-  padding-bottom: 1em !important;
+  padding-top: 1.3em !important;
+  padding-left: 1.3em !important;
+  padding-right: 1.3em !important;
+  padding-bottom: 2em !important;
   margin-bottom: 2em !important;
   box-shadow:
     0 5px 10px rgba(154, 160, 185, 0.05),
-    0 15px 40px rgba(166, 173, 201, 0.2) !important;
+    0 15px 40px rgba(166, 173, 201, 0.2) ;
 
 }
