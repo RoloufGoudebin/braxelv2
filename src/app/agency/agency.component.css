@@ -13,6 +13,10 @@
 
 }
 
+.margin-mobile {
+  margin-bottom: 5em !important;
+}
+
 h1 {
   font-size: 42px;
   color: #EE5C5A;
