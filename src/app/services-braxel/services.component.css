@@ -471,15 +471,11 @@ a.anchor {
 
 
 .slider {
-  --default-handle-width: 100px;
+  --default-handle-width: 590px !important;
   --divider-width: 4px;
   outline: none;
   color:white;
 }
-
-
-
-
 
 
 .before,
@@ -516,10 +512,6 @@ a.anchor {
 
 
 
-
-.slider-example-opacity-and-size:focus {
-  --default-handle-opacity: 0;
-}
 
 .nodalview {
   border: 4px solid #000;

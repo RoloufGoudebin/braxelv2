@@ -37,11 +37,15 @@
   font-size: 12px;
 
 }
-
+/* marge alignement avec contact marge edouard */
+.marged{
+margin-left:0.532em !important;
+}
 
 .navbar-light {
   background-color: white !important;
 }
+
 
 .logo-navbar {
   max-height: 70px;
