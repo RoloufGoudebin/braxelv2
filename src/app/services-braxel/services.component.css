@@ -518,8 +518,19 @@ a.anchor {
   -moz-border-radius: 15px;
   border-radius: 15px;
   overflow: hidden;
-  height: 350px;
   border: none;
+}
+
+@media screen and (min-width:992px){
+  .nodalview{
+    height: 350px !important;
+  }
+}
+
+@media screen and (max-width:992px){
+  .nodalview{
+    height: 200px !important;
+  }
 }
 
 .network {
