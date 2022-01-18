@@ -146,7 +146,7 @@ export class FirestoreService {
         .doc("the-best-3")
         .set(file)
     }
-    else if (pos==4){
+    else if (pos == 4) {
       this.firestore
         .collection("home-carousel")
         .doc("the-best-4")
@@ -154,7 +154,7 @@ export class FirestoreService {
     }
   }
 
-  deleteFile(fileRef: any){
+  deleteFile(fileRef: any) {
     this.firestore
       .collection("files")
       .doc(fileRef.name)
@@ -257,9 +257,31 @@ export class FirestoreService {
       });
   }
 
+  addReview(author: string, rate: number, review: string, id: number) {
+    this.firestore
+      .collection("avis")
+      .doc(id.toString())
+      .set({ "author_name": author, "id": id, "rating": rate, "text": review })
+  }
 
+  deleteReview(id: number, length: number) {
+    this.firestore
+      .collection("avis")
+      .doc(id.toString())
+      .delete()
 
-
-
+      /*
+    for (let i = id; i < length; i++) {
+      let tmp = this.firestore
+        .collection("avis")
+        .doc((i+1).toString())
+        console.log(tmp);
+      this.firestore
+        .collection("avis")
+        .doc(i.toString())
+        .set(tmp)
+    }
+    */
+  }
 
 }

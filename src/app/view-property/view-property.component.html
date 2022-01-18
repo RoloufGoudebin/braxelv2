@@ -41,8 +41,11 @@
           <span class="arrow bi bi-arrow-right-circle-fill" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
+        <span class="ribon" [ngStyle]="{'background':getColor(property.Goal, property.SubStatus)}"> {{getStatus(property.Goal,
+          property.SubStatus)}} </span>
       </div>
     </div>
+    
 
     <!-- Carousel Navigatiom -->
     <div id="carousel-thumbs" class="carousel slide mt-3 rounded" data-ride="carouselThumb" id="carouselThumb">

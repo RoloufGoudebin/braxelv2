@@ -70,5 +70,42 @@ export class ViewPropertyComponent implements OnInit {
   }
 
 
+  getColor(goal: number, subStatus: number) {
+    if (goal==0 && subStatus==2) {
+      return '#283152'
+    }
+    if (goal==1 && subStatus==2) {
+      return '#283152';
+    }
+    if (goal==0 && subStatus==3) {
+      return '#26CE6C';
+    }
+    if (goal==0 && subStatus==6) {
+      return '#26CE6C';
+    }
+    if (goal==1 && subStatus==13) {
+      return '#FFC738';
+    }
+
+  }
+
+  getStatus(goal: number, subStatus: number) {
+    if (goal==0 && subStatus==2) {
+      return 'À VENDRE';
+    }
+    if (goal==1 && subStatus==2) {
+      return 'À LOUER';
+    }
+    if (goal==0 && subStatus==3) {
+      return 'SOUS OPTION';
+    }
+    if (goal==0 && subStatus==6) {
+      return 'VENDU';
+    }
+    if (goal==1 && subStatus==13) {
+      return 'LOUÉ';
+    }
+  }
+
 }
 

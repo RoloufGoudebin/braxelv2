@@ -418,7 +418,7 @@ li {
 .bg {
 
   background-color: white !important;
-  overflow-x:hidden !important;
+  overflow-x: hidden !important;
   border-radius: 20px !important;
   padding-top: 1.3em !important;
   padding-left: 1.5em !important;
@@ -427,18 +427,43 @@ li {
   margin-bottom: 2em !important;
   box-shadow:
     0 5px 10px rgba(154, 160, 185, 0.05),
-    0 15px 40px rgba(166, 173, 201, 0.2) ;
+    0 15px 40px rgba(166, 173, 201, 0.2);
 
 }
 
 .titlecard {
-  margin-top:0.7em;
+  margin-top: 0.7em;
 
 }
 
 
-.arrow{
+.arrow {
   position: absolute !important;
-  top:45% !important;
-  left : 25%!important;
+  top: 45% !important;
+  left: 25% !important;
+}
+
+
+@media screen and (min-width:992px) {
+  .ribon {
+    position: absolute;
+    right: -5px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 10px 35px;
+    font-weight: 600;
+    top: 38px;
+  }
+}
+
+@media screen and (max-width:992px) {
+  .ribon {
+    position: absolute;
+    right: -5px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 5px 15px;
+    font-weight: 600;
+    top: 18px;
+  }
 }

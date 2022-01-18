@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firebase/firestore.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-avis',
@@ -8,10 +9,16 @@ import { FirestoreService } from 'src/app/services/firebase/firestore.service';
 })
 export class AvisComponent implements OnInit {
 
-  constructor(private firestore: FirestoreService) { }
+  constructor(private firestore: FirestoreService, private formBuilder: FormBuilder) { }
   cards: any[];
-  toSwap=[-1, -1];
-  show= false;
+  toSwap = [-1, -1];
+  show = false;
+  reviewForm = this.formBuilder.group({
+    author: '',
+    review: '',
+    rate: ''
+  });
+
 
   ngOnInit(): void {
     this.firestore.getFirestoreCollection('avis').subscribe(data =>
@@ -22,6 +29,7 @@ export class AvisComponent implements OnInit {
         }
       }));
     setTimeout(() => {
+      console.log(this.cards.length);
       this.cards.sort(function (a, b) {
         return a.id - b.id;
       });;
@@ -58,25 +66,41 @@ export class AvisComponent implements OnInit {
     if (this.toSwap[0] == -1) {
       this.toSwap[0] = id;
     }
-    else if (this.toSwap[1] == -1){
+    else if (this.toSwap[1] == -1) {
       this.toSwap[1] = id;
     }
-    else if (this.toSwap[0] != -1 && this.toSwap[1] != -1){
+    else if (this.toSwap[0] != -1 && this.toSwap[1] != -1) {
       this.toSwap[0] = -1;
       this.toSwap[1] = -1;
     }
     console.log(this.toSwap)
   }
 
-  sort(){
+  sort() {
     this.cards.sort(function (a, b) {
       return a.id - b.id;
     });;
-    setTimeout(() => {
-      console.log(this.cards);
-    },
-      3000);
     this.show = true;
+  }
+
+  onSubmitReview(): void {
+    console.log(this.reviewForm);
+    this.firestore.addReview(this.reviewForm.value.author, this.reviewForm.value.rate, this.reviewForm.value.review, this.cards.length);
+    setTimeout(() => {
+      this.cards.sort(function (a, b) {
+        return a.id - b.id;
+      });;
+    },
+      1500);
+  }
+
+  delete() {
+    this.firestore.deleteReview(this.toSwap[0], this.cards.length);
+    setTimeout(() => {
+      this.cards.sort();
+    },
+      1500);
+    this.toSwap[0] = -1;
   }
 
 

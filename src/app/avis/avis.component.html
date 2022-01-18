@@ -376,6 +376,346 @@
                         </mdb-card-body>
                     </mdb-card>
                 </div>
+                <div class="carousel-item row no-gutters" *ngIf="cards[15] && cards[16] && cards[17]">
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[15].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[15].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[15].author_name" [range]="cards[0].rating "
+                                [text]="cards[15].text" [date]="cards[15].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[15].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[16].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[16].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[16].author_name" [range]="cards[0].rating "
+                                [text]="cards[16].text" [date]="cards[16].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[16].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[17].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[17].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[17].author_name" [range]="cards[0].rating "
+                                [text]="cards[17].text" [date]="cards[17].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[17].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
+                <div class="carousel-item row no-gutters" *ngIf="cards[18] && cards[19] && cards[20]">
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[18].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[18].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[18].author_name" [range]="cards[0].rating "
+                                [text]="cards[18].text" [date]="cards[18].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[18].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[19].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[19].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[19].author_name" [range]="cards[0].rating "
+                                [text]="cards[19].text" [date]="cards[19].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[19].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[20].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[20].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[20].author_name" [range]="cards[0].rating "
+                                [text]="cards[20].text" [date]="cards[20].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[20].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
+                <div class="carousel-item row no-gutters" *ngIf="cards[21] && cards[22] && cards[23]">
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[21].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[21].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[21].author_name" [range]="cards[0].rating "
+                                [text]="cards[21].text" [date]="cards[21].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[21].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[22].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[22].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[22].author_name" [range]="cards[0].rating "
+                                [text]="cards[22].text" [date]="cards[22].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[22].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[23].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[23].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[23].author_name" [range]="cards[0].rating "
+                                [text]="cards[23].text" [date]="cards[23].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[23].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
+                <div class="carousel-item row no-gutters" *ngIf="cards[24] && cards[25] && cards[26]">
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[24].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[24].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[24].author_name" [range]="cards[0].rating "
+                                [text]="cards[24].text" [date]="cards[24].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[24].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[25].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[25].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[25].author_name" [range]="cards[0].rating "
+                                [text]="cards[25].text" [date]="cards[25].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[25].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[26].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[26].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[26].author_name" [range]="cards[0].rating "
+                                [text]="cards[26].text" [date]="cards[26].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[26].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
+                <div class="carousel-item row no-gutters" *ngIf="cards[27] && cards[28] && cards[29]">
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[27].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[27].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[27].author_name" [range]="cards[0].rating "
+                                [text]="cards[27].text" [date]="cards[27].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[27].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[28].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[28].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[28].author_name" [range]="cards[0].rating "
+                                [text]="cards[28].text" [date]="cards[28].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[28].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                    <mdb-card class="my-1 rounded col-md-3 mx-auto">
+                        <mdb-card-body class="mt-2">
+                            <mdb-card-title>
+                                <h4 class="text-center">{{cards[29].author_name}}</h4>
+                                <div class="stars text-center pt-0 mt-0">
+                                    <mat-icon *ngFor="let item of
+                                            createRange(cards[0].rating)"><i class="bi bi-star-fill"></i></mat-icon>
+                                </div>
+                            </mdb-card-title>
+                            <p
+                                class="text-justify mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
+                                {{cards[29].text}}</p>
+                            <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
+                            <app-modal-avis [author]="cards[29].author_name" [range]="cards[0].rating "
+                                [text]="cards[29].text" [date]="cards[29].relative_time_description">
+                            </app-modal-avis>
+                            <h6 class="text-center pt-1 pb-0 mb-0">{{cards[29].relative_time_description }}</h6>
+                            <div class="row pt-0 mt-0">
+                                <img src="assets/img/google.png" class="col-2 ml-auto pt-0 mt-0">
+                            </div>
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
             </div>
             <a class="linear carousel-control-prev mr-5 pr-6" href="#recipeCarousel" role="button" data-slide="prev">
                 <span class="arrow bi bi-arrow-left-circle-fill" aria-hidden="true"></span>
