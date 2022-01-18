@@ -436,11 +436,20 @@ li {
 
 }
 
+@media screen and (min-width:992px) {
+  .arrow {
+    position: absolute !important;
+    top: 45% !important;
+    left: 33% !important;
+  }
+}
 
-.arrow {
-  position: absolute !important;
-  top: 45% !important;
-  left: 25% !important;
+@media screen and (max-width:992px) {
+  .arrow {
+    position: absolute !important;
+    top: 45% !important;
+    left: 13% !important;
+  }
 }
 
 
