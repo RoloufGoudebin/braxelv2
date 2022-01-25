@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { FirestoreService } from 'src/app/services/firebase/firestore.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { FirestoreService } from 'src/app/services/firebase/firestore.service';
 })
 export class CarouselHomeComponent implements OnInit {
 
-  constructor(private firestore: FirestoreService) {}
+  constructor(private firestore: FirestoreService, private translate: TranslateService) {
+    translate.setDefaultLang('en');
+  }
 
   carouselImg: any[];
 

@@ -42,7 +42,7 @@ import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AuthService } from "./admin/services/auth.service";
 import { RealisationsComponent } from './realisations/realisations.component';
-import { MDBBootstrapModulesPro} from 'ng-uikit-pro-standard';
+import { MDBBootstrapModulesPro } from 'ng-uikit-pro-standard';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -59,6 +59,10 @@ import { TopBiensSellComponent } from './admin/top-biens-sell/top-biens-sell.com
 import { StorageComponent } from './admin/storage/storage.component';
 
 import { RouterModule } from '@angular/router';
+
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient} from '@angular/common/http';
 
 
 @NgModule({
@@ -115,7 +119,14 @@ import { RouterModule } from '@angular/router';
     Ng2SearchPipeModule,
     NgSelectModule,
     RouterModule,
-    MDBBootstrapModulesPro.forRoot()
+    MDBBootstrapModulesPro.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [OmnicasaService,
     AngularFireAuth,
@@ -125,3 +136,7 @@ import { RouterModule } from '@angular/router';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

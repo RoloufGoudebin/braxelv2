@@ -3,6 +3,7 @@ import { FirestoreService } from '../services/firebase/firestore.service';
 import { Property } from '../services/omnicasa/interface';
 
 import { BraxelHome } from '../braxel-home.model'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,9 @@ import { BraxelHome } from '../braxel-home.model'
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private firestore: FirestoreService) { }
+  constructor(private firestore: FirestoreService, private translate: TranslateService) {
+    translate.setDefaultLang('en');
+   }
 
   numberProperty = 9;
   texts: BraxelHome[];

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { routeTransitionAnimations } from './route-transition-animations';
 import { FirestoreService } from './services/firebase/firestore.service';
 
@@ -17,7 +18,9 @@ export class AppComponent {
   title = 'braxel';
   date;
 
-  constructor(private firestore: FirestoreService, private http: HttpClient) { }
+  constructor(private firestore: FirestoreService, private http: HttpClient, private translate: TranslateService) {
+    translate.setDefaultLang('en');
+   }
 
   ngOnInit() {
     //this.firestore.createPropertyListActive();
