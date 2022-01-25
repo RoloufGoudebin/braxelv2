@@ -63,6 +63,7 @@ import { RouterModule } from '@angular/router';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient} from '@angular/common/http';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 @NgModule({
@@ -119,6 +120,7 @@ import {HttpClient} from '@angular/common/http';
     Ng2SearchPipeModule,
     NgSelectModule,
     RouterModule,
+    SlickCarouselModule,
     MDBBootstrapModulesPro.forRoot(),
     TranslateModule.forRoot({
       loader: {

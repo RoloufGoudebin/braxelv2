@@ -41,11 +41,12 @@
           <span class="arrow bi bi-arrow-right-circle-fill" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
-        <span class="ribon" [ngStyle]="{'background':getColor(property.Goal, property.SubStatus)}"> {{getStatus(property.Goal,
+        <span class="ribon" [ngStyle]="{'background':getColor(property.Goal, property.SubStatus)}">
+          {{getStatus(property.Goal,
           property.SubStatus)}} </span>
       </div>
     </div>
-    
+
 
     <!-- Carousel Navigatiom -->
     <div id="carousel-thumbs" class="carousel slide mt-3 rounded" data-ride="carouselThumb" id="carouselThumb">
@@ -245,6 +246,31 @@
       </ul>
     </div>
   </div>
+
+
+  <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)"
+    (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
+    <div ngxSlickItem *ngFor="let picture of property.LargePictures | slice: 1; let i = index" class="slide"
+      data-slide-number="i" data-toggle="lightbox" data-gallery="gallery">
+      <img src="{{picture}}" class="d-block rounded img-fluid">
+    </div>
+  </ngx-slick-carousel>
+  <div class="row">
+    <div class="col-12" style="margin-top: -450px; z-index: 20;">
+      <div class="row">
+        <button (click)="slickModal.slickPrev()" class="mr-auto">Prev</button>
+        <button (click)="slickModal.slickNext()" class="ml-auto">Next</button>
+      </div>
+    </div>
+  </div>
+  <ngx-slick-carousel class="carousel" #slickModalNav="slick-carousel" [config]="slideConfigNav" (init)="slickInit($event)"
+    (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
+    <div ngxSlickItem *ngFor="let picture of property.LargePictures | slice: 1; let i = index" class="slide"
+      data-slide-number="i" data-toggle="lightbox" data-gallery="gallery">
+      <img src="{{picture}}" class="d-block rounded img-fluid px-3">
+    </div>
+  </ngx-slick-carousel>
+
 
 
 

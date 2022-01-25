@@ -32,12 +32,15 @@
               "src/styles.scss",
               "src/fonts/style.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
-              "node_modules/animate.css/animate.css"
+              "node_modules/animate.css/animate.css",
+              "node_modules/slick-carousel/slick/slick.scss",
+              "node_modules/slick-carousel/slick/slick-theme.scss"
             ],
             "scripts": [
               "src/assets/js/jquery.min.js",
               "src/assets/js/bootstrap.min.js",
-              "src/assets/js/main.js"
+              "src/assets/js/main.js",
+              "node_modules/slick-carousel/slick/slick.min.js"
             ]
           },
           "configurations": {
