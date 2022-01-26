@@ -516,7 +516,6 @@ a.anchor {
 .nodalview {
   border: 4px solid #000;
   -moz-border-radius: 15px;
-  border-radius: 15px;
   overflow: hidden;
   border: none;
 }
