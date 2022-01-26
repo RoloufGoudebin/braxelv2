@@ -79,7 +79,6 @@
   .btn-outline-danger:hover {
     padding:none !important;
     text-transform: none !important;
-    font-size: 0.8em !important;
     background-color: #b94b4a !important;
     color: white !important;
   }
