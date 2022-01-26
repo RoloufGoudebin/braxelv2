@@ -435,6 +435,11 @@ li {
   margin-top: 0.7em;
 
 }
+@media screen and (max-width:992px) {
+  .titlecard {
+    font-size: 0.8em !important;
+  }
+}
 
 @media screen and (min-width:992px) {
   .arrow {
