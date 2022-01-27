@@ -482,3 +482,7 @@ li {
     top: 18px;
   }
 }
+
+.slide{
+  cursor: pointer;
+}
