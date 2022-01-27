@@ -64,6 +64,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient} from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 
 
 @NgModule({
@@ -121,6 +122,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     NgSelectModule,
     RouterModule,
     SlickCarouselModule,
+    NgImageFullscreenViewModule,
     MDBBootstrapModulesPro.forRoot(),
     TranslateModule.forRoot({
       loader: {

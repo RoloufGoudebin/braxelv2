@@ -13,35 +13,51 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ViewPropertyComponent implements OnInit {
 
-  slides = [
-    {img: "http://placehold.it/350x150/000000"},
-    {img: "http://placehold.it/350x150/111111"},
-    {img: "http://placehold.it/350x150/333333"},
-    {img: "http://placehold.it/350x150/666666"}
-  ];
-  slideConfig = { arrows :true, slidesToShow: 1, slidesToScroll: 1};
-  slideConfigNav = { arrows :true, slidesToShow: 5, slidesToScroll: 4};
-  
-  addSlide() {
-    this.slides.push({img: "http://placehold.it/350x150/777777"})
+  imageObject: Array<object> = [];
+
+
+  showFlag: boolean = false;
+  selectedImageIndex: number = -1;
+
+
+  slideConfig = { slidesToShow: 1, slidesToScroll: 1, adaptiveHeight: true };
+  slideConfigNavXl = {
+    arrows: true,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    adaptiveHeight: true 
+  };
+  slideConfigNavXs = {
+    adaptiveHeight: true,
+    arrows: true,
+    slidesToShow: 3,
+    slidesToScroll: 3
+  };
+
+  showLightbox(index: number) {
+    this.selectedImageIndex = index;
+    console.log(index);
+    console.log(this.imageObject[index]);
+    this.showFlag = true;
   }
-  
-  removeSlide() {
-    this.slides.length = this.slides.length - 1;
+
+  closeEventHandler() {
+    this.showFlag = false;
+    this.selectedImageIndex = -1;
   }
-  
+
   slickInit(e) {
     console.log('slick initialized');
   }
-  
+
   breakpoint(e) {
     console.log('breakpoint');
   }
-  
+
   afterChange(e) {
     console.log('afterChange');
   }
-  
+
   beforeChange(e) {
     console.log('beforeChange');
   }
@@ -66,6 +82,11 @@ export class ViewPropertyComponent implements OnInit {
       this.lat = +this.property.GoogleX;
       this.long = +this.property.GoogleY;
       this.nodalLink = this.property.VirtualTour;
+      for (let i = 0; i < this.property.LargePictures.length; i++) {
+        console.log(this.property.LargePictures.length);
+        this.imageObject.push({ image: this.property.LargePictures[i] });
+      }
+      console.log(this.imageObject);
     });;
   }
 
@@ -106,38 +127,38 @@ export class ViewPropertyComponent implements OnInit {
 
 
   getColor(goal: number, subStatus: number) {
-    if (goal==0 && subStatus==2) {
+    if (goal == 0 && subStatus == 2) {
       return '#283152'
     }
-    if (goal==1 && subStatus==2) {
+    if (goal == 1 && subStatus == 2) {
       return '#283152';
     }
-    if (goal==0 && subStatus==3) {
+    if (goal == 0 && subStatus == 3) {
       return '#26CE6C';
     }
-    if (goal==0 && subStatus==6) {
+    if (goal == 0 && subStatus == 6) {
       return '#26CE6C';
     }
-    if (goal==1 && subStatus==13) {
+    if (goal == 1 && subStatus == 13) {
       return '#FFC738';
     }
 
   }
 
   getStatus(goal: number, subStatus: number) {
-    if (goal==0 && subStatus==2) {
+    if (goal == 0 && subStatus == 2) {
       return 'À VENDRE';
     }
-    if (goal==1 && subStatus==2) {
+    if (goal == 1 && subStatus == 2) {
       return 'À LOUER';
     }
-    if (goal==0 && subStatus==3) {
+    if (goal == 0 && subStatus == 3) {
       return 'SOUS OPTION';
     }
-    if (goal==0 && subStatus==6) {
+    if (goal == 0 && subStatus == 6) {
       return 'VENDU';
     }
-    if (goal==1 && subStatus==13) {
+    if (goal == 1 && subStatus == 13) {
       return 'LOUÉ';
     }
   }
