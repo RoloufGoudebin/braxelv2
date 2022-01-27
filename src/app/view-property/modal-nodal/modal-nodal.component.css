@@ -46,6 +46,12 @@
     margin-top: 10px !important;
     font-family: 'Montserrat', sans-serif !important;
   }
+
+  @media screen and (max-width:992px) {
+    .btn-outline-danger {
+     font-size: 0.65em !important;
+    }
+  }
   
   .btn-outline-danger:focus {
     padding:none !important;
@@ -73,7 +79,6 @@
   .btn-outline-danger:hover {
     padding:none !important;
     text-transform: none !important;
-    font-size: 0.8em !important;
     background-color: #b94b4a !important;
     color: white !important;
   }

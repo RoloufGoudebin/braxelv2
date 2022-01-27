@@ -48,6 +48,12 @@ button:disabled {
     font-family: 'Montserrat', sans-serif !important;
     font-size: 0.8em !important;
   }
+
+  @media screen and (max-width:992px) {
+    .btn-outline-danger {
+     font-size: 0.65em !important;
+    }
+  }
   
   .btn-outline-danger:focus {
     padding:none !important;

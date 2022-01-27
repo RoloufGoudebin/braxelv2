@@ -10,6 +10,18 @@
       <h2 *ngIf="property.StartPrice" class="mr-auto col-12">{{toStringPrice(property.Price)}}
         {{property.PriceUnitText}}</h2>
       <p class="price col-12"> Hors droits et taxes diverses</p>
+    </div>
+
+    <div class="row mx-auto d-lg-none">
+      <a class="nav-link">
+        <app-contact-modal class="ml-auto" [id]="property.ID"></app-contact-modal>
+      </a>
+      <a class="nav-link" *ngIf="property.VirtualTour">
+        <app-modal-nodal class="ml-auto" [item]="nodalLink"></app-modal-nodal>
+      </a>
+    </div>
+
+    <div class="row d-none d-lg-block">
       <a class="nav-link">
         <app-contact-modal class="ml-auto" [id]="property.ID"></app-contact-modal>
       </a>
@@ -18,7 +30,6 @@
       </a>
     </div>
   </div>
-
 
 
   <div class="bg">
@@ -35,29 +46,36 @@
     <div class="row d-none d-md-block" style="margin-top: -400px; margin-bottom: 400px;">
       <div class="col-12">
         <div class="row">
-          <a class="carousel-control-prev mr-auto" role="button" data-slide="prev"
-            (click)="slickModal.slickPrev()">
+          <a class="carousel-control-prev mr-auto" role="button" data-slide="prev" (click)="slickModal.slickPrev()">
             <span class="arrow bi bi-arrow-left-circle-fill" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="carousel-control-next ml-auto" role="button" data-slide="prev"
-            (click)="slickModal.slickNext()">
+          <a class="carousel-control-next ml-auto" role="button" data-slide="prev" (click)="slickModal.slickNext()">
             <span class="arrow bi bi-arrow-right-circle-fill" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
         </div>
       </div>
+      <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+        <span class="arrow bi bi-arrow-left-circle-fill" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+        <span class="arrow bi bi-arrow-right-circle-fill" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      <span class="ribon" [ngStyle]="{'background':getColor(property.Goal, property.SubStatus)}">
+        {{getStatus(property.Goal,
+        property.SubStatus)}} </span>
     </div>
     <div class="row d-md-none" style="margin-top: -170px; margin-bottom: 170px;">
       <div class="col-12 d-md-none">
         <div class="row">
-          <a class="carousel-control-prev mr-auto" role="button" data-slide="prev"
-            (click)="slickModal.slickPrev()">
+          <a class="carousel-control-prev mr-auto" role="button" data-slide="prev" (click)="slickModal.slickPrev()">
             <span class="arrow bi bi-arrow-left-circle-fill" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="carousel-control-next ml-auto" role="button" data-slide="prev"
-            (click)="slickModal.slickNext()">
+          <a class="carousel-control-next ml-auto" role="button" data-slide="prev" (click)="slickModal.slickNext()">
             <span class="arrow bi bi-arrow-right-circle-fill" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
@@ -113,101 +131,112 @@
           </a>
         </div>
       </div>
-    </div>
-
-    <div class="container ">
-      <ul class="row px-0 mx-0">
-        <div class="col-6 col-md card text-center mx-auto " style="box-shadow: none;">
-          <span class="icon-object-ungroup icon"></span>
-          <li class="titlecard">Superficie
-            <hr> {{property.SurfaceTotal}}
-          </li>
-        </div>
-        <div class="col-6 col-md card text-center mx-1 mx-auto" style="box-shadow: none;">
-          <span class="icon-bed icon"></span>
-          <li class="titlecard">Chambres
-            <hr> {{property.NumberOfBedRooms}}
-          </li>
-        </div>
-        <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
-          <span class="icon-bath icon"></span>
-          <li class="titlecard">Salle(s) de bains
-            <hr> {{property.NumberOfBathRooms}}
-          </li>
-        </div>
-        <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
-          <span class="icon-shower icon"></span>
-          <li class="titlecard">Salle(s) de douche
-            <hr> {{property.NumberOfShowerRooms}}
-          </li>
-        </div>
-        <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
-          <span class="icon-automobile icon"></span>
-          <li class="titlecard">Garage(s)
-            <hr> {{property.NumberOfGarages}}
-          </li>
-        </div>
-        <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
-          <span class="icon-desktop_windows icon"></span>
-          <li class="titlecard">Bureau(x)
-            <hr>
-            <div *ngIf="property.IsOffice; else elseBlock">1</div>
-            <ng-template #elseBlock>0</ng-template>
-          </li>
-        </div>
-      </ul>
+      <a class="carousel-control-prev " href="#carouselThumb" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon mr-5 px-0 mt-4" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="linear carousel-control-next" href="#carouselThumb" role="button" data-slide="next">
+        <span class="carousel-control-next-icon ml-5 px-0 mt-4" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
   </div>
 
-
-  <ng-image-fullscreen-view [images]="imageObject" [imageIndex]="selectedImageIndex" [show]="showFlag"
-    (close)="closeEventHandler()"></ng-image-fullscreen-view>
-
-
-
-
-
-  <div class="container pb-3 pt-3">
-    <h4>Particularités</h4>
-    <div class="row text ">
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.KitchenName"><b>Cuisine</b> : {{property.KitchenName}}
+  <div class="container ">
+    <ul class="row px-0 mx-0">
+      <div class="col-6 col-md card text-center mx-auto " style="box-shadow: none;">
+        <span class="icon-object-ungroup icon"></span>
+        <li class="titlecard">Superficie
+          <hr> {{property.SurfaceTotal}}
+        </li>
       </div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.WindowGlazing"><b>Vitrage</b> : {{property.WindowGlazing}}
+      <div class="col-6 col-md card text-center mx-1 mx-auto" style="box-shadow: none;">
+        <span class="icon-bed icon"></span>
+        <li class="titlecard">Chambres
+          <hr> {{property.NumberOfBedRooms}}
+        </li>
       </div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.OrientationT"><b>Orientation</b> :
-        {{property.OrientationT}}
+      <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+        <span class="icon-bath icon"></span>
+        <li class="titlecard">Salle(s) de bains
+          <hr> {{property.NumberOfBathRooms}}
+        </li>
       </div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasLift"><b>Ascensceur</b> : Oui</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.Floor"><b>Étage(s)</b> : {{property.Floor}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionYear"><b>Année de construction</b> :
-        {{property.ConstructionYear}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.SurfaceTerrace"><b>Terrasse</b> :
-        {{property.SurfaceTerrace}}m²</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionName"><b>Type de construction</b> :
-        {{property.ConstructionName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasGarden"><b>Jardin</b> : Oui
-        ({{property.SurfaceGarden}}m²)</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HeatingName"><b>Type de chauffage</b> :
-        {{property.HeatingName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.MainStyleName"><b>Type de construction</b> :
-        {{property.MainStyleName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConditionName"><b>État</b> : {{property.ConditionName}}
+      <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+        <span class="icon-shower icon"></span>
+        <li class="titlecard">Salle(s) de douche
+          <hr> {{property.NumberOfShowerRooms}}
+        </li>
       </div>
+      <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+        <span class="icon-automobile icon"></span>
+        <li class="titlecard">Garage(s)
+          <hr> {{property.NumberOfGarages}}
+        </li>
+      </div>
+      <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+        <span class="icon-desktop_windows icon"></span>
+        <li class="titlecard">Bureau(x)
+          <hr>
+          <div *ngIf="property.IsOffice; else elseBlock">1</div>
+          <ng-template #elseBlock>0</ng-template>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>
+
+
+<ng-image-fullscreen-view [images]="imageObject" [imageIndex]="selectedImageIndex" [show]="showFlag"
+  (close)="closeEventHandler()"></ng-image-fullscreen-view>
+
+
+
+
+
+
+
+
+<div class="container pb-3 pt-3">
+  <h4>Particularités</h4>
+  <div class="row text ">
+    <div class="col-12 col-md-6 col-lg-4" *ngIf="property.KitchenName"><b>Cuisine</b> : {{property.KitchenName}}
+    </div>
+    <div class="col-12 col-md-6 col-lg-4" *ngIf="property.WindowGlazing"><b>Vitrage</b> : {{property.WindowGlazing}}
+    </div>
+    <div class="col-12 col-md-6 col-lg-4" *ngIf="property.OrientationT"><b>Orientation</b> :
+      {{property.OrientationT}}
+    </div>
+    <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasLift"><b>Ascensceur</b> : Oui</div>
+    <div class="col-12 col-md-6 col-lg-4" *ngIf="property.Floor"><b>Étage(s)</b> : {{property.Floor}}</div>
+    <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionYear"><b>Année de construction</b> :
+      {{property.ConstructionYear}}</div>
+    <div class="col-12 col-md-6 col-lg-4" *ngIf="property.SurfaceTerrace"><b>Terrasse</b> :
+      {{property.SurfaceTerrace}}m²</div>
+    <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionName"><b>Type de construction</b> :
+      {{property.ConstructionName}}</div>
+    <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasGarden"><b>Jardin</b> : Oui
+      ({{property.SurfaceGarden}}m²)</div>
+    <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HeatingName"><b>Type de chauffage</b> :
+      {{property.HeatingName}}</div>
+    <div class="col-12 col-md-6 col-lg-4" *ngIf="property.MainStyleName"><b>Type de construction</b> :
+      {{property.MainStyleName}}</div>
+    <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConditionName"><b>État</b> : {{property.ConditionName}}
     </div>
   </div>
+</div>
 
 
-  <div class="container pb-5">
-    <h4>Description</h4>
-    <p class="content text-justify" *ngIf="property.DescriptionA">{{property.DescriptionB}}</p>
-  </div>
-  <div class="container px-3 pb-5">
-    <div *ngIf="lat" class="row">
-      <agm-map [latitude]="lat" [longitude]="long" [zoom]="14" [scrollwheel]="false">
-        <agm-circle [latitude]="lat" [longitude]="long" [radius]="1100" [fillColor]="'red'">
-        </agm-circle>
-      </agm-map>
-    </div>
+<div class="container pb-5">
+  <h4>Description</h4>
+  <p class="content text-justify" *ngIf="property.DescriptionA">{{property.DescriptionB}}</p>
+</div>
+<div class="container px-3 pb-5">
+  <div *ngIf="lat" class="row">
+    <agm-map [latitude]="lat" [longitude]="long" [zoom]="14" [scrollwheel]="false">
+      <agm-circle [latitude]="lat" [longitude]="long" [radius]="1100" [fillColor]="'red'">
+      </agm-circle>
+    </agm-map>
   </div>
 </div>
 <app-footer></app-footer>
