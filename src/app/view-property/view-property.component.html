@@ -129,39 +129,39 @@
     </div>
   </div>
 
-  <div class="container ">
+  <div class="container d-lg-none">
     <ul class="row px-0 mx-0">
-      <div class="col-6 col-md card text-center mx-auto " style="box-shadow: none;">
+      <div class="col-4 col-md card text-center mx-auto " style="box-shadow: none;">
         <span class="icon-object-ungroup icon"></span>
         <li class="titlecard">Superficie
           <hr> {{property.SurfaceTotal}}
         </li>
       </div>
-      <div class="col-6 col-md card text-center mx-1 mx-auto" style="box-shadow: none;">
+      <div class="col-4 col-md card text-center mx-1 mx-auto" style="box-shadow: none;">
         <span class="icon-bed icon"></span>
         <li class="titlecard">Chambres
           <hr> {{property.NumberOfBedRooms}}
         </li>
       </div>
-      <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+      <div class="col-4 col-md card text-center mx-auto" style="box-shadow: none;">
         <span class="icon-bath icon"></span>
-        <li class="titlecard">Salle(s) de bains
+        <li class="titlecard">SDB
           <hr> {{property.NumberOfBathRooms}}
         </li>
       </div>
-      <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+      <div class="col-4 col-md card text-center mx-auto" style="box-shadow: none;">
         <span class="icon-shower icon"></span>
-        <li class="titlecard">Salle(s) de douche
+        <li class="titlecard">SDD
           <hr> {{property.NumberOfShowerRooms}}
         </li>
       </div>
-      <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+      <div class="col-4 col-md card text-center mx-auto" style="box-shadow: none;">
         <span class="icon-automobile icon"></span>
         <li class="titlecard">Garage(s)
           <hr> {{property.NumberOfGarages}}
         </li>
       </div>
-      <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+      <div class="col-4 col-md card text-center mx-auto" style="box-shadow: none;">
         <span class="icon-desktop_windows icon"></span>
         <li class="titlecard">Bureau(x)
           <hr>
@@ -171,6 +171,51 @@
       </div>
     </ul>
   </div>
+</div>
+
+
+
+<div class="container d-none d-lg-block">
+  <ul class="row px-0 mx-0">
+    <div class="col-6 col-md card text-center mx-auto " style="box-shadow: none;">
+      <span class="icon-object-ungroup icon"></span>
+      <li class="titlecard">Superficie
+        <hr> {{property.SurfaceTotal}}
+      </li>
+    </div>
+    <div class="col-6 col-md card text-center mx-1 mx-auto" style="box-shadow: none;">
+      <span class="icon-bed icon"></span>
+      <li class="titlecard">Chambres
+        <hr> {{property.NumberOfBedRooms}}
+      </li>
+    </div>
+    <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+      <span class="icon-bath icon"></span>
+      <li class="titlecard">Salle(s) de bains
+        <hr> {{property.NumberOfBathRooms}}
+      </li>
+    </div>
+    <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+      <span class="icon-shower icon"></span>
+      <li class="titlecard">Salle(s) de douche
+        <hr> {{property.NumberOfShowerRooms}}
+      </li>
+    </div>
+    <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+      <span class="icon-automobile icon"></span>
+      <li class="titlecard">Garage(s)
+        <hr> {{property.NumberOfGarages}}
+      </li>
+    </div>
+    <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+      <span class="icon-desktop_windows icon"></span>
+      <li class="titlecard">Bureau(x)
+        <hr>
+        <div *ngIf="property.IsOffice; else elseBlock">1</div>
+        <ng-template #elseBlock>0</ng-template>
+      </li>
+    </div>
+  </ul>
 </div>
 
 
