@@ -20,7 +20,7 @@ export class ViewPropertyComponent implements OnInit {
   selectedImageIndex: number = -1;
 
 
-  slideConfig = { slidesToShow: 1, slidesToScroll: 1, adaptiveHeight: true };
+  slideConfig = { slidesToShow: 1, slidesToScroll: 1, adaptiveHeight: true, arrows: true };
   slideConfigNavXl = {
     arrows: true,
     slidesToShow: 6,

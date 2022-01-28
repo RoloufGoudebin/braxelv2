@@ -33,7 +33,7 @@
 
 
   <div class="bg">
-    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)"
+    <ngx-slick-carousel class="carousel" style="z-index: 1;" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)"
       (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
       <div ngxSlickItem *ngFor="let picture of property.LargePictures ; let i = index" class="slide"
         data-slide-number="i" data-toggle="lightbox" data-gallery="gallery">
@@ -43,15 +43,15 @@
         {{getStatus(property.Goal,
         property.SubStatus)}} </span>
     </ngx-slick-carousel>
-    <div class="row d-none d-md-block" style="margin-top: -400px; margin-bottom: 400px;">
+    <div class="row d-none d-md-block" style="margin-top: -400px; margin-bottom: 400px; z-index: 20;">
       <div class="col-12">
         <div class="row">
-          <a class="carousel-control-prev mr-auto" role="button" data-slide="prev" (click)="slickModal.slickPrev()">
-            <span class="arrow bi bi-arrow-left-circle-fill" aria-hidden="true"></span>
+          <a class="carousel-control-prev mr-auto" data-slide="prev" (click)="slickModal.slickPrev()">
+            <span class="arrow bi bi-arrow-left-circle-fill"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="carousel-control-next ml-auto" role="button" data-slide="prev" (click)="slickModal.slickNext()">
-            <span class="arrow bi bi-arrow-right-circle-fill" aria-hidden="true"></span>
+          <a class="carousel-control-next ml-auto" data-slide="prev" (click)="slickModal.slickNext()">
+            <span class="arrow bi bi-arrow-right-circle-fill"></span>
             <span class="sr-only">Previous</span>
           </a>
         </div>
