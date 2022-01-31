@@ -9,8 +9,27 @@ import { FirestoreService } from 'src/app/services/firebase/firestore.service';
 })
 export class CarouselHomeComponent implements OnInit {
 
+  
+
   constructor(private firestore: FirestoreService, private translate: TranslateService) {
     translate.setDefaultLang('en');
+  }
+  slideConfig = {"slidesToShow": 1, "slidesToScroll": 1, "autoplay": true, "fade": true, "autoplaySpeed": 5000};
+  
+  slickInit(e) {
+    console.log('slick initialized');
+  }
+  
+  breakpoint(e) {
+    console.log('breakpoint');
+  }
+  
+  afterChange(e) {
+    console.log('afterChange');
+  }
+  
+  beforeChange(e) {
+    console.log('beforeChange');
   }
 
   carouselImg: any[];
@@ -41,5 +60,7 @@ export class CarouselHomeComponent implements OnInit {
       5000);
   }
 
+  
 }
+
 

@@ -1,33 +1,35 @@
-<mdb-carousel [isControls]="true" [allowswipe]="true" [noPause]="true" [interval]="6000"
-  class="carousel carousel-fade mt-5 mt-lg-0" [animation]="'fade'">
-
-  <mdb-carousel-item *ngFor="let slide of carousel">
-
-    <div class="view">
-      <!--Video source-->
-      <video *ngIf="slide.type==='video'" class="video-fluid" [muted]="true" playsinline autoplay loop>
-        <source src="{{slide.src}}" type="video/mp4" />
-      </video>
-      <!--end video-->
-
-      <!--Image source-->
-      <img *ngIf="slide.type==='img'" class="img-fluid" src="{{slide.src}}" alt="{{slide.alt}}">
-      <!--end image-->
+<div class="container-fluid px-0 mx-0">
+  <div class="row no-gutters px-0 mx-0">
+    <ngx-slick-carousel class="carousel col-12 px-0 mx-0" #slickModal="slick-carousel" [config]="slideConfig">
+      <div ngxSlickItem *ngFor="let slide of carousel" class="slide px-0 mx-0">
+        <!--Video source-->
+        <video *ngIf="slide.type==='video'" class="video-fluid" [muted]="true" playsinline autoplay loop>
+          <source src="{{slide.src}}" type="video/mp4" />
+        </video>
+        <!--end video-->
+      </div>
+      <div ngxSlickItem class="slide px-0 mx-0">
+        <div class="view">
+          <img *ngIf="carouselImg" class="img-fluid" src="{{carouselImg[0].url}}">
+        </div>
+      </div>
+      <div ngxSlickItem class="slide px-0 mx-0">
+        <div class="view">
+          <img *ngIf="carouselImg" class="img-fluid" src="{{carouselImg[1].url}}">
+        </div>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+  <div class="row no-gutters" style="margin-top: -450px; margin-bottom: 450px;">
+    <div class="mr-auto col-1 text-right my-auto" (click)="slickModal.slickPrev()" style="font-size: 3em; color: white; cursor: pointer;">
+      <div class="bi bi-arrow-left-circle-fill text-right"></div>
     </div>
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <div class="view">
-      <img *ngIf="carouselImg" class="img-fluid" src="{{carouselImg[0].url}}">
+    <div class="ml-auto col-1 text-right my-auto" (click)="slickModal.slickNext()" style="font-size: 3em; color: white; cursor: pointer;">
+      <div class="bi bi-arrow-right-circle-fill text-left"></div>
     </div>
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <div class="view">
-      <img *ngIf="carouselImg" class="img-fluid" src="{{carouselImg[1].url}}">
-    </div>
-  </mdb-carousel-item>
-
-  <div class="carousel-caption d-none d-lg-block">
-    <div class="row">
+  </div>
+  <div class="row no-gutters">
+    <div class="carousel-caption d-none d-lg-block">
       <div class="overlay mt-6 pt-0 col-10 mx-auto">
         <!-- Overlay inner wrapper -->
         <div class="overlay__inner pt-0 mx-auto">
@@ -52,36 +54,35 @@
       </div>
     </div>
   </div>
+  <div class="row no-gutters">
+    <div class="carousel-caption d-md-none">
 
-</mdb-carousel>
+      <div class="overlay mt-6 pt-0 col-10 mx-auto">
+        <!-- Overlay inner wrapper -->
+        <div class="overlay__inner pt-0 mx-auto">
+          <!-- Title -->
+          <h1 class="overlay__title">
+            Vous avez trouvé vos agents immobiliers, de confiance en Brabants et à Bruxelles !
+            <hr class="blue">
+          </h1>
+          <!-- Buttons -->
+          <div class="overlay__btns mx-auto">
 
-<div class="row no-gutters d-md-none pt-0 mt-n5">
-  <div class="overlay pt-0 col-12 mx-auto">
-    <!-- Overlay inner wrapper -->
-    <div class="pt-0 mx-auto">
-      <!-- Title -->
-      <h1 class="overlay__title col-10 mt-3 text-justify mx-auto text-center">
-        Vous avez trouvé vos agents immobiliers, de confiance en Brabants et à Bruxelles !
-        <hr class="blue">
-      </h1>
-      <!-- Buttons -->
-      <div class="overlay__btns mx-auto">
+            <button class="overlay__btn overlay__btn--transparent" routerLinkActive="active" routerLink="/services">
+              <span>Vendre/Louer</span>
+              <span class="overlay__btn-emoji"></span>
+            </button>
 
-        <button class="overlay__btn overlay__btn--transparent col-5 mx-auto d-none d-lg-block" routerLinkActive="active" routerLink="/services">
-          <span>Vendre/Louer</span>
-          <span class="overlay__btn-emoji"></span>
-        </button>
-
-        <button class="col-5 mx-auto overlay__btn-small d-lg-none" routerLinkActive="active" routerLink="/services">
-          <span>Vendre/Louer</span>
-          <span class="overlay__btn-emoji"></span>
-        </button>
-
-        <button class="overlay__btn overlay__btn--colors col-5 mx-auto" routerLinkActive="active" routerLink="/nos-biens">
-          <span style="white-space: nowrap;">Rechercher un bien</span>
-        </button>
+            <button class="overlay__btn overlay__btn--colors" routerLinkActive="active" routerLink="/nos-biens">
+              <span style="white-space: nowrap;">Rechercher un bien</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
 <!--Carousel Wrapper-->

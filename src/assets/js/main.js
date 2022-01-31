@@ -75,6 +75,7 @@ $("#carousel").on("slide.bs.carousel", function (e) {
   $("#carousel-thumbs").carousel(thumbNum);
 });
 
+
 (function($) { "use strict";
 
 	$(function() {

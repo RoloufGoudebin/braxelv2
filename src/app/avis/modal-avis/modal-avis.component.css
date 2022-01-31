@@ -5,3 +5,9 @@
 .show{
     cursor: pointer;
 }
+
+
+.modal {
+    z-index: 900000000000000000;
+    position: absolute;
+  }

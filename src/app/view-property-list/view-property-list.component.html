@@ -3,7 +3,7 @@
 
     <a *ngFor="let Items of this.propertyList | slice: 0:numberProperty;" class="col-10 col-md-6 col-lg-4 mx-auto"
       routerLinkActive="active" routerLink="/biens-immobiliers/{{Items.ID}}">
-      <div class="card h-100">
+      <div class="card h-100 shadow">
         <img class="card-img-top img-fluid" src={{Items.LargePicture}} alt="Card image cap">
         <span class="ribon" [ngStyle]="{'background':getColor(Items.Goal, Items.SubStatus)}"> {{getStatus(Items.Goal,
           Items.SubStatus)}} </span>

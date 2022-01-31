@@ -19,8 +19,10 @@ export class ViewPropertyComponent implements OnInit {
   showFlag: boolean = false;
   selectedImageIndex: number = -1;
 
+  slickModal;
 
-  slideConfig = { slidesToShow: 1, slidesToScroll: 1, adaptiveHeight: true, arrows: true };
+
+  slideConfig = { slidesToShow: 1, slidesToScroll: 1, adaptiveHeight: true, arrows: false};
   slideConfigNavXl = {
     arrows: true,
     slidesToShow: 6,

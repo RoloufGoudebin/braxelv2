@@ -13,6 +13,48 @@ export class AvisComponent {
 
   constructor(private firestore: FirestoreService) { }
 
+  showFlag: boolean = false;
+  selectedImageIndex: number = -1;
+  text= '';
+  author='';
+  rating=5;
+
+
+  slideConfigXl = { 
+    slidesToShow: 3, 
+    slidesToScroll: 3, 
+    adaptiveHeight: true, 
+    arrows: false
+  };
+
+  slideConfigXs = { 
+    slidesToShow: 1, 
+    slidesToScroll: 1, 
+    adaptiveHeight: true, 
+    arrows: false
+  };
+
+  closeEventHandler() {
+    this.showFlag = false;
+    this.selectedImageIndex = -1;
+  }
+
+  slickInit(e) {
+    console.log('slick initialized');
+  }
+
+  breakpoint(e) {
+    console.log('breakpoint');
+  }
+
+  afterChange(e) {
+    console.log('afterChange');
+  }
+
+  beforeChange(e) {
+    console.log('beforeChange');
+  }
+
   slides: any = [[]];
   cards: any;
 

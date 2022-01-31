@@ -218,3 +218,20 @@ a {
   transition: transform 150ms ease;
   outline-color: hsl(var(--hue), 95%, 50%);
 }
+
+.bi-arrow-left-circle-fill{
+  opacity: 0.8;
+}
+
+.bi-arrow-right-circle-fill{
+  opacity: 0.8;
+}
+
+
+.bi-arrow-left-circle-fill:hover{
+  opacity: 1;
+}
+
+.bi-arrow-right-circle-fill:hover{
+  opacity: 1;
+}

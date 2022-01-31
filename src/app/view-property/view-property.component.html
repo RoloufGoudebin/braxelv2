@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div *ngIf="property" class="container mt-5 pt-5">
+<div *ngIf="property" class="container mt-5 pt-5" style="position: relative;">
   <div class="row pt-lg-5 mt-lg-5">
     <h3 *ngIf="property.TypeDescription" class="col-12">{{property.TypeDescription}}</h3>
     <h2 *ngIf="property.City" class="col-5">{{property.Zip}} {{property.City}}</h2>
@@ -13,7 +13,7 @@
     </div>
 
     <div class="row mx-auto d-lg-none">
-      <a class="nav-link">
+      <a class="nav-link ml-auto">
         <app-contact-modal class="ml-auto" [id]="property.ID"></app-contact-modal>
       </a>
       <a class="nav-link" *ngIf="property.VirtualTour">
@@ -32,102 +32,61 @@
   </div>
 
 
-  <div class="bg">
-    <ngx-slick-carousel class="carousel" style="z-index: 1;" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)"
-      (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
-      <div ngxSlickItem *ngFor="let picture of property.LargePictures ; let i = index" class="slide"
-        data-slide-number="i" data-toggle="lightbox" data-gallery="gallery">
-        <img src="{{picture}}" class="d-block rounded img-fluid text-center mx-auto" (click)="showLightbox(i)">
-      </div>
-      <span class="ribon" [ngStyle]="{'background':getColor(property.Goal, property.SubStatus)}" style="z-index:20;">
-        {{getStatus(property.Goal,
-        property.SubStatus)}} </span>
-    </ngx-slick-carousel>
-    <div class="row d-none d-md-block" style="margin-top: -400px; margin-bottom: 400px; z-index: 20;">
-      <div class="col-12">
-        <div class="row">
-          <a class="carousel-control-prev mr-auto" data-slide="prev" (click)="slickModal.slickPrev()">
-            <span class="arrow bi bi-arrow-left-circle-fill"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next ml-auto" data-slide="prev" (click)="slickModal.slickNext()">
-            <span class="arrow bi bi-arrow-right-circle-fill"></span>
-            <span class="sr-only">Previous</span>
-          </a>
+  <div class="shadow rounded mt-3">
+
+    <div *ngIf="property" class="bg mb-5">
+      <ngx-slick-carousel class="carousel mb-5 mb-md-2" #slickModal="slick-carousel" [config]="slideConfig"
+        (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)">
+        <div ngxSlickItem *ngFor="let picture of property.LargePictures ; let i = index" class="slide"
+          data-slide-number="i" data-toggle="lightbox" data-gallery="gallery">
+          <img src="{{picture}}" class="d-block rounded img-fluid text-center mx-auto" (click)="showLightbox(i)">
         </div>
-      </div>
-      <!--
+      </ngx-slick-carousel>
       <span class="ribon" [ngStyle]="{'background':getColor(property.Goal, property.SubStatus)}">
         {{getStatus(property.Goal,
-        property.SubStatus)}} </span>
-    </div>
-  -->
-      <div class="row d-md-none" style="margin-top: -170px; margin-bottom: 170px;">
-        <div class="col-12 d-md-none">
-          <div class="row">
-            <a class="carousel-control-prev mr-auto" role="button" data-slide="prev" (click)="slickModal.slickPrev()">
-              <span class="arrow bi bi-arrow-left-circle-fill" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next ml-auto" role="button" data-slide="prev" (click)="slickModal.slickNext()">
-              <span class="arrow bi bi-arrow-right-circle-fill" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-          </div>
+        property.SubStatus)}}
+      </span>
+
+      <span class="bi bi-arrow-left-circle-fill arrow-main" (click)="slickModal.slickPrev()"></span>
+      <span class="bi bi-arrow-right-circle-fill arrow-main" (click)="slickModal.slickNext()"></span>
+
+      <ngx-slick-carousel class="carouselXs d-md-none" #slickModalNavXs="slick-carousel" [config]="slideConfigNavXs"
+        (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)">
+        <div ngxSlickItem *ngFor="let picture of property.LargePictures; let i = index"
+          class="slide mt-5 rounded thumbnail-img text-center mx-auto" data-slide-number="i" data-toggle="lightbox"
+          data-gallery="gallery">
+          <img src="{{picture}}" (click)="slickModal.slickGoTo(i)"
+            class="d-block rounded img-fluid px-3 thumbnail-img text-center mx-auto">
         </div>
-      </div>
-    </div>
-    <ngx-slick-carousel class="carousel d-md-none" #slickModalNavXs="slick-carousel" [config]="slideConfigNavXs"
-      (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-      (beforeChange)="beforeChange($event)">
-      <div ngxSlickItem *ngFor="let picture of property.LargePictures; let i = index"
-        class="slide mt-5 rounded thumbnail-img text-center mx-auto" data-slide-number="i" data-toggle="lightbox"
-        data-gallery="gallery" (click)="slickModal.slickGoTo(i)">
-        <img src="{{picture}}" class="d-block rounded img-fluid px-3 thumbnail-img text-center mx-auto">
-      </div>
-    </ngx-slick-carousel>
-    <ngx-slick-carousel class="carousel d-none d-md-block" #slickModalNavXl="slick-carousel" [config]="slideConfigNavXl"
-      (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-      (beforeChange)="beforeChange($event)">
-      <div ngxSlickItem *ngFor="let picture of property.LargePictures; let i = index"
-        class="slide mt-5 rounded thumbnail-img text-center mx-auto" data-slide-number="i" data-toggle="lightbox"
-        data-gallery="gallery" (click)="slickModal.slickGoTo(i)">
-        <img src="{{picture}}" class="d-block rounded img-fluid px-3 thumbnail-img text-center mx-auto">
-      </div>
-    </ngx-slick-carousel>
-    <div class="row d-md-none" style="margin-top: -10px; margin-bottom: 10px; z-index: 10;">
-      <div class="col-12 d-md-none">
-        <div class="row">
-          <a class="carousel-control-prev mr-auto" role="button" data-slide="prev"
-            (click)="slickModalNavXs.slickPrev()">
-            <span class="arrow bi bi-arrow-left-circle-fill" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next ml-auto" role="button" data-slide="prev"
-            (click)="slickModalNavXs.slickNext()">
-            <span class="arrow bi bi-arrow-right-circle-fill" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
+      </ngx-slick-carousel>
+
+      <ngx-slick-carousel class="carouselXl d-none d-md-block" #slickModalNavXl="slick-carousel"
+        [config]="slideConfigNavXl" (init)="slickInit($event)" (breakpoint)="breakpoint($event)"
+        (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
+        <div ngxSlickItem *ngFor="let picture of property.LargePictures; let i = index"
+          class="slide mt-5 rounded thumbnail-img text-center mx-auto" data-slide-number="i" data-toggle="lightbox"
+          data-gallery="gallery">
+          <img src="{{picture}}" (click)="slickModal.slickGoTo(i)"
+            class="d-block rounded img-fluid px-3 thumbnail-img text-center mx-auto">
         </div>
-      </div>
+      </ngx-slick-carousel>
+
+      <span class="bi bi-arrow-left-circle-fill d-md-none arrow-gallery" aria-hidden="true"
+        (click)="slickModalNavXs.slickPrev()"></span>
+      <span class="bi bi-arrow-right-circle-fill d-md-none arrow-gallery" aria-hidden="true"
+        (click)="slickModalNavXs.slickNext()"></span>
+
+      <span class="bi bi-arrow-left-circle-fill d-none d-md-block arrow-gallery" aria-hidden="true"
+        (click)="slickModalNavXl.slickPrev()"></span>
+      <span class="bi bi-arrow-right-circle-fill d-none d-md-block arrow-gallery" aria-hidden="true"
+        (click)="slickModalNavXl.slickNext()"></span>
     </div>
-    <div class="row d-none d-md-block" style="margin-top: -110px; margin-bottom: 110px; z-index: 10;">
-      <div class="col-12">
-        <div class="row">
-          <a class="carousel-control-prev mr-auto" role="button" data-slide="prev"
-            (click)="slickModalNavXl.slickPrev()">
-            <span class="arrow bi bi-arrow-left-circle-fill" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next ml-auto" role="button" data-slide="prev"
-            (click)="slickModalNavXl.slickNext()">
-            <span class="arrow bi bi-arrow-right-circle-fill" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </div>
-      </div>
-    </div>
+
   </div>
+
+
 
   <div class="container d-lg-none">
     <ul class="row px-0 mx-0">

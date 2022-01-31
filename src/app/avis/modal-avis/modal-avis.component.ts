@@ -7,11 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ModalAvisComponent implements OnInit {
 
-  @Input() avatar: string;
   @Input() author: string;
   @Input() range: string;
   @Input() text: string;
-  @Input() date: string;
 
   constructor() { }
 

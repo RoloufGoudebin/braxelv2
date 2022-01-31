@@ -176,3 +176,48 @@ img{
   background-color: #b94b4a !important;
   color: white !important;
 }
+
+.carousel-control-prev-icon {
+  font-size: 3em;
+  background-color: blue;
+  color: blue;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='rgba(0,0,0,.60)' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+  font-size: 3em;
+  background-color: blue;
+  color: blue;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%60000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+.modal-wrapper{
+  position: absolute !important;
+  z-index: 9009900 !important;
+}
+
+.bi-arrow-right-circle-fill{
+  color: #233353;
+  font-size: 3em;
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+.bi-arrow-left-circle-fill{
+  color: #233353;
+  font-size: 3em;
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+.bi-arrow-right-circle-fill:hover{
+  opacity: 1;
+}
+
+.bi-arrow-left-circle-fill:hover{
+  opacity: 1;
+}
