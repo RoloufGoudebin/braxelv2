@@ -17,7 +17,11 @@ export class FirestoreService {
   propertyListTop: Property[];
   collection: any;
   topPropertyList: Property[];
-  topPropertyListActive: Property[]
+  topPropertyListActive: Property[];
+  propertyListSell: Property[] = [];
+  topPropertyListSell: Property[] = [];
+
+
 
 
 
@@ -162,8 +166,8 @@ export class FirestoreService {
   }
 
   updatePropertyListActive() {
-    this.setPropertyListActiveFire();
-    this.setPropertyListActiveOmni();
+    this.setPropertyListActiveFire(); //topPropertyListActive
+    this.setPropertyListActiveOmni(); //propertyList
     setTimeout(() => {
       if (this.topPropertyListActive != null) {
         this.topPropertyListActive.sort(function (a, b) {
@@ -172,7 +176,7 @@ export class FirestoreService {
       }
       if (this.propertyList != null) {
         this.propertyList.sort(function (a, b) {
-          return a.id - b.id;
+          return a.ID - b.ID;
         });
       }
       //supprime les biens qui ne sont plus disponibles
@@ -189,6 +193,18 @@ export class FirestoreService {
           }
         }
       }
+
+      //Met à jour les biens déjà présents mais changés
+      for (let i = 0; i < this.propertyList.length; i++) {
+        for (let j = 0; j < this.topPropertyListActive.length; j++) {
+          if (this.propertyList[i].ID == this.topPropertyListActive[j].ID) {
+            let tmpID = this.propertyList[i].id
+            this.propertyList[i] = this.topPropertyListActive[j];
+            this.propertyList[i].id = tmpID;
+          }
+        }
+      }
+
       //rajoute les nouveaux biens
       for (let i = 0; i < this.propertyList.length; i++) {
         for (let j = 0; j < this.topPropertyListActive.length; j++) {
@@ -210,6 +226,45 @@ export class FirestoreService {
       this.savePropertyTop(this.topPropertyListActive);
     },
       40000);
+
+  }
+
+  updatePropertyListSell() {
+    this.setPropertyListSellFire(); //topPropertyListActive
+    this.setPropertyListSellOmni(); //propertyList
+    setTimeout(() => {
+      if (this.topPropertyListSell != null) {
+        this.topPropertyListSell.sort(function (a, b) {
+          return a.id - b.id;
+        });
+      }
+      if (this.propertyListSell != null) {
+        this.propertyListSell.sort(function (a, b) {
+          return a.ID - b.ID;
+        });
+      }
+      //rajoute les nouveaux biens
+      for (let i = 0; i < this.propertyListSell.length; i++) {
+        for (let j = 0; j < this.topPropertyListSell.length; j++) {
+          if (this.propertyListSell[i].ID == this.topPropertyListSell[j].ID) {
+            if (this.topPropertyListSell[j].id > 5) {
+            }
+            break;
+          }
+          if (j == this.topPropertyListSell.length - 1) {
+            this.topPropertyListSell.splice(6, 0, this.propertyListSell[i]);
+            break;
+          }
+
+        }
+      }
+      for (let i = 0; i < this.topPropertyListSell.length; i++) {
+        this.topPropertyListSell[i].id = this.topPropertyListSell.indexOf(this.topPropertyListSell[i]);
+      }
+      this.savePropertySell(this.topPropertyListSell);
+      console.log("oki");
+    },
+      120000);
 
   }
 
@@ -257,6 +312,39 @@ export class FirestoreService {
       });
   }
 
+
+  setPropertyListSellFire() {
+    this.getFirestoreCollection("sellProperties").subscribe(data =>
+      this.topPropertyListSell = data.map(e => {
+        return {
+          id: Number(e.payload.doc.id),
+          ...e.payload.doc.data() as Property
+        }
+      }));
+  }
+
+  setPropertyListSellOmni() {
+    this.omnicasaService.getPropertyList()
+      .subscribe((data: any) => {
+        this.propertyList = data.GetPropertyListJsonResult.Value.Items;
+        let invertPropertyList: Property[];
+        invertPropertyList = [];
+        for (let i = 0, j = this.propertyList.length - 1; i < this.propertyList.length; i++, j--) {
+          invertPropertyList[i] = this.propertyList[j];
+        }
+        return new Promise<Property>((resolve, reject) => {
+          for (let i = 0, j = 0; i < invertPropertyList.length; i++) {
+            if (invertPropertyList[i].SubStatus != 2 && invertPropertyList[i].SubStatus != 3) {
+              this.propertyListSell[j] = invertPropertyList[i];
+              j++;
+            }
+          }
+          console.log(this.propertyListSell);
+        });
+      });
+    console.log(this.propertyListSell);
+  }
+
   addReview(author: string, rate: number, review: string, id: number) {
     this.firestore
       .collection("avis")
@@ -269,19 +357,6 @@ export class FirestoreService {
       .collection("avis")
       .doc(id.toString())
       .delete()
-
-      /*
-    for (let i = id; i < length; i++) {
-      let tmp = this.firestore
-        .collection("avis")
-        .doc((i+1).toString())
-        console.log(tmp);
-      this.firestore
-        .collection("avis")
-        .doc(i.toString())
-        .set(tmp)
-    }
-    */
   }
 
 }

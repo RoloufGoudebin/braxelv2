@@ -14,7 +14,7 @@ export class CarouselHomeComponent implements OnInit {
   constructor(private firestore: FirestoreService, private translate: TranslateService) {
     translate.setDefaultLang('en');
   }
-  slideConfig = {"slidesToShow": 1, "slidesToScroll": 1, "autoplay": true, "fade": true, "autoplaySpeed": 5000};
+  slideConfig = {"slidesToShow": 1, "slidesToScroll": 1, "autoplay": true, "fade": true, "autoplaySpeed": 5000, "arrows": false};
   
   slickInit(e) {
     console.log('slick initialized');

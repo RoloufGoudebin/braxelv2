@@ -191,7 +191,7 @@ a {
 
 @media (min-width: 1200px) {
   .carousel .carousel-inner {
-    height: 100vh;
+    height: 90vh;
   }
 }
 
@@ -219,12 +219,26 @@ a {
   outline-color: hsl(var(--hue), 95%, 50%);
 }
 
+
+
 .bi-arrow-left-circle-fill{
+  cursor: pointer;
+  position: absolute;
+  color : white;
+  left: 5%;
+  font-size: 3em;
   opacity: 0.8;
+  top: 50%;
 }
 
 .bi-arrow-right-circle-fill{
+  cursor: pointer;
+  position: absolute;
+  color : white;
+  right: 5%;
+  font-size: 3em;
   opacity: 0.8;
+  top: 50%;
 }
 
 
@@ -234,4 +248,8 @@ a {
 
 .bi-arrow-right-circle-fill:hover{
   opacity: 1;
+}
+
+.carousel-caption{
+  position: absolute;
 }

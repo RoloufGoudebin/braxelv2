@@ -63,7 +63,7 @@ export class SearchPropertyComponent implements OnInit {
     this.submitted = true;
     this.selectedTypes = this.registerForm.value.selected;
     this.cityZip = this.registerForm.value.zip;
-    console.log(this.sliderRooms.minValue);
+
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
@@ -81,8 +81,6 @@ export class SearchPropertyComponent implements OnInit {
   toggleClass(item) {
     this.items[0].select = false;
     this.items[1].select = false;
-    this.sliderBudget.options.ceil=20000;
-    console.log("con")
     item.select = !item.select;
     if (this.items[0]) {
       this.goal = 0;
@@ -119,10 +117,10 @@ export class SearchPropertyComponent implements OnInit {
   sliderBudget: SliderDetails =
     {
       minValue: 0,
-      highValue: 2000000,
+      highValue: 4000000,
       options: {
         floor: 0,
-        ceil: 2000000,
+        ceil: 4000000,
         step: 10000,
         translate: (value: number): string => {
           return value + " €";

@@ -3,10 +3,7 @@
     <div class="container-fluid">
         <h1 class="text-center text-justify mb-3 pb-3">Nos clients l’expliquent mieux que nous </h1>
         <div class="d-none d-md-block">
-            <div class="row">
-                <div class="mr-auto col-1 text-right my-auto" (click)="slickModalXl.slickPrev()">
-                    <div class="bi bi-arrow-left-circle-fill"></div>
-                </div>
+            <div class="row wrapper">
                 <ngx-slick-carousel class="carousel col-10 mx-auto" #slickModalXl="slick-carousel"
                     [config]="slideConfigXl" (breakpoint)="breakpoint($event)">
                     <div ngxSlickItem *ngFor="let avis of cards; let i = index" class="slide mx-5" data-slide-number="i"
@@ -38,9 +35,8 @@
                         </div>
                     </div>
                 </ngx-slick-carousel>
-                <div class="ml-auto col-1 text-left my-auto" (click)="slickModalXl.slickNext()">
-                    <div class="bi bi-arrow-right-circle-fill"></div>
-                </div>
+                <span class="bi bi-arrow-left-circle-fill" (click)="slickModalXl.slickPrev()"></span>
+                <span class="bi bi-arrow-right-circle-fill" (click)="slickModalXl.slickNext()"></span>
             </div>
         </div>
 

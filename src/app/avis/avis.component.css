@@ -201,14 +201,20 @@ img{
 }
 
 .bi-arrow-right-circle-fill{
+  position: absolute;
   color: #233353;
+  top :50%;
+  right:5%;
   font-size: 3em;
   opacity: 0.75;
   cursor: pointer;
 }
 
 .bi-arrow-left-circle-fill{
+  position: absolute;
   color: #233353;
+  top: 50%;
+  left: 5%;
   font-size: 3em;
   opacity: 0.75;
   cursor: pointer;
@@ -220,4 +226,8 @@ img{
 
 .bi-arrow-left-circle-fill:hover{
   opacity: 1;
+}
+
+.wrapper{
+  position: relative;
 }

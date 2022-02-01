@@ -54,9 +54,9 @@ export class OurBiensComponent implements OnInit {
   search: any[];
   toShow: Property[];
   toSearch: Property[];
+  sell: Property[];
   types: any;
   items: any;
-  ceilBudget
 
 
 
@@ -79,11 +79,11 @@ export class OurBiensComponent implements OnInit {
       { name: 'Louer', select: false }
     ];
 
-    this.listOfZips.sort(function (a: any, b:any){
+    this.listOfZips.sort(function (a: any, b: any) {
       return a.zip - b.zip;
     })
 
-    for(let i=0; i<this.listOfZips.length; i++){
+    for (let i = 0; i < this.listOfZips.length; i++) {
       this.listOfZips[i].localite = this.listOfZips[i].localite.toUpperCase();
     }
 
@@ -102,6 +102,15 @@ export class OurBiensComponent implements OnInit {
           ...e.payload.doc.data() as Property
         }
       }));
+
+    this.firestore.getFirestoreCollection('sellProperties').subscribe(data =>
+      this.sell = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as Property
+        }
+      }));
+
   }
 
 
@@ -127,7 +136,6 @@ export class OurBiensComponent implements OnInit {
     this.items[1].select = false;
     this.sliderBudget.options.ceil = 20000;
     item.select = !item.select;
-    console.log(this.sliderBudget.options.ceil)
     if (this.items[0].select) {
       this.goal = 0;
     }
@@ -162,7 +170,31 @@ export class OurBiensComponent implements OnInit {
         }
       }
     }
-    console.log
+    if (toReturn.length == 0) {
+      for (let i = this.sell.length - 1; i >= 0; i--) {
+        if (this.sell[i].Goal == goal) {
+          for (let j = 0; j < type.length; j++) {
+            if (type[j] == this.sell[i].WebID) {
+              for (let k = 0; k < zip.length; k++) {
+                if (this.sell[i].Zip == zip[k]) {
+                  if (this.sell[i].NumberOfBedRooms) {
+                    if (this.sell[i].NumberOfBedRooms >= minRoom && this.sell[i].NumberOfBedRooms <= maxRoom) {
+                      if (this.sell[i].Price >= minPrice && this.sell[i].Price <= maxPrice) {
+                        toReturn.push(this.sell[i]);
+                      }
+                    }
+                  }
+                  else if (this.sell[i].Price >= minPrice && this.sell[i].Price <= maxPrice) {
+                    toReturn.push(this.sell[i]);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      console.log(toReturn)
+    }
     return toReturn;
   }
 

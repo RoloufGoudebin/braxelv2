@@ -19,7 +19,6 @@ export class OmnicasaService {
   toReturn: Observable<any>;
 
   getPropertyList(): Observable<any> {
-
     this.toReturn = this.http.get<PropertyList>(this.link)
       .pipe(tap((returnedData: any) => {
         //save the returned data so we can re-use it later without making more HTTP calls
