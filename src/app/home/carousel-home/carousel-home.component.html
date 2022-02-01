@@ -27,20 +27,20 @@
           <!-- Overlay inner wrapper -->
           <div class="overlay__inner pt-0 mx-auto">
             <!-- Title -->
-            <h1 class="overlay__title">
-              Vous avez trouvé vos agents immobiliers, de confiance en Brabants et à Bruxelles !
+            <h1 class="overlay__title" [translate]="'home.1'">
+              {{ 'home.1' | translate }}
               <hr class="blue">
             </h1>
             <!-- Buttons -->
             <div class="overlay__btns mx-auto">
   
               <button class="overlay__btn overlay__btn--transparent" routerLinkActive="active" routerLink="/services">
-                <span>Vendre/Louer</span>
+                <span>{{ 'home.2' | translate }}</span>
                 <span class="overlay__btn-emoji"></span>
               </button>
   
               <button class="overlay__btn overlay__btn--colors" routerLinkActive="active" routerLink="/nos-biens">
-                <span style="white-space: nowrap;">Rechercher un bien</span>
+                <span style="white-space: nowrap;">{{ 'home.3' | translate }}</span>
               </button>
             </div>
           </div>
@@ -55,7 +55,7 @@
       <div class="pt-0 mx-auto mb-n5 pb-n5 ">
         <!-- Title -->
         <h1 class="overlay__title col-10 mt-3 text-justify mx-auto text-center">
-          Vous avez trouvé vos agents immobiliers, de confiance en Brabants et à Bruxelles !
+          {{ 'home.1' | translate }}
           <hr class="blue">
         </h1>
         <!-- Buttons -->
@@ -63,18 +63,13 @@
 
           <button class="overlay__btn overlay__btn--transparent col-5 mx-auto d-none d-lg-block"
             routerLinkActive="active" routerLink="/services">
-            <span>Vendre/Louer</span>
-            <span class="overlay__btn-emoji"></span>
-          </button>
-
-          <button class="col-5 mx-auto overlay__btn-small d-lg-none" routerLinkActive="active" routerLink="/services">
-            <span>Vendre/Louer</span>
+            <span>{{ 'home.2' | translate }}</span>
             <span class="overlay__btn-emoji"></span>
           </button>
 
           <button class="overlay__btn overlay__btn--colors col-5 mx-auto" routerLinkActive="active"
             routerLink="/nos-biens">
-            <span style="white-space: nowrap;">Rechercher un bien</span>
+            <span style="white-space: nowrap;">{{ 'home.2' | translate }}</span>
           </button>
         </div>
       </div>

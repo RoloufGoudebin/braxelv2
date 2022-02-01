@@ -12,8 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private firestore: FirestoreService, private translate: TranslateService) {
-    translate.setDefaultLang('en');
+  constructor(private firestore: FirestoreService) {
    }
 
   numberProperty = 9;

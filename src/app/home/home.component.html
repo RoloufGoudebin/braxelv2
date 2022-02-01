@@ -11,18 +11,18 @@
     <div class="row">
       <div class="col-8 col-md-4 text-center mx-auto white">
         <ng2-odometer class="compteur" [number]="23" [config]="{ }"></ng2-odometer>
-        <h2 class="text-white"> jours</h2>
-        <p>Délai moyen de vente</p>
+        <h2 class="text-white"> {{ 'home.10' | translate }}</h2>
+        <p>{{ 'home.11' | translate }}</p>
       </div>
       <div class="col-8 col-md-4 text-center mx-auto">
         <ng2-odometer class="compteur" [number]="94.5" [format]="'(ddd),d'"></ng2-odometer>
         <h2 class="text-white"> %</h2>
-        <p>Dossiers activés et vendus</p>
+        <p>{{ 'home.12' | translate }}</p>
       </div>
       <div class="col-8 col-md-4 text-center mx-auto">
         <ng2-odometer class="compteur" [number]="3.81" [format]="'(ddd),d'"></ng2-odometer>
         <h2 class="text-white"> %</h2>
-        <p>Négociation moyenne sur prix affiché </p>
+        <p>{{ 'home.13' | translate }} </p>
       </div>
     </div>
   </div>
@@ -32,13 +32,11 @@
 <section class="nos-biens pt-5 mt-5">
   <div class="container-fluid">
     <div class="row">
-      <h2 class="mx-auto text-center">NOS BIENS IMMOBILIERS
-      </h2>
+      <h2 class="mx-auto text-center">{{ 'home.14' | translate }}</h2>
     </div>
     <app-view-property-list *ngIf="toShow" [numberProperty]="numberProperty" [propertyList]="toShow"></app-view-property-list>
     <div class="row">
-      <a class="mx-auto" routerLink="/nos-biens"><button type="button" class="btn btn-outline-danger rounded-pill mb-5">Tous nos
-          biens</button></a>
+      <a class="mx-auto" routerLink="/nos-biens"><button type="button" class="btn btn-outline-danger rounded-pill mb-5">{{ 'home.15' | translate }}</button></a>
     </div>
   </div>
 </section>

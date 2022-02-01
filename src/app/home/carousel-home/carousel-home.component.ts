@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { FirestoreService } from 'src/app/services/firebase/firestore.service';
 
 @Component({
@@ -11,8 +10,7 @@ export class CarouselHomeComponent implements OnInit {
 
   
 
-  constructor(private firestore: FirestoreService, private translate: TranslateService) {
-    translate.setDefaultLang('en');
+  constructor(private firestore: FirestoreService) {
   }
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1, "autoplay": true, "fade": true, "autoplaySpeed": 5000, "arrows": false};
   

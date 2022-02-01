@@ -19,7 +19,7 @@ export class AppComponent {
   date;
 
   constructor(private firestore: FirestoreService, private http: HttpClient, private translate: TranslateService) {
-    translate.setDefaultLang('en');
+    translate.setDefaultLang('fr');
    }
 
   ngOnInit() {
