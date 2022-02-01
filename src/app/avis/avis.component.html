@@ -1,7 +1,7 @@
 <div id="googleReviews"></div>
 <section id='reviews'>
     <div class="container-fluid">
-        <h1 class="text-center text-justify mb-3 pb-3">Nos clients l’expliquent mieux que nous </h1>
+        <h1 class="text-center text-justify mb-3 pb-3">{{ 'realisations.4' | translate }} </h1>
         <div class="d-none d-md-block">
             <div class="row wrapper">
                 <ngx-slick-carousel class="carousel col-10 mx-auto" #slickModalXl="slick-carousel"
@@ -25,7 +25,7 @@
                                 <p type="button" data-toggle="modal" class="text-center" data-target="#exampleModal"
                                     (click)='author = avis.author_name;
                                 text= avis.text; rating=avis.rating;'>
-                                    Lire l'avis complet
+                                {{ 'realisations.5' | translate }} 
                                 </p>
 
                                 <div class="row pt-0 mt-0">
@@ -64,7 +64,7 @@
                                 <p type="button" data-toggle="modal" class="text-center" data-target="#exampleModal"
                                     (click)='author = avis.author_name;
                             text= avis.text; rating=avis.rating;'>
-                                    Lire l'avis complet
+                            {{ 'realisations.5' | translate }} 
                                 </p>
 
                                 <div class="row pt-0 mt-0">
@@ -103,10 +103,10 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'realisations.6' | translate }} </button>
                     <button type="button" class="btn btn-primary"><a
                             href="https://www.google.com/search?q=braxel+avis&oq=braxel+avis&aqs=edge..69i57j69i60.2803j1j4&sourceid=chrome&ie=UTF-8#lrd=0x47c3d1ca3d0b1823:0xed7f36bfed6ac310,1,,,"
-                            target="_blank" class="text-white">Voir tous les avis</a></button>
+                            target="_blank" class="text-white">{{ 'realisations.7' | translate }} </a></button>
                 </div>
             </div>
         </div>

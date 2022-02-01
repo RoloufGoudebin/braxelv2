@@ -7,7 +7,7 @@
         <img class="card-img-top img-fluid" src={{Items.LargePicture}} alt="Card image cap">
         <span class="ribon" [ngStyle]="{'background':getColor(Items.Goal, Items.SubStatus)}"> {{getStatus(Items.Goal,
           Items.SubStatus)}} </span>
-        <span class="ribon-nodal" *ngIf="Items.VirtualTour"> Visite Virtuelle </span>
+        <span class="ribon-nodal" *ngIf="Items.VirtualTour">{{ 'realisations.3' | translate }}</span>
         <div class="card-block">
           <h5 class="card-title">{{Items.TypeDescription}}</h5>
           <p class="card-text">{{Items.Zip}} {{Items.City}}</p>

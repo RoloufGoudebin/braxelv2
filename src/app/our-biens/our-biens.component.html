@@ -5,13 +5,13 @@
       <div class="col-12 col-lg-3 mt-5 pt-5">
         <div class="col-12 col-lg-11 pt-5 mt-5">
           <div class="row">
-            <h2 class="text-center ml-auto col-11 mx-auto">Vous cherchez un bien ?</h2>
+            <h2 class="text-center ml-auto col-11 mx-auto">{{ 'ourBiens.1' | translate }}</h2>
           </div>
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="search-form ml-auto pb-3 col-12 pt-3">
               <div class="row">
                 <div class="text-search-form col-11 text-left">
-                  <h3>Je souhaite :</h3>
+                  <h3>{{ 'ourBiens.2' | translate }}</h3>
                 </div>
                 <div class="col-11 mx-auto">
                   <div class="row">
@@ -20,15 +20,14 @@
                       class="btn rounded-pill col mx-2 mb-2">{{item.name}}</button>
                   </div>
                   <div class="row py-0 my-0" *ngIf="!goalSelect">
-                    <div class="invalid-feedback d-block ml-1">Veuillez choisir une option</div>
+                    <div class="invalid-feedback d-block ml-1">{{ 'ourBiens.3' | translate }}</div>
                   </div>
                 </div>
               </div>
 
 
               <div class="row">
-                <label class="text-search-form col-11 text-left" for="selected">Type
-                  de bien :</label>
+                <label class="text-search-form col-11 text-left" for="selected">{{ 'ourBiens.4' | translate }}</label>
                 <div class="col-12">
                   <ng-select bindLabel="selected" class="custom" name="selected" [multiple]="true"
                     formControlName="selected">
@@ -37,7 +36,7 @@
                   <div class="row">
                     <div *ngIf="selected.invalid" class="text-danger ml-3">
                       <div *ngIf="selected.errors?.required">
-                        <div class="invalid-feedback d-block">Veuillez choisir une option</div>
+                        <div class="invalid-feedback d-block">{{ 'ourBiens.3' | translate }}</div>
                       </div>
                     </div>
                   </div>
@@ -45,7 +44,7 @@
               </div>
 
               <div class="row">
-                <label class="text-search-form col-11 text-left" for="zip">Localité/Code Postal</label>
+                <label class="text-search-form col-11 text-left" for="zip">{{ 'ourBiens.5' | translate }}</label>
                 <div class="col-12">
                   <ng-select class="custom" name="zip" [items]="listOfZips " bindLabel="localite" bindValue="zip"
                     [multiple]="true" formControlName="zip" [minTermLength]="2"
@@ -54,7 +53,7 @@
                   <div class="row">
                     <div *ngIf="zip.invalid" class="text-danger ml-3">
                       <div *ngIf="zip.errors?.required">
-                        <div class="invalid-feedback d-block">Veuillez entrer une localité au moins</div>
+                        <div class="invalid-feedback d-block">{{ 'ourBiens.6' | translate }}</div>
                       </div>
                     </div>
                   </div>
@@ -62,18 +61,17 @@
               </div>
 
               <div class="row pt-2">
-                <label class="text-search-form col-11 text-left">Chambres :</label>
+                <label class="text-search-form col-11 text-left">{{ 'ourBiens.7' | translate }}</label>
                 <app-slider class="col-11 mx-auto" [options]="sliderRooms"></app-slider>
               </div>
 
               <div class="row pt-2">
-                <label class="text-search-form col-11 text-left">Budget :</label>
+                <label class="text-search-form col-11 text-left">{{ 'ourBiens.8' | translate }}</label>
                 <app-slider class="col-11 mx-auto" [options]="sliderBudget"></app-slider>
               </div>
               <div class="row pt-3 button-search">
                 <button type="button" class="btn1 btn-outline-danger col-7 mx-auto rounded-pill py-2 mb-2"
-                  [disabled]="!registerForm.valid" (click)="onSubmit()">Voir les
-                  résultats</button>
+                  [disabled]="!registerForm.valid" (click)="onSubmit()">{{ 'ourBiens.9' | translate }}</button>
               </div>
             </div>
           </form>
@@ -81,16 +79,15 @@
       </div>
       <div class="col-12 col-lg-8">
         <div class="row pt-5 mt-5">
-          <h1 class="col text-center">Nos biens immobiliers</h1>
+          <h1 class="col text-center">{{ 'ourBiens.10' | translate }}</h1>
         </div>
         <app-view-property-list *ngIf="toShow" [numberProperty]="numberProperty" [propertyList]="toShow">
         </app-view-property-list>
         <div class="row" *ngIf="toShow">
           <button *ngIf="lowerThan(numberProperty, toShow.length)" type="button"
-            class="btn btn-outline-danger col-7 col-lg-3 mx-auto text-center" (click)="addProperties()">Voir plus
-            de propriétés</button>
+            class="btn btn-outline-danger col-7 col-lg-3 mx-auto text-center" (click)="addProperties()">{{ 'ourBiens.11' | translate }}</button>
           <div *ngIf="toShow.length==0">
-            Aucune propriété trouvée
+            {{ 'ourBiens.12' | translate }}
           </div>
         </div>
 
