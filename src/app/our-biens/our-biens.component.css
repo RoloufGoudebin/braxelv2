@@ -56,9 +56,10 @@ font-family: 'Montserrat', sans-serif;
 margin-bottom: 10px !important;
 padding-bottom: 3px;
 margin-right: 10px;
+white-space: nowrap;
 }
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) { h2 {font-size: 1.6em !important;
+@media only screen and (max-width: 600px) { h2 {font-size: 1.5em !important;
   font-weight: 800 !important;
   letter-spacing: 1px;
   display: block;
@@ -67,7 +68,7 @@ margin-right: 10px;
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) { h2 {font-size: 1.6em  !important;
+@media only screen and (min-width: 600px) { h2 {font-size: 1.5em  !important;
 font-weight: 800 !important;
 letter-spacing: 1px;
 display: block;
@@ -76,7 +77,7 @@ font-family: 'Montserrat', sans-serif;}
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) { h2 {font-size: 1.6em  !important;
+@media only screen and (min-width: 768px) { h2 {font-size: 1.5em  !important;
 font-weight: 800 !important;
 letter-spacing: 1px;
 display: block;
@@ -85,7 +86,7 @@ font-family: 'Montserrat', sans-serif;}
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) { h2 {font-size: 2em  !important;
+@media only screen and (min-width: 992px) { h2 {font-size: 1.5em  !important;
 font-weight: 800 !important;
 letter-spacing: 1px;
 display: block;
