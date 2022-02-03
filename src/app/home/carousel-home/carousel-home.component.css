@@ -11,16 +11,34 @@
   }
 }
 
-
+@media (min-width: 900px) {
 .overlay {
   z-index: 1;
   margin-left: 1em;
-  padding: 1rem 1rem;
+  padding: 1.5rem 1.5rem;
+  padding-top: 3em !important;
   align-items: center;
-  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.789);
   box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.125);
+  backdrop-filter:blur(1em);
+}
+}
+
+
+@media (max-width: 900px) {
+  .overlay {
+  z-index: 1;
+  margin-left: 1em;
+  padding: 1.5rem 1.5rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.789);
+  box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  backdrop-filter:blur(1em);
+  }
 }
 
 .overlay-min {
@@ -78,7 +96,7 @@
 }
 
 .overlay__btn--transparent {
-  background: transparent;
+  background: white;
   color: #233353 !important;
   border: 2px solid #233353 !important;
   border-width: 2px;
@@ -224,7 +242,7 @@ a {
 .bi-arrow-left-circle-fill{
   cursor: pointer;
   position: absolute;
-  color : white;
+  color : rgba(255, 255, 255, 0.562);
   left: 5%;
   font-size: 3em;
   opacity: 0.8;
@@ -234,7 +252,7 @@ a {
 .bi-arrow-right-circle-fill{
   cursor: pointer;
   position: absolute;
-  color : white;
+  color : rgba(255, 255, 255, 0.562);
   right: 5%;
   font-size: 3em;
   opacity: 0.8;
