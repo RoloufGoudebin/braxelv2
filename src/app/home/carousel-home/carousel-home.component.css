@@ -96,7 +96,7 @@
 }
 
 .overlay__btn--transparent {
-  background: transparent;
+  background: white;
   color: #233353 !important;
   border: 2px solid #233353 !important;
   border-width: 2px;
