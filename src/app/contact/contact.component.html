@@ -2,31 +2,29 @@
 <section id="contact" class="pt-5 mt-5">
   <div class="container pt-5">
     <div class="row">
-      <h1 class="col-12 text-center">Contactez-nous</h1>
-      <h3 class="col-12 text-center pt-3 d-none d-lg-block">CONTACTEZ-NOUS PAR TÉLÉPHONE, E-MAIL OU À L'AIDE DU
-        FORMULAIRE DE
-        CONTACT.</h3>
+      <h1 class="col-12 text-center">{{ 'contact.1' | translate }}</h1>
+      <h3 class="col-12 text-center pt-3 d-none d-lg-block">{{ 'contact.2' | translate }}</h3>
     </div>
     <div class="row pt-1">
       <div class="col-12 col-lg-6">
-        <h3 class="mt-5">Nos coordonnées</h3>
+        <h3 class="mt-5">{{ 'contact.3' | translate }}</h3>
         <div class="row">
           <div class="col-6">
-            <h4>Adresse :</h4>
+            <h4>{{ 'contact.4a' | translate }}</h4>
             <a src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2526.4905842298635!2d4.405321215824989!3d50.71083717644921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3d1ca3d0b1823%3A0xed7f36bfed6ac310!2sBraxel%20-%20L&#39;immobilier%20selon%20vous!5e0!3m2!1sfr!2sbe!4v1623146231287!5m2!1sfr!2sbe"
               target=_blank>
               <p class="text-left">
-                Chaussée de Tervuren, 149/3
+                {{ 'contact.4' | translate }}
                 <br>
-                1410 Waterloo
+                {{ 'contact.5' | translate }}
                 <br>
-                Brabant-Wallon
+                {{ 'contact.6' | translate }}
               </p>
             </a>
           </div>
           <div class="col-6">
             <div class="col-10">
-              <h4>Contact :</h4>
+              <h4>{{ 'contact.7' | translate }}</h4>
               <div class="d-flex">
                 <i class="mr-auto bi bi-telephone"></i>
                 <a href="tel:+3223195151">02/319.51.51</a>
@@ -40,92 +38,89 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <h3>Ouvert sur rendez-vous</h3>
+            <h3>{{ 'contact.8' | translate }}</h3>
             <p class="text-left">
               <i class="bi bi-check-lg" style="color: #EE5C5A;"></i>
-              Du lundi au vendredi de 9h00 à 18h30
+              {{ 'contact.9' | translate }}
               <br>
-              <i class="bi bi-check-lg" style="color: #EE5C5A;"></i> Le samedi de 10h à 13h30
+              <i class="bi bi-check-lg" style="color: #EE5C5A;"></i>{{ 'contact.10' | translate }}
             </p>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
-            <h3>Braxel SPRL</h3>
+            <h3>{{ 'contact.11' | translate }}</h3>
             <p class="text-left">
-              Numéro d’entreprise 0667.970.902
+              {{ 'contact.12' | translate }}
               <br>
-              IBAN BE39 3630 2668 2619
+              {{ 'contact.13' | translate }}
               <br>
-              Agents immobiliers agréés 508.871 et 509.783
+              {{ 'contact.14' | translate }}
             </p>
             <br>
-            <h3>Instance de contrôle IPI</h3>
-            <p>Rue du Luxembourg, 16b à 1000 Bruxelles
+            <h3>{{ 'contact.15' | translate }}</h3>
+            <p>{{ 'contact.16' | translate }}
               <br>
-              Tél. : 02/505.38.50 – Email : info@ipi.be
+              {{ 'contact.17' | translate }}
             </p>
             <br>
-            <p class="ps">Assureur : couvert par une police d’assurance collective Responsabilité civile
-              professionnelle et cautionnement n°730.390.159 conclue par l’IPI auprès d’AXA Belgique
+            <p class="ps">{{ 'contact.18' | translate }}
             </p>
 
           </div>
         </div>
       </div>
       <div class="col-lg-6 col-12">
-        <h3 class="mt-5">Formulaire de contact</h3>
+        <h3 class="mt-5">{{ 'contact.19' | translate }}</h3>
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label for="nomPrenom">NOM ET PRÉNOM</label>
+            <label for="nomPrenom">{{ 'contact.20' | translate }}</label>
             <input class="form-control rounded-pill" formControlName="name" aria-describedby="emailHelp"
-              placeholder="Nom et prénom">
+              placeholder="{{ 'contact.20' | translate }}"> <!--don't forget-->
             <div *ngIf="name.invalid" class="text-danger">
               <div *ngIf="name.errors?.required">
-                <div class="invalid-feedback d-block ml-2">Veuillez entrer votre nom et prénom</div>
+                <div class="invalid-feedback d-block ml-2">{{ 'contact.21' | translate }}</div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="form-group col-6">
-              <label for="exampleInputPassword1">TÉLÉPHONE</label>
-              <input class="form-control rounded-pill" formControlName="phone" placeholder="Téléphone">
+              <label for="exampleInputPassword1">{{ 'contact.22' | translate }}</label>
+              <input class="form-control rounded-pill" formControlName="phone" placeholder="{{ 'contact.22' | translate }}">
               <div *ngIf="phone.invalid" class="text-danger">
                 <div *ngIf="phone.errors?.required">
-                  <div class="invalid-feedback d-block ml-2">Veuillez entrer votre numéro de téléphone</div>
+                  <div class="invalid-feedback d-block ml-2">{{ 'contact.23' | translate }}</div>
                 </div>
               </div>
             </div>
             <div class="form-group col-6">
-              <label for="exampleInputPassword1">EMAIL</label>
-              <input class="form-control rounded-pill" formControlName="mail" placeholder="Email">
+              <label for="exampleInputPassword1">{{ 'contact.24' | translate }}</label>
+              <input class="form-control rounded-pill" formControlName="mail" placeholder="{{ 'contact.24' | translate }}">
               <div *ngIf="mail.invalid" class="text-danger">
                 <div *ngIf="mail.errors?.required">
-                  <div class="invalid-feedback d-block ml-2">Veuillez entrer votre adresse mail</div>
+                  <div class="invalid-feedback d-block ml-2">{{ 'contact.25' | translate }}</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="form-group">
-            <label for="exampleFormControlTextarea1">MESSAGE</label>
-            <textarea class="form-control rounded" rows="5" formControlName="message"></textarea>
+            <label for="exampleFormControlTextarea1">{{ 'contact.26' | translate }}</label>
+            <textarea class="form-control rounded" rows="5" formControlName="{{ 'contact.26' | translate }}"></textarea>
             <div *ngIf="message.invalid" class="text-danger">
               <div *ngIf="message.errors?.required">
-                <div class="invalid-feedback d-block ml-2">Veuillez entrer un message</div>
+                <div class="invalid-feedback d-block ml-2">{{ 'contact.27' | translate }}</div>
               </div>
             </div>
           </div>
           <p>
-            En soumettant ce formulaire, j'accepte que les informations saisies dans ce formulaire soient
-            utilisées, exploitées, traitées dans le cadre de la relation commerciale.
+            {{ 'contact.28' | translate }}
           </p>
           <div class="form-check pb-3">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Je souhaite m'inscrire à la
-              newsletter</label>
+            <label class="form-check-label" for="exampleCheck1">{{ 'contact.29' | translate }}</label>
           </div>
           <button type="submit" class="btn btn-outline-primary" [disabled]="!contactForm.valid"
-            (click)="basicModal.show()" mdbWavesEffect>Envoyer</button>
+            (click)="basicModal.show()" mdbWavesEffect>{{ 'contact.30' | translate }}</button>
           <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog"
             aria-labelledby="myBasicModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -134,7 +129,7 @@
                   <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
                     <span aria-hidden="true">×</span>
                   </button>
-                  <h4 class="modal-title w-100" id="myModalLabel">Messaye envoyé avec succès</h4>
+                  <h4 class="modal-title w-100" id="myModalLabel">{{ 'contact.31' | translate }}</h4>
                 </div>
               </div>
             </div>
@@ -152,7 +147,7 @@
       <div class="col-md-4 col-sm-4">
         <div class="box1 pb-0 mb-0">
           <img src="assets/img/worker-1.jpg" alt="Agent immobilier Braxel à Waterloo, Edouard Chevalier ">
-          <h3 class="title">Agent immobilier agréé I.P.I. 508.871</h3>
+          <h3 class="title">{{ 'contact.32' | translate }}</h3>
           <ul class="icon">
             <li><a href="https://www.linkedin.com/in/edouard-chevalier-027761b3/"><i class="bi bi-linkedin"></i></a>
             </li>
@@ -162,17 +157,17 @@
         <div class="text-center">
           <h4 class="mt-3">Edouard Chevalier</h4>
           <a routerLink="/agence" [fragment]="'edouard-xs'" class="d-lg-none">
-            <H5><button type="button" class="btn btn-outline-primary">Plus d'infos</button></H5>
+            <H5><button type="button" class="btn btn-outline-primary">{{ 'contact.33' | translate }}</button></H5>
           </a>
           <a routerLink="/agence" [fragment]="'edouard-lg'" class="d-none d-lg-block">
-            <H5><button type="button" class="btn btn-outline-primary">Plus d'infos</button></H5>
+            <H5><button type="button" class="btn btn-outline-primary">{{ 'contact.33' | translate }}</button></H5>
           </a>
         </div>
       </div>
       <div class="col-md-4 col-sm-4">
         <div class="box1 pb-0 mb-0">
           <img src="assets/img/worker-2.jpg" alt="">
-          <h3 class="title">Agent immobilier agréé I.P.I. 509.783</h3>
+          <h3 class="title">{{ 'contact.34' | translate }}</h3>
           <ul class="icon">
             <li><a href="https://www.linkedin.com/in/thomas-offergeld-89277b137/"><i class="bi bi-linkedin"></i></a>
             </li>
@@ -182,19 +177,19 @@
         <div class="text-center">
           <h4 class="mt-3">Thomas Offergeld</h4>
           <a routerLink="/agence" [fragment]="'thomas-xs'" class="d-lg-none">
-            <H5><button type="button" class="btn btn-outline-primary">Plus d'infos</button></H5>
+            <H5><button type="button" class="btn btn-outline-primary">{{ 'contact.33' | translate }}</button></H5>
           </a>
           <a routerLink="/agence" [fragment]="'thomas-lg'" class="d-none d-lg-block">
-            <H5><button type="button" class="btn btn-outline-primary">Plus d'infos</button></H5>
+            <H5><button type="button" class="btn btn-outline-primary">{{ 'contact.33' | translate }}</button></H5>
           </a>
         </div>
       </div>
       <div class="col-md-4 col-sm-4">
         <div class="box1 pb-0 mb-0">
           <img src="assets/img/worker-3.jpg" alt="">
-          <h3 class="title">Agent immobilier agréé I.P.I. 509.783</h3>
+          <h3 class="title">{{ 'contact.35' | translate }}</h3>
           <ul class="icon">
-            <li><a href="https://www.linkedin.com/in/thomas-offergeld-89277b137/"><i class="bi bi-linkedin"></i></a>
+            <li><a href="https://www.linkedin.com/in/francois-baets-b42b5b117"><i class="bi bi-linkedin"></i></a>
             </li>
             <li><a href="mailto:françois@braxel.be"><i class="bi bi-envelope-fill"></i></a></li>
           </ul>
@@ -202,10 +197,10 @@
         <div class="text-center">
           <h4 class="mt-3">François Baets</h4>
           <a routerLink="/agence" [fragment]="'francois-xs'" class="d-lg-none">
-            <H5><button type="button" class="btn btn-outline-primary">Plus d'infos</button></H5>
+            <H5><button type="button" class="btn btn-outline-primary">{{ 'contact.33' | translate }}</button></H5>
           </a>
           <a routerLink="/agence" [fragment]="'francois-lg'" class="d-none d-lg-block">
-            <H5><button type="button" class="btn btn-outline-primary">Plus d'infos</button></H5>
+            <H5><button type="button" class="btn btn-outline-primary">{{ 'contact.33' | translate }}</button></H5>
           </a>
         </div>
       </div>

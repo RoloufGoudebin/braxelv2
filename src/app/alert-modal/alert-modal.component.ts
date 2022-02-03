@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Options } from '@angular-slider/ngx-slider';
@@ -7,7 +7,9 @@ import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
 import { SendmailService } from '../services/sendmail.service';
 import { TypeScriptEmitter } from '@angular/compiler';
 
+
 import data from '../json/zip.json'
+import { TranslateService } from '@ngx-translate/core';
 
 interface SliderDetails {
   minValue: number;
@@ -45,8 +47,8 @@ export class AlertModalComponent {
   });
 
   items = [
-    { name: 'Acheter', select: false },
-    { name: 'Louer', select: false },
+    { name: '', select: false },
+    { name: '', select: false },
   ];
 
   types = [
@@ -59,7 +61,14 @@ export class AlertModalComponent {
     { id: 7, name: 'Garage/Parking' },
   ];
 
-  constructor(private modalService: NgbModal, private omnicasaService: OmnicasaService, private sendmail: SendmailService) { }
+  constructor(private modalService: NgbModal, private sendmail: SendmailService, private translate: TranslateService) { }
+
+  ngOnInit(){
+    this.translate.get('navbar.13').subscribe((text:any) => {
+      this.items[0].name = text.uno;
+      this.items[1].name = text.b;
+    });
+  }
 
   openScrollableContent(longContent) {
     this.modalService.open(longContent, { scrollable: true });
