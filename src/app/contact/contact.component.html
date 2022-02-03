@@ -105,7 +105,7 @@
           </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1">{{ 'contact.26' | translate }}</label>
-            <textarea class="form-control rounded" rows="5" formControlName="{{ 'contact.26' | translate }}"></textarea>
+            <textarea class="form-control rounded" rows="5" formControlName="message"></textarea>
             <div *ngIf="message.invalid" class="text-danger">
               <div *ngIf="message.errors?.required">
                 <div class="invalid-feedback d-block ml-2">{{ 'contact.27' | translate }}</div>

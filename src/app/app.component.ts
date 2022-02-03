@@ -19,13 +19,14 @@ export class AppComponent {
   date;
 
   constructor(private firestore: FirestoreService, private http: HttpClient, private translate: TranslateService) {
+    var lg = navigator.language;
     translate.setDefaultLang('fr');
+    translate.use(lg[0]+lg[1]);
    }
 
   ngOnInit() {
     //this.firestore.createPropertyListActive();
     //this.firestore.createPropertyListSell();
-    this.firestore.updatePropertyListSell();
     this.firestore.getDateRefresh().subscribe(data=>
       this.date= data.map(e => {
         return {
@@ -36,7 +37,7 @@ export class AppComponent {
       console.log((Date.now() - this.date[0].lastRefresh))
       if(Date.now() - this.date[0].lastRefresh > 3600000){
         this.firestore.updatePropertyListActive();
-        this.firestore.setPropertyListSellOmni();
+        this.firestore.updatePropertyListSell();
       }
     },
       3000);
