@@ -19,7 +19,9 @@ export class AppComponent {
   date;
 
   constructor(private firestore: FirestoreService, private http: HttpClient, private translate: TranslateService) {
+    var lg = navigator.language;
     translate.setDefaultLang('fr');
+    translate.use(lg[0]+lg[1]);
    }
 
   ngOnInit() {
