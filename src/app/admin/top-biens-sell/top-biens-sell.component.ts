@@ -42,7 +42,7 @@ export class TopBiensSellComponent implements OnInit {
         return a.id - b.id;
       });;
     },
-      15000);
+      1500);
   }
 
   sort(){
