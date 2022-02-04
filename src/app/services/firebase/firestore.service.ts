@@ -107,18 +107,18 @@ export class FirestoreService {
     this.omnicasaService.getPropertyList()
       .subscribe((data: any) => {
         this.propertyList = data.GetPropertyListJsonResult.Value.Items;
-        let invertPropertyList: Property[];
-        invertPropertyList = [];
-        for (let i = 0, j = this.propertyList.length - 1; i < this.propertyList.length; i++, j--) {
-          invertPropertyList[i] = this.propertyList[j];
-        }
+        this.propertyList.sort(function (a, b) {
+          return b.ID - a.ID;
+        });
+        console.log(this.propertyList);
         return new Promise<Property>((resolve, reject) => {
-          for (let i = 0, j = 0; i < invertPropertyList.length; i++) {
-            if (invertPropertyList[i].SubStatus == 2 || invertPropertyList[i].SubStatus == 3) {
+          for (let i = 0, j = 0; i < this.propertyList.length; i++) {
+            if (this.propertyList[i].SubStatus == 2 || this.propertyList[i].SubStatus == 3) {
+              console.log(this.propertyList[i]);
               this.firestore
                 .collection("activeProperties")
                 .doc(j.toString())
-                .set(invertPropertyList[i])
+                .set(this.propertyList[i])
               j++;
             }
           }
@@ -166,9 +166,11 @@ export class FirestoreService {
   }
 
   updatePropertyListActive() {
+    let toCopy = [];
     this.setPropertyListActiveFire(); //topPropertyListActive
     this.setPropertyListActiveOmni(); //propertyList
     setTimeout(() => {
+      console.log(this.topPropertyListActive)
       if (this.topPropertyListActive != null) {
         this.topPropertyListActive.sort(function (a, b) {
           return a.id - b.id;
@@ -194,36 +196,44 @@ export class FirestoreService {
         }
       }
 
-      //Met à jour les biens déjà présents mais changés
-      for (let i = 0; i < this.propertyList.length; i++) {
-        for (let j = 0; j < this.topPropertyListActive.length; j++) {
-          if (this.propertyList[i].ID == this.topPropertyListActive[j].ID) {
-            let tmpID = this.propertyList[i].id
-            this.propertyList[i] = this.topPropertyListActive[j];
-            this.propertyList[i].id = tmpID;
+      //met à jour les biens
+      for (let i = 0; i < this.topPropertyListActive.length; i++) {
+        for (let j = 0; j < this.propertyList.length; j++) {
+          if (this.propertyList[j].ID == this.topPropertyListActive[i].ID) {
+            let tmpID = this.topPropertyListActive[i].id;
+            this.topPropertyListActive[i] = this.propertyList[j];
+            this.topPropertyListActive[i].id = tmpID;
+            toCopy.push(this.topPropertyListActive[i]);
+            break;
           }
         }
       }
 
-      //rajoute les nouveaux biens
-      for (let i = 0; i < this.propertyList.length; i++) {
-        for (let j = 0; j < this.topPropertyListActive.length; j++) {
-          if (this.propertyList[i].ID == this.topPropertyListActive[j].ID) {
-            if (this.topPropertyListActive[j].id > 5) {
-            }
-            break;
-          }
-          if (j == this.topPropertyListActive.length - 1) {
-            this.topPropertyListActive.splice(6, 0, this.propertyList[i]);
-            break;
-          }
+      console.log(this.topPropertyListActive)
 
+      //rajoute les nouveaux biens
+      console.log(this.propertyList);
+      for (let i = 0; i < this.propertyList.length; i++) {
+        if (this.propertyList[i].SubStatus == 2 || this.propertyList[i].SubStatus == 3) {
+          for (let j = 0; j < toCopy.length; j++) {
+            if (this.propertyList[i].ID == toCopy[j].ID) {
+              if (toCopy[j].id > 5) {
+              }
+              break;
+            }
+            if (j == toCopy.length - 1) {
+              toCopy.splice(6, 0, this.propertyList[i]);
+              break;
+            }
+
+          }
         }
       }
       for (let i = 0; i < this.topPropertyListActive.length; i++) {
         this.topPropertyListActive[i].id = this.topPropertyListActive.indexOf(this.topPropertyListActive[i]);
       }
-      this.savePropertyTop(this.topPropertyListActive);
+      this.savePropertyTop(toCopy);
+      this.updateDateRefresh();
     },
       40000);
 
@@ -252,7 +262,7 @@ export class FirestoreService {
             break;
           }
           if (j == this.topPropertyListSell.length - 1) {
-            this.topPropertyListSell.splice(6, 0, this.propertyListSell[i]);
+            this.topPropertyListSell.splice(0, 0, this.propertyListSell[i]);
             break;
           }
 
@@ -269,6 +279,7 @@ export class FirestoreService {
   }
 
   updateDateRefresh() {
+    console.log("cc")
     this.firestore
       .collection("refresh")
       .doc("1")
@@ -276,7 +287,7 @@ export class FirestoreService {
   }
 
   getDateRefresh() {
-    
+
     return this.firestore.collection('refresh').snapshotChanges();
 
   }
@@ -295,21 +306,6 @@ export class FirestoreService {
     this.omnicasaService.getPropertyList()
       .subscribe((data: any) => {
         this.propertyList = data.GetPropertyListJsonResult.Value.Items;
-        let invertPropertyList: Property[];
-        invertPropertyList = [];
-        for (let i = 0, j = this.propertyList.length - 1; i < this.propertyList.length; i++, j--) {
-          invertPropertyList[i] = this.propertyList[j];
-        }
-        return new Promise<Property>((resolve, reject) => {
-          this.propertyList = [];
-          for (let i = 0, j = 0; i < invertPropertyList.length; i++) {
-            if (invertPropertyList[i].SubStatus == 2 || invertPropertyList[i].SubStatus == 3) {
-              this.propertyList[j] = invertPropertyList[i];
-              j++;
-            }
-          }
-          this.updateDateRefresh();
-        });
       });
   }
 

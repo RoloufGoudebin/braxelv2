@@ -22,7 +22,7 @@
                     <label class="text-search-form col-10 text-left">Je souhaite</label>
                     <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
                         [ngClass]="item.select ? 'select' : 'not-select'" class="btn rounded-pill
-                              col-4 mx-auto">{{item.name}}</button>
+                              col-4 mx-auto">{{item.name | translate}}</button>
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="items[0].select==false && items[1].select==false" class="text-danger">

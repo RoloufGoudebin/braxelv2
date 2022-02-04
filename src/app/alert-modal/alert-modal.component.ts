@@ -47,8 +47,8 @@ export class AlertModalComponent {
   });
 
   items = [
-    { name: '', select: false },
-    { name: '', select: false },
+    { name: 'navbar.13.a', select: false },
+    { name: 'navbar.13.b', select: false },
   ];
 
   types = [
@@ -64,10 +64,6 @@ export class AlertModalComponent {
   constructor(private modalService: NgbModal, private sendmail: SendmailService, private translate: TranslateService) { }
 
   ngOnInit(){
-    this.translate.get('navbar.13').subscribe((text:any) => {
-      this.items[0].name = text.uno;
-      this.items[1].name = text.b;
-    });
   }
 
   openScrollableContent(longContent) {
