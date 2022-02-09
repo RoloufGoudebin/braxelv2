@@ -77,9 +77,9 @@
             <label for="nomPrenom">{{ 'contact.20' | translate }}</label>
             <input class="form-control rounded-pill" formControlName="name" aria-describedby="emailHelp"
               placeholder="{{ 'contact.20' | translate }}"> <!--don't forget-->
-            <div *ngIf="name.invalid" class="text-danger">
+            <div *ngIf="name.invalid" >
               <div *ngIf="name.errors?.required">
-                <div class="invalid-feedback d-block ml-2">{{ 'contact.21' | translate }}</div>
+                <div class="invalid-feedback d-block ml-2 text-muted">{{ 'contact.21' | translate }}</div>
               </div>
             </div>
           </div>
@@ -87,18 +87,18 @@
             <div class="form-group col-6">
               <label for="exampleInputPassword1">{{ 'contact.22' | translate }}</label>
               <input class="form-control rounded-pill" formControlName="phone" placeholder="{{ 'contact.22' | translate }}">
-              <div *ngIf="phone.invalid" class="text-danger">
+              <div *ngIf="phone.invalid" >
                 <div *ngIf="phone.errors?.required">
-                  <div class="invalid-feedback d-block ml-2">{{ 'contact.23' | translate }}</div>
+                  <div class="invalid-feedback d-block ml-2 text-muted">{{ 'contact.23' | translate }}</div>
                 </div>
               </div>
             </div>
             <div class="form-group col-6">
               <label for="exampleInputPassword1">{{ 'contact.24' | translate }}</label>
               <input class="form-control rounded-pill" formControlName="mail" placeholder="{{ 'contact.24' | translate }}">
-              <div *ngIf="mail.invalid" class="text-danger">
+              <div *ngIf="mail.invalid" >
                 <div *ngIf="mail.errors?.required">
-                  <div class="invalid-feedback d-block ml-2">{{ 'contact.25' | translate }}</div>
+                  <div class="invalid-feedback d-block ml-2  text-muted">{{ 'contact.25' | translate }}</div>
                 </div>
               </div>
             </div>
@@ -106,9 +106,9 @@
           <div class="form-group">
             <label for="exampleFormControlTextarea1">{{ 'contact.26' | translate }}</label>
             <textarea class="form-control rounded" rows="5" formControlName="message"></textarea>
-            <div *ngIf="message.invalid" class="text-danger">
+            <div *ngIf="message.invalid" >
               <div *ngIf="message.errors?.required">
-                <div class="invalid-feedback d-block ml-2">{{ 'contact.27' | translate }}</div>
+                <div class="invalid-feedback d-block ml-2 text-muted">{{ 'contact.27' | translate }}</div>
               </div>
             </div>
           </div>

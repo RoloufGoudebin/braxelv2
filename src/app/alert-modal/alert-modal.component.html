@@ -25,8 +25,8 @@
                               col-4 mx-auto">{{item.name | translate}}</button>
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="items[0].select==false && items[1].select==false" class="text-danger">
-                        <div class="invalid-feedback d-block ml-2">Veuillez faire un choix</div>
+                    <div *ngIf="items[0].select==false && items[1].select==false">
+                        <div class="invalid-feedback d-block ml-2 text-muted">Veuillez faire un choix</div>
                     </div>
                 </div>
 
@@ -38,9 +38,9 @@
                     </ng-select>
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="selected.invalid" class="text-danger">
+                    <div *ngIf="selected.invalid" >
                         <div *ngIf="selected.errors?.required">
-                            <div class="invalid-feedback d-block ml-2">Veuillez faire au moins un choix</div>
+                            <div class="invalid-feedback d-block ml-2 text-muted">Veuillez faire au moins un choix</div>
                         </div>
                     </div>
                 </div>
@@ -53,9 +53,9 @@
                     </ng-select>
                 </div>
                 <div class="row ml-2">
-                    <div *ngIf="zip.invalid" class="text-danger">
+                    <div *ngIf="zip.invalid">
                         <div *ngIf="zip.errors?.required">
-                            <div class="invalid-feedback d-block">Veuillez entrer une localité au moins</div>
+                            <div class="invalid-feedback d-block text-muted">Veuillez entrer une localité au moins</div>
                         </div>
                     </div>
                 </div>
@@ -65,8 +65,8 @@
                     <app-slider class="col-10 mx-auto" [options]="sliderRooms" (click)="touch('room')"></app-slider>
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="!roomTouch" class="text-danger">
-                        <div class="invalid-feedback d-block ml-2">Veuillez faire un choix</div>
+                    <div *ngIf="!roomTouch">
+                        <div class="invalid-feedback d-block ml-2 text-muted">Veuillez faire un choix</div>
                     </div>
                 </div>
 
@@ -76,8 +76,8 @@
                     <app-slider class="col-10 mx-auto" [options]="sliderPrice" (click)="touch('budget')"></app-slider>
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="!budgetTouch" class="text-danger">
-                        <div class="invalid-feedback d-block ml-2">Veuillez faire un choix</div>
+                    <div *ngIf="!budgetTouch" >
+                        <div class="invalid-feedback d-block ml-2 text-muted">Veuillez faire un choix</div>
                     </div>
                 </div>
 
@@ -87,8 +87,8 @@
                     </app-slider>
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="!surfaceTouch" class="text-danger">
-                        <div class="invalid-feedback d-block ml-2">Veuillez faire un choix</div>
+                    <div *ngIf="!surfaceTouch" >
+                        <div class="invalid-feedback d-block ml-2 text-muted">Veuillez faire un choix</div>
                     </div>
                 </div>
 
@@ -104,22 +104,22 @@
                     <input type="name" formControlName="name" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="name.invalid" class="text-danger">
+                    <div *ngIf="name.invalid">
                         <div *ngIf="name.errors?.required">
-                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre nom</div>
+                            <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer votre nom</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Votre prénom : </label>
+                    <label class="text-search-form col-10 text-left ">Votre prénom : </label>
                     <input type="firstname" formControlName="firstname"
                         class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="firstname.invalid" class="text-danger">
+                    <div *ngIf="firstname.invalid" >
                         <div *ngIf="firstname.errors?.required">
-                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre prénom</div>
+                            <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer votre prénom</div>
                         </div>
                     </div>
                 </div>
@@ -129,9 +129,9 @@
                     <input type="mail" formControlName="mail" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="mail.invalid" class="text-danger">
+                    <div *ngIf="mail.invalid">
                         <div *ngIf="mail.errors?.required">
-                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre email</div>
+                            <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer votre email</div>
                         </div>
                     </div>
                 </div>
@@ -141,9 +141,9 @@
                     <input type="phone" formControlName="phone" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="phone.invalid" class="text-danger">
+                    <div *ngIf="phone.invalid">
                         <div *ngIf="phone.errors?.required">
-                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre nom</div>
+                            <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer votre nom</div>
                         </div>
                     </div>
                 </div>

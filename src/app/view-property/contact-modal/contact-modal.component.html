@@ -21,9 +21,9 @@
                     <div class="col-sm-12">
                         <input type="string" class="form-control" formControlName="firstname" placeholder="Prénom">
                         <div class="row ml-1">
-                            <div *ngIf="firstname.invalid" class="text-danger">
+                            <div *ngIf="firstname.invalid">
                                 <div *ngIf="firstname.errors?.required">
-                                    <div class="invalid-feedback d-block ml-2">Veuillez entrer un prénom</div>
+                                    <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer un prénom</div>
                                 </div>
                             </div>
                         </div>
@@ -34,9 +34,9 @@
                     <div class="col-sm-12">
                         <input type="string" class="form-control" formControlName="name" placeholder="Nom">
                         <div class="row ml-1">
-                            <div *ngIf="name.invalid" class="text-danger">
+                            <div *ngIf="name.invalid" >
                                 <div *ngIf="name.errors?.required">
-                                    <div class="invalid-feedback d-block ml-2">Veuillez entrer un nom</div>
+                                    <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer un nom</div>
                                 </div>
                             </div>
                         </div>
@@ -47,9 +47,9 @@
                     <div class="col-sm-12">
                         <input type="email" class="form-control" formControlName="mail" placeholder="E-mail">
                         <div class="row ml-1">
-                            <div *ngIf="mail.invalid" class="text-danger">
+                            <div *ngIf="mail.invalid">
                                 <div *ngIf="mail.errors?.required">
-                                    <div class="invalid-feedback d-block ml-2">Veuillez entrer un email</div>
+                                    <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer un email</div>
                                 </div>
                             </div>
                         </div>
@@ -61,9 +61,9 @@
                         <input type="phone" class="form-control" formControlName="phone"
                             placeholder="Numéro de Téléphone">
                             <div class="row ml-1">
-                                <div *ngIf="firstname.invalid" class="text-danger">
+                                <div *ngIf="firstname.invalid">
                                     <div *ngIf="firstname.errors?.required">
-                                        <div class="invalid-feedback d-block ml-2">Veuillez entrer un numéro de téléphone</div>
+                                        <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer un numéro de téléphone</div>
                                     </div>
                                 </div>
                             </div>
