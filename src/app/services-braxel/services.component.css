@@ -510,6 +510,25 @@ a.anchor {
   --default-handle-color: #233353;
 }
 
+.typo {
+  font-family: sans-serif;
+  font-size: 1.6em;
+  font-weight: bold;
+  display: inline-block;
+  mix-blend-mode: multiply;
+  
+  animation-name: foo;
+  animation-direction: alternate;
+  animation-duration: 1.5s;
+  animation-iteration-count: 15;
+  animation-timing-function: cubic-bezier(1.0, 0, 1.0, 1.0);
+}
+
+@keyframes foo {
+  from { transform: scale(1);  color: #233353; }
+  to {   transform: scale(5); translate:(0px, 30px); rotate:(.025turn); color: #ee5c5a; }
+}
+
 
 
 
