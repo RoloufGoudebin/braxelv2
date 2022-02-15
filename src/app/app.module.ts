@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
-import { FormsModule } from '@angular/forms';
 import { Ng2OdometerModule } from 'ng2-odometer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -44,7 +43,7 @@ import { AuthService } from "./admin/services/auth.service";
 import { RealisationsComponent } from './realisations/realisations.component';
 import { MDBBootstrapModulesPro } from 'ng-uikit-pro-standard';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ModalAvisComponent } from './avis/modal-avis/modal-avis.component';
