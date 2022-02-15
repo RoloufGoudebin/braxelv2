@@ -13,11 +13,16 @@ export class AvisComponent implements OnInit {
   cards: any[];
   toSwap = [-1, -1];
   show = false;
+  numberReviews;
   reviewForm = this.formBuilder.group({
     author: '',
     review: '',
     rate: ''
   });
+
+  numberForm = this.formBuilder.group({
+    newNumberReviews: ''
+  })
 
 
   ngOnInit(): void {
@@ -35,6 +40,13 @@ export class AvisComponent implements OnInit {
       });;
     },
       1500);
+
+    this.firestore.getFirestoreCollection('numberReviews').subscribe(data =>
+      this.numberReviews = data.map(e => {
+        return {
+          ...e.payload.doc.data() as any
+        }
+      }));
   }
 
   swap() {
@@ -84,7 +96,6 @@ export class AvisComponent implements OnInit {
   }
 
   onSubmitReview(): void {
-    console.log(this.reviewForm);
     this.firestore.addReview(this.reviewForm.value.author, this.reviewForm.value.rate, this.reviewForm.value.review, this.cards.length);
     setTimeout(() => {
       this.cards.sort(function (a, b) {
@@ -92,6 +103,13 @@ export class AvisComponent implements OnInit {
       });;
     },
       1500);
+  }
+
+  onSubmitNumber(){
+    let newNumber : any =  {
+      number: this.numberForm.value.newNumberReviews
+    }
+    this.firestore.updateNumberReviews(newNumber)
   }
 
   delete() {

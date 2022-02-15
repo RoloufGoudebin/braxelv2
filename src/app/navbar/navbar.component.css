@@ -65,7 +65,8 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .logo-navbar {
-    max-height: 70px !important;
+    max-height: auto !important;
+    max-width: 250px;
     margin-top: -30px !important;
   }
 }
@@ -130,13 +131,21 @@ img {
   animation-timing-function: ease-in;
 }
 
+@media screen and (max-width: 1068px) {
+  .btn-estimate {
+    border-radius: 0 0 20px 20px !important;
+    max-width: 240px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .btn-estimate {
+    max-width: 180px;
     border-radius: 20px 20px 20px 20px !important;
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1068px) {
   .btn-estimate {
     border-radius: 0 0 20px 20px !important;
   }
@@ -373,17 +382,6 @@ i {
     position: relative;
     height: 100vh;
     top: 90px;
-  }
-
-  .wrapper {
-    height: 50px;
-    background-color: white;
-  }
-  .estimation {
-    position: relative !important;
-    width: 50%;
-    height: 150px;
-    left: 120%;
   }
 
 }

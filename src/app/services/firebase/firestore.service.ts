@@ -279,17 +279,28 @@ export class FirestoreService {
   }
 
   updateDateRefresh() {
-    console.log("cc")
     this.firestore
       .collection("refresh")
       .doc("1")
       .set({ "lastRefresh": Date.now() })
   }
 
+  updateNumberReviews(document: any){
+    this.firestore
+      .collection("numberReviews")
+      .doc("ByyGuO4WlWMVhohauDQZ")
+      .update({ "number": document.number })
+  }
+
   getDateRefresh() {
 
     return this.firestore.collection('refresh').snapshotChanges();
 
+  }
+
+  getNumberReviews(){
+    
+    return this.firestore.collection('refresh').snapshotChanges();
   }
 
   setPropertyListActiveFire() {

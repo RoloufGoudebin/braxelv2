@@ -1,68 +1,90 @@
 .text-card {
-    font-size: 16px;
-    line-height: 16px;
-    height: auto;
-    overflow: hidden;
+  font-size: 16px;
+  line-height: 16px;
+  height: auto;
+  overflow: hidden;
 }
 
 .show {
-    overflow: visible;
-    height: auto !important;
+  overflow: visible;
+  height: auto !important;
 }
-
 
 .notshow {
-   height: 115px;
-   overflow: hidden;
+  height: 115px;
+  overflow: hidden;
 }
-
-
 
 *:focus {
-    outline: none;
+  outline: none;
 }
 
-h1{
-    color: #233353;
-    font-size: 46px;
-    font-weight: 600;
-    line-height: 51px;
-    font-family: 'Source Sans Pro', sans-serif;
+h1 {
+  color: #233353;
+  font-size: 46px;
+  font-weight: 600;
+  font-family: "Source Sans Pro", sans-serif;
 }
+
+h4 {
+  color: #233353;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) { h1 {font-size: 1.7em !important;
-  font-weight: 600 !important;
-
-}
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.7em !important;
+    font-weight: 600 !important;
+  }
+  h4 {
+    font-size: 1.2em !important;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) { h1 {font-size: 2em  !important;
-font-weight: 600 !important;
-
-} 
+@media only screen and (min-width: 600px) {
+  h1 {
+    font-size: 2em !important;
+    font-weight: 600 !important;
+  }
+  h4 {
+    font-size: 1.2em !important;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) { h1 {font-size: 2em  !important;
-font-weight: 600 !important;
-} 
+@media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 2em !important;
+    font-weight: 600 !important;
+  }
+  h4 {
+    font-size: 1.2em !important;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) { h1 {font-size: 46px  !important;
-font-weight: 600 !important;} 
+@media only screen and (min-width: 992px) {
+  h1 {
+    font-size: 46px !important;
+    font-weight: 600 !important;
+  }
+  h4 {
+    font-size: 1.5em !important;
+  }
 }
 
-.stars{
-    color: rgb(255, 196, 0);
+.stars {
+  color: rgb(255, 196, 0);
 }
-
 
 h5 {
   margin-top: 1em;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight:600;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
 }
 
 h6 {
@@ -70,28 +92,27 @@ h6 {
   font-style: italic;
   color: grey;
   margin-top: 1em;
-    font-family: 'Source Sans Pro', sans-serif;
-    margin-bottom: 2em;
+  font-family: "Source Sans Pro", sans-serif;
+  margin-bottom: 2em;
 }
 
-img{
+img {
   margin-top: 2em;
 }
 
-.voir{
+.voir {
   cursor: pointer;
   color: #233353;
   font-style: italic;
 }
 
-.pr-6{
+.pr-6 {
   padding-right: 5em !important;
 }
 
-.pl-6{
+.pl-6 {
   padding-left: 5em !important;
 }
-
 
 .btn-outline-secondary {
   color: #233353 !important;
@@ -102,7 +123,7 @@ img{
   padding: 0.5em !important;
   border-radius: 20px !important;
   margin-bottom: 4em;
-  margin-top:1em;
+  margin-top: 1em;
 }
 
 .btn-outline-secondary:focus {
@@ -114,7 +135,7 @@ img{
   padding: 0.5em !important;
   border-radius: 20px !important;
   margin-bottom: 4em;
-  margin-top:1em;
+  margin-top: 1em;
 }
 
 .btn-outline-secondary:active {
@@ -126,51 +147,50 @@ img{
   padding: 0.5em !important;
   border-radius: 20px !important;
   margin-bottom: 4em;
-  margin-top:1em;
+  margin-top: 1em;
 }
 
 .btn-outline-secondary:hover {
   color: white !important;
-  background-color: #EE5C5A !important;
-  border-color: #EE5C5A !important;
+  background-color: #ee5c5a !important;
+  border-color: #ee5c5a !important;
 }
 
 .btn-outline-danger {
-  padding:none !important;
+  padding: none !important;
   text-transform: none !important;
   font-size: 1.1em !important;
-  background-color: #EE5C5A !important;
+  background-color: #ee5c5a !important;
   color: #ffff !important;
   border-radius: 20px !important;
   margin-top: 20px !important;
-  font-family: 'Montserrat', sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .btn-outline-danger:focus {
-  padding:none !important;
+  padding: none !important;
   text-transform: none !important;
   font-size: 1.1em !important;
-  background-color: #EE5C5A !important;
+  background-color: #ee5c5a !important;
   color: #ffff !important;
   border-radius: 20px !important;
   margin-top: 20px !important;
-  font-family: 'Montserrat', sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .btn-outline-danger:active {
-  padding:none !important;
+  padding: none !important;
   text-transform: none !important;
   font-size: 1.1em !important;
-  background-color: #EE5C5A !important;
+  background-color: #ee5c5a !important;
   color: #ffff !important;
   border-radius: 20px !important;
   margin-top: 20px !important;
-  font-family: 'Montserrat', sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
-
 .btn-outline-danger:hover {
-  padding:none !important;
+  padding: none !important;
   text-transform: none !important;
   font-size: 1.1em !important;
   background-color: #b94b4a !important;
@@ -195,22 +215,22 @@ img{
   z-index: -1;
 }
 
-.modal-wrapper{
+.modal-wrapper {
   position: absolute !important;
   z-index: 9009900 !important;
 }
 
-.bi-arrow-right-circle-fill{
+.bi-arrow-right-circle-fill {
   position: absolute;
   color: #233353;
-  top :50%;
-  right:5%;
+  top: 50%;
+  right: 5%;
   font-size: 3em;
   opacity: 0.75;
   cursor: pointer;
 }
 
-.bi-arrow-left-circle-fill{
+.bi-arrow-left-circle-fill {
   position: absolute;
   color: #233353;
   top: 50%;
@@ -220,14 +240,22 @@ img{
   cursor: pointer;
 }
 
-.bi-arrow-right-circle-fill:hover{
+.bi-arrow-right-circle-fill:hover {
   opacity: 1;
 }
 
-.bi-arrow-left-circle-fill:hover{
+.bi-arrow-left-circle-fill:hover {
   opacity: 1;
 }
 
-.wrapper{
+.wrapper {
   position: relative;
 }
+
+.star-subtitle {
+  font-size: 0.7em;
+  color: rgb(255, 196, 0);
+}
+
+
+

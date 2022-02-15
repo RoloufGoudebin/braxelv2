@@ -36,6 +36,9 @@
             <div class="row">
                 <button type="button" class="btn btn-primary col-10" (click)="basicModal.show()">Ajouter avis</button>
             </div>
+            <div class="row">
+                <button type="button" class="btn btn-primary col-10" (click)="numberModal.show()">Modifier le nombre</button>
+            </div>
         </div>
     </div>
 </div>
@@ -85,6 +88,38 @@
                         (click)="basicModal.hide()" mdbWavesEffect>Close</button>
                     <button type="button" mdbBtn color="primary" class="relative waves-light" type="submit"
                         (click)="basicModal.hide()" mdbWavesEffect>Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div mdbModal #numberModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModaleNumber"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="numberModal.hide()">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">Modifier le nombre d'avis</h4>
+            </div>
+            <form [formGroup]="numberForm" (ngSubmit)="onSubmitNumber()">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="exampleInputEmail1">Nombre d'avis : </label>
+                            <input class="col-12 form-control" id="author" type="text" formControlName="newNumberReviews"
+                                placeholder="{{numberReviews[0].number}}">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"
+                        (click)="numberModal.hide()" mdbWavesEffect>Close</button>
+                    <button type="button" mdbBtn color="primary" class="relative waves-light" type="submit"
+                        (click)="numberModal.hide()" mdbWavesEffect>Modifier</button>
                 </div>
             </form>
         </div>
