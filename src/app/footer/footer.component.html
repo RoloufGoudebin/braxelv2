@@ -6,18 +6,24 @@
                 <ul class="list-unstyled quick-links">
                     <li><a routerLinkActive="active" routerLink="/"><i class="fa fa-angle-double-right"></i>Home</a>
                     </li>
-                    <li><a routerLinkActive="active" routerLink="/agence"><i class="fa fa-angle-double-right"></i>Agence</a>
+                    <li><a routerLinkActive="active" routerLink="/agence"><i
+                                class="fa fa-angle-double-right"></i>Agence</a>
                     </li>
-                    <li><a routerLinkActive="active" routerLink="/services"><i class="fa fa-angle-double-right"></i>Vendre ou
+                    <li><a routerLinkActive="active" routerLink="/services"><i
+                                class="fa fa-angle-double-right"></i>Vendre ou
                             louer</a></li>
                     <li><a routerLinkActive="active" routerLink="/nos-biens"><i class="fa fa-angle-double-right"></i>Nos
                             biens</a></li>
-                    <li><a routerLinkActive="active" routerLink="/realisations"><i class="fa fa-angle-double-right"></i>Nos
+                    <li><a routerLinkActive="active" routerLink="/realisations"><i
+                                class="fa fa-angle-double-right"></i>Nos
                             réalisations</a></li>
                     <li><a routerLinkActive="active" routerLink="/faq"><i class="fa fa-angle-double-right"></i>Une
                             question ?</a></li>
                     <li><a routerLinkActive="active" routerLink="/contact"><i
                                 class="fa fa-angle-double-right"></i>Contact</a></li>
+                    <li><a data-toggle="modal" data-target="#languages"><i class="fa fa-angle-double-right"></i>
+                            Langues
+                        </a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">
@@ -54,3 +60,29 @@
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="languages" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Choississez une langue</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="text-modal">Choisissez une langue :
+                    <select #langSelect (change)="translate.use(langSelect.value)">
+                        <option [value]="'fr'" [selected]="'fr' === translate.currentLang">Français</option>
+                        <option [value]="'en'" [selected]="'en' === translate.currentLang">Anglais</option>
+                        <option [value]="'nl'" [selected]="'nl' === translate.currentLang">Néerlandais</option>
+                    </select>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
