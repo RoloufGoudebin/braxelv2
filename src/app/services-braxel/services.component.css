@@ -583,3 +583,7 @@ a.anchor {
     text-align: left !important;
   }
 }
+
+h5 {
+font-weight: bold;
+}
