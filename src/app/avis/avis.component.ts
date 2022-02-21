@@ -18,6 +18,7 @@ export class AvisComponent {
   text= '';
   author='';
   rating=5;
+  numberReviews;
 
 
   slideConfigXl = { 
@@ -59,21 +60,24 @@ export class AvisComponent {
   cards: any;
 
   ngOnInit() {
-    setTimeout(() => {
-      this.cards.sort(function (a, b) {
-        return a.id - b.id;
-      });;
-    },
-      1500);
     this.firestore.getFirestoreCollection('avis').subscribe(data =>
       this.cards = data.map(e => {
         return {
           id: Number(e.payload.doc.id),
           ...e.payload.doc.data() as any
         }
-      }));
+      }).sort((a, b) => a.id - b.id));
+
+      this.firestore.getFirestoreCollection('numberReviews').subscribe(data =>
+        this.numberReviews = data.map(e => {
+          return {
+            ...e.payload.doc.data() as any
+          }
+        }));
 
   }
+
+
 
   createRange(number) {
     const items: number[] = [];

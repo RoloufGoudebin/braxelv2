@@ -22,6 +22,7 @@ export class AppComponent {
     var lg = navigator.language;
     translate.setDefaultLang('fr');
     translate.use(lg[0]+lg[1]);
+    translate.addLangs(['en', 'fr', 'nl']);
    }
 
   ngOnInit() {

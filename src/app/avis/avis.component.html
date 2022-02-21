@@ -1,7 +1,11 @@
 <div id="googleReviews"></div>
 <section id='reviews'>
     <div class="container-fluid">
-        <h1 class="text-center text-justify mb-3 pb-3">{{ 'realisations.4' | translate }} </h1>
+        <h1 class="text-center text-justify mb-lg-3 pb-lg-3 mb-0 pb-0">{{ 'realisations.4' | translate }} </h1>
+        <h4 class="text-center text-justify mb-3 pb-3">{{ 'realisations.4a' | translate }} {{ numberReviews[0].number }}
+            {{ 'realisations.4b' | translate }} <mat-icon *ngFor="let item of
+            createRange(5)"><i class="bi bi-star-fill star-subtitle"></i></mat-icon> {{ 'realisations.4c' | translate }}
+        </h4>
         <div class="d-none d-md-block">
             <div class="row wrapper">
                 <ngx-slick-carousel class="carousel col-10 mx-auto" #slickModalXl="slick-carousel"
@@ -25,7 +29,7 @@
                                 <p type="button" data-toggle="modal" class="text-center" data-target="#exampleModal"
                                     (click)='author = avis.author_name;
                                 text= avis.text; rating=avis.rating;'>
-                                {{ 'realisations.5' | translate }} 
+                                    {{ 'realisations.5' | translate }} 
                                 </p>
 
                                 <div class="row pt-0 mt-0">
@@ -64,7 +68,7 @@
                                 <p type="button" data-toggle="modal" class="text-center" data-target="#exampleModal"
                                     (click)='author = avis.author_name;
                             text= avis.text; rating=avis.rating;'>
-                            {{ 'realisations.5' | translate }} 
+                                    {{ 'realisations.5' | translate }} 
                                 </p>
 
                                 <div class="row pt-0 mt-0">
@@ -103,7 +107,8 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'realisations.6' | translate }} </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'realisations.6' | translate
+                        }} </button>
                     <button type="button" class="btn btn-primary"><a
                             href="https://www.google.com/search?q=braxel+avis&oq=braxel+avis&aqs=edge..69i57j69i60.2803j1j4&sourceid=chrome&ie=UTF-8#lrd=0x47c3d1ca3d0b1823:0xed7f36bfed6ac310,1,,,"
                             target="_blank" class="text-white">{{ 'realisations.7' | translate }} </a></button>
