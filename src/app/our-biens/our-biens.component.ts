@@ -173,24 +173,7 @@ export class OurBiensComponent implements OnInit {
     if (toReturn.length == 0) {
       for (let i = this.sell.length - 1; i >= 0; i--) {
         if (this.sell[i].Goal == goal) {
-          for (let j = 0; j < type.length; j++) {
-            if (type[j] == this.sell[i].WebID) {
-              for (let k = 0; k < zip.length; k++) {
-                if (this.sell[i].Zip == zip[k]) {
-                  if (this.sell[i].NumberOfBedRooms) {
-                    if (this.sell[i].NumberOfBedRooms >= minRoom && this.sell[i].NumberOfBedRooms <= maxRoom) {
-                      if (this.sell[i].Price >= minPrice && this.sell[i].Price <= maxPrice) {
-                        toReturn.push(this.sell[i]);
-                      }
-                    }
-                  }
-                  else if (this.sell[i].Price >= minPrice && this.sell[i].Price <= maxPrice) {
-                    toReturn.push(this.sell[i]);
-                  }
-                }
-              }
-            }
-          }
+          toReturn.push(this.sell[i]);
         }
       }
       console.log(toReturn)

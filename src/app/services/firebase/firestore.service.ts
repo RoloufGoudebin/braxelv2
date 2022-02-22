@@ -33,12 +33,22 @@ export class FirestoreService {
   }
 
   savePropertyTop(newTopPropertyList: Property[]) {
-    this.propertyListTop = newTopPropertyList;
-    for (let i = 0; i < this.propertyListTop.length; i++) {
-      this.firestore
-        .collection("activeProperties")
-        .doc(this.propertyListTop[i].id.toString())
-        .set(this.propertyListTop[i])
+    console.log(newTopPropertyList)
+    for (let i = 0; i < newTopPropertyList.length; i++) {
+      if (typeof newTopPropertyList[i].id !== 'undefined') {
+        console.log("oki")
+        this.firestore
+          .collection("activeProperties")
+          .doc(newTopPropertyList[i].id.toString())
+          .set(newTopPropertyList[i])
+      }
+      else {
+        console.log("okibis")
+        this.firestore
+          .collection("activeProperties")
+          .doc(i.toString())
+          .set(newTopPropertyList[i])
+      }
     }
   }
 
@@ -114,7 +124,6 @@ export class FirestoreService {
         return new Promise<Property>((resolve, reject) => {
           for (let i = 0, j = 0; i < this.propertyList.length; i++) {
             if (this.propertyList[i].SubStatus == 2 || this.propertyList[i].SubStatus == 3) {
-              console.log(this.propertyList[i]);
               this.firestore
                 .collection("activeProperties")
                 .doc(j.toString())
@@ -170,33 +179,44 @@ export class FirestoreService {
     this.setPropertyListActiveFire(); //topPropertyListActive
     this.setPropertyListActiveOmni(); //propertyList
     setTimeout(() => {
-      console.log(this.topPropertyListActive)
       if (this.topPropertyListActive != null) {
         this.topPropertyListActive.sort(function (a, b) {
-          return a.id - b.id;
+          return b.id - a.id;
         });
       }
       if (this.propertyList != null) {
         this.propertyList.sort(function (a, b) {
-          return a.ID - b.ID;
+          return b.ID - a.ID;
         });
       }
+
+      for (let i = 0; i < this.propertyList.length; i++) {
+        if (this.propertyList[i].SubStatus == 2 || this.propertyList[i].SubStatus == 3) {
+          toCopy.push(this.propertyList[i])
+        }
+      }
+
+
+
       //supprime les biens qui ne sont plus disponibles
-      for (let i = 0, count = 0; i < this.topPropertyListActive.length; i++) {
-        for (let j = 0; j < this.propertyList.length; j++) {
-          if (this.propertyList[j].ID == this.topPropertyListActive[i].ID) {
-            this.topPropertyListActive[i].id = this.topPropertyListActive[i].id - count;
+      for (let j = 0; j < toCopy.length; j++) {
+        for (let i = 0; i < this.topPropertyListActive.length -1; i++) {
+          if (toCopy[j].ID == this.topPropertyListActive[i].ID) {
+            toCopy[j].id = this.topPropertyListActive[i].id;
             break;
           }
-          if (j == this.propertyList.length - 1) {
-            this.topPropertyListActive.splice(i, 1);
-            i--;
-            count++;
+          if (i == this.topPropertyListActive.length-1){
+            toCopy[j].id = 6;
+            console.log(toCopy[j])
+            for(let k = 6; k < this.topPropertyListActive.length - 1 ; k++){
+              toCopy[k].id = this.topPropertyListActive.length[k].id + 1;
+              console.log(toCopy[k])
+            }
           }
         }
       }
 
-      //met à jour les biens
+      /*
       for (let i = 0; i < this.topPropertyListActive.length; i++) {
         for (let j = 0; j < this.propertyList.length; j++) {
           if (this.propertyList[j].ID == this.topPropertyListActive[i].ID) {
@@ -229,9 +249,8 @@ export class FirestoreService {
           }
         }
       }
-      for (let i = 0; i < this.topPropertyListActive.length; i++) {
-        this.topPropertyListActive[i].id = this.topPropertyListActive.indexOf(this.topPropertyListActive[i]);
-      }
+      */
+      console.log(toCopy);
       this.savePropertyTop(toCopy);
       this.updateDateRefresh();
     },
@@ -285,7 +304,7 @@ export class FirestoreService {
       .set({ "lastRefresh": Date.now() })
   }
 
-  updateNumberReviews(document: any){
+  updateNumberReviews(document: any) {
     this.firestore
       .collection("numberReviews")
       .doc("ByyGuO4WlWMVhohauDQZ")
@@ -298,8 +317,8 @@ export class FirestoreService {
 
   }
 
-  getNumberReviews(){
-    
+  getNumberReviews() {
+
     return this.firestore.collection('refresh').snapshotChanges();
   }
 
