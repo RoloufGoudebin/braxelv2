@@ -18,7 +18,7 @@
   }
 
 .nodalview{
-    height: 95vh;
+    height: 100% !important;
 }
 
 .btn-outline-primary {
@@ -81,5 +81,10 @@
     text-transform: none !important;
     background-color: #b94b4a !important;
     color: white !important;
+  }
+
+  .modal-body{
+    height: 100% !important;
+    width: 100% !important;
   }
 
