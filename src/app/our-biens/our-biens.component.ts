@@ -87,13 +87,25 @@ export class OurBiensComponent implements OnInit {
       this.listOfZips[i].localite = this.listOfZips[i].localite.toUpperCase();
     }
 
-    this.firestore.getFirestoreCollection('activeProperties').subscribe(data =>
+    this.firestore.getFirestoreCollection('activeProperties').subscribe(data => {
       this.toShow = data.map(e => {
         return {
           id: e.payload.doc.id,
           ...e.payload.doc.data() as Property
         }
-      }));
+      })
+      this.firestore.getFirestoreCollection('sellProperties').subscribe(data => {
+        this.sell = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            ...e.payload.doc.data() as Property
+          }
+        })
+        console.log(this.sell);
+        this.toShow = this.toShow.concat(this.sell);
+        console.log(this.toShow);
+      });
+    });
 
     this.firestore.getFirestoreCollection('activeProperties').subscribe(data =>
       this.toSearch = data.map(e => {
@@ -169,14 +181,6 @@ export class OurBiensComponent implements OnInit {
           }
         }
       }
-    }
-    if (toReturn.length == 0) {
-      for (let i = this.sell.length - 1; i >= 0; i--) {
-        if (this.sell[i].Goal == goal) {
-          toReturn.push(this.sell[i]);
-        }
-      }
-      console.log(toReturn)
     }
     return toReturn;
   }
