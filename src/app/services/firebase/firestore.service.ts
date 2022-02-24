@@ -33,17 +33,14 @@ export class FirestoreService {
   }
 
   savePropertyTop(newTopPropertyList: Property[]) {
-    console.log(newTopPropertyList)
     for (let i = 0; i < newTopPropertyList.length; i++) {
       if (typeof newTopPropertyList[i].id !== 'undefined') {
-        console.log("oki")
         this.firestore
           .collection("activeProperties")
           .doc(newTopPropertyList[i].id.toString())
           .set(newTopPropertyList[i])
       }
       else {
-        console.log("okibis")
         this.firestore
           .collection("activeProperties")
           .doc(i.toString())
@@ -120,7 +117,6 @@ export class FirestoreService {
         this.propertyList.sort(function (a, b) {
           return b.ID - a.ID;
         });
-        console.log(this.propertyList);
         return new Promise<Property>((resolve, reject) => {
           for (let i = 0, j = 0; i < this.propertyList.length; i++) {
             if (this.propertyList[i].SubStatus == 2 || this.propertyList[i].SubStatus == 3) {
@@ -207,10 +203,8 @@ export class FirestoreService {
           }
           if (i == this.topPropertyListActive.length-1){
             toCopy[j].id = 6;
-            console.log(toCopy[j])
             for(let k = 6; k < this.topPropertyListActive.length - 1 ; k++){
               toCopy[k].id = this.topPropertyListActive.length[k].id + 1;
-              console.log(toCopy[k])
             }
           }
         }
@@ -250,7 +244,6 @@ export class FirestoreService {
         }
       }
       */
-      console.log(toCopy);
       this.savePropertyTop(toCopy);
       this.updateDateRefresh();
     },
@@ -291,7 +284,6 @@ export class FirestoreService {
         this.topPropertyListSell[i].id = this.topPropertyListSell.indexOf(this.topPropertyListSell[i]);
       }
       this.savePropertySell(this.topPropertyListSell);
-      console.log("oki");
     },
       120000);
 
@@ -366,10 +358,8 @@ export class FirestoreService {
               j++;
             }
           }
-          console.log(this.propertyListSell);
         });
       });
-    console.log(this.propertyListSell);
   }
 
   addReview(author: string, rate: number, review: string, id: number) {

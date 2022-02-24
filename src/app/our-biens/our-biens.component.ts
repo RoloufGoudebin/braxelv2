@@ -101,9 +101,7 @@ export class OurBiensComponent implements OnInit {
             ...e.payload.doc.data() as Property
           }
         })
-        console.log(this.sell);
         this.toShow = this.toShow.concat(this.sell);
-        console.log(this.toShow);
       });
     });
 

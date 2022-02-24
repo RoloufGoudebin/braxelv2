@@ -30,8 +30,6 @@ export function goalValidator(): ValidatorFn {
 
         const goalValid = value[0].select && value[1].select;
 
-        console.log(value);
-
         return !goalValid ? {goalSelect:true}: null;
     }
 }

@@ -16,9 +16,7 @@ export class AuthService {
     }
 
     signIn(mail: string, pwd: string){
-      console.log("con")
       if (mail == "admin" && pwd == "Braxel12345") {
-        console.log("coucou")
         this.logged = true;
         this.router.navigate(['/admin/top-biens']);
       }

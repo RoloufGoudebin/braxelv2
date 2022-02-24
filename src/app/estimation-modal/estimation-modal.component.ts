@@ -59,9 +59,6 @@ export class EstimationModalComponent {
   }
 
   onSubmit() {
-    //console.log(this.omnicasaService.demandRegister(this.alertForm.value.name, this.alertForm.value.firstname, this.alertForm.value.selected, this.alertForm.value.mail,
-    // this.alertForm.value.phone, this.alertForm.value.zip, this.sliderPrice.minValue, this.sliderPrice.highValue, this.sliderRooms.minValue, this.sliderRooms.highValue, this.alertForm.value.comment,
-    //this.sliderSurface.minValue))
     let goal, type, budget, surface;
 
     if (this.alertForm.value.goal == 0) {

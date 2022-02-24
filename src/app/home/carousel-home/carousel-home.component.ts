@@ -15,19 +15,15 @@ export class CarouselHomeComponent implements OnInit {
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1, "autoplay": true, "fade": true, "autoplaySpeed": 5000, "arrows": false};
   
   slickInit(e) {
-    console.log('slick initialized');
   }
   
   breakpoint(e) {
-    console.log('breakpoint');
   }
   
   afterChange(e) {
-    console.log('afterChange');
   }
   
   beforeChange(e) {
-    console.log('beforeChange');
   }
 
   carouselImg: any[];
@@ -53,7 +49,6 @@ export class CarouselHomeComponent implements OnInit {
         }
     }));
     setTimeout(() => {
-      console.log(this.carouselImg);
     },
       5000);
   }

@@ -36,7 +36,6 @@ export class AppComponent {
         }
     }));
     setTimeout(() => {
-      console.log((Date.now() - this.date[0].lastRefresh))
       if(Date.now() - this.date[0].lastRefresh > 3600000){
         this.firestore.updatePropertyListActive();
         this.firestore.updatePropertyListSell();

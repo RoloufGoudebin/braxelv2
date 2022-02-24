@@ -34,7 +34,6 @@ export class AvisComponent implements OnInit {
         }
       }));
     setTimeout(() => {
-      console.log(this.cards.length);
       this.cards.sort(function (a, b) {
         return a.id - b.id;
       });;
@@ -53,18 +52,15 @@ export class AvisComponent implements OnInit {
     let tmp = this.cards[this.toSwap[0]];
     let tmpid = this.cards[this.toSwap[0]].id;
     let tmpidBis = this.cards[this.toSwap[1]].id;
-    console.log(tmp)
     this.cards[this.toSwap[0]] = this.cards[this.toSwap[1]];
     this.cards[this.toSwap[0]].id = tmpid;
     this.cards[this.toSwap[1]] = tmp;
     this.cards[this.toSwap[1]].id = tmpidBis;
     this.toSwap[0] = -1;
     this.toSwap[1] = -1;
-    console.log(this.cards);
   }
 
   save() {
-    console.log(this.cards);
     this.firestore.createAvis(this.cards);
     setTimeout(() => {
       this.cards.sort(function (a, b) {
@@ -85,7 +81,6 @@ export class AvisComponent implements OnInit {
       this.toSwap[0] = -1;
       this.toSwap[1] = -1;
     }
-    console.log(this.toSwap)
   }
 
   sort() {

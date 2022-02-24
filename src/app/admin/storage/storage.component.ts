@@ -64,7 +64,6 @@ export class StorageComponent implements OnInit {
   chose(i: number){
     this.toChange = this.files[i];
     this.chosen = i ;
-    console.log(this.carousel[0])
   }
 
   save(i : number){
@@ -72,7 +71,6 @@ export class StorageComponent implements OnInit {
   }
 
   delete(){
-    console.log(this.toChange)
     this.firestore.deleteFile(this.toChange);
   }
 

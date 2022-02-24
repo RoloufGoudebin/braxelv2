@@ -35,7 +35,6 @@ export class TopBiensSellComponent implements OnInit {
   }
 
   save() {
-    console.log(this.propertyListSell);
     this.firestore.savePropertySell(this.propertyListSell);
     setTimeout(() => {
       this.propertyListSell.sort(function (a, b) {
@@ -50,7 +49,6 @@ export class TopBiensSellComponent implements OnInit {
       return a.id - b.id;
     });;
     setTimeout(() => {
-      console.log(this.propertyListSell);
     },
       3000);
     this.show = true;
@@ -77,7 +75,6 @@ export class TopBiensSellComponent implements OnInit {
       this.toSwap[0] = -1;
       this.toSwap[1] = -1;
     }
-    console.log(this.toSwap)
   }
 
   selectPropertyListToChange(id: number) {
@@ -88,14 +85,12 @@ export class TopBiensSellComponent implements OnInit {
     let tmp = this.propertyListSell[this.toSwap[0]];
     let tmpid = this.propertyListSell[this.toSwap[0]].id;
     let tmpidBis = this.propertyListSell[this.toSwap[1]].id;
-    console.log(tmp)
     this.propertyListSell[this.toSwap[0]] = this.propertyListSell[this.toSwap[1]];
     this.propertyListSell[this.toSwap[0]].id = tmpid;
     this.propertyListSell[this.toSwap[1]] = tmp;
     this.propertyListSell[this.toSwap[1]].id = tmpidBis;
     this.toSwap[0] = -1;
     this.toSwap[1] = -1;
-    console.log(this.propertyListSell);
   }
 
 
@@ -138,10 +133,8 @@ export class TopBiensSellComponent implements OnInit {
   searchExactPrice(max: number) {
     let j = 0;
     for (let i = 0; i < this.propertyList.length; i++) {
-      console.log(this.propertyList[i].Price);
       if (this.propertyList[i].Price == max) {
         this.propertyList[j] = this.propertyList[i];
-        console.log(this.propertyList[i]);
         j++;
       }
     }

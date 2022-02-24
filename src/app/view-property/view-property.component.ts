@@ -38,8 +38,6 @@ export class ViewPropertyComponent implements OnInit {
 
   showLightbox(index: number) {
     this.selectedImageIndex = index;
-    console.log(index);
-    console.log(this.imageObject[index]);
     this.showFlag = true;
   }
 
@@ -49,19 +47,15 @@ export class ViewPropertyComponent implements OnInit {
   }
 
   slickInit(e) {
-    console.log('slick initialized');
   }
 
   breakpoint(e) {
-    console.log('breakpoint');
   }
 
   afterChange(e) {
-    console.log('afterChange');
   }
 
   beforeChange(e) {
-    console.log('beforeChange');
   }
 
 
@@ -85,10 +79,8 @@ export class ViewPropertyComponent implements OnInit {
       this.long = +this.property.GoogleY;
       this.nodalLink = this.property.VirtualTour;
       for (let i = 0; i < this.property.LargePictures.length; i++) {
-        console.log(this.property.LargePictures.length);
         this.imageObject.push({ image: this.property.LargePictures[i] });
       }
-      console.log(this.imageObject);
     });;
   }
 
