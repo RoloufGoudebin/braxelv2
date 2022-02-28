@@ -2,10 +2,10 @@
     <div class="modal-header" style="background:#F2F2F2">
         <div class="container">
             <div class="row">
-                <h1 class="modal-title" id="modal-basic-title">Être contacté pour ce bien</h1>
+                <h1 class="modal-title" id="modal-basic-title">{{ 'viewProperty.25' | translate}}</h1>
             </div>
             <div class="row">
-                <p>Remplissez le formulaire et nous vous recontacterons dans les plus brefs délais concernant ce bien
+                <p>{{ 'viewProperty.26' | translate}}
                 </p>
             </div>
         </div>
@@ -19,11 +19,13 @@
                 <div class="form-group row">
                     <label for="firstname" class="col-sm-4 col-form-label"></label>
                     <div class="col-sm-12">
-                        <input type="string" class="form-control" formControlName="firstname" placeholder="Prénom">
+                        <input type="string" class="form-control" formControlName="firstname"
+                            placeholder="{{ 'viewProperty.27' | translate}}">
                         <div class="row ml-1">
                             <div *ngIf="firstname.invalid">
                                 <div *ngIf="firstname.errors?.required">
-                                    <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer un prénom</div>
+                                    <div class="invalid-feedback d-block ml-2 text-muted">{{ 'viewProperty.28' |
+                                        translate}}</div>
                                 </div>
                             </div>
                         </div>
@@ -32,11 +34,13 @@
                 <div class="form-group row">
                     <label for="inputLastName" class="col-sm-4 col-form-label"></label>
                     <div class="col-sm-12">
-                        <input type="string" class="form-control" formControlName="name" placeholder="Nom">
+                        <input type="string" class="form-control" formControlName="name"
+                            placeholder="{{ 'viewProperty.29' | translate}}">
                         <div class="row ml-1">
-                            <div *ngIf="name.invalid" >
+                            <div *ngIf="name.invalid">
                                 <div *ngIf="name.errors?.required">
-                                    <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer un nom</div>
+                                    <div class="invalid-feedback d-block ml-2 text-muted">{{ 'viewProperty.30' |
+                                        translate}}</div>
                                 </div>
                             </div>
                         </div>
@@ -45,11 +49,13 @@
                 <div class="form-group row">
                     <label for="inputEmail" class="col-sm-4 col-form-label"></label>
                     <div class="col-sm-12">
-                        <input type="email" class="form-control" formControlName="mail" placeholder="E-mail">
+                        <input type="email" class="form-control" formControlName="mail"
+                            placeholder="{{ 'viewProperty.31' | translate}}">
                         <div class="row ml-1">
                             <div *ngIf="mail.invalid">
                                 <div *ngIf="mail.errors?.required">
-                                    <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer un email</div>
+                                    <div class="invalid-feedback d-block ml-2 text-muted">{{ 'viewProperty.32' |
+                                        translate}}</div>
                                 </div>
                             </div>
                         </div>
@@ -59,37 +65,39 @@
                     <label for="inputPhone" class="col-sm-4 col-form-label"></label>
                     <div class="col-sm-12">
                         <input type="phone" class="form-control" formControlName="phone"
-                            placeholder="Numéro de Téléphone">
-                            <div class="row ml-1">
-                                <div *ngIf="firstname.invalid">
-                                    <div *ngIf="firstname.errors?.required">
-                                        <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer un numéro de téléphone</div>
-                                    </div>
+                            placeholder="{{ 'viewProperty.33' | translate}}">
+                        <div class="row ml-1">
+                            <div *ngIf="firstname.invalid">
+                                <div *ngIf="firstname.errors?.required">
+                                    <div class="invalid-feedback d-block ml-2 text-muted">{{ 'viewProperty.34' |
+                                        translate}}</div>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="questions" class="col-sm-4 col-form-label"></label>
                     <div class="col-sm-12">
                         <textarea type="text" class="form-control" rows="5"
-                            placeholder="Demande(s) spécifique(s)" formControlName="questions"></textarea>
+                            placeholder="{{ 'viewProperty.35' | translate}}" formControlName="questions"></textarea>
                     </div>
                 </div>
             </form>
         </div>
         <div *ngIf="!notConfirm">
             <p>
-                Demande envoyée avec succès
+                {{ 'viewProperty.36' | translate}}
             </p>
         </div>
     </div>
 
     <div class="modal-footer">
-        <button *ngIf="notConfirm" type="button" class="btn btn-outline-primary" (click)="onSubmit()" [disabled]="!contactForm.valid">Nous
-            contacter</button>
-        <button *ngIf="!notConfirm" type="button" class="btn btn-outline-primary" (click)="modal.close()">Fermer</button>
+        <button *ngIf="notConfirm" type="button" class="btn btn-outline-primary" (click)="onSubmit()"
+            [disabled]="!contactForm.valid">{{ 'viewProperty.37' | translate}}</button>
+        <button *ngIf="!notConfirm" type="button" class="btn btn-outline-primary"
+            (click)="modal.close()">{{ 'viewProperty.38' | translate}}</button>
     </div>
 </ng-template>
 
-<button type="button" class="btn btn-outline-danger ml-3" (click)="open(content)">ÊTRE CONTACTÉ POUR CE BIEN</button>
+<button type="button" class="btn btn-outline-danger ml-3" (click)="open(content)">{{ 'viewProperty.39' | translate}}</button>

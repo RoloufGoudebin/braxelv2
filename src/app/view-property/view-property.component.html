@@ -10,7 +10,7 @@
       <div class="col-10 row">
         <h2 *ngIf="property.StartPrice" class="mr-auto col-12">{{toStringPrice(property.Price)}}
           {{property.PriceUnitText}}</h2>
-        <p class="price col-12"> Hors droits et taxes diverses</p>
+        <p class="price col-12">{{ 'viewProperty.1' | translate }}</p>
       </div>
 
       <div class="row mx-auto d-lg-none">
@@ -93,37 +93,37 @@
       <ul class="row px-0 mx-0">
         <div class="col-4 col-md card text-center mx-auto " style="box-shadow: none;">
           <span class="icon-object-ungroup icon"></span>
-          <li class="titlecard">Superficie
+          <li class="titlecard">{{ 'viewProperty.2' | translate }}
             <hr> {{property.SurfaceTotal}}
           </li>
         </div>
         <div class="col-4 col-md card text-center mx-1 mx-auto" style="box-shadow: none;">
           <span class="icon-bed icon"></span>
-          <li class="titlecard">Chambres
+          <li class="titlecard">{{ 'viewProperty.3' | translate }}
             <hr> {{property.NumberOfBedRooms}}
           </li>
         </div>
         <div class="col-4 col-md card text-center mx-auto" style="box-shadow: none;">
           <span class="icon-bath icon"></span>
-          <li class="titlecard">SDB
+          <li class="titlecard">{{ 'viewProperty.4' | translate }}
             <hr> {{property.NumberOfBathRooms}}
           </li>
         </div>
         <div class="col-4 col-md card text-center mx-auto" style="box-shadow: none;">
           <span class="icon-shower icon"></span>
-          <li class="titlecard">SDD
+          <li class="titlecard">{{ 'viewProperty.5' | translate }}
             <hr> {{property.NumberOfShowerRooms}}
           </li>
         </div>
         <div class="col-4 col-md card text-center mx-auto" style="box-shadow: none;">
           <span class="icon-automobile icon"></span>
-          <li class="titlecard">Garage(s)
+          <li class="titlecard">{{ 'viewProperty.6' | translate }}
             <hr> {{property.NumberOfGarages}}
           </li>
         </div>
         <div class="col-4 col-md card text-center mx-auto" style="box-shadow: none;">
           <span class="icon-desktop_windows icon"></span>
-          <li class="titlecard">Bureau(x)
+          <li class="titlecard">{{ 'viewProperty.7' | translate }}
             <hr>
             <div *ngIf="property.IsOffice; else elseBlock">1</div>
             <ng-template #elseBlock>0</ng-template>
@@ -139,37 +139,37 @@
     <ul class="row px-0 mx-0">
       <div class="col-6 col-md card text-center mx-auto " style="box-shadow: none;">
         <span class="icon-object-ungroup icon"></span>
-        <li class="titlecard">Superficie
+        <li class="titlecard">{{ 'viewProperty.2' | translate }}
           <hr> {{property.SurfaceTotal}}
         </li>
       </div>
       <div class="col-6 col-md card text-center mx-1 mx-auto" style="box-shadow: none;">
         <span class="icon-bed icon"></span>
-        <li class="titlecard">Chambres
+        <li class="titlecard">{{ 'viewProperty.3' | translate }}
           <hr> {{property.NumberOfBedRooms}}
         </li>
       </div>
       <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
         <span class="icon-bath icon"></span>
-        <li class="titlecard">Salle(s) de bains
+        <li class="titlecard">{{ 'viewProperty.8' | translate }}
           <hr> {{property.NumberOfBathRooms}}
         </li>
       </div>
       <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
         <span class="icon-shower icon"></span>
-        <li class="titlecard">Salle(s) de douche
+        <li class="titlecard">{{ 'viewProperty.9' | translate }}
           <hr> {{property.NumberOfShowerRooms}}
         </li>
       </div>
       <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
         <span class="icon-automobile icon"></span>
-        <li class="titlecard">Garage(s)
+        <li class="titlecard">{{ 'viewProperty.6' | translate }}
           <hr> {{property.NumberOfGarages}}
         </li>
       </div>
       <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
         <span class="icon-desktop_windows icon"></span>
-        <li class="titlecard">Bureau(x)
+        <li class="titlecard">{{ 'viewProperty.7' | translate }}
           <hr>
           <div *ngIf="property.IsOffice; else elseBlock">1</div>
           <ng-template #elseBlock>0</ng-template>
@@ -192,35 +192,35 @@
   <div class="container pb-3 pt-3">
     <h4>Particularités</h4>
     <div class="row text ">
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.KitchenName"><b>Cuisine</b> : {{property.KitchenName}}
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.KitchenName"><b>{{ 'viewProperty.10' | translate }}</b> : {{property.KitchenName}}
       </div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.WindowGlazing"><b>Vitrage</b> : {{property.WindowGlazing}}
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.WindowGlazing"><b>{{ 'viewProperty.12' | translate }}</b> : {{property.WindowGlazing}}
       </div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.OrientationT"><b>Orientation</b> :
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.OrientationT"><b>{{ 'viewProperty.13' | translate }}</b> :
         {{property.OrientationT}}
       </div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasLift"><b>Ascensceur</b> : Oui</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.Floor"><b>Étage(s)</b> : {{property.Floor}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionYear"><b>Année de construction</b> :
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasLift"><b>{{ 'viewProperty.14' | translate }}</b> : {{ 'viewProperty.15' | translate }}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.Floor"><b>{{ 'viewProperty.16' | translate }}</b> : {{property.Floor}}</div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionYear"><b>{{ 'viewProperty.17' | translate }}</b> :
         {{property.ConstructionYear}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.SurfaceTerrace"><b>Terrasse</b> :
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.SurfaceTerrace"><b>{{ 'viewProperty.18' | translate }}</b> :
         {{property.SurfaceTerrace}}m²</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionName"><b>Type de construction</b> :
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionName"><b>{{ 'viewProperty.19' | translate }}</b> :
         {{property.ConstructionName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasGarden"><b>Jardin</b> : Oui
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasGarden"><b>{{ 'viewProperty.20' | translate }}</b> : {{ 'viewProperty.15' | translate }}
         ({{property.SurfaceGarden}}m²)</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HeatingName"><b>Type de chauffage</b> :
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HeatingName"><b>{{ 'viewProperty.21' | translate }}</b> :
         {{property.HeatingName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.MainStyleName"><b>Type de construction</b> :
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.MainStyleName"><b>{{ 'viewProperty.22' | translate }}</b> :
         {{property.MainStyleName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConditionName"><b>État</b> : {{property.ConditionName}}
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConditionName"><b>{{ 'viewProperty.23' | translate }}</b> : {{property.ConditionName}}
       </div>
     </div>
   </div>
 
 
   <div class="container pb-5">
-    <h4>Description</h4>
+    <h4>{{ 'viewProperty.24' | translate }}</h4>
     <p class="content text-justify" *ngIf="property.DescriptionA">{{property.DescriptionB}}</p>
   </div>
   <div class="container px-3 pb-5">
