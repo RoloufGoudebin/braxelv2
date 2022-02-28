@@ -3,7 +3,7 @@
     <ngx-slick-carousel class="carousel col-12 px-0 mx-0 mt-4" #slickModal="slick-carousel" [config]="slideConfig">
       <div ngxSlickItem *ngFor="let slide of carousel" class="slide px-0 mx-0">
         <!--Video source-->
-        <video *ngIf="slide.type==='video'" class="video-fluid center px-0 mx-0" [muted]="true" playsinline autoplay loop>
+        <video *ngIf="slide.type==='video'" class="video-fluid center px-0 mx-0 pt-5 pt-lg-0" [muted]="true" playsinline autoplay loop>
           <source src="{{slide.src}}" type="video/mp4" class="px-0 mx-0" />
         </video>
         <!--end video-->
