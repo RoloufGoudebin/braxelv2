@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full', data: {animationState: 'One'} },
   { path: 'agence', component: AgencyComponent, data: { animationState: 'Two'}},
   { path: 'services', component: ServicesComponent, data: { animationState: 'Three'}},
-  { path: 'nos-biens', component: OurBiensComponent, data: { animationState: 'Four' } },
+  { path: 'nos-biens', component: OurBiensComponent, data: { animationState: 'Four' }},
   { path: 'realisations', component: RealisationsComponent, data: { animationState: 'Five' }},
   { path: 'faq', component: FaqComponent, data: { animationState: 'Six'}},
   { path: 'contact', component: ContactComponent, data: { animationState: 'Seven' } },
