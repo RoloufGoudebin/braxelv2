@@ -51,7 +51,8 @@
   .logo-navbar {
     height: 60px !important;
     margin-top: -20px !important;
-    margin-left: -20px;
+    width: auto;
+
   }
 }
 
@@ -60,7 +61,7 @@
   .logo-navbar {
     height: 60px !important;
     margin-top: -20px !important;
-    margin-left: -20px;
+    margin-left: -10px;
   }
 }
 
@@ -133,6 +134,7 @@ img {
   animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in;
+  font-size: 0.8em;
 }
 
 @media screen and (max-width: 1068px) {
