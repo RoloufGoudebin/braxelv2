@@ -4,10 +4,10 @@
     <div class="modal-header" style="background:#F2F2F2">
         <div class="container">
             <div class="row">
-                <h1 class="modal-title" id="modal-basic-title">Estimer mon bien</h1>
+                <h1 class="modal-title" id="modal-basic-title">{{ 'estimation.1' | translate }}</h1>
             </div>
             <div class="row">
-                <p>Contactez nous et nous vous recontacterons dans les plus brefs délais pour estimer votre bien</p>
+                <p>{{ 'estimation.2' | translate }}</p>
             </div>
         </div>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -19,130 +19,132 @@
         <div *ngIf="notConfirm">
             <form [formGroup]="alertForm" (ngSubmit)="onSubmit()">
                 <div class="row">
-                    <label class="text-search-form col-10 text-left">Je souhaite</label>
+                    <label class="text-search-form col-10 text-left">{{ 'estimation.3' | translate }}</label>
                     <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
                         [ngClass]="item.select ? 'select' : 'not-select'" class="btn rounded-pill
-                              col-4 mx-auto">{{item.name}}</button>
+                              col-4 mx-auto">{{item.name | translate}}</button>
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="items[0].select==false && items[1].select==false" >
-                        <div class="invalid-feedback d-block ml-2 text-muted">Veuillez choisir le type de bien</div>
+                    <div *ngIf="items[0].select==false && items[1].select==false" class="text-danger">
+                        <div class="invalid-feedback d-block ml-2">{{ 'estimation.5' | translate }}</div>
                     </div>
                 </div>
 
                 <div class="row mt-2">
-                    <label class="text-search-form col-10 text-left">Type de bien</label>
+                    <label class="text-search-form col-10 text-left">{{ 'estimation.6' | translate }}</label>
                     <ng-select [multiple]="true" class="col-11 mx-auto" formControlName="selected">
-                        <ng-option *ngFor="let type of types" [value]="type.id" class="col-11" required>{{type.name}}
+                        <ng-option *ngFor="let type of types" [value]="type.id" class="col-11" required>{{type.name |
+                            translate}}
                         </ng-option>
                     </ng-select>
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="selected.invalid">
-                        <div *ngIf="selected.errors?.required">
-                            <div class="invalid-feedback d-block ml-2 text-muted">Veuillez faire au moins un choix</div>
+                    <div *ngIf="selected.invalid" class="text-danger">
+                        <div *ngIf="selected.errors?.required || (selected.touched && selected.dirty)">
+                            <div class="invalid-feedback d-block ml-2">{{ 'estimation.8' | translate }}</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Code Postal du bien : </label>
+                    <label class="text-search-form col-10 text-left">{{ 'estimation.9' | translate }}</label>
                     <input type="text" formControlName="zip" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="zip.invalid">
-                        <div *ngIf="zip.errors?.required">
-                            <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer votre code postal</div>
-                        </div>
+                    <div *ngIf="zip.errors?.required && (zip.dirty || zip.touched)">
+                        <div class="invalid-feedback d-block ml-2">{{ 'estimation.10' | translate }}</div>
                     </div>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Rue + numéro du bien : </label>
+                    <label class="text-search-form col-10 text-left">{{ 'estimation.11' | translate }}</label>
                     <input type="text" formControlName="street" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="street.invalid">
-                        <div *ngIf="street.errors?.required">
-                            <div class="invalid-feedback d-block ml-2 text-muted ">Veuillez entrer votre adresse</div>
+                    <div *ngIf="street.invalid" class="text-danger">
+                        <div *ngIf="street.errors?.required && (street.dirty || street.touched)">
+                            <div class="invalid-feedback d-block ml-2 text-danger">{{ 'estimation.12' | translate }}
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Autres particularités :</label>
+                    <label class="text-search-form col-10 text-left">{{ 'estimation.13' | translate }}</label>
                     <textarea class="form-control rounded col-10 mx-auto" rows="5"
                         formControlName="particularites"></textarea>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Votre nom : </label>
+                    <label class="text-search-form col-10 text-left">{{ 'estimation.14' | translate }}</label>
                     <input type="name" formControlName="name" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
-                    <div *ngIf="name.invalid">
-                        <div *ngIf="name.errors?.required">
-                            <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer votre nom</div>
+                    <div *ngIf="name.invalid" class="text-danger">
+                        <div *ngIf="name.errors?.required && (name.touched || name.dirty)">
+                            <div class="invalid-feedback d-block ml-2">{{ 'estimation.15' | translate }}
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Votre prénom : </label>
+                    <label class="text-search-form col-10 text-left">{{ 'estimation.16' | translate }}</label>
                     <input type="firstname" formControlName="firstname"
                         class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="firstname.invalid" class="text-danger">
-                        <div *ngIf="firstname.errors?.required">
-                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre prénom</div>
+                        <div *ngIf="firstname.errors?.required && (firstname.touched || firstname.dirty)">
+                            <div class="invalid-feedback d-block ml-2">{{ 'estimation.17' | translate }}</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Votre email : </label>
+                    <label class="text-search-form col-10 text-left">{{ 'estimation.18' | translate }}</label>
                     <input type="mail" formControlName="mail" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="mail.invalid" class="text-danger">
-                        <div *ngIf="mail.errors?.required">
-                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre email</div>
+                        <div *ngIf="mail.errors?.required && (mail.touched || mail.dirty)">
+                            <div class="invalid-feedback d-block ml-2">{{ 'estimation.19' | translate }}</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Téléphone : </label>
+                    <label class="text-search-form col-10 text-left">{{ 'estimation.20' | translate }}</label>
                     <input type="phone" formControlName="phone" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="phone.invalid" class="text-danger">
-                        <div *ngIf="phone.errors?.required">
-                            <div class="invalid-feedback d-block ml-2">Veuillez entrer votre nom</div>
+                        <div *ngIf="phone.errors?.required && (phone.touched || phone.dirty)">
+                            <div class="invalid-feedback d-block ml-2">{{ 'estimation.21' | translate }}</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <p class="col-10 mx-auto text-justify conditions">
-                        En soumettant ce formulaire, j'accepte que les informations saisies dans ce formulaire soient uniquement utilisées, exploitées, traitées dans le cadre de la relation commerciale.
+                        {{ 'estimation.22' | translate }}
                     </p>
                 </div>
             </form>
         </div>
         <div *ngIf="!notConfirm">
-            <p>Estimation demandée avec succès</p>
+            <p>{{ 'estimation.23' | translate }}</p>
         </div>
     </div>
 
     <div class="modal-footer">
         <div *ngIf="notConfirm">
-            <button class="btn btn-outline-primary" [disabled]="!alertForm.valid" type="submit"
-                (click)="onSubmit()">Demander une estimation</button>
+            <button class="btn btn-outline-primary" [disabled]="!alertForm.valid" type="submit" (click)="onSubmit()">{{
+                'estimation.24' | translate }}</button>
         </div>
         <div *ngIf="!notConfirm">
-            <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Fermer</button>
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close()">{{ 'estimation.25' | translate
+                }}</button>
         </div>
     </div>
 </ng-template>
@@ -150,11 +152,11 @@
 <div (click)="openScrollableContent(longContent)">
     <div class="d-none mx-auto d-lg-block">
         <i class="bi bi-calculator"></i>
-        Estimer mon bien
+        {{ 'estimation.26' | translate }}
     </div>
     <div class="d-lg-none mx-auto text-center">
         <div>
-            Estimer mon bien
+            {{ 'estimation.26' | translate }}
         </div>
     </div>
 </div>

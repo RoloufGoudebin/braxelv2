@@ -4,10 +4,10 @@
     <div class="modal-header" style="background:#F2F2F2">
         <div class="container">
             <div class="row">
-                <h1 class="modal-title" id="modal-basic-title">Être alerté</h1>
+                <h1 class="modal-title" id="modal-basic-title">{{ 'navbar.10' | translate }}</h1>
             </div>
             <div class="row">
-                <p>Soyez le premier alerté des nouveaux biens correspondant à vos critères de recherche.</p>
+                <p>{{ 'navbar.11' | translate }}</p>
             </div>
         </div>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -19,19 +19,19 @@
         <div *ngIf="notConfirm">
             <form [formGroup]="alertForm" (ngSubmit)="onSubmit()">
                 <div class="row">
-                    <label class="text-search-form col-10 text-left">Je souhaite</label>
+                    <label class="text-search-form col-10 text-left">{{ 'navbar.12' | translate }}</label>
                     <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
                         [ngClass]="item.select ? 'select' : 'not-select'" class="btn rounded-pill
                               col-4 mx-auto">{{item.name | translate}}</button>
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="items[0].select==false && items[1].select==false">
-                        <div class="invalid-feedback d-block ml-2 text-muted">Veuillez faire un choix</div>
+                        <div class="invalid-feedback d-block ml-2 text-muted">{{ 'navbar.14' | translate }}</div>
                     </div>
                 </div>
 
                 <div class="row mt-2">
-                    <label class="text-search-form col-10 text-left">Type de bien</label>
+                    <label class="text-search-form col-10 text-left">{{ 'navbar.15' | translate }}</label>
                     <ng-select [multiple]="true" class="col-11 mx-auto" formControlName="selected">
                         <ng-option *ngFor="let type of types" [value]="type.id" class="col-11" required>{{type.name}}
                         </ng-option>
@@ -40,13 +40,13 @@
                 <div class="row ml-1">
                     <div *ngIf="selected.invalid" >
                         <div *ngIf="selected.errors?.required">
-                            <div class="invalid-feedback d-block ml-2 text-muted">Veuillez faire au moins un choix</div>
+                            <div class="invalid-feedback d-block ml-2 text-muted">{{ 'navbar.17' | translate }}</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row mt-2">
-                    <label class="text-search-form col-10 text-left" for="zip">Localité/Code Postal</label>
+                    <label class="text-search-form col-10 text-left" for="zip">{{ 'navbar.18' | translate }}</label>
                     <ng-select class="col-11 mx-auto" name="zip" [items]="listOfZips " bindLabel="localite"
                         bindValue="zip" [multiple]="true" formControlName="zip" [minTermLength]="2"
                         typeToSearchText="Please enter 2 or more characters">
@@ -55,115 +55,114 @@
                 <div class="row ml-2">
                     <div *ngIf="zip.invalid">
                         <div *ngIf="zip.errors?.required">
-                            <div class="invalid-feedback d-block text-muted">Veuillez entrer une localité au moins</div>
+                            <div class="invalid-feedback d-block text-muted">{{ 'navbar.19' | translate }}</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Chambres :</label>
+                    <label class="text-search-form col-10 text-left">{{ 'navbar.20' | translate }}</label>
                     <app-slider class="col-10 mx-auto" [options]="sliderRooms" (click)="touch('room')"></app-slider>
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="!roomTouch">
-                        <div class="invalid-feedback d-block ml-2 text-muted">Veuillez faire un choix</div>
+                        <div class="invalid-feedback d-block ml-2 text-muted">{{ 'navbar.21' | translate }}</div>
                     </div>
                 </div>
 
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Budget :</label>
+                    <label class="text-search-form col-10 text-left">{{ 'navbar.22' | translate }}</label>
                     <app-slider class="col-10 mx-auto" [options]="sliderPrice" (click)="touch('budget')"></app-slider>
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="!budgetTouch" >
-                        <div class="invalid-feedback d-block ml-2 text-muted">Veuillez faire un choix</div>
+                        <div class="invalid-feedback d-block ml-2 text-muted">{{ 'navbar.21' | translate }}</div>
                     </div>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Surface:</label>
+                    <label class="text-search-form col-10 text-left">{{ 'navbar.23' | translate }}</label>
                     <app-slider class="col-10 mx-auto" [options]="sliderSurface" (click)="touch('surface')">
                     </app-slider>
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="!surfaceTouch" >
-                        <div class="invalid-feedback d-block ml-2 text-muted">Veuillez faire un choix</div>
+                        <div class="invalid-feedback d-block ml-2 text-muted">{{ 'navbar.21' | translate }}</div>
                     </div>
                 </div>
 
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Autres particularités :</label>
+                    <label class="text-search-form col-10 text-left">{{ 'navbar.24' | translate }}</label>
                     <textarea class="form-control rounded col-10 mx-auto" rows="5"
                         formControlName="particularites"></textarea>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Votre nom : </label>
+                    <label class="text-search-form col-10 text-left">{{ 'navbar.25' | translate }}</label>
                     <input type="name" formControlName="name" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="name.invalid">
                         <div *ngIf="name.errors?.required">
-                            <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer votre nom</div>
+                            <div class="invalid-feedback d-block ml-2 text-muted">{{ 'navbar.26' | translate }}</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left ">Votre prénom : </label>
+                    <label class="text-search-form col-10 text-left ">{{ 'navbar.27' | translate }}</label>
                     <input type="firstname" formControlName="firstname"
                         class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="firstname.invalid" >
                         <div *ngIf="firstname.errors?.required">
-                            <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer votre prénom</div>
+                            <div class="invalid-feedback d-block ml-2 text-muted">{{ 'navbar.28' | translate }}</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Votre email : </label>
+                    <label class="text-search-form col-10 text-left">{{ 'navbar.29' | translate }}</label>
                     <input type="mail" formControlName="mail" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="mail.invalid">
                         <div *ngIf="mail.errors?.required">
-                            <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer votre email</div>
+                            <div class="invalid-feedback d-block ml-2 text-muted">{{ 'navbar.30' | translate }}</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row pt-1">
-                    <label class="text-search-form col-10 text-left">Téléphone : </label>
+                    <label class="text-search-form col-10 text-left">{{ 'navbar.31' | translate }}</label>
                     <input type="phone" formControlName="phone" class="col-10 mx-auto rounded-pill form-control">
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="phone.invalid">
                         <div *ngIf="phone.errors?.required">
-                            <div class="invalid-feedback d-block ml-2 text-muted">Veuillez entrer votre nom</div>
+                            <div class="invalid-feedback d-block ml-2 text-muted">{{ 'navbar.32' | translate }}</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <p class="col-10 mx-auto text-justify conditions">
-                        En soumettant ce formulaire, j'accepte que les informations saisies dans ce formulaire soient
-                        utilisées, exploitées, traitées dans le cadre de la relation commerciale.
+                        {{ 'navbar.33' | translate }}
                     </p>
                 </div>
                 <div class="row">
                     <div class="form-check col-10 mx-auto">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">M'inscrire à la newsletter</label>
+                        <label class="form-check-label" for="exampleCheck1">{{ 'navbar.34' | translate }}</label>
                     </div>
                 </div>
             </form>
         </div>
         <div *ngIf="!notConfirm">
-            <p>Alerte créée avec succès</p>
+            <p>{{ 'navbar.35' | translate }}</p>
         </div>
     </div>
 
@@ -171,11 +170,10 @@
         <div *ngIf="notConfirm">
             <button class="btn btn-outline-primary"
                 [disabled]="!alertForm.valid || !roomTouch || !budgetTouch || !surfaceTouch" type="submit"
-                (click)="onSubmit()">Créer une
-                alerte</button>
+                (click)="onSubmit()">{{ 'navbar.36' | translate }}</button>
         </div>
         <div *ngIf="!notConfirm">
-            <button type="button" class="btn btn-outline-dark" (click)="modal.close(); notConfirm=true">Fermer</button>
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close(); notConfirm=true">{{ 'navbar.37' | translate }}</button>
         </div>
     </div>
 </ng-template>
@@ -183,12 +181,12 @@
 <div class="clickable shake" (click)="openScrollableContent(longContent)">
     <div class="d-none d-lg-block">
         <i class="bi bi-megaphone"></i>
-        Créer une alerte
+        {{ 'navbar.36' | translate }}
     </div>
     <div class="d-lg-none mx-auto text-center">
       
         <div>
-            Créer une alerte
+            {{ 'navbar.36' | translate }}
         </div>
     </div>
 </div>

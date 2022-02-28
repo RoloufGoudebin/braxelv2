@@ -2,38 +2,34 @@
     <div class="container">
         <div class="row text-center text-xs-center text-sm-left text-md-left pt-5">
             <div class="col-xs-12 col-sm-4 col-md-4 ">
-                <h5>Menu</h5>
+                <h5>{{ 'footer.1' | translate }}</h5>
                 <ul class="list-unstyled quick-links">
-                    <li><a routerLinkActive="active" routerLink="/"><i class="fa fa-angle-double-right"></i>Home</a>
+                    <li><a routerLinkActive="active" routerLink="/"><i class="fa fa-angle-double-right"></i>{{ 'footer.2' | translate }}</a>
                     </li>
                     <li><a routerLinkActive="active" routerLink="/agence"><i
-                                class="fa fa-angle-double-right"></i>Agence</a>
+                                class="fa fa-angle-double-right"></i>{{ 'footer.3' | translate }}</a>
                     </li>
                     <li><a routerLinkActive="active" routerLink="/services"><i
-                                class="fa fa-angle-double-right"></i>Vendre ou
-                            louer</a></li>
-                    <li><a routerLinkActive="active" routerLink="/nos-biens"><i class="fa fa-angle-double-right"></i>Nos
-                            biens</a></li>
+                                class="fa fa-angle-double-right"></i>{{ 'footer.4' | translate }}</a></li>
+                    <li><a routerLinkActive="active" routerLink="/nos-biens"><i class="fa fa-angle-double-right"></i>{{ 'footer.5' | translate }}</a></li>
                     <li><a routerLinkActive="active" routerLink="/realisations"><i
-                                class="fa fa-angle-double-right"></i>Nos
-                            réalisations</a></li>
-                    <li><a routerLinkActive="active" routerLink="/faq"><i class="fa fa-angle-double-right"></i>Une
-                            question ?</a></li>
+                                class="fa fa-angle-double-right"></i>{{ 'footer.6' | translate }}</a></li>
+                    <li><a routerLinkActive="active" routerLink="/faq"><i class="fa fa-angle-double-right"></i>{{ 'footer.7' | translate }}</a></li>
                     <li><a routerLinkActive="active" routerLink="/contact"><i
-                                class="fa fa-angle-double-right"></i>Contact</a></li>
+                                class="fa fa-angle-double-right"></i>{{ 'footer.8' | translate }}</a></li>
                     <li><a data-toggle="modal" data-target="#languages"><i class="fa fa-angle-double-right"></i>
-                            Langues
+                        {{ 'footer.9' | translate }}
                         </a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">
-                <h5>Contact</h5>
-                <h6>Notre adresse</h6>
-                <p>Chée de Tervuren 149/3
+                <h5>{{ 'footer.10' | translate }}</h5>
+                <h6>{{ 'footer.11' | translate }}</h6>
+                <p>{{ 'footer.12' | translate }}
                     <br>
-                    1410 Waterloo
+                    {{ 'footer.13' | translate }}
                 </p>
-                <h6>Nous joindre</h6>
+                <h6>{{ 'footer.14' | translate }}</h6>
                 <p>
                     +32(0)2.319.51.51
                     <br>
@@ -41,7 +37,7 @@
                 </p>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">
-                <h5>Réseaux sociaux</h5>
+                <h5>{{ 'footer.15' | translate }}</h5>
                 <a class="nav-link" href="http://www.facebook.com/braxelimmo">
                     <i class="bi bi-facebook"></i>
                 </a>
@@ -54,8 +50,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
                 <p>© 2022 Braxel SPRL. Tous droits réservés</p>
-                <p class="h6">Agents immobiliers agréés 508.871 et 509.783. Instance de contrôle IPI - Rue du
-                    Luxembourg, 16b à 1000 Bruxelles - Respect de la vie privée - Code de déontologie</p>
+                <p class="h6">{{ 'footer.16' | translate }}</p>
             </div>
         </div>
     </div>
@@ -66,22 +61,22 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Choississez une langue</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ 'footer.17' | translate }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p class="text-modal">Choisissez une langue :
+                <p class="text-modal">{{ 'footer.18' | translate }}
                     <select #langSelect (change)="translate.use(langSelect.value)">
-                        <option [value]="'fr'" [selected]="'fr' === translate.currentLang">Français</option>
-                        <option [value]="'en'" [selected]="'en' === translate.currentLang">Anglais</option>
-                        <option [value]="'nl'" [selected]="'nl' === translate.currentLang">Néerlandais</option>
+                        <option [value]="'fr'" [selected]="'fr' === translate.currentLang">{{ 'footer.19' | translate }}</option>
+                        <option [value]="'en'" [selected]="'en' === translate.currentLang">{{ 'footer.20' | translate }}</option>
+                        <option [value]="'nl'" [selected]="'nl' === translate.currentLang">{{ 'footer.21' | translate }}</option>
                     </select>
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">{{ 'footer.22' | translate }}</button>
             </div>
         </div>
     </div>

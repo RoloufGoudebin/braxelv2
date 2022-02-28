@@ -38,18 +38,18 @@ export class EstimationModalComponent {
   });
 
   items = [
-    { name: 'Vendre', select: false },
-    { name: 'Louer', select: false },
+    { name: 'estimation.4.a', select: false },
+    { name: 'estimation.4.b', select: false },
   ];
 
   types = [
-    { id: 1, name: 'Maison' },
-    { id: 2, name: 'Appartement' },
-    { id: 3, name: 'Studio' },
-    { id: 4, name: 'Terrain' },
-    { id: 5, name: 'Immeubles' },
-    { id: 6, name: 'Bureaux/Commerces' },
-    { id: 7, name: 'Garage/Parking' },
+    { id: 1, name: 'estimation.7.a' },
+    { id: 2, name: 'estimation.7.b' },
+    { id: 3, name: 'estimation.7.c' },
+    { id: 4, name: 'estimation.7.d' },
+    { id: 5, name: 'estimation.7.e' },
+    { id: 6, name: 'estimation.7.f' },
+    { id: 7, name: 'estimation.7.g' },
   ];
 
   constructor(private modalService: NgbModal, private omnicasaService: OmnicasaService, private sendmail: SendmailService) { }
