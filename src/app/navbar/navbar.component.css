@@ -61,7 +61,6 @@
   .logo-navbar {
     height: 45px !important;
     margin-top: -20px !important;
-    margin-left: -10px;
   }
 }
 
@@ -71,14 +70,13 @@
     max-height: auto !important;
     max-width: 250px;
     margin-top: -30px !important;
-    margin-left: -20px;
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .logo-navbar {
-    max-height: 70px !important;
+    height: 60px !important;
     margin-top: -30px;
     margin-left: 0px;
   }
@@ -389,3 +387,4 @@ i {
     margin-top: 4em !important;
   }
 }
+
