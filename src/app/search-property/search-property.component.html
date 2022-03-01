@@ -33,7 +33,7 @@
                             <ng-option *ngFor="let type of types" [value]="type.id" required>{{type.name}}</ng-option>
                         </ng-select>
                         <div class="row">
-                            <div *ngIf="selected.invalid && submitted" class="text-danger">
+                            <div *ngIf="selected.invalid && submitted" class="text-muted">
                                 <div *ngIf="selected.errors?.required">
                                     <div class="invalid-feedback d-block ml-2">Veuillez choisir une option</div>
                                 </div>
@@ -49,7 +49,7 @@
                         <input class="col-12 mx-auto rounded-pill form-control" formControlName="zip" type="text"
                             name="zip" />
                         <div class="row">
-                            <div *ngIf="zip.invalid && submitted" class="text-danger">
+                            <div *ngIf="zip.invalid && submitted" class="text-muted">
                                 <div *ngIf="zip.errors?.required">
                                     <div class="invalid-feedback d-block ml-2">Veuillez entre une localité</div>
                                 </div>
