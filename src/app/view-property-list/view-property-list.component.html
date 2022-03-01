@@ -9,7 +9,9 @@
           Items.SubStatus)}} </span>
         <span class="ribon-nodal" *ngIf="Items.VirtualTour">{{ 'realisations.3' | translate }}</span>
         <div class="card-block">
-          <h5 class="card-title">{{Items.TypeDescription}}</h5>
+          <h5 *ngIf="this.lang === 'fr'" class="card-title">{{Items.TypeDescription}}</h5>
+          <h5 *ngIf="this.lang === 'nl'" class="card-title">{{Items.TypeDescriptionNl}}</h5>
+          <h5 *ngIf="this.lang === 'en'" class="card-title">{{Items.TypeDescriptionEn}}</h5>
           <p class="card-text">{{Items.Zip}} {{Items.City}}</p>
           <hr>
           <h6>{{toStringPrice(Items.Price)}} {{Items.PriceUnitText}}</h6>

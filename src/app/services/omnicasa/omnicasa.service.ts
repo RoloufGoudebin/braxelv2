@@ -38,8 +38,18 @@ export class OmnicasaService {
   }
 
 
-  getPropertyByID(id: number): Observable<Property> {
-    return this.http.get<Property>("https://newapi.omnicasa.com/1.12/OmnicasaService.svc/GetPropertiesByIDsJson?json={%27IDs%27:%27" + id + "%27,%20%27LanguageId%27:2,%20%27CustomerName%27:%27braxel%27,%20%27CustomerPassword%27:%27b688E6B8FDD2%27}")
+  getPropertyByID(id: number, lang: string): Observable<Property> {
+    let lg;
+    if(lang === 'nl'){
+      lg = 1;
+    }
+    else if (lang === 'fr'){
+      lg = 2;
+    }
+    else if (lang === 'en'){
+      lg = 3;
+    }
+    return this.http.get<Property>("https://newapi.omnicasa.com/1.12/OmnicasaService.svc/GetPropertiesByIDsJson?json={%27IDs%27:%27" + id + "%27,%20%27LanguageId%27:" + lg +",%20%27CustomerName%27:%27braxel%27,%20%27CustomerPassword%27:%27b688E6B8FDD2%27}")
       .pipe(tap((returnedData: Property) => {
         //save the returned data so we can re-use it later without making more HTTP calls
         this.property = returnedData;

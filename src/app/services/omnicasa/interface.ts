@@ -19,6 +19,8 @@ export interface Property {
     City : string;
     ID: number;
     TypeDescription: string;
+    TypeDescriptionNl: string;
+    TypeDescriptionEn: string;
     Zip: number;
     LargePicture: string;
     LargePictures: string[];

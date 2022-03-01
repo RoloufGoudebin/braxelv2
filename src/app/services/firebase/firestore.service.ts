@@ -1,6 +1,7 @@
 import { FocusTrapManager } from '@angular/cdk/a11y/focus-trap/focus-trap-manager';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { TranslateService } from '@ngx-translate/core';
 import { count } from 'rxjs/operators';
 import { Listener } from 'selenium-webdriver';
 import { Property, PropertyList } from '../omnicasa/interface';
@@ -11,42 +12,70 @@ import { OmnicasaService } from '../omnicasa/omnicasa.service';
 })
 export class FirestoreService {
 
-  constructor(private firestore: AngularFirestore, private omnicasaService: OmnicasaService) { }
+  constructor(private firestore: AngularFirestore, private omnicasaService: OmnicasaService, private translate: TranslateService) {
+    this.lang = this.translate.currentLang;
+  }
+
+  lang: string;
+  collection: any;
 
   propertyList: Property[];
+  propertyListNl: Property[];
+  propertyListEn: Property[];
   propertyListTop: Property[];
-  collection: any;
   topPropertyList: Property[];
   topPropertyListActive: Property[];
   propertyListSell: Property[] = [];
   topPropertyListSell: Property[] = [];
-
-
-
-
-
-
-
 
   getFirestoreCollection(collection) {
     return this.firestore.collection(collection).snapshotChanges();
   }
 
   savePropertyTop(newTopPropertyList: Property[]) {
-    for (let i = 0; i < newTopPropertyList.length; i++) {
-      if (typeof newTopPropertyList[i].id !== 'undefined') {
-        this.firestore
-          .collection("activeProperties")
-          .doc(newTopPropertyList[i].id.toString())
-          .set(newTopPropertyList[i])
-      }
-      else {
-        this.firestore
-          .collection("activeProperties")
-          .doc(i.toString())
-          .set(newTopPropertyList[i])
+    console.log(this.topPropertyListActive.length)
+    if (this.topPropertyListActive.length > newTopPropertyList.length) {
+      for (let i = 0; i < this.topPropertyListActive.length; i++) {
+        if (i < newTopPropertyList.length) {
+          if (typeof newTopPropertyList[i].id !== 'undefined') {
+            this.firestore
+              .collection("activeProperties")
+              .doc(newTopPropertyList[i].id.toString())
+              .set(newTopPropertyList[i])
+          }
+          else {
+            this.firestore
+              .collection("activeProperties")
+              .doc(i.toString())
+              .set(newTopPropertyList[i])
+          }
+        }
+        else if (i >= newTopPropertyList.length) {
+          console.log("hello");
+          this.firestore
+            .collection("activeProperties")
+            .doc(i.toString())
+            .delete
+        }
       }
     }
+    else {
+      for (let i = 0; i < newTopPropertyList.length; i++) {
+        if (typeof newTopPropertyList[i].id !== 'undefined') {
+          this.firestore
+            .collection("activeProperties")
+            .doc(newTopPropertyList[i].id.toString())
+            .set(newTopPropertyList[i])
+        }
+        else {
+          this.firestore
+            .collection("activeProperties")
+            .doc(i.toString())
+            .set(newTopPropertyList[i])
+        }
+      }
+    }
+
   }
 
   savePropertySell(newTopPropertyList: Property[]) {
@@ -97,13 +126,20 @@ export class FirestoreService {
           invertPropertyList[i] = this.propertyList[j];
         }
         return new Promise<Property>((resolve, reject) => {
-          for (let i = 0, j = 0; i < this.propertyList.length; i++) {
+          let j = 0;
+          for (let i = 0; i < this.propertyList.length; i++) {
             if (invertPropertyList[i].SubStatus != 2 && invertPropertyList[i].SubStatus != 3) {
-              this.firestore
-                .collection("sellProperties")
-                .doc(j.toString())
-                .set(invertPropertyList[i])
-              j++;
+              this.omnicasaService.getPropertyByID(invertPropertyList[i].ID, 'nl').subscribe((data: any) => {
+                invertPropertyList[i].TypeDescriptionNl = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
+                this.omnicasaService.getPropertyByID(this.propertyList[i].ID, 'en').subscribe((data: any) => {
+                  invertPropertyList[i].TypeDescriptionEn = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
+                  this.firestore
+                    .collection("sellProperties")
+                    .doc(j.toString())
+                    .set(invertPropertyList[i]);
+                  j++;
+                })
+              })
             }
           }
         });
@@ -117,18 +153,27 @@ export class FirestoreService {
         this.propertyList.sort(function (a, b) {
           return b.ID - a.ID;
         });
+
         return new Promise<Property>((resolve, reject) => {
-          for (let i = 0, j = 0; i < this.propertyList.length; i++) {
+          let j = 0;
+          for (let i = 0; i < this.propertyList.length; i++) {
             if (this.propertyList[i].SubStatus == 2 || this.propertyList[i].SubStatus == 3) {
-              this.firestore
-                .collection("activeProperties")
-                .doc(j.toString())
-                .set(this.propertyList[i])
-              j++;
+              this.omnicasaService.getPropertyByID(this.propertyList[i].ID, 'nl').subscribe((data: any) => {
+                this.propertyList[i].TypeDescriptionNl = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
+                this.omnicasaService.getPropertyByID(this.propertyList[i].ID, 'en').subscribe((data: any) => {
+                  this.propertyList[i].TypeDescriptionEn = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
+                  this.firestore
+                    .collection("activeProperties")
+                    .doc(j.toString())
+                    .set(this.propertyList[i])
+                  j++;
+                })
+              })
             }
           }
         });
       });
+
   }
 
   createAvis(avis: any[]) {
@@ -188,7 +233,13 @@ export class FirestoreService {
 
       for (let i = 0; i < this.propertyList.length; i++) {
         if (this.propertyList[i].SubStatus == 2 || this.propertyList[i].SubStatus == 3) {
-          toCopy.push(this.propertyList[i])
+          this.omnicasaService.getPropertyByID(this.propertyList[i].ID, 'nl').subscribe((data: any) => {
+            this.propertyList[i].TypeDescriptionNl = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
+            this.omnicasaService.getPropertyByID(this.propertyList[i].ID, 'en').subscribe((data: any) => {
+              this.propertyList[i].TypeDescriptionEn = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
+              toCopy.push(this.propertyList[i])
+            })
+          })
         }
       }
 
@@ -196,62 +247,30 @@ export class FirestoreService {
 
       //supprime les biens qui ne sont plus disponibles
       for (let j = 0; j < toCopy.length; j++) {
-        for (let i = 0; i < this.topPropertyListActive.length -1; i++) {
+        for (let i = 0; i < this.topPropertyListActive.length - 1; i++) {
           if (toCopy[j].ID == this.topPropertyListActive[i].ID) {
             toCopy[j].id = this.topPropertyListActive[i].id;
             break;
           }
-          if (i == this.topPropertyListActive.length-1){
+          if (i == this.topPropertyListActive.length - 1) {
             toCopy[j].id = 6;
-            for(let k = 6; k < this.topPropertyListActive.length - 1 ; k++){
+            for (let k = 6; k < this.topPropertyListActive.length - 1; k++) {
               toCopy[k].id = this.topPropertyListActive.length[k].id + 1;
             }
           }
         }
       }
-
-      /*
-      for (let i = 0; i < this.topPropertyListActive.length; i++) {
-        for (let j = 0; j < this.propertyList.length; j++) {
-          if (this.propertyList[j].ID == this.topPropertyListActive[i].ID) {
-            let tmpID = this.topPropertyListActive[i].id;
-            this.topPropertyListActive[i] = this.propertyList[j];
-            this.topPropertyListActive[i].id = tmpID;
-            toCopy.push(this.topPropertyListActive[i]);
-            break;
-          }
-        }
-      }
-
-      console.log(this.topPropertyListActive)
-
-      //rajoute les nouveaux biens
-      console.log(this.propertyList);
-      for (let i = 0; i < this.propertyList.length; i++) {
-        if (this.propertyList[i].SubStatus == 2 || this.propertyList[i].SubStatus == 3) {
-          for (let j = 0; j < toCopy.length; j++) {
-            if (this.propertyList[i].ID == toCopy[j].ID) {
-              if (toCopy[j].id > 5) {
-              }
-              break;
-            }
-            if (j == toCopy.length - 1) {
-              toCopy.splice(6, 0, this.propertyList[i]);
-              break;
-            }
-
-          }
-        }
-      }
-      */
-      this.savePropertyTop(toCopy);
-      this.updateDateRefresh();
+      setTimeout(() => {
+        this.savePropertyTop(toCopy);
+        this.updateDateRefresh();
+      }, 30000)
     },
       40000);
 
   }
 
   updatePropertyListSell() {
+    let toCopy = [];
     this.setPropertyListSellFire(); //topPropertyListActive
     this.setPropertyListSellOmni(); //propertyList
     setTimeout(() => {
@@ -269,21 +288,27 @@ export class FirestoreService {
       for (let i = 0; i < this.propertyListSell.length; i++) {
         for (let j = 0; j < this.topPropertyListSell.length; j++) {
           if (this.propertyListSell[i].ID == this.topPropertyListSell[j].ID) {
-            if (this.topPropertyListSell[j].id > 5) {
-            }
             break;
           }
           if (j == this.topPropertyListSell.length - 1) {
-            this.topPropertyListSell.splice(0, 0, this.propertyListSell[i]);
+            this.omnicasaService.getPropertyByID(this.propertyListSell[i].ID, 'nl').subscribe((data: any) => {
+              this.propertyListSell[i].TypeDescriptionNl = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
+              this.omnicasaService.getPropertyByID(this.propertyListSell[i].ID, 'en').subscribe((data: any) => {
+                this.propertyListSell[i].TypeDescriptionEn = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
+                this.topPropertyListSell.splice(0, 0, this.propertyListSell[i]);
+              })
+            })
             break;
           }
 
         }
       }
       for (let i = 0; i < this.topPropertyListSell.length; i++) {
-        this.topPropertyListSell[i].id = this.topPropertyListSell.indexOf(this.topPropertyListSell[i]);
+        this.topPropertyListSell[i].id = i;
       }
-      this.savePropertySell(this.topPropertyListSell);
+      setTimeout(() => {
+        this.savePropertySell(this.topPropertyListSell);
+      }, 30000)
     },
       120000);
 

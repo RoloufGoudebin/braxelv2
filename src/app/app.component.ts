@@ -27,7 +27,7 @@ export class AppComponent {
 
   ngOnInit() {
     //this.firestore.updatePropertyListActive();
-    //this.firestore.createPropertyListSell();
+    this.firestore.createPropertyListSell();
     //this.firestore.createPropertyListActive();
     this.firestore.getDateRefresh().subscribe(data=>
       this.date= data.map(e => {

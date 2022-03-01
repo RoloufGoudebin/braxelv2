@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
 import { FirestoreService } from '../services/firebase/firestore.service';
 import { HttpClient } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-view-property',
@@ -66,14 +67,16 @@ export class ViewPropertyComponent implements OnInit {
   lat: number;
   long: number;
   nodalLink: string;
+  lang: string;
   listInfo: String[] = ["KitchenName", "WindowGlazing", "OrientationT", "HasLift", "Floor", "ConstructionYear", "SurfaceTerrace", "ConstructionName", "SurfaceGarden", "HeatingName", "MainStyleName", "ConditionName"];
 
-  constructor(private route: ActivatedRoute, public omnicasa: OmnicasaService, private firestore: FirestoreService, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, public omnicasa: OmnicasaService, private translate: TranslateService) { }
 
 
   ngOnInit(): void {
+    this.lang = this.translate.currentLang;
     this.id = this.route.snapshot.params['id'];
-    this.omnicasa.getPropertyByID(this.id).subscribe((data: any) => {
+    this.omnicasa.getPropertyByID(this.id, this.lang).subscribe((data: any) => {
       this.property = data.GetPropertiesByIDsJsonResult.Value.Items[0];
       this.lat = +this.property.GoogleX;
       this.long = +this.property.GoogleY;
