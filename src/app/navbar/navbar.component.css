@@ -49,7 +49,7 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .logo-navbar {
-    height: 60px !important;
+    height: 45px !important;
     margin-top: -20px !important;
     width: auto;
 
@@ -59,7 +59,7 @@
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .logo-navbar {
-    height: 60px !important;
+    height: 45px !important;
     margin-top: -20px !important;
     margin-left: -10px;
   }
@@ -386,6 +386,6 @@ i {
 
 @media screen and (max-width: 982px) {
   .pt-6 {
-    margin-top: 5em !important;
+    margin-top: 4em !important;
   }
 }

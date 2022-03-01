@@ -149,14 +149,12 @@
     </div>
 </ng-template>
 
-<div (click)="openScrollableContent(longContent)">
-    <div class="d-none mx-auto d-lg-block">
-        <i class="bi bi-calculator"></i>
+<div class="d-none mx-auto d-lg-block" (click)="openScrollableContent(longContent)">
+    <i class="bi bi-calculator"></i>
+    {{ 'estimation.26' | translate }}
+</div>
+<div class="d-lg-none mx-auto text-center col-12" (click)="openScrollableContent(longContent)">
+    <div>
         {{ 'estimation.26' | translate }}
-    </div>
-    <div class="d-lg-none mx-auto text-center">
-        <div>
-            {{ 'estimation.26' | translate }}
-        </div>
     </div>
 </div>
