@@ -4,13 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev:ssr": "ng run braxelv2:serve-ssr",
     "serve:ssr": "node dist/braxelv2/server/main.js",
-    "build:ssr": "ng build --prod && ng run braxelv2:server:production",
+    "build:ssr": "ng build",
     "prerender": "ng run braxelv2:prerender",
     "postbuild": "gulp compress"
   },
@@ -78,6 +78,7 @@
     "codelyzer": "^5.1.2",
     "gulp": "^4.0.2",
     "gulp-gzip": "^1.4.2",
+    "gzipper": "^7.0.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~5.0.0",
