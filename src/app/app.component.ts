@@ -26,9 +26,11 @@ export class AppComponent {
    }
 
   ngOnInit() {
-    //this.firestore.updatePropertyListActive();
-    this.firestore.createPropertyListSell();
+    this.firestore.updatePropertyListActive();
+    //this.firestore.updatePropertyListSell()
+    //this.firestore.createPropertyListSell();
     //this.firestore.createPropertyListActive();
+    this.firestore.setPropertyListActiveFire();
     this.firestore.getDateRefresh().subscribe(data=>
       this.date= data.map(e => {
         return {
@@ -38,7 +40,6 @@ export class AppComponent {
     setTimeout(() => {
       if(Date.now() - this.date[0].lastRefresh > 3600000){
         this.firestore.updatePropertyListActive();
-        this.firestore.updatePropertyListSell();
       }
     },
       3000);

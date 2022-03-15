@@ -28,28 +28,26 @@ export class TopBiensComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.firestore.getFirestoreCollection('activeProperties').subscribe(data =>
+    this.firestore.prout.subscribe(data =>
       this.topPropertyList = data.map(e => {
         return {
           id: Number(e.payload.doc.id),
           ...e.payload.doc.data() as Property
         }
-      }));
+      }).filter(e => (e.SubStatus == 2 || e.SubStatus ==3))
+      .sort(function (a: Property, b: Property){
+        return b.id - a.id;
+      })
+      );
   }
 
   save() {
     this.firestore.savePropertyTop(this.topPropertyList);
-    setTimeout(() => {
-      this.topPropertyList.sort(function (a, b) {
-        return a.id - b.id;
-      });;
-    },
-      1500);
   }
 
   sort(){
     this.topPropertyList.sort(function (a, b) {
-      return a.id - b.id;
+      return b.id - a.id;
     });;
     setTimeout(() => {
     },
@@ -67,6 +65,7 @@ export class TopBiensComponent implements OnInit {
         this.propertyList = response.GetPropertyListJsonResult.Value.Items;
       })
   }
+
   selectSwap(id: number) {
     if (this.toSwap[0] == -1) {
       this.toSwap[0] = id;

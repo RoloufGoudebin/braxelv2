@@ -5,7 +5,7 @@
       BIENS A LA UNE
     </h1>
   </div>
-  <div class="row" *ngIf="show; else notShow">
+  <div class="row" *ngIf="topPropertyList">
     <div class="col-10 topBiens">
       <div class="row">
         <a *ngFor="let Items of topPropertyList; let index = index;" class="col-2 px-1 my-3" style="width: 18rem;"
@@ -34,7 +34,7 @@
 
   <ng-template #notShow>
     <div class="mt-5 pt-5">
-      <button type="button" *ngIf="topPropertyList" class="btn btn-primary col-6" (click)="sort()">Voir les biens</button>
+      <button type="button" *ngIf="topPropertyList" class="btn btn-primary col-6">Voir les biens</button>
     </div>
   </ng-template>
   <!--

@@ -4,6 +4,7 @@ import { Property } from '../services/omnicasa/interface';
 
 import { BraxelHome } from '../braxel-home.model'
 import { TranslateService } from '@ngx-translate/core';
+import e from 'express';
 
 @Component({
   selector: 'app-home',
@@ -22,13 +23,17 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.firestore.getFirestoreCollection('activeProperties').subscribe(data=>
+    this.firestore.prout.subscribe(data=>
       this.toShow = data.map(e => {
         return {
           id: Number(e.payload.doc.id),
           ...e.payload.doc.data() as Property
         }
-    }));
+    }).filter(e => (e.SubStatus == 2 || e.SubStatus == 3))
+    .sort(function (a: Property, b: Property){
+      return b.id - a.id;
+    })
+    );
   }
 
   @HostListener('window:scroll', ['$event'])

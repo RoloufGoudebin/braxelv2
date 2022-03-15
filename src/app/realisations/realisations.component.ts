@@ -17,13 +17,17 @@ export class RealisationsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.firestore.getFirestoreCollection('sellProperties').subscribe(data=>
+    this.firestore.prout.subscribe(data=>
       this.toShow = data.map(e => {
         return {
           id: e.payload.doc.id,
           ...e.payload.doc.data() as Property
         }
-    }));
+    }).filter(e => (e.SubStatus != 2 && e.SubStatus !=3))
+    .sort(function (a: Property, b: Property){
+      return b.id - a.id;
+    })
+    );
     
     this.ready=true;
   }

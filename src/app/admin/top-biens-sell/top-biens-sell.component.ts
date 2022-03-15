@@ -34,16 +34,6 @@ export class TopBiensSellComponent implements OnInit {
       }));
   }
 
-  save() {
-    this.firestore.savePropertySell(this.propertyListSell);
-    setTimeout(() => {
-      this.propertyListSell.sort(function (a, b) {
-        return a.id - b.id;
-      });;
-    },
-      1500);
-  }
-
   sort(){
     this.propertyListSell.sort(function (a, b) {
       return a.id - b.id;

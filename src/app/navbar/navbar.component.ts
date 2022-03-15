@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -10,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   isNavbarCollapsed = true;
 
-  constructor() { }
+  constructor(public translate : TranslateService) { }
 
   ngOnInit(): void {
     document.getElementById("tapbar").style.bottom = "-20%";

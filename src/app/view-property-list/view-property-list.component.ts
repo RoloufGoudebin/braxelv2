@@ -21,10 +21,6 @@ export class ViewPropertyListComponent implements OnInit {
   constructor(public firestore: FirestoreService, private translate: TranslateService) { }
 
   ngOnInit(): void {
-    this.propertyList.sort(function (a, b) {
-      return a.id - b.id;
-    });;
-
     this.lang = this.translate.currentLang;
     console.log(this.lang)
   }

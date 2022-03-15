@@ -52,8 +52,9 @@ export class OurBiensComponent implements OnInit {
   selectedTypes = [];
   goal;
   search: any[];
-  toShow: Property[];
+  allProperties: Property[];
   toSearch: Property[];
+  toShow: Property[];
   sell: Property[];
   types: any;
   items: any;
@@ -87,40 +88,34 @@ export class OurBiensComponent implements OnInit {
       this.listOfZips[i].localite = this.listOfZips[i].localite.toUpperCase();
     }
 
-    this.firestore.getFirestoreCollection('activeProperties').subscribe(data => {
-      this.toShow = data.map(e => {
+    this.firestore.prout.subscribe(data => {
+      this.allProperties = data.map(e => {
         return {
           id: e.payload.doc.id,
           ...e.payload.doc.data() as Property
+        }
+      }).sort(function (a: Property, b: Property) { //un premier tri sur id (ordre de spropriétés)
+        return b.id - a.id;
+      }).sort(function (a: Property, b: Property) {
+        if (a.SubStatus == 2 || a.SubStatus == 3) { // un deuxième tri pour mettre les propriétés disponibles en premier
+          if (b.SubStatus == 2 || b.SubStatus == 3) {
+            return 0;
+          }
+          else {
+            return -1;
+          }
+        }
+        else {
+          if (b.SubStatus == 2 || b.SubStatus == 3) {
+            return 1;
+          }
+          else {
+            return 0;
+          }
         }
       })
-      this.firestore.getFirestoreCollection('sellProperties').subscribe(data => {
-        this.sell = data.map(e => {
-          return {
-            id: e.payload.doc.id,
-            ...e.payload.doc.data() as Property
-          }
-        })
-        this.toShow = this.toShow.concat(this.sell);
-      });
+      this.toShow = this.allProperties;
     });
-
-    this.firestore.getFirestoreCollection('activeProperties').subscribe(data =>
-      this.toSearch = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as Property
-        }
-      }));
-
-    this.firestore.getFirestoreCollection('sellProperties').subscribe(data =>
-      this.sell = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as Property
-        }
-      }));
-
   }
 
 
@@ -158,21 +153,23 @@ export class OurBiensComponent implements OnInit {
   searchProperty(goal: number, status: number, type: number[], zip: number[], minRoom: number, maxRoom: number, minPrice: number, maxPrice: number) {
     var toReturn: Property[];
     toReturn = [];
-    for (let i = this.toSearch.length - 1; i >= 0; i--) {
-      if (this.toSearch[i].Goal == goal && this.toSearch[i].SubStatus == status) {
-        for (let j = 0; j < type.length; j++) {
-          if (type[j] == this.toSearch[i].WebID) {
-            for (let k = 0; k < zip.length; k++) {
-              if (this.toSearch[i].Zip == zip[k]) {
-                if (this.toSearch[i].NumberOfBedRooms) {
-                  if (this.toSearch[i].NumberOfBedRooms >= minRoom && this.toSearch[i].NumberOfBedRooms <= maxRoom) {
-                    if (this.toSearch[i].Price >= minPrice && this.toSearch[i].Price <= maxPrice) {
-                      toReturn.push(this.toSearch[i]);
+    for (let i = this.allProperties.length - 1; i >= 0; i--) {
+      if (this.allProperties[i].SubStatus == 2 || this.allProperties[i].SubStatus == 3) {
+        if (this.allProperties[i].Goal == goal && this.allProperties[i].SubStatus == status) {
+          for (let j = 0; j < type.length; j++) {
+            if (type[j] == this.allProperties[i].WebID) {
+              for (let k = 0; k < zip.length; k++) {
+                if (this.allProperties[i].Zip == zip[k]) {
+                  if (this.allProperties[i].NumberOfBedRooms) {
+                    if (this.allProperties[i].NumberOfBedRooms >= minRoom && this.allProperties[i].NumberOfBedRooms <= maxRoom) {
+                      if (this.allProperties[i].Price >= minPrice && this.allProperties[i].Price <= maxPrice) {
+                        toReturn.push(this.allProperties[i]);
+                      }
                     }
                   }
-                }
-                else if (this.toSearch[i].Price >= minPrice && this.toSearch[i].Price <= maxPrice) {
-                  toReturn.push(this.toSearch[i]);
+                  else if (this.allProperties[i].Price >= minPrice && this.allProperties[i].Price <= maxPrice) {
+                    toReturn.push(this.allProperties[i]);
+                  }
                 }
               }
             }
