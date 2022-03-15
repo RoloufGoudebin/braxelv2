@@ -17,7 +17,7 @@
                   <div class="row">
                     <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
                       [ngClass]="item.select ? 'select' : 'not-select'"
-                      class="btn rounded-pill col mx-2 mb-2">{{item.name}}</button>
+                      class="btn rounded-pill col mx-2 mb-2">{{ item.name | translate}}</button>
                   </div>
                   <div class="row py-0 my-0" *ngIf="!goalSelect">
                     <div class="invalid-feedback d-block ml-1">{{ 'ourBiens.3' | translate }}</div>
@@ -31,7 +31,7 @@
                 <div class="col-12">
                   <ng-select bindLabel="selected" class="custom" name="selected" [multiple]="true"
                     formControlName="selected">
-                    <ng-option *ngFor="let type of types" [value]="type.id" required>{{type.name}}</ng-option>
+                    <ng-option *ngFor="let type of types" [value]="type.id" required>{{type.name | translate}}</ng-option>
                   </ng-select>
                   <div class="row">
                     <div *ngIf="selected.invalid" class="text-danger ml-3">

@@ -53,7 +53,7 @@
 		"15": "IPI control body",
 		"16": "Rue du Luxembourg, 16b à 1000 Bruxelles",
 		"17": "Phone : 02/505.38.50 – Email: info@ipi.be",
-		"18": "Assureur : couvert par une police d’assurance collective Responsabilité civile professionnelle et cautionnement n°730.390.159 conclue par l’IPI auprès d’AXA Belgique",
+		"18": "Insurer: covered by a group insurance policy Professional civil liability and guarantee n°730.390.159 concluded by the IPI with AXA Belgium",
 		"19": "Contact form",
 		"20": "LAST NAME AND FIRST NAME",
 		"21": "Please enter your Name and Surname",
@@ -275,6 +275,8 @@
 	"ourBiens": {
 		"1": "Are you looking for a property?",
 		"2": "I wish :",
+		"2a": "Buy",
+		"2b": "Rent",
 		"3": "Please choose an option",
 		"4": " Property type",
 		"5": "City/Zip Code",
@@ -299,6 +301,9 @@
 		"2": "See more properties",
 		"3": "Virtual visit",
 		"4": "Our customers explain it better than us",
+		"4a": "We hebben",
+		"4b": "reviews",
+		"4c": "on Google",
 		"5": "Read the full review",
 		"6": "Close it",
 		"7": "Read All Reviews",
@@ -314,10 +319,7 @@
 		"17": "",
 		"18": "",
 		"19": "",
-		"20": "",
-		"4a": "",
-		"4b": "",
-		"4c": ""
+		"20": ""
 	},
 	"sellOrBuy": {
 		"1": "Average trading rate",

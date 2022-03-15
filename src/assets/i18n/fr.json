@@ -275,6 +275,8 @@
 	"ourBiens": {
 		"1": "Vous cherchez un bien ?",
 		"2": "Je souhaite :",
+		"2a": "Acheter",
+		"2b": "Louer",
 		"3": "Veuillez choisir une option",
 		"4": "Type de bien :",
 		"5": "Localité/Code Postal",

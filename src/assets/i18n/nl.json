@@ -275,6 +275,8 @@
 	"ourBiens": {
 		"1": "Bent u op zoek naar een woning?",
 		"2": "Mocht ik willen :",
+		"2a": "Kopen",
+		"2b": "Huren",
 		"3": "Kies een optie alstublieft",
 		"4": "Vastgoed",
 		"5": "Stad postcode",
@@ -283,7 +285,7 @@
 		"8": "Budget :",
 		"9": "Bekijk de resultaten",
 		"10": "Onze eigendommen",
-		"11": "Voir plus de propriétés",
+		"11": "Zie meer eigenschappen",
 		"12": "Geen woningen gevonden.",
 		"13": "",
 		"14": "",
@@ -299,6 +301,9 @@
 		"2": "Bekijk meer woningen",
 		"3": "Virtueel bezoek",
 		"4": "Onze klanten leggen het beter uit dan wij",
+		"4a": "We hebben",
+		"4b": "meningen",
+		"4c": "op Google",
 		"5": "Lees de volledige recensie",
 		"6": "Sluiten",
 		"7": "Lees alle beoordelingen",
@@ -314,10 +319,7 @@
 		"17": "",
 		"18": "",
 		"19": "",
-		"20": "",
-		"4a": "",
-		"4b": "",
-		"4c": ""
+		"20": ""
 	},
 	"sellOrBuy": {
 		"1": "Gemiddelde handelskoers",

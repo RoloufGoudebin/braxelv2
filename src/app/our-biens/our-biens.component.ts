@@ -66,18 +66,18 @@ export class OurBiensComponent implements OnInit {
   ngOnInit(): void {
 
     this.types = [
-      { id: 1, name: 'Maison' },
-      { id: 2, name: 'Appartement' },
-      { id: 3, name: 'Studio' },
-      { id: 4, name: 'Terrain' },
-      { id: 5, name: 'Immeubles' },
-      { id: 6, name: 'Bureaux/Commerces' },
-      { id: 7, name: 'Garage/Parking' },
+      { id: 1, name: 'navbar.16.a' },
+      { id: 2, name: 'navbar.16.b' },
+      { id: 3, name: 'navbar.16.c' },
+      { id: 4, name: 'navbar.16.d' },
+      { id: 5, name: 'navbar.16.e' },
+      { id: 6, name: 'navbar.16.f' },
+      { id: 7, name: 'navbar.16.g' },
     ];
 
     this.items = [
-      { name: 'Acheter', select: false },
-      { name: 'Louer', select: false }
+      { name: 'ourBiens.2a', select: false },
+      { name: 'ourBiens.2b', select: false }
     ];
 
     this.listOfZips.sort(function (a: any, b: any) {
