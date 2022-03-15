@@ -54,7 +54,6 @@ import { LoadingComponent } from './loading/loading.component';
 import { EstimationModalComponent } from './estimation-modal/estimation-modal.component';
 import { CarouselHomeComponent } from './home/carousel-home/carousel-home.component';
 import { AgentsComponent } from './home/agents/agents.component';
-import { TopBiensSellComponent } from './admin/top-biens-sell/top-biens-sell.component';
 import { StorageComponent } from './admin/storage/storage.component';
 
 import { RouterModule } from '@angular/router';
@@ -98,7 +97,6 @@ import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
     EstimationModalComponent,
     CarouselHomeComponent,
     AgentsComponent,
-    TopBiensSellComponent,
     StorageComponent,
   ],
   imports: [
