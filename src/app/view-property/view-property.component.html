@@ -41,7 +41,7 @@
           (beforeChange)="beforeChange($event)">
           <div ngxSlickItem *ngFor="let picture of property.LargePictures ; let i = index" class="slide"
             data-slide-number="i" data-toggle="lightbox" data-gallery="gallery">
-            <img src="{{picture}}" class="d-block rounded img-fluid text-center mx-auto" (click)="showLightbox(i)">
+            <img src="{{picture}}" class="d-block rounded img-fluid text-center mx-auto" (click)="showLightbox(i)" alt="photo propriété immobilière">
           </div>
         </ngx-slick-carousel>
         <span class="ribon" [ngStyle]="{'background':getColor(property.Goal, property.SubStatus)}">
@@ -59,7 +59,7 @@
             class="slide mt-5 rounded thumbnail-img text-center mx-auto" data-slide-number="i" data-toggle="lightbox"
             data-gallery="gallery">
             <img src="{{picture}}" (click)="slickModal.slickGoTo(i)"
-              class="d-block rounded img-fluid px-3 thumbnail-img text-center mx-auto">
+              class="d-block rounded img-fluid px-3 thumbnail-img text-center mx-auto" alt="photo propriété immobilière">
           </div>
         </ngx-slick-carousel>
 
@@ -70,7 +70,7 @@
             class="slide mt-5 rounded thumbnail-img text-center mx-auto" data-slide-number="i" data-toggle="lightbox"
             data-gallery="gallery">
             <img src="{{picture}}" (click)="slickModal.slickGoTo(i)"
-              class="d-block rounded img-fluid px-3 thumbnail-img text-center mx-auto">
+              class="d-block rounded img-fluid px-3 thumbnail-img text-center mx-auto" alt="photo propriété immobilière">
           </div>
         </ngx-slick-carousel>
 
