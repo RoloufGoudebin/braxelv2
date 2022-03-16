@@ -19,9 +19,6 @@
   }
 }
 
-.alerttt {
-  z-index: 100;
-}
 
 .top-navbar {
   background-color: white !important;
@@ -35,6 +32,10 @@
 /* marge alignement avec contact marge edouard */
 .marged {
   margin-left: 0.532em !important;
+}
+
+.marge {
+  margin-left: 1.4em !important;
 }
 
 .navbar-light {
