@@ -57,4 +57,5 @@ export interface Property {
     VirtualTour: string;
     IsOffice?: boolean;
     WebID: number;
+    ModifiedSubstatusDate: string;
 }

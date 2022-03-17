@@ -34,7 +34,7 @@ export class FirestoreService {
   savePropertyTop(newTopPropertyList: Property[]) {
     for (let i = 0; i < newTopPropertyList.length; i++) {
       this.firestore
-        .collection("activePropertiess")
+        .collection("activeProperties")
         .doc(newTopPropertyList[i].ID.toString())
         .update(newTopPropertyList[i])
     }
@@ -124,6 +124,7 @@ export class FirestoreService {
                   TypeDescription: this.propertyList[i].TypeDescription,
                   TypeDescriptionEn: this.propertyList[i].TypeDescriptionEn,
                   TypeDescriptionNl: this.propertyList[i].TypeDescriptionNl,
+                  ModifiedSubstatusDate: this.propertyList[i].ModifiedSubstatusDate,
                   Zip: this.propertyList[i].Zip,
                   LargePicture: this.propertyList[i].LargePicture,
                   Price: this.propertyList[i].Price,
@@ -134,7 +135,7 @@ export class FirestoreService {
                   WebID: this.propertyList[i].WebID
                 }
                 this.firestore
-                  .collection("activePropertiess")
+                  .collection("activeProperties")
                   .doc(toWrite.ID.toString())
                   .set(toWrite)
                 j++;
@@ -198,7 +199,6 @@ export class FirestoreService {
             this.propertyList[i].TypeDescriptionEn = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
             for (let j = 0; j < this.topPropertyListActive.length; j++) {
               if (this.propertyList[i].ID == this.topPropertyListActive[j].ID) {
-                console.log('coucou');
                 let toWrite: Property = {
                   id: this.topPropertyListActive[j].id,
                   ID: this.propertyList[i].ID,
@@ -209,6 +209,7 @@ export class FirestoreService {
                   TypeDescription: this.propertyList[i].TypeDescription,
                   TypeDescriptionEn: this.propertyList[i].TypeDescriptionEn,
                   TypeDescriptionNl: this.propertyList[i].TypeDescriptionNl,
+                  ModifiedSubstatusDate: this.propertyList[i].ModifiedSubstatusDate,
                   Zip: this.propertyList[i].Zip,
                   LargePicture: this.propertyList[i].LargePicture,
                   Price: this.propertyList[i].Price,
@@ -219,7 +220,7 @@ export class FirestoreService {
                   WebID: this.propertyList[i].WebID
                 }
                 this.firestore
-                  .collection("activePropertiess")
+                  .collection("activeProperties")
                   .doc(this.propertyList[i].ID.toString())
                   .update(toWrite)
                 break;
@@ -235,6 +236,7 @@ export class FirestoreService {
                   TypeDescription: this.propertyList[i].TypeDescription,
                   TypeDescriptionEn: this.propertyList[i].TypeDescriptionEn,
                   TypeDescriptionNl: this.propertyList[i].TypeDescriptionNl,
+                  ModifiedSubstatusDate: this.propertyList[i].ModifiedSubstatusDate,
                   Zip: this.propertyList[i].Zip,
                   LargePicture: this.propertyList[i].LargePicture,
                   Price: this.propertyList[i].Price,
@@ -245,7 +247,7 @@ export class FirestoreService {
                   WebID: this.propertyList[i].WebID
                 }
                 this.firestore
-                  .collection("activePropertiess")
+                  .collection("activeProperties")
                   .doc(this.propertyList[i].ID.toString())
                   .set(toWrite)
                 console.log("okiii")
@@ -254,7 +256,7 @@ export class FirestoreService {
           })
         })
       }
-
+      console.log("oki")
       setTimeout(() => {
         this.savePropertyTop(toCopy);
         this.updateDateRefresh();
@@ -290,7 +292,7 @@ export class FirestoreService {
   }
 
   setPropertyListActiveFire() {
-    this.prout = this.getFirestoreCollection("activePropertiess")
+    this.prout = this.getFirestoreCollection("activeProperties")
     this.prout.subscribe(data =>
       this.topPropertyListActive = data.map(e => {
         return {

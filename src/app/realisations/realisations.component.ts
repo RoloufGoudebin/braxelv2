@@ -25,7 +25,7 @@ export class RealisationsComponent implements OnInit {
         }
     }).filter(e => (e.SubStatus != 2 && e.SubStatus !=3))
     .sort(function (a: Property, b: Property){
-      return b.id - a.id;
+      return b.ModifiedSubstatusDate.localeCompare(a.ModifiedSubstatusDate);
     })
     );
     

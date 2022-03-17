@@ -115,6 +115,7 @@ export class OurBiensComponent implements OnInit {
         }
       })
       this.toShow = this.allProperties;
+      console.log(this.allProperties);
     });
   }
 
