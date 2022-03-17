@@ -30,15 +30,10 @@ export class CarouselHomeComponent implements OnInit {
 
   carousel = [
       {
-        "name": "vidéo dans les caisses",
+        "name": "vidéo dans les caisses appartements",
         "type": "video",
         "src": "../assets/img/home-enfant.mp4"
       },
-      {
-        "name": "vidéo du lion",
-        "type": "video",
-        "src": "../assets/img/waterloo.mp4"
-      }
   ]
 
   ngOnInit(): void {

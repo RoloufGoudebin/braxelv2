@@ -19,9 +19,6 @@
   }
 }
 
-.alerttt {
-  z-index: 100;
-}
 
 .top-navbar {
   background-color: white !important;
@@ -35,6 +32,10 @@
 /* marge alignement avec contact marge edouard */
 .marged {
   margin-left: 0.532em !important;
+}
+
+.marge {
+  margin-left: 1.4em !important;
 }
 
 .navbar-light {
@@ -391,4 +392,10 @@ i {
 a{
   cursor: pointer;
 }
+
+
+.shadow-sm { box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.075) !important; }
+.shadow { box-shadow:10px 10px 7px rgba(0, 0, 0, 0.075)!important; }
+.shadow-lg { box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.075) !important; }
+.shadow-none { box-shadow: none !important; }
 
