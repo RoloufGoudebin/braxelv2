@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import{ Router, NavigationEnd, RouterOutlet} from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { routeTransitionAnimations } from './route-transition-animations';
 import { FirestoreService } from './services/firebase/firestore.service';
+import { DOCUMENT } from '@angular/common';
 
 
 
@@ -20,15 +21,22 @@ declare let gtag: Function;
 export class AppComponent {
   title = 'braxel';
   date;
+  lg;
 
-  constructor(private firestore: FirestoreService, private http: HttpClient, private translate: TranslateService, private router: Router) {
-    var lg = navigator.language;
+  constructor(private firestore: FirestoreService, private translate: TranslateService, private router: Router, @Inject(DOCUMENT) private document: Document) {
+    this.lg = navigator.language;
     translate.setDefaultLang('fr');
-    translate.use(lg[0] + lg[1]);
+    translate.use(this.lg[0] + this.lg[1]);
     translate.addLangs(['en', 'fr', 'nl']);
   }
 
   ngOnInit() {
+    if (this.lg == 'en' || this.lg =='fr' || this.lg == 'nl'){
+      this.document.documentElement.lang = this.lg;
+    }
+    else{
+      this.document.documentElement.lang = 'fr';
+    }
     //this.firestore.updatePropertyListActive();
     //this.firestore.updatePropertyListSell()
     //this.firestore.createPropertyListSell();

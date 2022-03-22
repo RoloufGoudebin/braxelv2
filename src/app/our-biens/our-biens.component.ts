@@ -94,7 +94,7 @@ export class OurBiensComponent implements OnInit {
           id: e.payload.doc.id,
           ...e.payload.doc.data() as Property
         }
-      }).sort(function (a: Property, b: Property) { //un premier tri sur id (ordre de spropriétés)
+      }).sort(function (a: Property, b: Property) { //un premier tri sur id (ordre des propriétés)
         return b.id - a.id;
       }).sort(function (a: Property, b: Property) {
         if (a.SubStatus == 2 || a.SubStatus == 3) { // un deuxième tri pour mettre les propriétés disponibles en premier
@@ -115,7 +115,6 @@ export class OurBiensComponent implements OnInit {
         }
       })
       this.toShow = this.allProperties;
-      console.log(this.allProperties);
     });
   }
 
