@@ -143,11 +143,23 @@ export class OurBiensComponent implements OnInit {
     item.select = !item.select;
     if (this.items[0].select) {
       this.goal = 0;
+      const newOptions: Options = Object.assign({}, this.sliderBudget.options);
+      newOptions.ceil = 2000000;
+      newOptions.floor = 0;
+      newOptions.step = 10000;
+      this.sliderBudget.options = newOptions;
     }
     else {
       this.goal = 1;
+      const newOptions: Options = Object.assign({}, this.sliderBudget.options);
+      newOptions.ceil = 5000;
+      newOptions.step = 100;
+      newOptions.translate
+      this.sliderBudget.options = newOptions;
     }
     this.goalSelect = true;
+
+    
   }
 
   searchProperty(goal: number, status: number, type: number[], zip: number[], minRoom: number, maxRoom: number, minPrice: number, maxPrice: number) {
@@ -199,8 +211,11 @@ export class OurBiensComponent implements OnInit {
         floor: 0,
         ceil: 2000000,
         step: 10000,
-        translate: (value: number): string => {
+        translate:(value: number): string => {
           if (value == 2000000) {
+            return "+" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
+          }
+          else if (value== 5000) {
             return "+" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
           }
           return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
