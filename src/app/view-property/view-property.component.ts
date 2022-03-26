@@ -97,28 +97,28 @@ export class ViewPropertyComponent implements OnInit {
 
   getPEB(value: number) {
     if (value < 15) {
-      return "assets/img/peb/peb_aplus.png";
+      return "/assets/img/peb/peb_aplus.png";
     }
     else if (value < 51) {
-      return "assets/img/peb/peb_a.png";
+      return "/assets/img/peb/peb_a.png";
     }
     else if (value < 91) {
-      return "assets/img/peb/peb_b.png";
+      return "/assets/img/peb/peb_b.png";
     }
     else if (value < 151) {
-      return "assets/img/peb/peb_c.png";
+      return "/assets/img/peb/peb_c.png";
     }
     else if (value < 231) {
-      return "assets/img/peb/peb_d.png";
+      return "/assets/img/peb/peb_d.png";
     }
     else if (value < 331) {
-      return "assets/img/peb/peb_e.png";
+      return "/assets/img/peb/peb_e.png";
     }
     else if (value < 451) {
-      return "assets/img/peb/peb_f.png";
+      return "/assets/img/peb/peb_f.png";
     }
     else {
-      return "assets/img/peb/peb_g.png";
+      return "/assets/img/peb/peb_g.png";
     }
   }
 
