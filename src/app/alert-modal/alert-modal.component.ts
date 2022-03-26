@@ -80,14 +80,7 @@ export class AlertModalComponent {
         goal = "louer";
       }
 
-      for (let i = 0; i<this.alertForm.value.selected.length; i++){
-        if (type){
-          type = type + ", " + this.types[this.alertForm.value.selected[i]-1].name
-        }
-        else{
-          type = this.types[this.alertForm.value.selected[i]-1].name
-        }
-      }
+      type = this.alertForm.value.selected;
 
       if (this.sliderPrice.highValue == 2000000){
         budget = "+2 000 000"

@@ -68,14 +68,7 @@ export class EstimationModalComponent {
       goal = "Location";
     }
 
-    for (let i = 0; i < this.alertForm.value.selected.length; i++) {
-      if (type) {
-        type = type + ", " + this.types[this.alertForm.value.selected[i] - 1].name
-      }
-      else {
-        type = this.types[this.alertForm.value.selected[i] - 1].name
-      }
-    }
+    type = this.alertForm.value.selected;
 
     let user = {
       message: "<p>Demande d'estimation pour un bien destiné à la " + goal + "</p>" +

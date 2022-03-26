@@ -33,7 +33,7 @@
                 <div class="row mt-2">
                     <label class="text-search-form col-10 text-left">{{ 'navbar.15' | translate }}</label>
                     <ng-select [multiple]="true" class="col-11 mx-auto" formControlName="selected">
-                        <ng-option *ngFor="let type of types" [value]="type.id" class="col-11" required>{{type.name | translate}}
+                        <ng-option *ngFor="let type of types" value='{{type.name | translate}}' class="col-11" required>{{type.name | translate}}
                         </ng-option>
                     </ng-select>
                 </div>

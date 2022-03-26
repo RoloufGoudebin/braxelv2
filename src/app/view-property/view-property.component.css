@@ -544,3 +544,9 @@ li {
 .modal.modal-fullscreen .modal-body {
   overflow-y: auto; 
 }
+
+@media screen and (max-width : 968px){
+  .margin-sm{
+    margin-top: 6em !important;
+  }
+}
