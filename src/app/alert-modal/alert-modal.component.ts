@@ -97,6 +97,8 @@ export class AlertModalComponent {
       }
 
       let user = {
+        subject : "Alerte bien",
+        from : this.alertForm.value.mail,
         message : "<p>Alerte pour des biens à " + goal +"</p>" + 
         "<p>Type(s) de bien(s): " + type + "</p>" +
         "<p>Codes postaux : " + this.alertForm.value.zip + "</p>" +

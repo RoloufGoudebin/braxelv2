@@ -23,22 +23,27 @@ export class ContactComponent implements OnInit {
 
   onSubmit() {
     let user = {
-      message: "<p> Message venant de " + this.contactForm.value.name + "</p><br><p>Mail : " + this.contactForm.value.mail + "</p><br><p>Numéro de téléphone : " + this.contactForm.value.phone + "</p><br> <p>Concerne : " + this.contactForm.value.message + "</p>"
+      subject : "Contact site",
+      from : this.contactForm.value.mail,
+      message: "<p> Message venant de " + this.contactForm.value.name + 
+      "</p><br><p>Mail : " + this.contactForm.value.mail + 
+      "</p><br><p>Numéro de téléphone : " + this.contactForm.value.phone 
+      + "</p><br> <p>Concerne : " + this.contactForm.value.message + "</p>"
     }
     this.sendMail.sendMail(user);
     this.contactForm.reset();
   }
 
-  get name(){
+  get name() {
     return this.contactForm.get('name')
   }
-  get mail(){
+  get mail() {
     return this.contactForm.get('mail')
   }
-  get phone(){
+  get phone() {
     return this.contactForm.get('phone')
   }
-  get message(){
+  get message() {
     return this.contactForm.get('message')
   }
 

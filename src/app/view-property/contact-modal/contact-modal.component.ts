@@ -49,7 +49,13 @@ export class ContactModalComponent{
   onSubmit(){
     
     let user = {
-      message: "<p>Message venant de : " + this.contactForm.value.name + " " + this.contactForm.value.firstname + "</p><p> Email : " + this.contactForm.value.mail + "</p><p>Numéro de téléphone : " + this.contactForm.value.phone + "</p><p>Bonjour, pouvez vous me contacter pour le bien n°"+ this.id + "</p><p>Demande(s) spécifique(s) : " + this.contactForm.value.questions + "</p>"
+      subject : "Contact pour le bien",
+      from : this.contactForm.value.mail,
+      message: "<p>Message venant de : " + this.contactForm.value.name + " " + this.contactForm.value.firstname + 
+      "</p><p> Email : " + this.contactForm.value.mail + 
+      "</p><p>Numéro de téléphone : " + this.contactForm.value.phone 
+      + "</p><p>Bonjour, pouvez vous me contacter pour le bien n°"+ this.id 
+      + "</p><p>Demande(s) spécifique(s) : " + this.contactForm.value.questions + "</p>"
     }
     this.sendmail.sendMail(user);
     this.notConfirm=false;

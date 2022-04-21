@@ -71,6 +71,8 @@ export class EstimationModalComponent {
     type = this.alertForm.value.selected;
 
     let user = {
+      subject : "Estimation bien",
+      from : this.alertForm.value.mail,
       message: "<p>Demande d'estimation pour un bien destiné à la " + goal + "</p>" +
         "<p>Type(s) de bien(s): " + type + "</p>" +
         "<p>Adresse: " + this.alertForm.value.street + ", " + this.alertForm.value.zip + "</p>" +
