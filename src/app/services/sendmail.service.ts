@@ -10,7 +10,7 @@ export class SendmailService {
 
   sendMail(message: any){
     let user = {
-      to: '<robin@mamoot.be>',
+      to: '<info@braxel.be>,<edouard@braxel.be>,<thomas@braxel.be>,<valentin@braxel.be>,<francois@braxel.be>',
       from: message.from,
       subject: message.subject,
       message: message.message
