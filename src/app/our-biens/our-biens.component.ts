@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { Options } from "@angular-slider/ngx-slider";
-import { OmnicasaService } from '../services/omnicasa/omnicasa.service'
 import { FirestoreService } from '../services/firebase/firestore.service';
 import { Property } from '../services/omnicasa/interface';
 import { Observable, Subject } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
+import { ViewportScroller } from '@angular/common';
 
 import data from '../json/zip.json'
 
@@ -61,7 +60,7 @@ export class OurBiensComponent implements OnInit {
 
 
 
-  constructor(public firestore: FirestoreService) { }
+  constructor(public firestore: FirestoreService, private viewportScroller: ViewportScroller) { }
 
   ngOnInit(): void {
 
@@ -129,11 +128,16 @@ export class OurBiensComponent implements OnInit {
     this.selectedTypes = this.registerForm.value.selected;
     this.cityZip = this.registerForm.value.zip;
     this.toShow = this.searchProperty(this.goal, 2, this.selectedTypes, this.cityZip, this.sliderRooms.minValue, this.sliderRooms.highValue, this.sliderBudget.minValue, this.sliderBudget.highValue);
+    this.scrollTo("listProperty")
   }
 
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
+  }
+
+  public scrollTo(elementId: string): void {
+    this.viewportScroller.scrollToAnchor(elementId);
   }
 
   toggleClass(item) {
@@ -158,8 +162,6 @@ export class OurBiensComponent implements OnInit {
       this.sliderBudget.options = newOptions;
     }
     this.goalSelect = true;
-
-    
   }
 
   searchProperty(goal: number, status: number, type: number[], zip: number[], minRoom: number, maxRoom: number, minPrice: number, maxPrice: number) {
@@ -211,11 +213,11 @@ export class OurBiensComponent implements OnInit {
         floor: 0,
         ceil: 2000000,
         step: 10000,
-        translate:(value: number): string => {
+        translate: (value: number): string => {
           if (value == 2000000) {
             return "+" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
           }
-          else if (value== 5000) {
+          else if (value == 5000) {
             return "+" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
           }
           return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";

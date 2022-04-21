@@ -140,12 +140,23 @@ export class AlertModalComponent {
     this.items[0].select = false;
     this.items[1].select = false;
     item.select = !item.select;
-    if (this.items[0]) {
+    if (this.items[0].select) {
       this.goal = 0;
+      const newOptions: Options = Object.assign({}, this.sliderPrice.options);
+      newOptions.ceil = 2000000;
+      newOptions.floor = 0;
+      newOptions.step = 10000;
+      this.sliderPrice.options = newOptions;
     }
     else {
       this.goal = 1;
+      const newOptions: Options = Object.assign({}, this.sliderPrice.options);
+      newOptions.ceil = 5000;
+      newOptions.step = 100;
+      newOptions.translate
+      this.sliderPrice.options = newOptions;
     }
+    this.goalSelect = true;
     this.goalSelect = true;
   }
 
