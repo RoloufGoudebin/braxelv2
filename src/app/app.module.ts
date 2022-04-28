@@ -136,6 +136,7 @@ import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
+
 export class AppModule { }
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
