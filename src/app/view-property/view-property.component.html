@@ -225,22 +225,23 @@
         {{property.MainStyleName}}</div>
       <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConditionName"><b>{{ 'viewProperty.23' | translate }}</b> :
         {{property.ConditionName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.EnergyPerformance"><b>{{ 'viewProperty.23.a' | translate }}</b>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.EnergyPerformance"><b>{{ 'viewProperty.23.a' | translate
+          }}</b>
         : <img src="{{getPEB(property.EnergyPerformance)}}">
       </div>
     </div>
 
 
-    <div class="container pb-5">
+    <div class="row no-gutters pt-5">
       <h4>{{ 'viewProperty.24' | translate }}</h4>
       <p class="content text-justify" *ngIf="property.DescriptionA">{{property.DescriptionB}}</p>
-    </div>
-    <div class="container px-3 pb-5">
-      <div *ngIf="lat" class="row">
-        <agm-map [latitude]="lat" [longitude]="long" [zoom]="14" [scrollwheel]="false">
-          <agm-circle [latitude]="lat" [longitude]="long" [radius]="1100" [fillColor]="'red'">
-          </agm-circle>
-        </agm-map>
+      <div class="container px-3 pb-5">
+        <div *ngIf="lat" class="row">
+          <agm-map [latitude]="lat" [longitude]="long" [zoom]="14" [scrollwheel]="false">
+            <agm-circle [latitude]="lat" [longitude]="long" [radius]="1100" [fillColor]="'red'">
+            </agm-circle>
+          </agm-map>
+        </div>
       </div>
     </div>
   </div>

@@ -23,12 +23,12 @@ export class ViewPropertyComponent implements OnInit {
   slickModal;
 
 
-  slideConfig = { slidesToShow: 1, slidesToScroll: 1, adaptiveHeight: true, arrows: false};
+  slideConfig = { slidesToShow: 1, slidesToScroll: 1, adaptiveHeight: true, arrows: false };
   slideConfigNavXl = {
     arrows: true,
     slidesToShow: 6,
     slidesToScroll: 6,
-    adaptiveHeight: true 
+    adaptiveHeight: true
   };
   slideConfigNavXs = {
     adaptiveHeight: true,
@@ -96,29 +96,80 @@ export class ViewPropertyComponent implements OnInit {
   }
 
   getPEB(value: number) {
-    if (value < 15) {
-      return "/assets/img/peb/peb_aplus.png";
+
+    if (this.property.Zip >= 1000 && this.property.Zip <= 1299) {
+      if (value <= 45) {
+        return "/assets/img/peb/peb_a.png";
+      }
+      else if (value <= 95) {
+        return "/assets/img/peb/peb_b.png";
+      }
+      else if (value <= 150) {
+        return "/assets/img/peb/peb_c.png";
+      }
+      else if (value <= 210) {
+        return "/assets/img/peb/peb_d.png";
+      }
+      else if (value <= 275) {
+        return "/assets/img/peb/peb_e.png";
+      }
+      else if (value <= 345) {
+        return "/assets/img/peb/peb_f.png";
+      }
+      else {
+        return "/assets/img/peb/peb_g.png";
+      }
     }
-    else if (value < 51) {
-      return "/assets/img/peb/peb_a.png";
+
+    else if ((this.property.Zip >= 1500 && this.property.Zip < 4000) || (this.property.Zip >= 8000 && this.property.Zip < 10000)) {
+      if (value < 0) {
+        return "/assets/img/peb/peb_aplus.png";
+      }
+      else if (value < 100) {
+        return "/assets/img/peb/peb_a.png";
+      }
+      else if (value < 200) {
+        return "/assets/img/peb/peb_b.png";
+      }
+      else if (value < 300) {
+        return "/assets/img/peb/peb_c.png";
+      }
+      else if (value < 400) {
+        return "/assets/img/peb/peb_d.png";
+      }
+      else if (value < 500) {
+        return "/assets/img/peb/peb_e.png";
+      }
+      else {
+        return "/assets/img/peb/peb_f.png";
+      }
     }
-    else if (value < 91) {
-      return "/assets/img/peb/peb_b.png";
-    }
-    else if (value < 151) {
-      return "/assets/img/peb/peb_c.png";
-    }
-    else if (value < 231) {
-      return "/assets/img/peb/peb_d.png";
-    }
-    else if (value < 331) {
-      return "/assets/img/peb/peb_e.png";
-    }
-    else if (value < 451) {
-      return "/assets/img/peb/peb_f.png";
-    }
+
     else {
-      return "/assets/img/peb/peb_g.png";
+      if (value < 15) {
+        return "/assets/img/peb/peb_aplus.png";
+      }
+      else if (value < 51) {
+        return "/assets/img/peb/peb_a.png";
+      }
+      else if (value < 91) {
+        return "/assets/img/peb/peb_b.png";
+      }
+      else if (value < 151) {
+        return "/assets/img/peb/peb_c.png";
+      }
+      else if (value < 231) {
+        return "/assets/img/peb/peb_d.png";
+      }
+      else if (value < 331) {
+        return "/assets/img/peb/peb_e.png";
+      }
+      else if (value < 451) {
+        return "/assets/img/peb/peb_f.png";
+      }
+      else {
+        return "/assets/img/peb/peb_g.png";
+      }
     }
   }
 
