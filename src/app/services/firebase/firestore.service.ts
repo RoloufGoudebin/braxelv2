@@ -33,6 +33,7 @@ export class FirestoreService {
 
   savePropertyTop(newTopPropertyList: Property[]) {
     for (let i = 0; i < newTopPropertyList.length; i++) {
+      console.log(newTopPropertyList[i].ID.toString())
       this.firestore
         .collection("activeProperties")
         .doc(newTopPropertyList[i].ID.toString())

@@ -42,6 +42,7 @@ export class TopBiensComponent implements OnInit {
   }
 
   save() {
+    console.log(this.topPropertyList);
     this.firestore.savePropertyTop(this.topPropertyList);
   }
 
@@ -93,6 +94,7 @@ export class TopBiensComponent implements OnInit {
     this.topPropertyList[this.toSwap[1]].id = tmpidBis;
     this.toSwap[0] = -1;
     this.toSwap[1] = -1;
+    console.log(this.topPropertyList)
   }
 
 

@@ -146,25 +146,25 @@ export class ViewPropertyComponent implements OnInit {
     }
 
     else {
-      if (value < 15) {
+      if (value < 45) {
         return "/assets/img/peb/peb_aplus.png";
       }
-      else if (value < 51) {
+      else if (value < 85) {
         return "/assets/img/peb/peb_a.png";
       }
-      else if (value < 91) {
+      else if (value < 170) {
         return "/assets/img/peb/peb_b.png";
       }
-      else if (value < 151) {
+      else if (value < 255) {
         return "/assets/img/peb/peb_c.png";
       }
-      else if (value < 231) {
+      else if (value < 340) {
         return "/assets/img/peb/peb_d.png";
       }
-      else if (value < 331) {
+      else if (value < 425) {
         return "/assets/img/peb/peb_e.png";
       }
-      else if (value < 451) {
+      else if (value < 510) {
         return "/assets/img/peb/peb_f.png";
       }
       else {
