@@ -70,3 +70,7 @@ button:disabled {
   border-color: #233353;
   color: white;
 }
+
+.bi{
+  font-size: 1.5em;
+}

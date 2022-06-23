@@ -121,25 +121,25 @@
 
 
 <nav class="nav d-md-none " id="tapbar">
-    <a class="nav__link nav__link--active" routerLinkActive="active" routerLink="/nos-biens">
-        <i class="bi bi-house"></i>
-        <span class="nav__text">{{ 'navbar.8' | translate }}</span>
-    </a>
+    <div class="row np-gutters">
 
+        <a class="nav__link nav__link--active col-3" routerLink="/nos-biens">
+            <i class="bi bi-house"></i>
+            <span class="nav__text">{{ 'navbar.8' | translate }}</span>
+        </a>
 
-    <a class="nav__link nav__link--active">
-        <i class="bi bi-megaphone"></i>
-        <app-alert-modal></app-alert-modal>
-    </a>
+        <a class="nav__link nav__link--active col-3">
+            <app-alert-modal></app-alert-modal>
+        </a>
 
+        <a class="nav__link nav__link--active col-3">
+            <app-estimation-modal [tapbar]="true"></app-estimation-modal>
+        </a>
 
-    <a class="nav__link nav__link--active">
-        <i class="bi bi-calculator"></i>
-        <app-estimation-modal></app-estimation-modal>
-    </a>
+        <a class="nav__link nav__link--active col-3" routerLink="/contact">
+            <i class="bi bi-envelope-open"></i>
+            <span class="nav__text">{{ 'navbar.9' | translate }}</span>
+        </a>
 
-    <a class="nav__link" routerLinkActive="active" routerLink="/contact">
-        <i class="bi bi-envelope-open"></i>
-        <span class="nav__text">{{ 'navbar.9' | translate }}</span>
-    </a>
+    </div>
 </nav>

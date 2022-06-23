@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Options } from '@angular-slider/ngx-slider';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
@@ -19,6 +19,9 @@ interface SliderDetails {
 })
 
 export class EstimationModalComponent {
+
+  @Input() tapbar : boolean; // savoir si on affiche la calculette ou pas
+
   closeResult = '';
   goal: number;
   goalSelect = false;
