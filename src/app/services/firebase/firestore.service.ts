@@ -192,78 +192,85 @@ export class FirestoreService {
     this.setPropertyListActiveFire(); //topPropertyListActive
     this.setPropertyListActiveOmni(); //propertyList
     setTimeout(() => {
-
       for (let i = 0; i < this.propertyList.length; i++) {
+        //console.log(this.topPropertyListActive.findIndex(e => e.ID == this.propertyList[i].ID))
         this.omnicasaService.getPropertyByID(this.propertyList[i].ID, 'nl').subscribe((data: any) => {
           this.propertyList[i].TypeDescriptionNl = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
           this.omnicasaService.getPropertyByID(this.propertyList[i].ID, 'en').subscribe((data: any) => {
             this.propertyList[i].TypeDescriptionEn = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
             for (let j = 0; j < this.topPropertyListActive.length; j++) {
-              if (this.propertyList[i].ID == this.topPropertyListActive[j].ID) {
-                let toWrite: Property = {
-                  id: this.topPropertyListActive[j].id,
-                  ID: this.propertyList[i].ID,
-                  Status: this.propertyList[i].Status,
-                  City: this.propertyList[i].City,
-                  SubStatus: this.propertyList[i].SubStatus,
-                  Goal: this.propertyList[i].Goal,
-                  TypeDescription: this.propertyList[i].TypeDescription,
-                  TypeDescriptionEn: this.propertyList[i].TypeDescriptionEn,
-                  TypeDescriptionNl: this.propertyList[i].TypeDescriptionNl,
-                  ModifiedSubstatusDate: this.propertyList[i].ModifiedSubstatusDate,
-                  Zip: this.propertyList[i].Zip,
-                  LargePicture: this.propertyList[i].LargePicture,
-                  Price: this.propertyList[i].Price,
-                  PriceUnitText: this.propertyList[i].PriceUnitText,
-                  NumberOfBedRooms: this.propertyList[i].NumberOfBedRooms,
-                  VirtualTour: this.propertyList[i].VirtualTour,
-                  MainTypeName: this.propertyList[i].MainTypeName,
-                  WebID: this.propertyList[i].WebID
+              if (this.propertyList.findIndex(e => e.ID === this.topPropertyListActive[j].ID) != -1) {
+                if (this.propertyList[i].ID == this.topPropertyListActive[j].ID) {
+                  let toWrite: Property = {
+                    id: this.topPropertyListActive[j].id,
+                    ID: this.propertyList[i].ID,
+                    Status: this.propertyList[i].Status,
+                    City: this.propertyList[i].City,
+                    SubStatus: this.propertyList[i].SubStatus,
+                    Goal: this.propertyList[i].Goal,
+                    TypeDescription: this.propertyList[i].TypeDescription,
+                    TypeDescriptionEn: this.propertyList[i].TypeDescriptionEn,
+                    TypeDescriptionNl: this.propertyList[i].TypeDescriptionNl,
+                    ModifiedSubstatusDate: this.propertyList[i].ModifiedSubstatusDate,
+                    Zip: this.propertyList[i].Zip,
+                    LargePicture: this.propertyList[i].LargePicture,
+                    Price: this.propertyList[i].Price,
+                    PriceUnitText: this.propertyList[i].PriceUnitText,
+                    NumberOfBedRooms: this.propertyList[i].NumberOfBedRooms,
+                    VirtualTour: this.propertyList[i].VirtualTour,
+                    MainTypeName: this.propertyList[i].MainTypeName,
+                    WebID: this.propertyList[i].WebID
+                  }
+                  this.firestore
+                    .collection("activeProperties")
+                    .doc(this.propertyList[i].ID.toString())
+                    .update(toWrite)
+                  break;
                 }
-                this.firestore
-                  .collection("activeProperties")
-                  .doc(this.propertyList[i].ID.toString())
-                  .update(toWrite)
-                break;
-              }
-              else if (j == this.topPropertyListActive.length - 1) {
-                let toWrite: Property = {
-                  id: this.topPropertyListActive[j-5].ID, //petit hack des familles pour pas que la propriété se retrouve en premier
-                  ID: this.propertyList[i].ID,
-                  Status: this.propertyList[i].Status,
-                  City: this.propertyList[i].City,
-                  SubStatus: this.propertyList[i].SubStatus,
-                  Goal: this.propertyList[i].Goal,
-                  TypeDescription: this.propertyList[i].TypeDescription,
-                  TypeDescriptionEn: this.propertyList[i].TypeDescriptionEn,
-                  TypeDescriptionNl: this.propertyList[i].TypeDescriptionNl,
-                  ModifiedSubstatusDate: this.propertyList[i].ModifiedSubstatusDate,
-                  Zip: this.propertyList[i].Zip,
-                  LargePicture: this.propertyList[i].LargePicture,
-                  Price: this.propertyList[i].Price,
-                  PriceUnitText: this.propertyList[i].PriceUnitText,
-                  NumberOfBedRooms: this.propertyList[i].NumberOfBedRooms,
-                  VirtualTour: this.propertyList[i].VirtualTour,
-                  MainTypeName: this.propertyList[i].MainTypeName,
-                  WebID: this.propertyList[i].WebID
+                else if (j == this.topPropertyListActive.length - 1) {
+                  let toWrite: Property = {
+                    id: this.topPropertyListActive[j - 5].ID, //petit hack des familles pour pas que la propriété se retrouve en premier
+                    ID: this.propertyList[i].ID,
+                    Status: this.propertyList[i].Status,
+                    City: this.propertyList[i].City,
+                    SubStatus: this.propertyList[i].SubStatus,
+                    Goal: this.propertyList[i].Goal,
+                    TypeDescription: this.propertyList[i].TypeDescription,
+                    TypeDescriptionEn: this.propertyList[i].TypeDescriptionEn,
+                    TypeDescriptionNl: this.propertyList[i].TypeDescriptionNl,
+                    ModifiedSubstatusDate: this.propertyList[i].ModifiedSubstatusDate,
+                    Zip: this.propertyList[i].Zip,
+                    LargePicture: this.propertyList[i].LargePicture,
+                    Price: this.propertyList[i].Price,
+                    PriceUnitText: this.propertyList[i].PriceUnitText,
+                    NumberOfBedRooms: this.propertyList[i].NumberOfBedRooms,
+                    VirtualTour: this.propertyList[i].VirtualTour,
+                    MainTypeName: this.propertyList[i].MainTypeName,
+                    WebID: this.propertyList[i].WebID
+                  }
+                  this.firestore
+                    .collection("activeProperties")
+                    .doc(this.propertyList[i].ID.toString())
+                    .set(toWrite)
                 }
-                this.firestore
-                  .collection("activeProperties")
-                  .doc(this.propertyList[i].ID.toString())
-                  .set(toWrite)
-                console.log("okiii")
               }
+              else {
+                this.deleteProperty(this.topPropertyListActive[j].ID);
+                console.log(this.topPropertyListActive[j].ID);
+              }
+
             }
           })
         })
       }
-      console.log("oki")
+      console.log(this.propertyList);
+      console.log(this.topPropertyListActive);
       setTimeout(() => {
         this.savePropertyTop(toCopy);
         this.updateDateRefresh();
       }, 30000)
     },
-      40000);
+      60000);
 
   }
 
@@ -350,6 +357,13 @@ export class FirestoreService {
   deleteReview(id: number, length: number) {
     this.firestore
       .collection("avis")
+      .doc(id.toString())
+      .delete()
+  }
+
+  deleteProperty(id: number){
+    this.firestore
+      .collection("activeProperties")
       .doc(id.toString())
       .delete()
   }
