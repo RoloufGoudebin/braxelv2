@@ -72,7 +72,7 @@ export class OurBiensComponent implements OnInit {
       { id: 3, name: 'navbar.16.c' },
       { id: 4, name: 'navbar.16.d' },
       { id: 5, name: 'navbar.16.e' },
-      { id: 6, name: 'navbar.16.f'},
+      { id: 6, name: 'navbar.16.f' },
       { id: 7, name: 'navbar.16.g' },
     ];
 
@@ -121,32 +121,41 @@ export class OurBiensComponent implements OnInit {
         this.goal = Number(sessionStorage.getItem("goal"));
         this.goalSelect = true;
         this.items[this.goal].select = true;
-        
+
         let selected = [];
-        let sessionSelected = sessionStorage.getItem("selected").split(",");
-        
-        for(let i=0; i<sessionSelected.length; i++){
-          this.translate.get(this.types[Number(sessionSelected[i])-1].name).subscribe((res: string) => {
+
+        let sessionSelected = sessionStorage.getItem("selected").split(",").map(function (item) {
+          return parseInt(item, 10);
+        });;
+
+
+
+        for (let i = 0; i < sessionSelected.length; i++) {
+
+          this.translate.get(this.types[Number(sessionSelected[i]) - 1].name).subscribe((res: string) => {
             selected[i] = res;
           })
         }
 
         this.registerForm.patchValue({
-          zip : sessionStorage.getItem("zip").split(","),
-          selected : selected
+          zip: sessionStorage.getItem("zip").split(","),
+          selected: selected
         })
 
-        
+
         Number(sessionStorage.getItem("zip"));
+
         let rooms = sessionStorage.getItem("rooms").split("-");
         this.sliderRooms.minValue = Number(rooms[0]);
         this.sliderRooms.highValue = Number(rooms[1]);
+
         let budget = sessionStorage.getItem("budget").split("-");
         this.sliderBudget.minValue = Number(budget[0]);
         this.sliderBudget.highValue = Number(budget[1]);
-        
+
+        this.selectedTypes = sessionSelected;
+
         sessionStorage.setItem("selected", sessionSelected.toString());
-        console.log(sessionSelected);
 
         this.onSubmit();
 
@@ -163,14 +172,18 @@ export class OurBiensComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.selectedTypes = this.registerForm.value.selected;
+    if (this.selectedTypes.length == 0) {
+      this.selectedTypes = this.registerForm.value.selected;
+    }
     this.cityZip = this.registerForm.value.zip;
     this.toShow = this.searchProperty(this.goal, 2, this.selectedTypes, this.cityZip, this.sliderRooms.minValue, this.sliderRooms.highValue, this.sliderBudget.minValue, this.sliderBudget.highValue);
+
     sessionStorage.setItem("goal", this.goal.toString())
     sessionStorage.setItem("selected", this.selectedTypes.toString());
     sessionStorage.setItem("zip", this.cityZip.toString());
     sessionStorage.setItem("rooms", this.sliderRooms.minValue.toString() + "-" + this.sliderRooms.highValue.toString());
     sessionStorage.setItem("budget", this.sliderBudget.minValue.toString() + "-" + this.sliderBudget.highValue.toString());
+
     this.scrollTo("listProperty");
   }
 
