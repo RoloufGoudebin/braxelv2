@@ -67,13 +67,13 @@ export class OurBiensComponent implements OnInit {
   ngOnInit(): void {
 
     this.types = [
-      { id: 1, name: 'Maison' },
-      { id: 2, name: 'Appartement' },
-      { id: 3, name: 'Studio' },
-      { id: 4, name: 'Terrain' },
-      { id: 5, name: 'Immeubles' },
-      { id: 6, name: 'Bureaux/Commerces' },
-      { id: 7, name: 'Garage/Parking' },
+      { id: 1, name: 'navbar.16.a' },
+      { id: 2, name: 'navbar.16.b' },
+      { id: 3, name: 'navbar.16.c' },
+      { id: 4, name: 'navbar.16.d' },
+      { id: 5, name: 'navbar.16.e' },
+      { id: 6, name: 'navbar.16.f'},
+      { id: 7, name: 'navbar.16.g' },
     ];
 
     this.items = [
@@ -121,17 +121,22 @@ export class OurBiensComponent implements OnInit {
         this.goal = Number(sessionStorage.getItem("goal"));
         this.goalSelect = true;
         this.items[this.goal].select = true;
+        
         let selected = [];
-        for(let i=0; i<sessionStorage.getItem("selected").split(",").length; i++){
-          selected[i] = this.types[i].name;
+        let sessionSelected = sessionStorage.getItem("selected").split(",");
+        
+        for(let i=0; i<sessionSelected.length; i++){
+          this.translate.get(this.types[Number(sessionSelected[i])-1].name).subscribe((res: string) => {
+            selected[i] = res;
+          })
         }
+
         this.registerForm.patchValue({
           zip : sessionStorage.getItem("zip").split(","),
           selected : selected
         })
 
-        console.log(selected);
-
+        
         Number(sessionStorage.getItem("zip"));
         let rooms = sessionStorage.getItem("rooms").split("-");
         this.sliderRooms.minValue = Number(rooms[0]);
@@ -139,10 +144,11 @@ export class OurBiensComponent implements OnInit {
         let budget = sessionStorage.getItem("budget").split("-");
         this.sliderBudget.minValue = Number(budget[0]);
         this.sliderBudget.highValue = Number(budget[1]);
+        
+        sessionStorage.setItem("selected", sessionSelected.toString());
+        console.log(sessionSelected);
 
         this.onSubmit();
-
-        this.translate.reloadLang("fr");
 
       }
     });
