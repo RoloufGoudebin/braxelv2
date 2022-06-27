@@ -37,7 +37,7 @@ export class SearchPropertyComponent implements OnInit {
   goal;
   topPropertyList: Property[];
 
-  constructor(private formBuilder: FormBuilder, private firestore: FirestoreService, private omnicasaService: OmnicasaService) { }
+  constructor(private omnicasaService: OmnicasaService) { }
 
   ngOnInit(): void {
   }

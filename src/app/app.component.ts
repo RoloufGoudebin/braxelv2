@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
-import{ Router, NavigationEnd, RouterOutlet} from '@angular/router';
+import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { routeTransitionAnimations } from './route-transition-animations';
 import { FirestoreService } from './services/firebase/firestore.service';
@@ -31,10 +31,10 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    if (this.lg == 'en' || this.lg =='fr' || this.lg == 'nl'){
+    if (this.lg == 'en' || this.lg == 'fr' || this.lg == 'nl') {
       this.document.documentElement.lang = this.lg;
     }
-    else{
+    else {
       this.document.documentElement.lang = 'fr';
     }
     //this.firestore.updatePropertyListActive();
@@ -83,7 +83,6 @@ export class AppComponent {
             ...e.payload.doc.data() as any
           }
         }));;
-
 
 
 }

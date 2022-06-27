@@ -8,6 +8,8 @@ import { Observable, Subject } from 'rxjs';
 import { ViewportScroller } from '@angular/common';
 
 import data from '../json/zip.json'
+import { ZipSubscriber } from 'rxjs/internal/observable/zip';
+import { TranslateService } from '@ngx-translate/core';
 
 
 interface SliderDetails {
@@ -48,8 +50,8 @@ export class OurBiensComponent implements OnInit {
   cityZip;
   submitted = false;
   goalSelect = false;
-  selectedTypes = [];
-  goal;
+  selectedTypes: number[] = [];
+  goal: number;
   search: any[];
   allProperties: Property[];
   toSearch: Property[];
@@ -60,24 +62,25 @@ export class OurBiensComponent implements OnInit {
 
 
 
-  constructor(public firestore: FirestoreService, private viewportScroller: ViewportScroller) { }
+  constructor(public firestore: FirestoreService, private viewportScroller: ViewportScroller, private translate: TranslateService) { }
 
   ngOnInit(): void {
 
     this.types = [
-      { id: 1, name: 'navbar.16.a' },
-      { id: 2, name: 'navbar.16.b' },
-      { id: 3, name: 'navbar.16.c' },
-      { id: 4, name: 'navbar.16.d' },
-      { id: 5, name: 'navbar.16.e' },
-      { id: 6, name: 'navbar.16.f' },
-      { id: 7, name: 'navbar.16.g' },
+      { id: 1, name: 'Maison' },
+      { id: 2, name: 'Appartement' },
+      { id: 3, name: 'Studio' },
+      { id: 4, name: 'Terrain' },
+      { id: 5, name: 'Immeubles' },
+      { id: 6, name: 'Bureaux/Commerces' },
+      { id: 7, name: 'Garage/Parking' },
     ];
 
     this.items = [
       { name: 'ourBiens.2a', select: false },
       { name: 'ourBiens.2b', select: false }
     ];
+
 
     this.listOfZips.sort(function (a: any, b: any) {
       return a.zip - b.zip;
@@ -114,7 +117,36 @@ export class OurBiensComponent implements OnInit {
         }
       })
       this.toShow = this.allProperties;
+      if (sessionStorage.getItem("zip") != undefined && sessionStorage.getItem("selected") != undefined && sessionStorage.getItem("rooms") != undefined && sessionStorage.getItem("budget") != undefined) {
+        this.goal = Number(sessionStorage.getItem("goal"));
+        this.goalSelect = true;
+        this.items[this.goal].select = true;
+        let selected = [];
+        for(let i=0; i<sessionStorage.getItem("selected").split(",").length; i++){
+          selected[i] = this.types[i].name;
+        }
+        this.registerForm.patchValue({
+          zip : sessionStorage.getItem("zip").split(","),
+          selected : selected
+        })
+
+        console.log(selected);
+
+        Number(sessionStorage.getItem("zip"));
+        let rooms = sessionStorage.getItem("rooms").split("-");
+        this.sliderRooms.minValue = Number(rooms[0]);
+        this.sliderRooms.highValue = Number(rooms[1]);
+        let budget = sessionStorage.getItem("budget").split("-");
+        this.sliderBudget.minValue = Number(budget[0]);
+        this.sliderBudget.highValue = Number(budget[1]);
+
+        this.onSubmit();
+
+        this.translate.reloadLang("fr");
+
+      }
     });
+
   }
 
 
@@ -128,7 +160,12 @@ export class OurBiensComponent implements OnInit {
     this.selectedTypes = this.registerForm.value.selected;
     this.cityZip = this.registerForm.value.zip;
     this.toShow = this.searchProperty(this.goal, 2, this.selectedTypes, this.cityZip, this.sliderRooms.minValue, this.sliderRooms.highValue, this.sliderBudget.minValue, this.sliderBudget.highValue);
-    this.scrollTo("listProperty")
+    sessionStorage.setItem("goal", this.goal.toString())
+    sessionStorage.setItem("selected", this.selectedTypes.toString());
+    sessionStorage.setItem("zip", this.cityZip.toString());
+    sessionStorage.setItem("rooms", this.sliderRooms.minValue.toString() + "-" + this.sliderRooms.highValue.toString());
+    sessionStorage.setItem("budget", this.sliderBudget.minValue.toString() + "-" + this.sliderBudget.highValue.toString());
+    this.scrollTo("listProperty");
   }
 
   onReset() {
