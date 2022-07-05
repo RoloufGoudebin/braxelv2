@@ -62,7 +62,7 @@
 
                 <div class="row pt-1">
                     <label class="text-search-form col-10 text-left">{{ 'navbar.20' | translate }}</label>
-                    <app-slider class="col-10 mx-auto" [options]="sliderRooms" (click)="touch('room')"></app-slider>
+                    <app-slider class="col-10 mx-auto" [options]="sliderRooms" (click)="touch('room')" (tap)="touch('room')"></app-slider>
                 </div>
                 <div class="row ml-1">
                     <div *ngIf="!roomTouch">

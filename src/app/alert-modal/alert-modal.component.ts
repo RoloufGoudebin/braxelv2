@@ -28,9 +28,9 @@ export class AlertModalComponent {
   goalSelect= false;
   successMessage: string;
   notConfirm = true;
-  roomTouch = false;
-  budgetTouch = false;
-  surfaceTouch = false;
+  roomTouch = true;
+  budgetTouch = true;
+  surfaceTouch = true;
 
   listOfZips = data;
 
