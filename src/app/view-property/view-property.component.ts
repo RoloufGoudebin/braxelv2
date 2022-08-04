@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Property, PropertyList } from '../services/omnicasa/interface';
+import { Component, OnInit} from '@angular/core';
+import { Property} from '../services/omnicasa/interface';
 import { ActivatedRoute } from '@angular/router';
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
-import { FirestoreService } from '../services/firebase/firestore.service';
-import { HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -69,6 +67,8 @@ export class ViewPropertyComponent implements OnInit {
   nodalLink: string;
   lang: string;
   listInfo: String[] = ["KitchenName", "WindowGlazing", "OrientationT", "HasLift", "Floor", "ConstructionYear", "SurfaceTerrace", "ConstructionName", "SurfaceGarden", "HeatingName", "MainStyleName", "ConditionName"];
+  loadPic = false;
+
 
   constructor(private route: ActivatedRoute, public omnicasa: OmnicasaService, private translate: TranslateService) { }
 

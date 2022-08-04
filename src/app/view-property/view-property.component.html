@@ -35,7 +35,7 @@
 
     <div class="shadow rounded mt-3">
 
-      <div *ngIf="property" class="bg mb-5">
+      <div class="bg mb-5">
         <ngx-slick-carousel class="carousel mb-5 mb-md-2" #slickModal="slick-carousel" [config]="slideConfig"
           (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
           (beforeChange)="beforeChange($event)">
