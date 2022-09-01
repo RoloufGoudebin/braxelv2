@@ -36,7 +36,7 @@ export class TopBiensComponent implements OnInit {
         }
       }).filter(e => (e.SubStatus == 2 || e.SubStatus ==3))
       .sort(function (a: Property, b: Property){
-        return b.id - a.id;
+        return a.id - b.id;
       })
       );
   }
@@ -48,7 +48,7 @@ export class TopBiensComponent implements OnInit {
 
   sort(){
     this.topPropertyList.sort(function (a, b) {
-      return b.id - a.id;
+      return a.id - b.id;
     });;
     setTimeout(() => {
     },

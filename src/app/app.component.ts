@@ -37,7 +37,7 @@ export class AppComponent {
     else {
       this.document.documentElement.lang = 'fr';
     }
-    //this.firestore.updatePropertyListActive();
+    this.firestore.updatePropertyListActive();
     //this.firestore.updatePropertyListSell()
     //this.firestore.createPropertyListSell();
     //this.firestore.createPropertyListActive();

@@ -35,7 +35,7 @@ export class FirestoreService {
     for (let i = 0; i < newTopPropertyList.length; i++) {
       console.log(newTopPropertyList[i].ID.toString())
       this.firestore
-        .collection("activeProperties")
+        .collection("activePropertieeees")
         .doc(newTopPropertyList[i].ID.toString())
         .update(newTopPropertyList[i])
     }
@@ -116,7 +116,7 @@ export class FirestoreService {
               this.omnicasaService.getPropertyByID(this.propertyList[i].ID, 'en').subscribe((data: any) => {
                 this.propertyList[i].TypeDescriptionEn = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
                 let toWrite: Property = {
-                  id: this.propertyList[i].ID,
+                  id: i,
                   ID: this.propertyList[i].ID,
                   Status: this.propertyList[i].Status,
                   City: this.propertyList[i].City,
@@ -136,7 +136,7 @@ export class FirestoreService {
                   WebID: this.propertyList[i].WebID
                 }
                 this.firestore
-                  .collection("activeProperties")
+                  .collection("activePropertieeees")
                   .doc(toWrite.ID.toString())
                   .set(toWrite)
                 j++;
@@ -198,11 +198,20 @@ export class FirestoreService {
           this.propertyList[i].TypeDescriptionNl = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
           this.omnicasaService.getPropertyByID(this.propertyList[i].ID, 'en').subscribe((data: any) => {
             this.propertyList[i].TypeDescriptionEn = data.GetPropertiesByIDsJsonResult.Value.Items[0].TypeDescription;
+            var add = 0;
             for (let j = 0; j < this.topPropertyListActive.length; j++) {
               if (this.propertyList.findIndex(e => e.ID === this.topPropertyListActive[j].ID) != -1) {
                 if (this.propertyList[i].ID == this.topPropertyListActive[j].ID) {
+                  let newid;
+                  add ++ ;
+                  if (this.topPropertyListActive[j].id > 4){
+                    newid = this.topPropertyListActive[j].id + add
+                  }
+                  else {
+                    newid = this.topPropertyListActive[j].id;
+                  }
                   let toWrite: Property = {
-                    id: this.topPropertyListActive[j].id,
+                    id: this.topPropertyListActive[j].id + add,
                     ID: this.propertyList[i].ID,
                     Status: this.propertyList[i].Status,
                     City: this.propertyList[i].City,
@@ -222,14 +231,14 @@ export class FirestoreService {
                     WebID: this.propertyList[i].WebID
                   }
                   this.firestore
-                    .collection("activeProperties")
+                    .collection("activePropertieeees")
                     .doc(this.propertyList[i].ID.toString())
                     .update(toWrite)
                   break;
                 }
                 else if (j == this.topPropertyListActive.length - 1) {
                   let toWrite: Property = {
-                    id: this.topPropertyListActive[j - 5].ID, //petit hack des familles pour pas que la propriété se retrouve en premier
+                    id: 5 + add,
                     ID: this.propertyList[i].ID,
                     Status: this.propertyList[i].Status,
                     City: this.propertyList[i].City,
@@ -248,8 +257,10 @@ export class FirestoreService {
                     MainTypeName: this.propertyList[i].MainTypeName,
                     WebID: this.propertyList[i].WebID
                   }
+                  add++;
+                  console.log("couille");
                   this.firestore
-                    .collection("activeProperties")
+                    .collection("activePropertieeees")
                     .doc(this.propertyList[i].ID.toString())
                     .set(toWrite)
                 }
@@ -300,7 +311,7 @@ export class FirestoreService {
   }
 
   setPropertyListActiveFire() {
-    this.prout = this.getFirestoreCollection("activeProperties")
+    this.prout = this.getFirestoreCollection("activePropertieeees")
     this.prout.subscribe(data =>
       this.topPropertyListActive = data.map(e => {
         return {
@@ -363,7 +374,7 @@ export class FirestoreService {
 
   deleteProperty(id: number){
     this.firestore
-      .collection("activeProperties")
+      .collection("activePropertieeees")
       .doc(id.toString())
       .delete()
   }

@@ -97,7 +97,7 @@ export class OurBiensComponent implements OnInit {
           ...e.payload.doc.data() as Property
         }
       }).sort(function (a: Property, b: Property) { //un premier tri sur id (ordre des propriétés)
-        return b.id - a.id;
+        return a.id - b.id;
       }).sort(function (a: Property, b: Property) {
         if (a.SubStatus == 2 || a.SubStatus == 3) { // un deuxième tri pour mettre les propriétés disponibles en premier
           if (b.SubStatus == 2 || b.SubStatus == 3) {
