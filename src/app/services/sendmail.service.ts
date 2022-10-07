@@ -18,7 +18,7 @@ export class SendmailService {
   
     this.http
       .post(
-        'https://europe-west1-mamoot-6cad9.cloudfunctions.net/api/sendmail',
+        'https://us-central1-mamoot-api.cloudfunctions.net/sendMail',
         user
       )
       .subscribe(
