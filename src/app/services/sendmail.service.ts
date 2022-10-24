@@ -10,11 +10,13 @@ export class SendmailService {
 
   sendMail(message: any){
     let user = {
-      to: '<info@braxel.be>,<edouard@braxel.be>,<thomas@braxel.be>,<valentin@braxel.be>,<francois@braxel.be>',
+      to: "<info@braxel.be>,<edouard@braxel.be>,<thomas@braxel.be>,<valentin@braxel.be>,<francois@braxel.be>",
       from: message.from,
       subject: message.subject,
       message: message.message
     };
+
+    console.log(user);
   
     this.http
       .post(
