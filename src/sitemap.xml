@@ -14,8 +14,8 @@
   <lastmod>2022-02-18T15:58:15+00:00</lastmod>
   <video:video>
     <video:title>Braxel, agence immobilière située à Waterloo</video:title>
-    <video:content_loc> https://braxel.be/assets/img/home-enfant.mp4 </video:content_loc>
-    <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.braxel.be/</video:player_loc>
+    <video:content_loc> https://braxel.be/assets/img/home-enfant.mp4</video:content_loc>
+    <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.braxel.be/assets/img/home-enfant.mp4</video:player_loc>
     <video:thumbnail_loc>https://braxel.be/assets/img/home-enfant.png</video:thumbnail_loc>
     <video:description>Braxel, agence immobilière située à Waterloo</video:description>
     <video:family_friendly>yes</video:family_friendly>
