@@ -3,7 +3,9 @@
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+            xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+            >
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
@@ -20,7 +22,6 @@
     <video:duration>00:00:05</video:duration>
     <video:publication_date>2022-02-18T15:58:15+00:00</video:publication_date>
     <video:tag>Braxel</video:tag>
-
   </video:video>
 
 </url>
