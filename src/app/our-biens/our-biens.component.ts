@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, Directive, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { Options } from "@angular-slider/ngx-slider";
@@ -8,8 +8,9 @@ import { Observable, Subject } from 'rxjs';
 import { ViewportScroller } from '@angular/common';
 
 import data from '../json/zip.json'
-import { ZipSubscriber } from 'rxjs/internal/observable/zip';
 import { TranslateService } from '@ngx-translate/core';
+import { SharedDatasService } from '../services/shared-datas.service';
+
 
 
 interface SliderDetails {
@@ -27,19 +28,17 @@ interface SliderDetails {
   templateUrl: './our-biens.component.html',
   styleUrls: ['./our-biens.component.css']
 })
+@Directive({
+  selector: '[scroll]'
+})
+
 export class OurBiensComponent implements OnInit {
 
   listOfZips = data;
   searchText = new Subject();
   results: Observable<string[]>;
 
-
-  numberProperty = 9;
-
-
-  addProperties() {
-    this.numberProperty = this.numberProperty + 6;
-  }
+  @ViewChild('addMore') addMore!: ElementRef;
 
 
   registerForm = new FormGroup({
@@ -62,9 +61,11 @@ export class OurBiensComponent implements OnInit {
 
 
 
-  constructor(public firestore: FirestoreService, private viewportScroller: ViewportScroller, private translate: TranslateService) { }
+  constructor(public firestore: FirestoreService, private viewportScroller: ViewportScroller, private translate: TranslateService, public sharedDatas: SharedDatasService) { }
 
   ngOnInit(): void {
+
+    this.sharedDatas.resetPropertiesOurBiens();
 
     this.types = [
       { id: 1, name: 'navbar.16.a' },
@@ -139,7 +140,7 @@ export class OurBiensComponent implements OnInit {
 
         this.registerForm.patchValue({
           zip: sessionStorage.getItem("zip").split(","),
-          selected: selected
+          selected: sessionSelected
         })
 
 
@@ -171,10 +172,9 @@ export class OurBiensComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
+
     this.submitted = true;
-    if (this.selectedTypes.length == 0) {
-      this.selectedTypes = this.registerForm.value.selected;
-    }
+    this.selectedTypes = this.registerForm.value.selected;
     this.cityZip = this.registerForm.value.zip;
     this.toShow = this.searchProperty(this.goal, 2, this.selectedTypes, this.cityZip, this.sliderRooms.minValue, this.sliderRooms.highValue, this.sliderBudget.minValue, this.sliderBudget.highValue);
 
@@ -208,6 +208,7 @@ export class OurBiensComponent implements OnInit {
       newOptions.floor = 0;
       newOptions.step = 10000;
       this.sliderBudget.options = newOptions;
+      this.sliderBudget.highValue = 2000000;
     }
     else {
       this.goal = 1;
@@ -220,7 +221,24 @@ export class OurBiensComponent implements OnInit {
     this.goalSelect = true;
   }
 
+  @HostListener('document:scroll', ['$event'])
+  onScroll(event: Event) {
+    //check if the window is scrolled to the top of end of listOfProperties
+    const windowHeight = window.innerHeight;
+
+    const boundingAddMore = this.addMore.nativeElement.getBoundingClientRect();
+
+    //check if the window is scrolled to boundingAddMore
+    if (boundingAddMore.top <= windowHeight) {
+      this.sharedDatas.addPropertiesOurBiens();
+    }
+  }
+
   searchProperty(goal: number, status: number, type: number[], zip: number[], minRoom: number, maxRoom: number, minPrice: number, maxPrice: number) {
+    //reset the list of properties
+
+
+
     var toReturn: Property[];
     toReturn = [];
     for (let i = this.allProperties.length - 1; i >= 0; i--) {

@@ -81,11 +81,11 @@
         <div class="row pt-5 mt-5">
           <h1 class="col text-center">{{ 'ourBiens.10' | translate }}</h1>
         </div>
-        <app-view-property-list *ngIf="toShow" [numberProperty]="numberProperty" [propertyList]="toShow">
+        <app-view-property-list *ngIf="toShow" [numberProperty]="sharedDatas.numberPropertyOurBiens" [propertyList]="toShow">
         </app-view-property-list>
-        <div class="row" *ngIf="toShow">
-          <button *ngIf="lowerThan(numberProperty, toShow.length)" type="button"
-            class="btn btn-outline-danger col-7 col-lg-3 mx-auto text-center" (click)="addProperties()">{{ 'ourBiens.11' | translate }}</button>
+        <div class="row" id="addMore" #addMore>
+          <button *ngIf="lowerThan(sharedDatas.numberPropertyOurBiens, toShow.length)" type="button"
+            class="btn btn-outline-danger col-7 col-lg-3 mx-auto text-center" (click)="sharedDatas.addPropertiesOurBiens()">{{ 'ourBiens.11' | translate }}</button>
           <div *ngIf="toShow.length==0">
             {{ 'ourBiens.12' | translate }}
           </div>
