@@ -38,7 +38,6 @@ export class OurBiensComponent implements OnInit {
   searchText = new Subject();
   results: Observable<string[]>;
 
-  @ViewChild('addMore') addMore!: ElementRef;
 
 
   registerForm = new FormGroup({
@@ -140,7 +139,7 @@ export class OurBiensComponent implements OnInit {
 
         this.registerForm.patchValue({
           zip: sessionStorage.getItem("zip").split(","),
-          selected: sessionSelected
+          selected: selected
         })
 
 
@@ -220,7 +219,6 @@ export class OurBiensComponent implements OnInit {
     }
     this.goalSelect = true;
   }
-
 
   searchProperty(goal: number, status: number, type: number[], zip: number[], minRoom: number, maxRoom: number, minPrice: number, maxPrice: number) {
     //reset the list of properties
