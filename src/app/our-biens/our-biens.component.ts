@@ -221,18 +221,6 @@ export class OurBiensComponent implements OnInit {
     this.goalSelect = true;
   }
 
-  @HostListener('document:scroll', ['$event'])
-  onScroll(event: Event) {
-    //check if the window is scrolled to the top of end of listOfProperties
-    const windowHeight = window.innerHeight;
-
-    const boundingAddMore = this.addMore.nativeElement.getBoundingClientRect();
-
-    //check if the window is scrolled to boundingAddMore
-    if (boundingAddMore.top <= windowHeight) {
-      this.sharedDatas.addPropertiesOurBiens();
-    }
-  }
 
   searchProperty(goal: number, status: number, type: number[], zip: number[], minRoom: number, maxRoom: number, minPrice: number, maxPrice: number) {
     //reset the list of properties
