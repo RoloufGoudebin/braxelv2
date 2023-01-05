@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Directive, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { Options } from "@angular-slider/ngx-slider";
@@ -28,9 +28,6 @@ interface SliderDetails {
   templateUrl: './our-biens.component.html',
   styleUrls: ['./our-biens.component.css']
 })
-@Directive({
-  selector: '[scroll]'
-})
 
 export class OurBiensComponent implements OnInit {
 
@@ -38,7 +35,7 @@ export class OurBiensComponent implements OnInit {
   searchText = new Subject();
   results: Observable<string[]>;
 
-
+  @ViewChild('addMore') addMore: ElementRef;
 
   registerForm = new FormGroup({
     selected: new FormControl('', [Validators.required]),
@@ -218,6 +215,19 @@ export class OurBiensComponent implements OnInit {
       this.sliderBudget.options = newOptions;
     }
     this.goalSelect = true;
+  }
+
+  @HostListener('document:scroll', ['$event'])
+  onScroll(event: Event) {
+    //check if the window is scrolled to the top of end of listOfProperties
+    const windowHeight = window.innerHeight;
+
+    const boundingAddMore = this.addMore.nativeElement.getBoundingClientRect();
+
+    //check if the window is scrolled to boundingAddMore
+    if (boundingAddMore.top <= windowHeight) {
+      this.sharedDatas.addPropertiesOurBiens();
+    }
   }
 
   searchProperty(goal: number, status: number, type: number[], zip: number[], minRoom: number, maxRoom: number, minPrice: number, maxPrice: number) {
