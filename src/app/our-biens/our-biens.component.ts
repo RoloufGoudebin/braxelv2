@@ -63,6 +63,7 @@ export class OurBiensComponent implements OnInit {
 
     this.sharedDatas.resetPropertiesOurBiens();
 
+
     this.types = [
       { id: 1, name: 'navbar.16.a' },
       { id: 2, name: 'navbar.16.b' },
@@ -118,13 +119,11 @@ export class OurBiensComponent implements OnInit {
         this.goal = Number(sessionStorage.getItem("goal"));
         this.goalSelect = true;
         this.items[this.goal].select = true;
-
         let selected = [];
 
         let sessionSelected = sessionStorage.getItem("selected").split(",").map(function (item) {
           return parseInt(item, 10);
         });;
-
 
 
         for (let i = 0; i < sessionSelected.length; i++) {
@@ -136,7 +135,7 @@ export class OurBiensComponent implements OnInit {
 
         this.registerForm.patchValue({
           zip: sessionStorage.getItem("zip").split(","),
-          selected: selected
+          selected: sessionSelected
         })
 
 
@@ -173,6 +172,9 @@ export class OurBiensComponent implements OnInit {
     this.selectedTypes = this.registerForm.value.selected;
     this.cityZip = this.registerForm.value.zip;
     this.toShow = this.searchProperty(this.goal, 2, this.selectedTypes, this.cityZip, this.sliderRooms.minValue, this.sliderRooms.highValue, this.sliderBudget.minValue, this.sliderBudget.highValue);
+
+    console.log(this.registerForm.value.selected);
+    console.log(this.registerForm)
 
     sessionStorage.setItem("goal", this.goal.toString())
     sessionStorage.setItem("selected", this.selectedTypes.toString());
