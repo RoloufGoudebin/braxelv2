@@ -63,7 +63,6 @@ export class OurBiensComponent implements OnInit {
 
     this.sharedDatas.resetPropertiesOurBiens();
 
-
     this.types = [
       { id: 1, name: 'navbar.16.a' },
       { id: 2, name: 'navbar.16.b' },
