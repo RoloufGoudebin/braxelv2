@@ -97,6 +97,8 @@ export class ViewPropertyComponent implements OnInit {
 
   getPEB(value: number) {
 
+
+    //Bxl
     if (this.property.Zip >= 1000 && this.property.Zip <= 1299) {
       if (value <= 45) {
         return "/assets/img/peb/peb_a.png";
@@ -121,6 +123,7 @@ export class ViewPropertyComponent implements OnInit {
       }
     }
 
+    //Flandre
     else if ((this.property.Zip >= 1500 && this.property.Zip < 4000) || (this.property.Zip >= 8000 && this.property.Zip < 10000)) {
       if (value < 0) {
         return "/assets/img/peb/peb_aplus.png";
@@ -145,26 +148,27 @@ export class ViewPropertyComponent implements OnInit {
       }
     }
 
+    //Wallonie
     else {
       if (value < 45) {
         return "/assets/img/peb/peb_aplus.png";
       }
-      else if (value < 85) {
+      else if (value <= 85) {
         return "/assets/img/peb/peb_a.png";
       }
-      else if (value < 170) {
+      else if (value <= 170) {
         return "/assets/img/peb/peb_b.png";
       }
-      else if (value < 255) {
+      else if (value <= 255) {
         return "/assets/img/peb/peb_c.png";
       }
-      else if (value < 340) {
+      else if (value <= 340) {
         return "/assets/img/peb/peb_d.png";
       }
-      else if (value < 425) {
+      else if (value <= 425) {
         return "/assets/img/peb/peb_e.png";
       }
-      else if (value < 510) {
+      else if (value <= 510) {
         return "/assets/img/peb/peb_f.png";
       }
       else {
