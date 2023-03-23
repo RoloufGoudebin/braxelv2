@@ -24,13 +24,13 @@ export class AppComponent {
   lg;
 
   constructor(private firestore: FirestoreService, private translate: TranslateService, private router: Router, @Inject(DOCUMENT) private document: Document) {
-    this.lg = navigator.language;
-    translate.setDefaultLang('fr');
-    translate.use(this.lg[0] + this.lg[1]);
-    translate.addLangs(['en', 'fr', 'nl']);
   }
 
   ngOnInit() {
+    this.lg = navigator.language;
+    this.translate.setDefaultLang('fr');
+    this.translate.use(this.lg[0] + this.lg[1]);
+    this.translate.addLangs(['en', 'fr', 'nl']);
     if (this.lg == 'en' || this.lg == 'fr' || this.lg == 'nl') {
       this.document.documentElement.lang = this.lg;
     }
@@ -38,9 +38,6 @@ export class AppComponent {
       this.document.documentElement.lang = 'fr';
     }
     this.firestore.updatePropertyListActive();
-    //this.firestore.updatePropertyListSell()
-    //this.firestore.createPropertyListSell();
-    //this.firestore.createPropertyListActive();
     this.firestore.setPropertyListActiveFire();
     this.firestore.getDateRefresh().subscribe(data =>
       this.date = data.map(e => {
