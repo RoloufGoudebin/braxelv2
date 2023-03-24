@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
-import { Ng2OdometerModule } from 'ng2-odometer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -63,6 +62,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient} from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
+import { CountUpModule } from 'ngx-countup';
 
 
 @NgModule({
@@ -113,7 +113,6 @@ import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
     AngularFirestoreModule,
     AngularFireStorageModule,
     NgbModule,
-    Ng2OdometerModule.forRoot(),
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     NgSelectModule,
@@ -127,7 +126,8 @@ import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    CountUpModule
   ],
   providers: [OmnicasaService,
     AngularFireAuth,

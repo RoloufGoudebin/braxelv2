@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
   showChiffres= false;
   toShow: Property[]
 
+  isSSR = false;
+
 
   ngOnInit() {
     this.firestore.prout.subscribe(data=>
@@ -34,14 +36,17 @@ export class HomeComponent implements OnInit {
       return a.id - b.id;
     })
     );
-  }
 
-  @HostListener('window:scroll', ['$event'])
-  doSomething(event: any) {
-
-    if(window.pageYOffset > (document.getElementById('chiffres').offsetTop-500)){
-      this.showChiffres = true;
+    //check if is server side rendering
+    if (typeof window !== 'undefined') {
+      this.isSSR = false;
     }
+    else {
+      this.isSSR = true;
+    }
+
+    console.log(this.isSSR);
+
   }
 
 

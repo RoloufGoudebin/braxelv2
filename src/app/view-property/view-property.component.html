@@ -181,14 +181,10 @@
     </ul>
   </div>
 
-
-  <ng-image-fullscreen-view [images]="imageObject" [imageIndex]="selectedImageIndex" [show]="showFlag"
-    (close)="closeEventHandler()"></ng-image-fullscreen-view>
-
-
-
-
-
+  <div *ngIf="!isSSR">
+    <ng-image-fullscreen-view [images]="imageObject" [imageIndex]="selectedImageIndex" [show]="showFlag"
+      (close)="closeEventHandler()"></ng-image-fullscreen-view>
+  </div>
 
 
 

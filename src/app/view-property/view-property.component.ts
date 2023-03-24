@@ -20,6 +20,8 @@ export class ViewPropertyComponent implements OnInit {
 
   slickModal;
 
+  isSSR = true;
+
 
   slideConfig = { slidesToShow: 1, slidesToScroll: 1, adaptiveHeight: true, arrows: false };
   slideConfigNavXl = {
@@ -85,6 +87,11 @@ export class ViewPropertyComponent implements OnInit {
         this.imageObject.push({ image: this.property.LargePictures[i] });
       }
     });;
+
+    //check if is server side rendering
+    if (typeof window !== 'undefined') {
+      this.isSSR = false;
+    }
   }
 
 

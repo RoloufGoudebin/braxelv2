@@ -11,21 +11,21 @@
           <div class="jumbotron col-6 d-none d-lg-block my-auto porte play-left">
             <div class="row">
               <div class="col-12 text-center">
-                <ng2-odometer class="compteur" [number]="3.5" [format]="'(ddd),d'"></ng2-odometer>
+                <div class="compteur"[countUp]="3.5" [options]="{ enableScrollSpy: true, decimalPlaces: 1 }">0</div>
                 <p>%</p>
               </div>
               <div class="col-12 text-center">
                 <p class="test">{{ 'sellOrBuy.1' | translate }}</p>
               </div>
               <div class="col-12 text-center">
-                <ng2-odometer class="compteur" [number]="23" [config]="{ }" [format]="'d'"></ng2-odometer>
+                <div class="compteur"[countUp]="23" [options]="{ enableScrollSpy: true}">0</div>
                 <p class="test"> {{ 'sellOrBuy.2' | translate }}</p>
               </div>
               <div class="col-12 text-center ">
                 <p class="test">{{ 'sellOrBuy.3' | translate }}</p>
               </div>
               <div class="col-12 text-center">
-                <ng2-odometer class="compteur" [number]="94.5" [format]="'(ddd),d'"></ng2-odometer>
+                <div class="compteur" [countUp]="94.5" [options]="{ enableScrollSpy: true, decimalPlaces: 1}"></div>
                 <p>%</p>
               </div>
               <div class="col-12 text-center">

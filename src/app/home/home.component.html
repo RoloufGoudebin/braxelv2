@@ -7,20 +7,20 @@
 
 
 <div id="chiffres" class="chiffres container-fluid mb-5">
-  <div *ngIf="showChiffres">
+  <div>
     <div class="row">
-      <div class="col-8 col-md-4 text-center mx-auto white">
-        <ng2-odometer class="compteur" [number]="23" [config]="{ }"></ng2-odometer>
+      <div class="col-8 col-md-4 text-center mx-auto white" >
+        <h2 class="text-white" [countUp]="23" [options]="{ enableScrollSpy: true }">0</h2>
         <h2 class="text-white"> {{ 'home.10' | translate }}</h2>
         <p>{{ 'home.11' | translate }}</p>
       </div>
       <div class="col-8 col-md-4 text-center mx-auto">
-        <ng2-odometer class="compteur" [number]="94.5" [format]="'(ddd),d'"></ng2-odometer>
-        <h2 class="text-white"> %</h2>
+        <h2 class="text-white" [countUp]="94.5" [options]="{ enableScrollSpy: true, decimalPlaces:1}">0</h2>
+        <h2 class="text-white">%</h2>
         <p>{{ 'home.12' | translate }}</p>
       </div>
       <div class="col-8 col-md-4 text-center mx-auto">
-        <ng2-odometer class="compteur" [number]="3.81" [format]="'(ddd),d'"></ng2-odometer>
+        <h2 class="text-white" [countUp]="3.81" [options]="{ enableScrollSpy: true, decimalPlaces:2}">0</h2>
         <h2 class="text-white"> %</h2>
         <p>{{ 'home.13' | translate }} </p>
       </div>

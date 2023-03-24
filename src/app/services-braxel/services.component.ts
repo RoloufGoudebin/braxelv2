@@ -21,6 +21,8 @@ export class ServicesComponent implements OnInit {
 
   ngOnInit(): void {
     this.url = this.domSanitizer.bypassSecurityTrustResourceUrl("https://nodalview.com/hsfAGKoz1CDKyi6HTgvySvsi");
+
+
   }
 
 
