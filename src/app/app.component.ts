@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -27,7 +27,15 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.lg = navigator.language;
+
+    //check if is server side rendering
+    if (typeof window !== 'undefined') {
+      this.lg = navigator.language;
+    }
+    else{
+      this.lg = 'fr';
+    }
+
     this.translate.setDefaultLang('fr');
     this.translate.use(this.lg[0] + this.lg[1]);
     this.translate.addLangs(['en', 'fr', 'nl']);

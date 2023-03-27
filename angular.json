@@ -26,7 +26,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/robots.txt",
-              "src/sitemap.xml"
+              "src/sitemap.xml",
+              "src/google597b7a0c68c36dba.html"
             ],
             "styles": [
               "src/styles.css",
@@ -140,7 +141,11 @@
           "options": {
             "outputPath": "dist/braxelv2/server",
             "main": "server.ts",
-            "tsConfig": "tsconfig.server.json"
+            "tsConfig": "tsconfig.server.json",
+            "externalDependencies": [
+              "@firebase/app",
+              "@firebase/firestore"
+            ]
           },
           "configurations": {
             "production": {

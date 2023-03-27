@@ -14,10 +14,11 @@ export class NavbarComponent implements OnInit {
   constructor(public translate: TranslateService) { }
 
   ngOnInit(): void {
-    document.getElementById("tapbar").style.bottom = "-20%";
 
     //check if is server side rendering
     if (typeof window !== 'undefined') {
+      document.getElementById("tapbar").style.bottom = "-20%";
+
       window.addEventListener("scroll", function () {
         if (window.pageYOffset == 0) {
           document.getElementById("tapbar").style.bottom = "-20%";
