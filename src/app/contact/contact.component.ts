@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { SendmailService } from '../services/sendmail.service';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact',
@@ -9,7 +10,7 @@ import { SendmailService } from '../services/sendmail.service';
 })
 export class ContactComponent implements OnInit {
 
-  constructor(private sendMail: SendmailService) { }
+  constructor(private sendMail: SendmailService, private meta : Meta) { }
 
   contactForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -19,6 +20,7 @@ export class ContactComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.meta.updateTag({name:'canonical', content:'https://braxel.be/contact'})
   }
 
   onSubmit() {

@@ -42,7 +42,7 @@
           <div ngxSlickItem *ngFor="let picture of property.LargePictures ; let i = index" class="slide"
             data-slide-number="i" data-toggle="lightbox" data-gallery="gallery">
             <img src="{{picture}}" class="d-block rounded img-fluid text-center mx-auto" (click)="showLightbox(i)"
-              alt="photo propriété immobilière">
+              alt="photo propriété immobilière de Braxel, une agence immobilière située à Waterloo">
           </div>
         </ngx-slick-carousel>
         <span class="ribon" [ngStyle]="{'background':getColor(property.Goal, property.SubStatus)}">
@@ -73,7 +73,7 @@
             data-gallery="gallery">
             <img src="{{picture}}" (click)="slickModal.slickGoTo(i)"
               class="d-block rounded img-fluid px-3 thumbnail-img text-center mx-auto"
-              alt="photo propriété immobilière">
+              alt="photo propriété immobilière mise en vente par Braxel, une agence immobilière située à Waterloo">
           </div>
         </ngx-slick-carousel>
 

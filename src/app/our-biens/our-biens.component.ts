@@ -11,6 +11,8 @@ import data from '../json/zip.json'
 import { TranslateService } from '@ngx-translate/core';
 import { SharedDatasService } from '../services/shared-datas.service';
 
+import { Meta } from '@angular/platform-browser';
+
 
 
 interface SliderDetails {
@@ -57,9 +59,11 @@ export class OurBiensComponent implements OnInit {
 
 
 
-  constructor(public firestore: FirestoreService, private viewportScroller: ViewportScroller, private translate: TranslateService, public sharedDatas: SharedDatasService) { }
+  constructor(public firestore: FirestoreService, private viewportScroller: ViewportScroller, private translate: TranslateService, public sharedDatas: SharedDatasService, private meta : Meta) { }
 
   ngOnInit(): void {
+
+    this.meta.updateTag({name:'canonical', content:'https://braxel.be/nos-biens'})
 
     this.sharedDatas.resetPropertiesOurBiens();
 

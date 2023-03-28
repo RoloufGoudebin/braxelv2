@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../services/firebase/firestore.service';
 import { Property } from '../services/omnicasa/interface';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-realisations',
@@ -9,13 +10,15 @@ import { Property } from '../services/omnicasa/interface';
 })
 export class RealisationsComponent implements OnInit {
 
-  constructor(private firestore: FirestoreService) { }
+  constructor(private firestore: FirestoreService, private meta: Meta) { }
 
   toShow: Property[]
   numberProperty=12;
   ready= false;
 
   ngOnInit(): void {
+
+    this.meta.updateTag({name:'canonical', content:'https://braxel.be/realisations'})
 
     this.firestore.prout.subscribe(data=>
       this.toShow = data.map(e => {

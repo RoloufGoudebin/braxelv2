@@ -3,6 +3,7 @@ import { Property} from '../services/omnicasa/interface';
 import { ActivatedRoute } from '@angular/router';
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-view-property',
@@ -72,7 +73,7 @@ export class ViewPropertyComponent implements OnInit {
   loadPic = false;
 
 
-  constructor(private route: ActivatedRoute, public omnicasa: OmnicasaService, private translate: TranslateService) { }
+  constructor(private route: ActivatedRoute, public omnicasa: OmnicasaService, private translate: TranslateService, private meta : Meta) { }
 
 
   ngOnInit(): void {
@@ -92,6 +93,8 @@ export class ViewPropertyComponent implements OnInit {
     if (typeof window !== 'undefined') {
       this.isSSR = false;
     }
+
+    this.meta.updateTag({name:'canonical', content:'https://braxel.be/biens-immobiliers/'+this.id})
   }
 
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-agency',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgencyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private meta: Meta) { }
 
   ngOnInit(): void {
+    this.meta.updateTag({name:'canonical', content:'https://braxel.be/agence'})
   }
 
 }
