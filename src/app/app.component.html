@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html [lang]="lg">
 
-<head>
-    <meta charset="utf-8">
-    <title>Mon site web - {{lang}}</title>
-</head>
-
 <body>
     <div [@triggerName]="prepareRoute(outlet)">
         <router-outlet #outlet="outlet"></router-outlet>
