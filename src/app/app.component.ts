@@ -30,17 +30,17 @@ export class AppComponent {
 
     //check if is server side rendering
     if (typeof window !== 'undefined') {
-      this.lg = navigator.language;
+      this.lg = navigator.language[0] + navigator.language[1];
     }
-    else{
+    else {
       this.lg = 'fr';
     }
 
     this.translate.setDefaultLang('fr');
-    this.translate.use(this.lg[0] + this.lg[1]);
+    this.translate.use(this.lg);
     this.translate.addLangs(['en', 'fr', 'nl']);
     if (this.lg == 'en' || this.lg == 'fr' || this.lg == 'nl') {
-      this.document.documentElement.lang = this.lg;
+      this.document.documentElement.lang = this.lg;  
     }
     else {
       this.document.documentElement.lang = 'fr';
