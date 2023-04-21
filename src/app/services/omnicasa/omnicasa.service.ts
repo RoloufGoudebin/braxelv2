@@ -25,18 +25,7 @@ export class OmnicasaService {
         this.propertyList = returnedData;
       }));
     return this.toReturn;
-
   }
-
-  getPropertyListActive(): Observable<any>{
-    this.toReturn = this.http.get<PropertyList>(this.linkActive)
-      .pipe(tap((returnedData: any) => {
-        //save the returned data so we can re-use it later without making more HTTP calls
-        this.propertyList = returnedData;
-      }));
-    return this.toReturn;
-  }
-
 
   getPropertyByID(id: number, lang: string): Observable<Property> {
     let lg;

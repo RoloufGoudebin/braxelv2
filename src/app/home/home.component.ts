@@ -3,8 +3,7 @@ import { FirestoreService } from '../services/firebase/firestore.service';
 import { Property } from '../services/omnicasa/interface';
 
 import { BraxelHome } from '../braxel-home.model'
-import { TranslateService } from '@ngx-translate/core';
-import e from 'express';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +12,7 @@ import e from 'express';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private firestore: FirestoreService) {
+  constructor(private firestore: FirestoreService, private meta: Meta) {
    }
 
   numberProperty = 9;
@@ -37,6 +36,8 @@ export class HomeComponent implements OnInit {
     })
     );
 
+    this.meta.updateTag({ name: 'canonical', content: "https://braxel.be/"})
+
     //check if is server side rendering
     if (typeof window !== 'undefined') {
       this.isSSR = false;
@@ -44,8 +45,6 @@ export class HomeComponent implements OnInit {
     else {
       this.isSSR = true;
     }
-
-    console.log(this.isSSR);
 
   }
 

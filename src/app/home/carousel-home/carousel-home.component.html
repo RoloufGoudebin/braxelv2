@@ -3,19 +3,22 @@
     <ngx-slick-carousel class="carousel col-12 px-0 mx-0 mt-4" #slickModal="slick-carousel" [config]="slideConfig">
       <div ngxSlickItem *ngFor="let slide of carousel" class="slide px-0 mx-0">
         <!--Video source-->
-        <video *ngIf="slide.type==='video'" class="video-fluid center px-0 mx-0 pt-5 pt-lg-0" [muted]="true" playsinline autoplay loop>
+        <video *ngIf="slide.type==='video'" class="video-fluid center px-0 mx-0 pt-5 pt-lg-0" [muted]="true" playsinline
+          autoplay loop>
           <source src="{{slide.src}}" type="video/mp4" class="px-0 mx-0" />
         </video>
         <!--end video-->
       </div>
       <div ngxSlickItem class="slide px-0 mx-0">
         <div class="view pb-n5 mb-n5 px-0 mx-0">
-          <img *ngIf="carouselImg" class="img-fluid px-0 mx-0" src="{{carouselImg[0].url}}" alt="Braxel, Agence immobilière à Waterloo">
+          <img *ngIf="carouselImg" class="img-fluid px-0 mx-0" src="{{carouselImg[0].url}}"
+            alt="Braxel, Agence immobilière à Waterloo">
         </div>
       </div>
       <div ngxSlickItem class="slide px-0 mx-0">
         <div class="view pb-n5 mb-n5 px-0 mx-0">
-          <img *ngIf="carouselImg" class="img-fluid px-0 mx-0" src="{{carouselImg[1].url}}" alt="Braxel, agents immobiliers à Waterloo, Bruxelles, Brabant-Wallon et Brabant-Flamand">
+          <img *ngIf="carouselImg" class="img-fluid px-0 mx-0" src="{{carouselImg[1].url}}"
+            alt="Braxel, agents immobiliers à Waterloo, Bruxelles, Brabant-Wallon et Brabant-Flamand">
         </div>
       </div>
     </ngx-slick-carousel>
@@ -33,12 +36,12 @@
             </h1>
             <!-- Buttons -->
             <div class="overlay__btns mx-auto">
-  
+
               <button class="overlay__btn overlay__btn--transparent" routerLinkActive="active" routerLink="/services">
                 <span>{{ 'home.2' | translate }}</span>
                 <span class="overlay__btn-emoji"></span>
               </button>
-  
+
               <button class="overlay__btn overlay__btn--colors" routerLinkActive="active" routerLink="/nos-biens">
                 <span style="white-space: nowrap;">{{ 'home.3' | translate }}</span>
               </button>
@@ -61,8 +64,8 @@
         <!-- Buttons -->
         <div class="overlay__btns mx-auto">
 
-          <button class="overlay__btn overlay__btn-small col-5 mx-auto"
-            routerLinkActive="active" routerLink="/services">
+          <button class="overlay__btn overlay__btn-small col-5 mx-auto" routerLinkActive="active"
+            routerLink="/services">
             <span>{{ 'home.2' | translate }}</span>
             <span class="overlay__btn-emoji"></span>
           </button>
