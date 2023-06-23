@@ -22,7 +22,7 @@ export class ContactModalComponent{
   closeResult = '';
   notConfirm = true;
   
-  @Input() id = '';
+  @Input() id?;
 
   
   
