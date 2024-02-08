@@ -109,4 +109,21 @@ export class ViewPropertyListComponent implements OnInit {
     return toChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   }
 
+  monthToLang(string: string) {
+    if (this.lang == 'fr') {
+      return string;
+    }
+    else if (this.lang == 'en') {
+      //replace mois by month
+      string = string.replace('mois', 'month');
+      return string;
+    }
+    else if (this.lang == 'nl') {
+      //replace mois by maand
+      string = string.replace('mois', 'maand');
+      return string;
+    }
+    return string;
+  }
+
 }

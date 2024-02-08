@@ -59,11 +59,11 @@ export class OurBiensComponent implements OnInit {
 
 
 
-  constructor(public firestore: FirestoreService, private viewportScroller: ViewportScroller, private translate: TranslateService, public sharedDatas: SharedDatasService, private meta : Meta) { }
+  constructor(public firestore: FirestoreService, private viewportScroller: ViewportScroller, private translate: TranslateService, public sharedDatas: SharedDatasService, private meta: Meta) { }
 
   ngOnInit(): void {
 
-    this.meta.updateTag({name:'canonical', content:'https://braxel.be/nos-biens'})
+    this.meta.updateTag({ name: 'canonical', content: 'https://braxel.be/nos-biens' })
 
     this.sharedDatas.resetPropertiesOurBiens();
 
@@ -83,9 +83,16 @@ export class OurBiensComponent implements OnInit {
     ];
 
 
-    this.listOfZips.sort(function (a: any, b: any) {
-      return a.zip - b.zip;
+    this.listOfZips = this.listOfZips.sort(function (a: any, b: any) {
+      if (a.localite < b.localite) {
+        return -1;
+      }
+      if (a.localite > b.localite) {
+        return 1;
+      }
+      return 0;
     })
+
 
     for (let i = 0; i < this.listOfZips.length; i++) {
       this.listOfZips[i].localite = this.listOfZips[i].localite.toUpperCase();
