@@ -25,7 +25,7 @@ interface SliderDetails {
 export class AlertModalComponent {
   closeResult = '';
   goal: number;
-  goalSelect= false;
+  goalSelect = false;
   successMessage: string;
   notConfirm = true;
   roomTouch = true;
@@ -54,7 +54,7 @@ export class AlertModalComponent {
   types = [
     { id: 1, name: 'navbar.16.a' },
     { id: 2, name: 'navbar.16.b' },
-    { id: 3, name: 'navbar.16.c'},
+    { id: 3, name: 'navbar.16.c' },
     { id: 4, name: 'navbar.16.d' },
     { id: 5, name: 'navbar.16.e' },
     { id: 6, name: 'navbar.16.f' },
@@ -63,58 +63,58 @@ export class AlertModalComponent {
 
   constructor(private modalService: NgbModal, private sendmail: SendmailService, private translate: TranslateService) { }
 
-  ngOnInit(){
+  ngOnInit() {
   }
 
   openScrollableContent(longContent) {
     this.modalService.open(longContent, { scrollable: true });
   }
 
-  onSubmit(){
-      let goal, type, budget, surface;
+  onSubmit() {
+    let goal, type, budget, surface;
 
-      if (this.alertForm.value.goal == 0){
-        goal = "acheter";
-      }
-      else if (this.alertForm.value.goal == 1){
-        goal = "louer";
-      }
+    if (this.alertForm.value.goal == 0) {
+      goal = "acheter";
+    }
+    else if (this.alertForm.value.goal == 1) {
+      goal = "louer";
+    }
 
-      type = this.alertForm.value.selected;
+    type = this.alertForm.value.selected;
 
-      if (this.sliderPrice.highValue == 2000000){
-        budget = "+2 000 000"
-      }
-      else {
-        budget = this.sliderPrice.highValue
-      }
+    if (this.sliderPrice.highValue == 2000000) {
+      budget = "+2 000 000"
+    }
+    else {
+      budget = this.sliderPrice.highValue
+    }
 
-      if (this.sliderSurface.highValue == 500){
-        surface = "+ 500"
-      }
-      else {
-        surface = this.sliderSurface.highValue
-      }
+    if (this.sliderSurface.highValue == 500) {
+      surface = "+ 500"
+    }
+    else {
+      surface = this.sliderSurface.highValue
+    }
 
-      let user = {
-        subject : "Alerte bien",
-        from : this.alertForm.value.mail,
-        message : "<p>Alerte pour des biens à " + goal +"</p>" + 
-        "<p>Type(s) de bien(s): " + type + "</p>" +
-        "<p>Codes postaux : " + this.alertForm.value.zip + "</p>" +
-        "<p>Nombre de chambres : entre " + this.sliderRooms.minValue + " et " + this.sliderRooms.highValue + "</p>" +
-        "<p>Budget : entre " +this.sliderPrice.minValue + " et " + budget + "</p>" +
-        "<p>Surface : entre " + this.sliderSurface.minValue + " et " + surface + "</p>" +
-        "<p>Autre particularités : " + this.alertForm.value.particularites + "</p>" +
-        "<p>Nom : " + this.alertForm.value.name + "</p>" +
-        "<p>Prénom : " + this.alertForm.value.firstname + "</p>" +
-        "<p>Mail : " + this.alertForm.value.mail + "</p>" +
-        "<p>Téléphone : " + this.alertForm.value.phone + "</p>"
-      }
-      this.sendmail.sendMail(user)
+    let user = {
+      subject: "Alerte bien",
+      from: this.alertForm.value.mail,
+      message: "Alerte pour des biens à " + goal +
+        "\n\nType(s) de bien(s): " + type +
+        "\n\nCodes postaux : " + this.alertForm.value.zip +
+        "\n\nNombre de chambres : entre " + this.sliderRooms.minValue + " et " + this.sliderRooms.highValue +
+        "\n\nBudget : entre " + this.sliderPrice.minValue + " et " + budget +
+        "\n\nSurface : entre " + this.sliderSurface.minValue + " et " + surface +
+        "\n\nAutre particularités : " + this.alertForm.value.particularites +
+        "\n\nNom : " + this.alertForm.value.name +
+        "\n\nPrénom : " + this.alertForm.value.firstname +
+        "\n\nMail : " + this.alertForm.value.mail +
+        "\n\nTéléphone : " + this.alertForm.value.phone
+    }
+    this.sendmail.sendMail(user.message, user.subject);
 
     this.notConfirm = false;
-    }
+  }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -126,15 +126,15 @@ export class AlertModalComponent {
     }
   }
 
-  touch(name: string){
-    if(name=="room"){
-      this.roomTouch=true;
+  touch(name: string) {
+    if (name == "room") {
+      this.roomTouch = true;
     }
-    if(name=="budget"){
-      this.budgetTouch=true;
+    if (name == "budget") {
+      this.budgetTouch = true;
     }
-    if(name=="surface"){
-      this.surfaceTouch=true;
+    if (name == "surface") {
+      this.surfaceTouch = true;
     }
   }
 
@@ -182,10 +182,10 @@ export class AlertModalComponent {
         ceil: 500,
         step: 10,
         translate: (value: number): string => {
-          if(value==500){
+          if (value == 500) {
             return "+" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " m²";
           }
-            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " m²";
+          return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " m²";
         }
       }
     }
@@ -199,13 +199,13 @@ export class AlertModalComponent {
         ceil: 2000000,
         step: 10000,
         translate: (value: number): string => {
-          if(value==2000000){
+          if (value == 2000000) {
             return "+" + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
           }
-            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
+          return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
         }
       }
-      
+
     }
 
   sliderRadius: SliderDetails =
@@ -219,27 +219,27 @@ export class AlertModalComponent {
       }
     }
 
-    get selected(){
-      return this.alertForm.get('selected');
-    }
-    get zip(){
-      return this.alertForm.get('zip');
-    }
-    get particularites(){
-      return this.alertForm.get('particularites')
-    }
-    get name(){
-      return this.alertForm.get('name');
-    }
-    get firstname(){
-      return this.alertForm.get('firstname');
-    }
-    get mail(){
-      return this.alertForm.get('mail');
-    }
-    get phone(){
-      return this.alertForm.get('phone');
-    }
+  get selected() {
+    return this.alertForm.get('selected');
+  }
+  get zip() {
+    return this.alertForm.get('zip');
+  }
+  get particularites() {
+    return this.alertForm.get('particularites')
+  }
+  get name() {
+    return this.alertForm.get('name');
+  }
+  get firstname() {
+    return this.alertForm.get('firstname');
+  }
+  get mail() {
+    return this.alertForm.get('mail');
+  }
+  get phone() {
+    return this.alertForm.get('phone');
+  }
 
 
 }

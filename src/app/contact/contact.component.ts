@@ -27,12 +27,12 @@ export class ContactComponent implements OnInit {
     let user = {
       subject : "Contact site",
       from : this.contactForm.value.mail,
-      message: "<p> Message venant de " + this.contactForm.value.name + 
-      "</p><br><p>Mail : " + this.contactForm.value.mail + 
-      "</p><br><p>Numéro de téléphone : " + this.contactForm.value.phone 
-      + "</p><br> <p>Concerne : " + this.contactForm.value.message + "</p>"
+      message: "Message venant de " + this.contactForm.value.name + 
+      "\n\n Mail : " + this.contactForm.value.mail + 
+      "\n\n Numéro de téléphone : " + this.contactForm.value.phone 
+      + "\n\nConcerne : " + this.contactForm.value.message
     }
-    this.sendMail.sendMail(user);
+    this.sendMail.sendMail(user.message, user.subject);
     this.contactForm.reset();
   }
 

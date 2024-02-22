@@ -379,4 +379,8 @@ export class FirestoreService {
       .delete()
   }
 
+  addDocument(collectionName: string, data: any): Promise<any> {
+    return this.firestore.collection(collectionName).add(data);
+  }
+
 }

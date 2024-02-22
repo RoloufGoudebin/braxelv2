@@ -76,16 +76,16 @@ export class EstimationModalComponent {
     let user = {
       subject : "Estimation bien",
       from : this.alertForm.value.mail,
-      message: "<p>Demande d'estimation pour un bien destiné à la " + goal + "</p>" +
-        "<p>Type(s) de bien(s): " + type + "</p>" +
-        "<p>Adresse: " + this.alertForm.value.street + ", " + this.alertForm.value.zip + "</p>" +
-        "<p>Autre particularités : " + this.alertForm.value.particularites + "</p>" +
-        "<p>Nom : " + this.alertForm.value.name + "</p>" +
-        "<p>Prénom : " + this.alertForm.value.firstname + "</p>" +
-        "<p>Mail : " + this.alertForm.value.mail + "</p>" +
-        "<p>Téléphone : " + this.alertForm.value.phone + "</p>"
+      message: "\n\nDemande d'estimation pour un bien destiné à la " + goal +  
+        "\n\nType(s) de bien(s): " + type +  
+        "\n\nAdresse: " + this.alertForm.value.street + ", " + this.alertForm.value.zip +  
+        "\n\nAutre particularités : " + this.alertForm.value.particularites +  
+        "\n\nNom : " + this.alertForm.value.name +  
+        "\n\nPrénom : " + this.alertForm.value.firstname +  
+        "\n\nMail : " + this.alertForm.value.mail +  
+        "\n\nTéléphone : " + this.alertForm.value.phone + "</p>"
     }
-    this.sendmail.sendMail(user)
+    this.sendmail.sendMail(user.message, user.subject);
 
     this.notConfirm = false;
   }

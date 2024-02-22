@@ -11,14 +11,14 @@
           <div class="jumbotron col-6 d-none d-lg-block my-auto porte play-left">
             <div class="row">
               <div class="col-12 text-center">
-                <div class="compteur"[countUp]="3.5" [options]="{ enableScrollSpy: true, decimalPlaces: 1 }">0</div>
+                <div class="compteur" [countUp]="3.5" [options]="{ enableScrollSpy: true, decimalPlaces: 1 }">0</div>
                 <p>%</p>
               </div>
               <div class="col-12 text-center">
                 <p class="test">{{ 'sellOrBuy.1' | translate }}</p>
               </div>
               <div class="col-12 text-center">
-                <div class="compteur"[countUp]="23" [options]="{ enableScrollSpy: true}">0</div>
+                <div class="compteur" [countUp]="23" [options]="{ enableScrollSpy: true}">0</div>
                 <p class="test"> {{ 'sellOrBuy.2' | translate }}</p>
               </div>
               <div class="col-12 text-center ">
@@ -52,7 +52,7 @@
               </p>
               <div class="text-center">
                 <h5 class="animated zoomInDown wow">{{ 'sellOrBuy.83' | translate }}
-              </h5>
+                </h5>
                 <a><button class="mx-auto text-center" style="margin-bottom: 1em;" type="button" mdbBtn outline="true"
                     color="danger" rounded="true" size="md">
                     <app-estimation-modal></app-estimation-modal>
@@ -86,11 +86,13 @@
                   stroke-width="1" fill="#fff" vector-effect="non-scaling-stroke"></path>
               </svg>
               <figure slot="first" class="before">
-                <img width="100%" src="assets/img/Base-comp.jpg" alt="propriété à vendre à waterloo par Braxel, une agence immobilière à Waterloo">
+                <img width="100%" src="assets/img/Base-comp.jpg"
+                  alt="propriété à vendre à waterloo par Braxel, une agence immobilière à Waterloo">
                 <figcaption>{{ 'sellOrBuy.23' | translate }}</figcaption>
               </figure>
               <figure slot="second" class="after">
-                <img width="100%" src="assets/img/Final-comp.jpg" alt="maison à vendre à waterloo par Braxel, une agence immobilière à Waterloo">
+                <img width="100%" src="assets/img/Final-comp.jpg"
+                  alt="maison à vendre à waterloo par Braxel, une agence immobilière à Waterloo">
                 <figcaption>{{ 'sellOrBuy.24' | translate }}</figcaption>
               </figure>
             </img-comparison-slider>
@@ -123,8 +125,8 @@
           </div>
         </div>
         <div class="text-center">
-          <h5 class="animated zoomInDown wow">{{ 'sellOrBuy.83' | translate }} 
-        </h5>
+          <h5 class="animated zoomInDown wow">{{ 'sellOrBuy.83' | translate }}
+          </h5>
           <a><button class="mx-auto text-center" style="margin-bottom: 4em;" type="button" mdbBtn outline="true"
               color="danger" rounded="true" size="md">
               <app-estimation-modal></app-estimation-modal>
@@ -187,8 +189,8 @@
           </div>
         </div>
         <div class="text-center">
-          <h5 class="animated zoomInDown wow">{{ 'sellOrBuy.83' | translate }} 
-        </h5>
+          <h5 class="animated zoomInDown wow">{{ 'sellOrBuy.83' | translate }}
+          </h5>
           <a><button class="mx-auto text-center" style="margin-bottom: 4em;" type="button" mdbBtn outline="true"
               color="danger" rounded="true" size="md">
               <app-estimation-modal></app-estimation-modal>
@@ -216,11 +218,13 @@
                   stroke-width="1" fill="#fff" vector-effect="non-scaling-stroke"></path>
               </svg>
               <figure slot="first" class="before">
-                <img width="100%" src="assets/img/homestag_2.jpg" alt="propriété à louer via agence immobilière Braxel, située à Waterloo">
+                <img width="100%" src="assets/img/homestag_2.jpg"
+                  alt="propriété à louer via agence immobilière Braxel, située à Waterloo">
                 <figcaption>{{ 'sellOrBuy.23' | translate }}</figcaption>
               </figure>
               <figure slot="second" class="after">
-                <img width="100%" src="assets/img/homestag_1.jpg" alt="propriété louée via agence immobilière Braxel, située à Waterloo">
+                <img width="100%" src="assets/img/homestag_1.jpg"
+                  alt="propriété louée via agence immobilière Braxel, située à Waterloo">
                 <figcaption>{{ 'sellOrBuy.24' | translate }}</figcaption>
 
               </figure>
@@ -271,7 +275,8 @@
       <div class="recherche">
         <div class="row text-justify">
           <div class="d-none d-md-block col-6 mr-auto">
-            <img src="assets/img/house.webp" class="img-fluid slideInLeft" alt="Braxel, une agence immobilière à Waterloo spécialisée dans la location et la vente">
+            <img src="assets/img/house.webp" class="img-fluid slideInLeft"
+              alt="Braxel, une agence immobilière à Waterloo spécialisée dans la location et la vente">
           </div>
           <div class="col-12 col-md-6 my-auto">
 
@@ -317,7 +322,8 @@
 
           </div>
           <div class="col-6 d-none d-lg-block slideInRight network">
-            <img src="assets/img/network_blue.jpg" class="col-12 img-fluid network" alt="réseau agences immobilières par Braxel, agence immobilière située à Waterloo">
+            <img src="assets/img/network_blue.jpg" class="col-12 img-fluid network"
+              alt="réseau agences immobilières par Braxel, agence immobilière située à Waterloo">
           </div>
         </div>
       </div>
@@ -356,7 +362,7 @@
       </div>
     </div>
     <div class="text-center">
-      <h5 class="animated zoomInDown wow " style ="margin-top: 1.6em;">{{ 'sellOrBuy.83' | translate }}</h5>
+      <h5 class="animated zoomInDown wow " style="margin-top: 1.6em;">{{ 'sellOrBuy.83' | translate }}</h5>
       <a><button class="mx-auto text-center" type="button" mdbBtn outline="true" color="danger" rounded="true"
           size="md">
           <app-estimation-modal></app-estimation-modal>
@@ -382,11 +388,13 @@
                   stroke-width="1" fill="#fff" vector-effect="non-scaling-stroke"></path>
               </svg>
               <figure slot="first" class="before">
-                <img width="100%" src="assets/img/Base-comp.jpg" alt="vente immobilière avant par Braxel, agence immobilière située à Waterloo">
+                <img width="100%" src="assets/img/Base-comp.jpg"
+                  alt="vente immobilière avant par Braxel, agence immobilière située à Waterloo">
                 <figcaption>{{ 'sellOrBuy.23' | translate }}</figcaption>
               </figure>
               <figure slot="second" class="after">
-                <img width="100%" src="assets/img/Final-comp.jpg" alt="vente immobilière après par Braxel, agence immobilière située à Waterloo">
+                <img width="100%" src="assets/img/Final-comp.jpg"
+                  alt="vente immobilière après par Braxel, agence immobilière située à Waterloo">
                 <figcaption>{{ 'sellOrBuy.24' | translate }}</figcaption>
               </figure>
             </img-comparison-slider>

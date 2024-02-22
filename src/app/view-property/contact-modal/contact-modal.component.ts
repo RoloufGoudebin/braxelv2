@@ -8,7 +8,7 @@ import { SendmailService } from 'src/app/services/sendmail.service';
   templateUrl: './contact-modal.component.html',
   styleUrls: ['./contact-modal.component.css']
 })
-export class ContactModalComponent{
+export class ContactModalComponent {
 
 
   contactForm = new FormGroup({
@@ -21,11 +21,11 @@ export class ContactModalComponent{
 
   closeResult = '';
   notConfirm = true;
-  
+
   @Input() id?;
 
-  
-  
+
+
   constructor(private modalService: NgbModal, private sendmail: SendmailService) { }
 
   open(content) {
@@ -46,35 +46,35 @@ export class ContactModalComponent{
     }
   }
 
-  onSubmit(){
-    
+  onSubmit() {
+
     let user = {
-      subject : "Contact pour le bien",
-      from : this.contactForm.value.mail,
-      message: "<p>Message venant de : " + this.contactForm.value.name + " " + this.contactForm.value.firstname + 
-      "</p><p> Email : " + this.contactForm.value.mail + 
-      "</p><p>Numéro de téléphone : " + this.contactForm.value.phone 
-      + "</p><p>Bonjour, pouvez vous me contacter pour le bien n°"+ this.id 
-      + "</p><p>Demande(s) spécifique(s) : " + this.contactForm.value.questions + "</p>"
+      subject: "Contact pour le bien",
+      from: this.contactForm.value.mail,
+      message: "Message venant de : " + this.contactForm.value.name + " " + this.contactForm.value.firstname +
+        "\n\n Email : " + this.contactForm.value.mail +
+        "\n\n Numéro de téléphone : " + this.contactForm.value.phone
+        + "\n\n Bonjour, pouvez vous me contacter pour le bien n°" + this.id
+        + "\n\n Demande(s) spécifique(s) : " + this.contactForm.value.questions
     }
-    this.sendmail.sendMail(user);
-    this.notConfirm=false;
+    this.sendmail.sendMail(user.message, user.subject);
+    this.notConfirm = false;
   }
 
-  get firstname(){
+  get firstname() {
     return this.contactForm.get('firstname');
   }
-  get name(){
+  get name() {
     return this.contactForm.get('name');
   }
-  get mail(){
+  get mail() {
     return this.contactForm.get('mail');
   }
-  get phone(){
+  get phone() {
     return this.contactForm.get('phone');
   }
 
 
-  
+
 
 }

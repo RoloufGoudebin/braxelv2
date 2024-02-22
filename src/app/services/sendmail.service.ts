@@ -1,42 +1,36 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { FirestoreService } from './firebase/firestore.service';
+import { inject } from '@angular/core';
+
+const COLLECTION_NAME = 'mail';
+const RECEIVER_EMAIL = ['info@braxel.be','edouard@braxel.be','thomas@braxel.be','valentin@braxel.be','francois@braxel.be'];
+
+interface Mail {
+  to: string[]; //receiver email
+  message: {
+    subject: string;
+    text: string;
+  };
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class SendmailService {
 
-  constructor(private http: HttpClient) { }
+  private _firestoreService: FirestoreService = inject(FirestoreService);
 
-  sendMail(message: any){
-    let user = {
-      to: "<info@braxel.be>,<edouard@braxel.be>,<thomas@braxel.be>,<valentin@braxel.be>,<francois@braxel.be>",
-      from: message.from,
-      subject: message.subject,
-      message: message.message
+  constructor() { }
+
+  sendMail(message: string, subject: string){
+    const mail: Mail = {
+      to: RECEIVER_EMAIL,
+      message: {
+        subject: `${subject}`,
+        text: message
+      }
     };
-
-    console.log(user);
-  
-    this.http
-      .post(
-        'https://us-central1-mamoot-api.cloudfunctions.net/sendMail',
-        user
-      )
-      .subscribe(
-        data => {
-          let res: any = data;
-          console.log(
-            `👏 > 👏 > 👏 > 👏 is successfully register and mail has been sent and the message id is ${res.messageId}`
-          );
-        },
-        err => {
-          console.log(err);
-        },
-        () => {}
-      );
-
+    this._firestoreService.addDocument(COLLECTION_NAME, mail);
+    console.log(mail);
   }
-
-  
 }
