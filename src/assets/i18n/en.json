@@ -87,7 +87,7 @@
 			"b": "To rent"
 		},
 		"5": "Please choose the type of property",
-		"6": "Property type",
+		"6": "Property type:",
 		"7": {
 			"a": "House",
 			"b": "Apartment",
@@ -245,10 +245,10 @@
 			"d": "Ground",
 			"e": "Buildings",
 			"f": "Offices/Shops",
-			"g": "Garage/Parkingggg"
+			"g": "Garage/Parking"
 		},
 		"17": "Please make at least one choice",
-		"18": "City/Zip Code",
+		"18": "City/Zip Code:",
 		"19": "Please enter at least one location",
 		"20": "Rooms: ",
 		"21": "Please make one choice",
@@ -278,8 +278,8 @@
 		"2a": "Buy",
 		"2b": "Rent",
 		"3": "Please choose an option",
-		"4": " Property type",
-		"5": "City/Zip Code",
+		"4": " Property type:",
+		"5": "City/Zip Code:",
 		"6": "Please enter at least one location",
 		"7": "Bedrooms: ",
 		"8": "Budget: ",

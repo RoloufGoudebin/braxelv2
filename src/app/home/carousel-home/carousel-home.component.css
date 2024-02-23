@@ -187,6 +187,16 @@ a {
   position: absolute;
 }
 
+.video-fluid {
+  width: 100%;
+  height: auto;
+}
+
+.img-fluid{
+  width: 100%;
+  height: auto;
+
+}
 
 .front {
   position: relative;
