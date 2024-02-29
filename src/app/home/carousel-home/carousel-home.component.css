@@ -1,6 +1,7 @@
 @media (min-width: 1200px) {
   .view {
     height: 100vh;
+    overflow: hidden;
   }
 }
 
