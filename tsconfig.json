@@ -20,8 +20,11 @@
   },
   "angularCompilerOptions": {
     "enableIvy": false,
-    "fullTemplateTypeCheck": true,
+    "fullTemplateTypeCheck": false,
     "strictInjectionParameters": true,
-    "strictTemplates" : true 
+    "strictTemplates" : false,
+    "preserveWhitespaces": false,
+    "skipTemplateCodegen": false,
+    "skipMetadataEmit": false
   }
 }

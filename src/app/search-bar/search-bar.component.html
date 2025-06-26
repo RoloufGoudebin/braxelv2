@@ -1,0 +1,155 @@
+<div class="container p-5 border border-slate-300 rounded-2xl">
+  <span class="text-base"> Filtre de recherche</span>
+  <div class="mt-6"></div>
+  <span class="text-sm">Type</span>
+  <div class="mt-4"></div>
+  <div class="flex flex-row">
+    <div *ngFor="let type of types; let first = first; let last = last">
+      <span
+        class="py-3 px-4 text-sm border"
+        [class.bg-gray-200]="type.active"
+        [class.rounded-l-xl]="first"
+        [class.rounded-r-xl]="last"
+        [class.border-r-0]="!last"
+        (click)="selectType(type.id)"
+        >{{ type.name }}
+      </span>
+    </div>
+  </div>
+  <div class="mt-6"></div>
+  <div class="grid grid-cols-4 space-x-4">
+    <div class="col-span-1">
+      <span class="text-sm">Lieu</span>
+      <div class="mt-1.5"></div>
+      <input
+        type="text"
+        class="w-full py-2 px-3 bg-gray-100 rounded-lg"
+        placeholder="Ville, code postal, province"
+      />
+    </div>
+    <div class="col-span-1">
+      <span class="text-sm">Type de bien</span>
+      <div class="mt-1.5"></div>
+      <select
+        class="w-full py-2 px-3 bg-gray-100 rounded-lg h-10 appearance-none cursor-pointer"
+      >
+        <option value="1">Type de bien 1</option>
+        <option value="2">Type de bien 2</option>
+        <option value="3">Type de bien 3</option>
+      </select>
+    </div>
+    <div class="col-span-1 relative">
+      <span class="text-sm">Nombre de chambres</span>
+      <div class="mt-1.5"></div>
+      <div 
+        class="w-full py-2 px-3 bg-gray-100 rounded-lg cursor-pointer flex items-center justify-between h-10"
+        (click)="toggleRoomsDropdown()"
+      >
+        <span class="text-gray-700">{{ getRoomsDisplayText() }}</span>
+        <svg 
+          class="w-4 h-4 transition-transform duration-200"
+          [class.rotate-180]="isRoomsDropdownOpen"
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </div>
+      
+             <!-- Mini fenêtre chambres -->
+       <div 
+         *ngIf="isRoomsDropdownOpen"
+         class="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-10"
+       >
+         <div class="grid grid-cols-2 gap-3">
+           <div>
+             <label class="text-xs text-gray-600 mb-1 block">Minimum</label>
+             <input 
+               type="number" 
+               class="w-full py-2 px-3 border border-gray-300 rounded text-sm"
+               placeholder="Min"
+               [(ngModel)]="minRooms"
+             />
+           </div>
+           <div>
+             <label class="text-xs text-gray-600 mb-1 block">Maximum</label>
+             <input 
+               type="number" 
+               class="w-full py-2 px-3 border border-gray-300 rounded text-sm"
+               placeholder="Max"
+               [(ngModel)]="maxRooms"
+             />
+           </div>
+         </div>
+         <div class="flex justify-end mt-3">
+           <button 
+             class="text-sm bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600"
+             (click)="closeRoomsDropdown()"
+           >
+             Valider
+           </button>
+         </div>
+       </div>
+    </div>
+    <div class="col-span-1 relative">
+      <span class="text-sm">Prix</span>
+      <div class="mt-1.5"></div>
+      <div
+        class="w-full py-2 px-3 bg-gray-100 rounded-lg cursor-pointer flex items-center justify-between h-10"
+        (click)="togglePriceDropdown()"
+      >
+        <span class="text-gray-700">{{ getPriceDisplayText() }}</span>
+        <svg
+          class="w-4 h-4 transition-transform duration-200"
+          [class.rotate-180]="isPriceDropdownOpen"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          ></path>
+        </svg>
+      </div>
+
+      <!-- Mini fenêtre prix -->
+      <div
+        *ngIf="isPriceDropdownOpen"
+        class="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-10"
+      >
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs text-gray-600 mb-1 block">Prix minimum</label>
+            <input
+              type="number"
+              class="w-full py-2 px-3 border border-gray-300 rounded text-sm"
+              placeholder="Min"
+              [(ngModel)]="minPrice"
+            />
+          </div>
+          <div>
+            <label class="text-xs text-gray-600 mb-1 block">Prix maximum</label>
+            <input
+              type="number"
+              class="w-full py-2 px-3 border border-gray-300 rounded text-sm"
+              placeholder="Max"
+              [(ngModel)]="maxPrice"
+            />
+          </div>
+        </div>
+        <div class="flex justify-end mt-3">
+          <button
+            class="text-sm bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600"
+            (click)="closePriceDropdown()"
+          >
+            Valider
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
