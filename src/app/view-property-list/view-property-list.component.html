@@ -3,8 +3,8 @@
 
     <a *ngFor="let Items of this.propertyList | slice: 0:numberProperty;" class="col-10 col-md-6 col-lg-4 mx-auto"
       routerLinkActive="active" routerLink="/biens-immobiliers/{{Items.ID}}">
-      <div class="card h-100 shadow">
-        <img class="card-img-top img-fluid" src={{Items.LargePicture}}
+      <div class="card shadow">
+        <img class="h-72 rounded-t-lg object-cover overflow-hidden" src={{Items.LargePicture}}
           alt="Large Image propriété mise en location par Braxel, agence immobilière située à Waterloo">
         <span class="ribon" [ngStyle]="{'background':getColor(Items.Goal, Items.SubStatus)}"> {{getStatus(Items.Goal,
           Items.SubStatus)}} </span>

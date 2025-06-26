@@ -30,6 +30,7 @@
               "src/google597b7a0c68c36dba.html"
             ],
             "styles": [
+              "src/tailwind-compiled.css",
               "src/styles.css",
               "src/styles.scss",
               "src/fonts/style.css",

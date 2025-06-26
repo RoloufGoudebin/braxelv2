@@ -1,14 +1,14 @@
-import { Component, OnInit, HostListener, ElementRef, ViewChild } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Options } from "@angular-slider/ngx-slider";
+import { ViewportScroller } from '@angular/common';
+import { Observable, Subject } from 'rxjs';
 import { FirestoreService } from '../services/firebase/firestore.service';
 import { Property } from '../services/omnicasa/interface';
-import { Observable, Subject } from 'rxjs';
-import { ViewportScroller } from '@angular/common';
 
-import data from '../json/zip.json'
 import { TranslateService } from '@ngx-translate/core';
+import data from '../json/zip.json';
 import { SharedDatasService } from '../services/shared-datas.service';
 
 import { Meta } from '@angular/platform-browser';

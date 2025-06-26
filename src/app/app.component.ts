@@ -1,9 +1,9 @@
+import { DOCUMENT } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { routeTransitionAnimations } from './route-transition-animations';
 import { FirestoreService } from './services/firebase/firestore.service';
-import { DOCUMENT } from '@angular/common';
 
 
 

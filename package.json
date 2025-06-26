@@ -3,16 +3,18 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
-    "test": "ng test",
+    "start": "NODE_OPTIONS=\"--openssl-legacy-provider\" ng serve",
+    "build": "NODE_OPTIONS=\"--openssl-legacy-provider\" ng build --prod",
+    "test": "NODE_OPTIONS=\"--openssl-legacy-provider\" ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run braxelv2:serve-ssr",
+    "dev:ssr": "NODE_OPTIONS=\"--openssl-legacy-provider\" ng run braxelv2:serve-ssr",
     "serve:ssr": "node dist/braxelv2/server/main.js",
-    "build:ssr": "ng build",
-    "prerender": "ng run braxelv2:prerender",
-    "postbuild": "gulp compress"
+    "build:ssr": "NODE_OPTIONS=\"--openssl-legacy-provider\" ng build",
+    "prerender": "NODE_OPTIONS=\"--openssl-legacy-provider\" ng run braxelv2:prerender",
+    "postbuild": "gulp compress",
+    "tailwind:build": "npx tailwindcss -i ./src/tailwind.css -o ./src/tailwind-compiled.css --minify",
+    "tailwind:watch": "npx tailwindcss -i ./src/tailwind.css -o ./src/tailwind-compiled.css --watch"
   },
   "private": true,
   "dependencies": {
@@ -75,6 +77,7 @@
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "^2.0.10",
     "@types/node": "^12.20.16",
+    "autoprefixer": "^10.4.21",
     "codelyzer": "^5.1.2",
     "gulp": "^4.0.2",
     "gulp-gzip": "^1.4.2",
@@ -86,7 +89,9 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.7.0",
+    "postcss": "^8.5.6",
     "protractor": "^7.0.0",
+    "tailwindcss": "^2.2.19",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
