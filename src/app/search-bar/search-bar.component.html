@@ -82,7 +82,7 @@
       <!-- Dropdown des codes postaux groupés par province -->
       <div
         *ngIf="isLocationDropdownOpen && filteredProvinces.length > 0"
-        class="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-xl max-h-60 sm:max-h-80 overflow-y-auto z-20"
+        class="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-xl max-h-60 sm:max-h-80 overflow-y-auto z-20 min-w-full w-auto"
       >
         <div *ngFor="let provinceGroup of filteredProvinces">
           <!-- Titre de la province -->
@@ -117,7 +117,7 @@
       <!-- Message si aucun résultat -->
       <div
         *ngIf="isLocationDropdownOpen && filteredProvinces.length === 0"
-        class="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-xl p-3 z-20"
+        class="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-xl p-3 z-20 min-w-full w-auto"
       >
         <span class="text-gray-500 text-xs sm:text-sm">{{ 'search.7' | translate }}</span>
       </div>
@@ -262,11 +262,195 @@
     </div>
   </div>
 
+  <!-- Section des filtres avancés - visible uniquement si activée -->
+  <div *ngIf="isAdvancedFiltersOpen" class="mt-6 border-t border-gray-200 pt-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 lg:gap-6 mb-4">
+      
+      <!-- Filtres checkbox -->
+      <div class="space-y-3">
+        <label class="text-sm sm:text-base font-medium text-gray-700 block">Options spéciales</label>
+        
+        <label class="flex items-center space-x-2 cursor-pointer">
+          <input
+            type="checkbox"
+            formControlName="showUnderOption"
+            (change)="onAdvancedFilterChange()"
+            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+          />
+          <span class="text-sm text-gray-700">Afficher les biens sous option</span>
+        </label>
+        
+        <label class="flex items-center space-x-2 cursor-pointer">
+          <input
+            type="checkbox"
+            formControlName="showWithTerrace"
+            (change)="onAdvancedFilterChange()"
+            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+          />
+          <span class="text-sm text-gray-700">Avec terrasse</span>
+        </label>
+        
+        <label class="flex items-center space-x-2 cursor-pointer">
+          <input
+            type="checkbox"
+            formControlName="showWithGarden"
+            (change)="onAdvancedFilterChange()"
+            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+          />
+          <span class="text-sm text-gray-700">Avec jardin</span>
+        </label>
+        
+        <label class="flex items-center space-x-2 cursor-pointer">
+          <input
+            type="checkbox"
+            formControlName="showWithGarage"
+            (change)="onAdvancedFilterChange()"
+            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+          />
+          <span class="text-sm text-gray-700">Avec garage</span>
+        </label>
+      </div>
+
+      <!-- Surface -->
+      <div>
+        <label class="text-sm sm:text-base font-medium text-gray-700 block mb-2">Surface</label>
+        <div class="relative">
+          <div
+            class="w-full py-3 sm:py-2 px-3 bg-gray-100 rounded-lg cursor-pointer flex items-center justify-between focus-within:ring-2 focus-within:ring-blue-500 focus-within:bg-white transition-all"
+            (click)="toggleSurfaceDropdown()"
+          >
+            <span class="text-gray-700 text-sm sm:text-base truncate">{{ getSurfaceDisplayText() }}</span>
+            <svg
+              class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 flex-shrink-0 ml-2"
+              [class.rotate-180]="isSurfaceDropdownOpen"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </div>
+
+          <!-- Mini fenêtre surface -->
+          <div
+            *ngIf="isSurfaceDropdownOpen"
+            class="absolute top-full left-0 right-0 sm:left-auto sm:right-0 sm:w-96 mt-0 bg-white border border-gray-200 rounded-lg shadow-xl p-4 sm:p-6 z-10"
+          >
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="text-xs sm:text-sm text-gray-600 mb-2 block font-medium">Surface min</label>
+              <input
+                type="number"
+                class="w-full py-3 sm:py-2 px-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                placeholder="Min m²"
+                formControlName="minSurface"
+              />
+            </div>
+            <div>
+              <label class="text-xs sm:text-sm text-gray-600 mb-2 block font-medium">Surface max</label>
+              <input
+                type="number"
+                class="w-full py-3 sm:py-2 px-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                placeholder="Max m²"
+                formControlName="maxSurface"
+              />
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button
+              class="text-sm sm:text-base text-white px-4 sm:px-6 py-2 rounded-lg hover:opacity-90 transition-opacity touch-manipulation"
+              style="background-color: #233353"
+              (click)="closeSurfaceDropdown()"
+            >
+              {{ 'search.21' | translate }}
+            </button>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Année de construction -->
+      <div>
+        <label class="text-sm sm:text-base font-medium text-gray-700 block mb-2">Année de construction</label>
+        <div class="relative">
+          <div
+            class="w-full py-3 sm:py-2 px-3 bg-gray-100 rounded-lg cursor-pointer flex items-center justify-between focus-within:ring-2 focus-within:ring-blue-500 focus-within:bg-white transition-all"
+            (click)="toggleConstructionYearDropdown()"
+          >
+            <span class="text-gray-700 text-sm sm:text-base truncate">{{ getConstructionYearDisplayText() }}</span>
+            <svg
+              class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 flex-shrink-0 ml-2"
+              [class.rotate-180]="isConstructionYearDropdownOpen"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </div>
+
+          <!-- Mini fenêtre année de construction -->
+          <div
+            *ngIf="isConstructionYearDropdownOpen"
+            class="absolute top-full left-0 right-0 sm:left-auto sm:right-0 sm:w-96 mt-0 bg-white border border-gray-200 rounded-lg shadow-xl p-4 sm:p-6 z-10"
+          >
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="text-xs sm:text-sm text-gray-600 mb-2 block font-medium">Année min</label>
+              <input
+                type="number"
+                class="w-full py-3 sm:py-2 px-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                placeholder="Ex: 1990"
+                formControlName="minConstructionYear"
+              />
+            </div>
+            <div>
+              <label class="text-xs sm:text-sm text-gray-600 mb-2 block font-medium">Année max</label>
+              <input
+                type="number"
+                class="w-full py-3 sm:py-2 px-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                placeholder="Ex: 2023"
+                formControlName="maxConstructionYear"
+              />
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button
+              class="text-sm sm:text-base text-white px-4 sm:px-6 py-2 rounded-lg hover:opacity-90 transition-opacity touch-manipulation"
+              style="background-color: #233353"
+              (click)="closeConstructionYearDropdown()"
+            >
+              {{ 'search.21' | translate }}
+            </button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Boutons d'action - responsive -->
   <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-end gap-3 sm:gap-3">
     <button
       type="button"
-      class="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-2 text-sm sm:text-base text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all touch-manipulation order-2 sm:order-1"
+      class="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-2 text-sm sm:text-base text-blue-600 border border-blue-500 rounded-lg hover:bg-blue-50 transition-all touch-manipulation order-3 sm:order-1"
+      (click)="toggleAdvancedFilters()"
+    >
+      {{ isAdvancedFiltersOpen ? 'Masquer filtres avancés' : 'Filtres avancés' }}
+    </button>
+    <button
+      type="button"
+      class="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-2 text-sm sm:text-base text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all touch-manipulation order-2 sm:order-2"
       (click)="clearSearch()"
     >
       {{ 'search.22' | translate }}
@@ -274,7 +458,7 @@
     <!-- Bouton Rechercher visible uniquement sur mobile/tablette -->
     <button
       type="button"
-      class="w-full sm:w-auto lg:hidden px-4 sm:px-6 py-2 sm:py-2 text-sm sm:text-base text-white rounded-lg hover:opacity-90 transition-opacity touch-manipulation order-1 sm:order-2"
+      class="w-full sm:w-auto lg:hidden px-4 sm:px-6 py-2 sm:py-2 text-sm sm:text-base text-white rounded-lg hover:opacity-90 transition-opacity touch-manipulation order-1 sm:order-3"
       style="background-color: #233353"
       (click)="onSearchAndScroll()"
     >

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../../services/firebase/firestore.service';
 import { Property } from '../../services/omnicasa/interface';
-import { OmnicasaService } from '../../services/omnicasa/omnicasa.service'
-import { NgbPaginationNumber } from '@ng-bootstrap/ng-bootstrap';
+import { OmnicasaService } from '../../services/omnicasa/omnicasa.service';
 
 @Component({
   selector: 'app-top-biens',
@@ -30,9 +29,10 @@ export class TopBiensComponent implements OnInit {
   ngOnInit(): void {
     this.firestore.prout.subscribe(data =>
       this.topPropertyList = data.map(e => {
+        const propertyData = e.payload.doc.data() as Property;
         return {
-          id: Number(e.payload.doc.id),
-          ...e.payload.doc.data() as Property
+          id: propertyData.id || 0,
+          ...propertyData
         }
       }).filter(e => (e.SubStatus == 2 || e.SubStatus ==3))
       .sort(function (a: Property, b: Property){

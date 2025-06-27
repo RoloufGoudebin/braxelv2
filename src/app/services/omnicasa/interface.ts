@@ -30,7 +30,6 @@ export interface Property {
     SurfaceTotal?: number;
     SurfaceGarden?: number;
     HasGarden?: boolean;
-    EnergyPerformance?: number;
     KitchenName?: string;
     WindowGlazing?: string;
     OrientationT?: string;

@@ -35,7 +35,7 @@ export class FirestoreService {
     for (let i = 0; i < newTopPropertyList.length; i++) {
       console.log(newTopPropertyList[i].ID.toString())
       this.firestore
-        .collection("activePropertieeees")
+        .collection("newProperties")
         .doc(newTopPropertyList[i].ID.toString())
         .update(newTopPropertyList[i])
     }
@@ -108,6 +108,8 @@ export class FirestoreService {
           return b.ID - a.ID;
         });
 
+        console.log(this.propertyList);
+
         return new Promise<Property>((resolve, reject) => {
           let j = 0;
           for (let i = 0; i < this.propertyList.length; i++) {
@@ -128,15 +130,44 @@ export class FirestoreService {
                   ModifiedSubstatusDate: this.propertyList[i].ModifiedSubstatusDate,
                   Zip: this.propertyList[i].Zip,
                   LargePicture: this.propertyList[i].LargePicture,
+                  LargePictures: this.propertyList[i].LargePictures,
+                  StartPrice: this.propertyList[i].StartPrice,
                   Price: this.propertyList[i].Price,
                   PriceUnitText: this.propertyList[i].PriceUnitText,
                   NumberOfBedRooms: this.propertyList[i].NumberOfBedRooms,
+                  NumberOfBathRooms: this.propertyList[i].NumberOfBathRooms,
+                  NumberOfShowerRooms: this.propertyList[i].NumberOfShowerRooms,
+                  NumberOfGarages: this.propertyList[i].NumberOfGarages,
                   VirtualTour: this.propertyList[i].VirtualTour,
                   MainTypeName: this.propertyList[i].MainTypeName,
-                  WebID: this.propertyList[i].WebID
+                  WebID: this.propertyList[i].WebID,
+                  // Propriétés confirmées comme existantes dans la nouvelle API
+                  SurfaceTotal: this.propertyList[i].SurfaceTotal,
+                  SurfaceGarden: this.propertyList[i].SurfaceGarden,
+                  HasGarden: this.propertyList[i].HasGarden,
+                  ConstructionYear: this.propertyList[i].ConstructionYear,
+                  SurfaceTerrace: this.propertyList[i].SurfaceTerrace,
+                  Marquee: this.propertyList[i].Marquee,
+                  MarqueeName: this.propertyList[i].MarqueeName,
+                  MarqueeShowOrder: this.propertyList[i].MarqueeShowOrder,
+                  // Autres propriétés confirmées
+                  KitchenName: this.propertyList[i].KitchenName,
+                  WindowGlazing: this.propertyList[i].WindowGlazing,
+                  OrientationT: this.propertyList[i].OrientationT,
+                  MainStyleName: this.propertyList[i].MainStyleName,
+                  HasLift: this.propertyList[i].HasLift,
+                  Floor: this.propertyList[i].Floor,
+                  ConstructionName: this.propertyList[i].ConstructionName,
+                  DescriptionA: this.propertyList[i].DescriptionA,
+                  DescriptionB: this.propertyList[i].DescriptionB,
+                  HeatingName: this.propertyList[i].HeatingName,
+                  ConditionName: this.propertyList[i].ConditionName,
+                  GoogleX: this.propertyList[i].GoogleX,
+                  GoogleY: this.propertyList[i].GoogleY,
+                  IsOffice: this.propertyList[i].IsOffice
                 }
                 this.firestore
-                  .collection("activePropertieeees")
+                  .collection("newProperties")
                   .doc(toWrite.ID.toString())
                   .set(toWrite)
                 j++;
@@ -223,15 +254,44 @@ export class FirestoreService {
                     ModifiedSubstatusDate: this.propertyList[i].ModifiedSubstatusDate,
                     Zip: this.propertyList[i].Zip,
                     LargePicture: this.propertyList[i].LargePicture,
+                    LargePictures: this.propertyList[i].LargePictures,
+                    StartPrice: this.propertyList[i].StartPrice,
                     Price: this.propertyList[i].Price,
                     PriceUnitText: this.propertyList[i].PriceUnitText,
                     NumberOfBedRooms: this.propertyList[i].NumberOfBedRooms,
+                    NumberOfBathRooms: this.propertyList[i].NumberOfBathRooms,
+                    NumberOfShowerRooms: this.propertyList[i].NumberOfShowerRooms,
+                    NumberOfGarages: this.propertyList[i].NumberOfGarages,
                     VirtualTour: this.propertyList[i].VirtualTour,
                     MainTypeName: this.propertyList[i].MainTypeName,
-                    WebID: this.propertyList[i].WebID
+                    WebID: this.propertyList[i].WebID,
+                    // Propriétés confirmées comme existantes dans la nouvelle API
+                    SurfaceTotal: this.propertyList[i].SurfaceTotal,
+                    SurfaceGarden: this.propertyList[i].SurfaceGarden,
+                    HasGarden: this.propertyList[i].HasGarden,
+                    ConstructionYear: this.propertyList[i].ConstructionYear,
+                    SurfaceTerrace: this.propertyList[i].SurfaceTerrace,
+                    Marquee: this.propertyList[i].Marquee,
+                    MarqueeName: this.propertyList[i].MarqueeName,
+                    MarqueeShowOrder: this.propertyList[i].MarqueeShowOrder,
+                    // Autres propriétés confirmées
+                    KitchenName: this.propertyList[i].KitchenName,
+                    WindowGlazing: this.propertyList[i].WindowGlazing,
+                    OrientationT: this.propertyList[i].OrientationT,
+                    MainStyleName: this.propertyList[i].MainStyleName,
+                    HasLift: this.propertyList[i].HasLift,
+                    Floor: this.propertyList[i].Floor,
+                    ConstructionName: this.propertyList[i].ConstructionName,
+                    DescriptionA: this.propertyList[i].DescriptionA,
+                    DescriptionB: this.propertyList[i].DescriptionB,
+                    HeatingName: this.propertyList[i].HeatingName,
+                    ConditionName: this.propertyList[i].ConditionName,
+                    GoogleX: this.propertyList[i].GoogleX,
+                    GoogleY: this.propertyList[i].GoogleY,
+                    IsOffice: this.propertyList[i].IsOffice
                   }
                   this.firestore
-                    .collection("activePropertieeees")
+                    .collection("newProperties")
                     .doc(this.propertyList[i].ID.toString())
                     .update(toWrite)
                   break;
@@ -250,24 +310,51 @@ export class FirestoreService {
                     ModifiedSubstatusDate: this.propertyList[i].ModifiedSubstatusDate,
                     Zip: this.propertyList[i].Zip,
                     LargePicture: this.propertyList[i].LargePicture,
+                    LargePictures: this.propertyList[i].LargePictures,
+                    StartPrice: this.propertyList[i].StartPrice,
                     Price: this.propertyList[i].Price,
                     PriceUnitText: this.propertyList[i].PriceUnitText,
                     NumberOfBedRooms: this.propertyList[i].NumberOfBedRooms,
+                    NumberOfBathRooms: this.propertyList[i].NumberOfBathRooms,
+                    NumberOfShowerRooms: this.propertyList[i].NumberOfShowerRooms,
+                    NumberOfGarages: this.propertyList[i].NumberOfGarages,
                     VirtualTour: this.propertyList[i].VirtualTour,
                     MainTypeName: this.propertyList[i].MainTypeName,
-                    WebID: this.propertyList[i].WebID
+                    WebID: this.propertyList[i].WebID,
+                    // Propriétés confirmées comme existantes dans la nouvelle API
+                    SurfaceTotal: this.propertyList[i].SurfaceTotal,
+                    SurfaceGarden: this.propertyList[i].SurfaceGarden,
+                    HasGarden: this.propertyList[i].HasGarden,
+                    ConstructionYear: this.propertyList[i].ConstructionYear,
+                    SurfaceTerrace: this.propertyList[i].SurfaceTerrace,
+                    Marquee: this.propertyList[i].Marquee,
+                    MarqueeName: this.propertyList[i].MarqueeName,
+                    MarqueeShowOrder: this.propertyList[i].MarqueeShowOrder,
+                    // Autres propriétés confirmées
+                    KitchenName: this.propertyList[i].KitchenName,
+                    WindowGlazing: this.propertyList[i].WindowGlazing,
+                    OrientationT: this.propertyList[i].OrientationT,
+                    MainStyleName: this.propertyList[i].MainStyleName,
+                    HasLift: this.propertyList[i].HasLift,
+                    Floor: this.propertyList[i].Floor,
+                    ConstructionName: this.propertyList[i].ConstructionName,
+                    DescriptionA: this.propertyList[i].DescriptionA,
+                    DescriptionB: this.propertyList[i].DescriptionB,
+                    HeatingName: this.propertyList[i].HeatingName,
+                    ConditionName: this.propertyList[i].ConditionName,
+                    GoogleX: this.propertyList[i].GoogleX,
+                    GoogleY: this.propertyList[i].GoogleY,
+                    IsOffice: this.propertyList[i].IsOffice
                   }
                   add++;
-                  console.log("couille");
                   this.firestore
-                    .collection("activePropertieeees")
+                    .collection("newProperties")
                     .doc(this.propertyList[i].ID.toString())
                     .set(toWrite)
                 }
               }
               else {
                 this.deleteProperty(this.topPropertyListActive[j].ID);
-                console.log(this.topPropertyListActive[j].ID);
               }
 
             }
@@ -311,7 +398,7 @@ export class FirestoreService {
   }
 
   setPropertyListActiveFire() {
-    this.prout = this.getFirestoreCollection("activePropertieeees")
+    this.prout = this.getFirestoreCollection("newProperties")
     this.prout.subscribe(data =>
       this.topPropertyListActive = data.map(e => {
         return {
@@ -374,7 +461,7 @@ export class FirestoreService {
 
   deleteProperty(id: number){
     this.firestore
-      .collection("activePropertieeees")
+      .collection("newProperties")
       .doc(id.toString())
       .delete()
   }

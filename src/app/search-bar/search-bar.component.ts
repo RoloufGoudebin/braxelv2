@@ -87,25 +87,53 @@ export class SearchBarComponent implements OnInit {
   isLocationDropdownOpen = false;
   selectedLocations: string[] = [];
 
+  // Filtres avancés
+  isAdvancedFiltersOpen = false;
+  showUnderOption = true;
+  showWithTerrace = false;
+  showWithGarden = false;
+  showWithGarage = false;
+  
+  isSurfaceDropdownOpen = false;
+  minSurface: number | null = null;
+  maxSurface: number | null = null;
+  suggestedMinSurface: number | null = null;
+  suggestedMaxSurface: number | null = null;
+  
+  isConstructionYearDropdownOpen = false;
+  minConstructionYear: number | null = null;
+  maxConstructionYear: number | null = null;
+  suggestedMinConstructionYear: number | null = null;
+  suggestedMaxConstructionYear: number | null = null;
+
   // Form controls
   searchForm = new FormGroup({
     location: new FormControl(''),
     propertyType: new FormControl(''),
     minPrice: new FormControl(null),
-    maxPrice: new FormControl(null)
+    maxPrice: new FormControl(null),
+    minSurface: new FormControl(null),
+    maxSurface: new FormControl(null),
+    minConstructionYear: new FormControl(null),
+    maxConstructionYear: new FormControl(null),
+    showUnderOption: new FormControl(true),
+    showWithTerrace: new FormControl(false),
+    showWithGarden: new FormControl(false),
+    showWithGarage: new FormControl(false)
   })
 
   ngOnInit(): void {
-    // Subscribe to all properties to calculate zip counts
+    // Abonnement aux propriétés pour calculer les compteurs
     this.searchService.allProperties$.subscribe(properties => {
       this.updateAvailableZips(properties);
     });
 
-    // Restore current search criteria if they exist (for navigation between pages)
-    const currentCriteria = this.searchService.getCurrentCriteria();
-    if (currentCriteria) {
-      this.restoreSearchCriteria(currentCriteria);
-    }
+    // Abonnement aux changements de critères de recherche pour synchroniser l'UI
+    this.searchService.searchCriteria$.subscribe(criteria => {
+      if (criteria) {
+        this.restoreSearchCriteria(criteria);
+      }
+    });
   }
 
   // Determine Belgian province from zip code
@@ -141,168 +169,142 @@ export class SearchBarComponent implements OnInit {
     }
   }
 
-  updateAvailableZips(properties: Property[]) {
-    // Get current goal (Achat=0, Location=1)
-    const selectedGoal = this.getSelectedGoal();
-
-    // Filter properties by ALL current criteria (except location to avoid circular dependency)
-    const filteredProperties = properties.filter(property => {
-      // Basic filters
-      if (property.SubStatus !== 2 && property.SubStatus !== 3) return false;
-      if (property.Goal !== selectedGoal) return false;
-
-      // Room filter
-      if (this.selectedRooms.length > 0) {
-        let matchesRoom = false;
-        for (const selectedRoom of this.selectedRooms) {
-          if (selectedRoom === 5) { // "4+" chambres
-            if (property.NumberOfBedRooms >= 4) matchesRoom = true;
-          } else {
-            if (property.NumberOfBedRooms === selectedRoom) matchesRoom = true;
-          }
-        }
-        if (!matchesRoom) return false;
-      }
-
-      // Price filter
-      if (this.minPrice && property.Price < this.minPrice) return false;
-      if (this.maxPrice && property.Price > this.maxPrice) return false;
-
-      return true;
-    });
-
-    // Count properties by zip code
-    const zipCounts = new Map<number, number>();
-    filteredProperties.forEach(property => {
-      const zipNumber = Number(property.Zip);
-      const count = zipCounts.get(zipNumber) || 0;
-      zipCounts.set(zipNumber, count + 1);
-    });
-
-    // Create available zips with counts
-    this.availableZips = [];
-    zipCounts.forEach((count, zip) => {
-      // Only add zips that have properties
-      if (count > 0) {
-        const zipInfo = this.listOfZips.find(item => item.zip === zip);
-        if (zipInfo) {
-          this.availableZips.push({
-            zip: zip,
-            localite: zipInfo.localite,
-            count: count,
-            displayText: `${zip} ${zipInfo.localite} (${count})`
-          });
-        }
-      }
-    });
-
-    // Sort by localite name
-    this.availableZips.sort((a, b) => a.localite.localeCompare(b.localite));
-    this.filteredZips = [...this.availableZips];
-
-    // Group by provinces
-    this.groupZipsByProvince(this.availableZips);
-
-    // Update smart filters (property types, rooms, price suggestions)
-    this.updateSmartFilters(properties);
-  }
-
-  updateSmartFilters(properties: Property[]) {
-    // Get current criteria (excluding what we're calculating)
+  // Méthode commune pour appliquer les filtres de base (optimisation)
+  private applyBaseFilters(properties: Property[], excludeFilters: string[] = []): Property[] {
     const selectedGoal = this.getSelectedGoal();
     const selectedLocationZips = this.getZipCodesFromSelectedLocations();
+    const selectedPropertyType = this.searchForm.get('propertyType')?.value;
 
-    // Base filter: goal, status, location
-    const baseFilteredProperties = properties.filter(property => {
+    return properties.filter(property => {
+      // Filtres obligatoires
       if (property.SubStatus !== 2 && property.SubStatus !== 3) return false;
       if (property.Goal !== selectedGoal) return false;
 
-      // Location filter
-      if (selectedLocationZips.length > 0) {
+      // Filtre localisation (sauf si exclu)
+      if (!excludeFilters.includes('location') && selectedLocationZips.length > 0) {
         const propertyZip = Number(property.Zip);
         if (!selectedLocationZips.includes(propertyZip)) return false;
       }
 
+      // Filtre type de propriété (sauf si exclu)
+      if (!excludeFilters.includes('propertyType') && selectedPropertyType && Number(selectedPropertyType) !== property.WebID) return false;
+
+      // Filtre chambres (sauf si exclu)
+      if (!excludeFilters.includes('rooms') && this.selectedRooms.length > 0) {
+        const rooms = property.NumberOfBedRooms || 0;
+        const roomMatches = this.selectedRooms.some(selectedRoom => 
+          selectedRoom === 5 ? rooms >= 4 : rooms === selectedRoom
+        );
+        if (!roomMatches) return false;
+      }
+
+      // Filtre prix (sauf si exclu)
+      if (!excludeFilters.includes('price')) {
+        if (this.minPrice && property.Price < this.minPrice) return false;
+        if (this.maxPrice && property.Price > this.maxPrice) return false;
+      }
+
+      // Filtres avancés
+      if (this.showUnderOption === false && property.Marquee) return false;
+      if (this.showWithTerrace && (!property.SurfaceTerrace || property.SurfaceTerrace <= 0)) return false;
+      if (this.showWithGarden && !property.HasGarden) return false;
+      if (this.showWithGarage && (!property.NumberOfGarages || property.NumberOfGarages <= 0)) return false;
+      if (this.minSurface !== null && (!property.SurfaceTotal || property.SurfaceTotal < this.minSurface)) return false;
+      if (this.maxSurface !== null && (!property.SurfaceTotal || property.SurfaceTotal > this.maxSurface)) return false;
+      if (this.minConstructionYear !== null && (!property.ConstructionYear || property.ConstructionYear < this.minConstructionYear)) return false;
+      if (this.maxConstructionYear !== null && (!property.ConstructionYear || property.ConstructionYear > this.maxConstructionYear)) return false;
+
       return true;
     });
+  }
 
-    // Update property types counts
+  updateAvailableZips(properties: Property[]): void {
+    // Filtrer les propriétés (exclure la localisation pour éviter la dépendance circulaire)
+    const filteredProperties = this.applyBaseFilters(properties, ['location']);
+
+    // Compter les propriétés par code postal
+    const zipCounts = new Map<number, number>();
+    filteredProperties.forEach(property => {
+      const zipNumber = Number(property.Zip);
+      zipCounts.set(zipNumber, (zipCounts.get(zipNumber) || 0) + 1);
+    });
+
+    // Créer la liste des codes postaux disponibles avec compteurs
+    this.availableZips = Array.from(zipCounts.entries())
+      .filter(([_, count]) => count > 0)
+      .map(([zip, count]) => {
+        const zipInfo = this.listOfZips.find(item => item.zip === zip);
+        return zipInfo ? {
+          zip,
+          localite: zipInfo.localite,
+          count,
+          displayText: `${zip} ${zipInfo.localite} (${count})`
+        } : null;
+      })
+      .filter(Boolean) as ZipOption[];
+
+    // Tri par nom de localité
+    this.availableZips.sort((a, b) => a.localite.localeCompare(b.localite));
+    this.filteredZips = [...this.availableZips];
+
+    // Grouper par provinces
+    this.groupZipsByProvince(this.availableZips);
+
+    // Mettre à jour les filtres intelligents
+    this.updateSmartFilters(properties);
+  }
+
+  updateSmartFilters(properties: Property[]): void {
+    const baseFilteredProperties = this.applyBaseFilters(properties);
+    
+    // Mise à jour simultanée de tous les filtres intelligents
     this.updatePropertyTypeCounts(baseFilteredProperties);
-
-    // Update available rooms
     this.updateAvailableRooms(baseFilteredProperties);
-
-    // Update price suggestions
     this.updatePriceSuggestions(baseFilteredProperties);
   }
 
-  updatePropertyTypeCounts(properties: Property[]) {
-    // Apply current filters (except property type)
-    const filteredProperties = properties.filter(property => {
-      // Room filter
-      if (this.selectedRooms.length > 0) {
-        let matchesRoom = false;
-        for (const selectedRoom of this.selectedRooms) {
-          if (selectedRoom === 5) { // "4+" chambres
-            if (property.NumberOfBedRooms >= 4) matchesRoom = true;
-          } else {
-            if (property.NumberOfBedRooms === selectedRoom) matchesRoom = true;
-          }
-        }
-        if (!matchesRoom) return false;
-      }
+  updatePropertyTypeCounts(properties: Property[]): void {
+    // Appliquer les filtres actuels (exclure le type de propriété)
+    const filteredProperties = this.applyBaseFilters(properties, ['propertyType']);
 
-      // Price filter
-      if (this.minPrice && property.Price < this.minPrice) return false;
-      if (this.maxPrice && property.Price > this.maxPrice) return false;
-
-      return true;
+    // Compter par type de propriété avec optimisation Map
+    const typeCounts = new Map<number, number>();
+    filteredProperties.forEach(property => {
+      typeCounts.set(property.WebID, (typeCounts.get(property.WebID) || 0) + 1);
     });
 
-    // Count by property type
+    // Mettre à jour les compteurs
     this.propertyTypes.forEach(propertyType => {
-      const count = filteredProperties.filter(p => p.WebID === propertyType.id).length;
-      propertyType.count = count;
+      propertyType.count = typeCounts.get(propertyType.id) || 0;
     });
   }
 
-  updateAvailableRooms(properties: Property[]) {
-    // Apply current filters (except rooms)
-    const filteredProperties = properties.filter(property => {
-      // Property type filter
-      const selectedPropertyType = this.searchForm.get('propertyType')?.value;
-      if (selectedPropertyType && Number(selectedPropertyType) !== property.WebID) return false;
+  updateAvailableRooms(properties: Property[]): void {
+    // Appliquer les filtres actuels (exclure les chambres)
+    const filteredProperties = this.applyBaseFilters(properties, ['rooms']);
 
-      // Price filter
-      if (this.minPrice && property.Price < this.minPrice) return false;
-      if (this.maxPrice && property.Price > this.maxPrice) return false;
-
-      return true;
+    // Compter par nombre de chambres avec optimisation Map
+    const roomCounts = new Map<number, number>();
+    filteredProperties.forEach(property => {
+      const rooms = property.NumberOfBedRooms || 0;
+      roomCounts.set(rooms, (roomCounts.get(rooms) || 0) + 1);
     });
 
-    // Count by rooms and only show available options
-    this.availableRoomOptions = [];
-    this.allRoomOptions.forEach(roomOption => {
-      let count = 0;
+    // Mettre à jour les options disponibles
+    this.availableRoomOptions = this.allRoomOptions
+      .map(roomOption => {
+        const count = roomOption.value === 5 
+          ? Array.from(roomCounts.entries()).filter(([rooms]) => rooms >= 4).reduce((sum, [, count]) => sum + count, 0)
+          : roomCounts.get(roomOption.value) || 0;
+        
+        return { ...roomOption, count };
+      });
+      // Supprimer le filtre .filter(option => option.count > 0) pour toujours afficher toutes les options
 
-      if (roomOption.value === 5) { // "4+" chambres
-        count = filteredProperties.filter(p => p.NumberOfBedRooms >= 4).length;
-      } else {
-        count = filteredProperties.filter(p => p.NumberOfBedRooms === roomOption.value).length;
-      }
-
-      if (count > 0) {
-        this.availableRoomOptions.push({
-          ...roomOption,
-          count: count
-        });
-      }
-    });
-
-    // Clean up selected rooms that are no longer available
-    this.selectedRooms = this.selectedRooms.filter(selectedRoom =>
-      this.availableRoomOptions.some(option => option.value === selectedRoom)
-    );
+    // Ne plus nettoyer les sélections - garder toutes les sélections utilisateur
+    // this.selectedRooms = this.selectedRooms.filter(selectedRoom =>
+    //   this.availableRoomOptions.some(option => option.value === selectedRoom)
+    // );
   }
 
   updatePriceSuggestions(properties: Property[]) {
@@ -324,6 +326,16 @@ export class SearchBarComponent implements OnInit {
         }
         if (!matchesRoom) return false;
       }
+
+      // Apply advanced filters
+      if (!this.showUnderOption && property.Marquee) return false;
+      if (this.showWithTerrace && (!property.SurfaceTerrace || property.SurfaceTerrace <= 0)) return false;
+      if (this.showWithGarden && !property.HasGarden) return false;
+      if (this.showWithGarage && (!property.NumberOfGarages || property.NumberOfGarages <= 0)) return false;
+      if (this.minSurface !== null && (!property.SurfaceTotal || property.SurfaceTotal < this.minSurface)) return false;
+      if (this.maxSurface !== null && (!property.SurfaceTotal || property.SurfaceTotal > this.maxSurface)) return false;
+      if (this.minConstructionYear !== null && (!property.ConstructionYear || property.ConstructionYear < this.minConstructionYear)) return false;
+      if (this.maxConstructionYear !== null && (!property.ConstructionYear || property.ConstructionYear > this.maxConstructionYear)) return false;
 
       return true;
     });
@@ -540,10 +552,26 @@ export class SearchBarComponent implements OnInit {
     const propertyTypeValue = this.searchForm.get('propertyType')?.value;
     const minPriceValue = this.searchForm.get('minPrice')?.value;
     const maxPriceValue = this.searchForm.get('maxPrice')?.value;
+    const minSurfaceValue = this.searchForm.get('minSurface')?.value;
+    const maxSurfaceValue = this.searchForm.get('maxSurface')?.value;
+    const minConstructionYearValue = this.searchForm.get('minConstructionYear')?.value;
+    const maxConstructionYearValue = this.searchForm.get('maxConstructionYear')?.value;
+    const showUnderOptionValue = this.searchForm.get('showUnderOption')?.value;
+    const showWithTerraceValue = this.searchForm.get('showWithTerrace')?.value;
+    const showWithGardenValue = this.searchForm.get('showWithGarden')?.value;
+    const showWithGarageValue = this.searchForm.get('showWithGarage')?.value;
 
     // Sync component properties with form values
     this.minPrice = minPriceValue || null;
     this.maxPrice = maxPriceValue || null;
+    this.minSurface = minSurfaceValue || null;
+    this.maxSurface = maxSurfaceValue || null;
+    this.minConstructionYear = minConstructionYearValue || null;
+    this.maxConstructionYear = maxConstructionYearValue || null;
+    this.showUnderOption = showUnderOptionValue !== undefined ? showUnderOptionValue : true;
+    this.showWithTerrace = showWithTerraceValue || false;
+    this.showWithGarden = showWithGardenValue || false;
+    this.showWithGarage = showWithGarageValue || false;
 
     // Get selected goal (Achat=0, Location=1)
     const selectedGoal = this.getSelectedGoal();
@@ -561,7 +589,16 @@ export class SearchBarComponent implements OnInit {
       zipCodes: zipCodes,
       selectedRooms: this.selectedRooms,
       minPrice: this.minPrice,
-      maxPrice: this.maxPrice
+      maxPrice: this.maxPrice,
+      // Nouveaux filtres avancés
+      showUnderOption: this.showUnderOption,
+      showWithTerrace: this.showWithTerrace,
+      showWithGarden: this.showWithGarden,
+      showWithGarage: this.showWithGarage,
+      minSurface: this.minSurface,
+      maxSurface: this.maxSurface,
+      minConstructionYear: this.minConstructionYear,
+      maxConstructionYear: this.maxConstructionYear
     };
 
     this.searchService.updateSearchCriteria(criteria);
@@ -672,41 +709,59 @@ export class SearchBarComponent implements OnInit {
     return matchingZips;
   }
 
-  // Restore search criteria from service
-  private restoreSearchCriteria(criteria: SearchCriteria) {
-    // Restore goal (Achat/Location)
+  // Restauration des critères de recherche depuis le service
+  private restoreSearchCriteria(criteria: SearchCriteria): void {
+    // Restauration du goal (Achat/Location)
     this.types.forEach(type => type.active = false);
-    // Convert goal number back to type ID (0 = sale, 1 = rental)
     const targetTypeId = criteria.goal === 0 ? 'sale' : 'rental';
     const targetType = this.types.find(type => type.id === targetTypeId);
     if (targetType) {
       targetType.active = true;
     }
 
-    // Restore location
+    // Restauration de la localisation
     if (criteria.location) {
-      // Split by comma in case multiple locations were stored
       this.selectedLocations = criteria.location.split(', ').filter(loc => loc.trim());
       this.searchForm.get('location')?.setValue(criteria.location);
     } else {
       this.selectedLocations = [];
     }
 
-    // Restore property type
+    // Restauration du type de propriété
     if (criteria.propertyTypes.length > 0) {
       this.searchForm.get('propertyType')?.setValue(criteria.propertyTypes[0].toString());
     }
 
-    // Restore rooms
+    // Restauration des chambres
     this.selectedRooms = criteria.selectedRooms || [];
 
-    // Restore price
+    // Restauration des prix
     this.minPrice = criteria.minPrice;
     this.maxPrice = criteria.maxPrice;
     this.searchForm.get('minPrice')?.setValue(criteria.minPrice);
     this.searchForm.get('maxPrice')?.setValue(criteria.maxPrice);
 
-    // Update available zips with restored criteria
+    // Restauration des filtres avancés (correction du bug de re-cochage automatique)
+    this.showUnderOption = criteria.showUnderOption !== undefined ? criteria.showUnderOption : true;
+    this.showWithTerrace = criteria.showWithTerrace || false;
+    this.showWithGarden = criteria.showWithGarden || false;
+    this.showWithGarage = criteria.showWithGarage || false;
+    this.minSurface = criteria.minSurface;
+    this.maxSurface = criteria.maxSurface;
+    this.minConstructionYear = criteria.minConstructionYear;
+    this.maxConstructionYear = criteria.maxConstructionYear;
+    
+    // Mise à jour des contrôles de formulaire
+    this.searchForm.get('minSurface')?.setValue(criteria.minSurface);
+    this.searchForm.get('maxSurface')?.setValue(criteria.maxSurface);
+    this.searchForm.get('minConstructionYear')?.setValue(criteria.minConstructionYear);
+    this.searchForm.get('maxConstructionYear')?.setValue(criteria.maxConstructionYear);
+    this.searchForm.get('showUnderOption')?.setValue(this.showUnderOption);
+    this.searchForm.get('showWithTerrace')?.setValue(this.showWithTerrace);
+    this.searchForm.get('showWithGarden')?.setValue(this.showWithGarden);
+    this.searchForm.get('showWithGarage')?.setValue(this.showWithGarage);
+
+    // Mise à jour des codes postaux disponibles avec les critères restaurés
     const currentProperties = this.searchService.getCurrentProperties();
     if (currentProperties.length > 0) {
       this.updateAvailableZips(currentProperties);
@@ -743,19 +798,118 @@ export class SearchBarComponent implements OnInit {
     this.searchForm.get('location')?.setValue(this.selectedLocations.join(', '));
   }
 
+  // Méthodes pour les filtres avancés
+  toggleAdvancedFilters() {
+    this.isAdvancedFiltersOpen = !this.isAdvancedFiltersOpen;
+  }
+
+  toggleSurfaceDropdown() {
+    this.isSurfaceDropdownOpen = !this.isSurfaceDropdownOpen;
+  }
+
+  closeSurfaceDropdown() {
+    this.isSurfaceDropdownOpen = false;
+    // Sync form values with component properties
+    this.minSurface = this.searchForm.get('minSurface')?.value || null;
+    this.maxSurface = this.searchForm.get('maxSurface')?.value || null;
+    
+    // Update available zips and smart filters with new surface criteria
+    const currentProperties = this.searchService.getCurrentProperties();
+    if (currentProperties.length > 0) {
+      this.updateAvailableZips(currentProperties);
+      this.checkSelectedLocationAvailability();
+    }
+    
+    this.onSearch();
+  }
+
+  getSurfaceDisplayText(): string {
+    if (this.minSurface && this.maxSurface) {
+      return `${this.minSurface}m² - ${this.maxSurface}m²`;
+    } else if (this.minSurface) {
+      return `À partir de ${this.minSurface}m²`;
+    } else if (this.maxSurface) {
+      return `Jusqu'à ${this.maxSurface}m²`;
+    }
+    return 'Surface';
+  }
+
+  toggleConstructionYearDropdown() {
+    this.isConstructionYearDropdownOpen = !this.isConstructionYearDropdownOpen;
+  }
+
+  closeConstructionYearDropdown() {
+    this.isConstructionYearDropdownOpen = false;
+    // Sync form values with component properties
+    this.minConstructionYear = this.searchForm.get('minConstructionYear')?.value || null;
+    this.maxConstructionYear = this.searchForm.get('maxConstructionYear')?.value || null;
+    
+    // Update available zips and smart filters with new construction year criteria
+    const currentProperties = this.searchService.getCurrentProperties();
+    if (currentProperties.length > 0) {
+      this.updateAvailableZips(currentProperties);
+      this.checkSelectedLocationAvailability();
+    }
+    
+    this.onSearch();
+  }
+
+  getConstructionYearDisplayText(): string {
+    if (this.minConstructionYear && this.maxConstructionYear) {
+      return `${this.minConstructionYear} - ${this.maxConstructionYear}`;
+    } else if (this.minConstructionYear) {
+      return `À partir de ${this.minConstructionYear}`;
+    } else if (this.maxConstructionYear) {
+      return `Jusqu'à ${this.maxConstructionYear}`;
+    }
+    return 'Année de construction';
+  }
+
+  onAdvancedFilterChange(): void {
+    // Synchronisation des valeurs du formulaire avec les propriétés du composant
+    this.showUnderOption = this.searchForm.get('showUnderOption')?.value || false;
+    this.showWithTerrace = this.searchForm.get('showWithTerrace')?.value || false;
+    this.showWithGarden = this.searchForm.get('showWithGarden')?.value || false;
+    this.showWithGarage = this.searchForm.get('showWithGarage')?.value || false;
+    
+    // Mise à jour des codes postaux et filtres intelligents
+    const currentProperties = this.searchService.getCurrentProperties();
+    if (currentProperties.length > 0) {
+      this.updateAvailableZips(currentProperties);
+      this.checkSelectedLocationAvailability();
+    }
+    
+    this.onSearch();
+  }
+
   // Clear search
-  clearSearch() {
+  clearSearch(): void {
     this.searchForm.reset();
     this.selectedLocations = [];
     this.minPrice = null;
     this.maxPrice = null;
     this.selectedRooms = [];
-    // Reset to default state (sale)
+    
+    // Réinitialisation des filtres avancés
+    this.showUnderOption = true;
+    this.showWithTerrace = false;
+    this.showWithGarden = false;
+    this.showWithGarage = false;
+    this.minSurface = null;
+    this.maxSurface = null;
+    this.minConstructionYear = null;
+    this.maxConstructionYear = null;
+    
+    // Réinitialisation des contrôles de formulaire
+    this.searchForm.get('showUnderOption')?.setValue(true);
+    this.searchForm.get('showWithTerrace')?.setValue(false);
+    this.searchForm.get('showWithGarden')?.setValue(false);
+    this.searchForm.get('showWithGarage')?.setValue(false);
+    
+    // Retour à l'état par défaut (vente/achat)
     this.types.forEach(type => type.active = false);
-    const saleType = this.types.find(type => type.id === 'sale');
-    if (saleType) {
-      saleType.active = true;
-    }
+    this.types[0].active = true; // Premier type = "sale"
+    
     this.searchService.clearSearch();
   }
 }

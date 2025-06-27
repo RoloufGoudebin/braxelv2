@@ -36,54 +36,66 @@ export class OurBiensComponent implements OnInit, OnDestroy {
     this.meta.updateTag({ name: 'canonical', content: 'https://braxel.be/nos-biens' });
     this.sharedDatas.resetPropertiesOurBiens();
 
-    // Subscribe to properties from Firestore
+    // Abonnement aux propriétés depuis Firestore
     const propertiesSub = this.firestore.prout.subscribe(data => {
       this.allProperties = data.map(e => {
+        const propertyData = e.payload.doc.data() as Property;
         return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as Property
+          id: propertyData.id || 0,
+          ...propertyData
         }
-      }).sort(function (a: Property, b: Property) {
-        return a.id - b.id;
-      }).sort(function (a: Property, b: Property) {
-        if (a.SubStatus == 2 || a.SubStatus == 3) {
-          if (b.SubStatus == 2 || b.SubStatus == 3) {
-            return 0;
-          }
-          else {
-            return -1;
-          }
-        }
-        else {
-          if (b.SubStatus == 2 || b.SubStatus == 3) {
-            return 1;
-          }
-          else {
-            return 0;
-          }
-        }
+      }).sort((a: Property, b: Property) => {
+        // Tri principal par position (id)
+        const idDiff = a.id - b.id;
+        if (idDiff !== 0) return idDiff;
+        
+        // Tri secondaire par SubStatus (propriétés disponibles en premier)
+        const aAvailable = a.SubStatus === 2 || a.SubStatus === 3;
+        const bAvailable = b.SubStatus === 2 || b.SubStatus === 3;
+        
+        if (aAvailable && !bAvailable) return -1;
+        if (!aAvailable && bAvailable) return 1;
+        return 0;
       });
 
-      // Pass properties to search service
+      // Transmission des propriétés au service de recherche
       this.searchService.setAllProperties(this.allProperties);
       
-      // Initialize toShow with all properties if no search criteria
+      // Application des critères par défaut si aucun critère n'existe
       const currentCriteria = this.searchService.getCurrentCriteria();
       if (!currentCriteria) {
-        this.toShow = this.allProperties;
+        const defaultCriteria = {
+          goal: 0, // 0 = Achat, 1 = Location
+          location: '',
+          propertyTypes: [],
+          zipCodes: [],
+          selectedRooms: [],
+          minPrice: null,
+          maxPrice: null,
+          showUnderOption: true,
+          showWithTerrace: false,
+          showWithGarden: false,
+          showWithGarage: false,
+          minSurface: null,
+          maxSurface: null,
+          minConstructionYear: null,
+          maxConstructionYear: null
+        };
+        
+        this.searchService.updateSearchCriteria(defaultCriteria);
       }
     });
 
-    // Subscribe to search results
+    // Abonnement aux résultats de recherche
     const searchSub = this.searchService.searchResults$.subscribe(results => {
       const currentCriteria = this.searchService.getCurrentCriteria();
       if (currentCriteria) {
-        // If there are search criteria, show results (even if empty)
+        // Affichage des résultats de recherche (même si vide)
         if (JSON.stringify(this.toShow) !== JSON.stringify(results)) {
           this.toShow = results;
         }
       } else {
-        // If no search criteria, show all properties
+        // Aucun critère : affichage de toutes les propriétés
         if (JSON.stringify(this.toShow) !== JSON.stringify(this.allProperties)) {
           this.toShow = this.allProperties;
         }
@@ -93,7 +105,7 @@ export class OurBiensComponent implements OnInit, OnDestroy {
     this.subscriptions.push(propertiesSub, searchSub);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
@@ -102,7 +114,7 @@ export class OurBiensComponent implements OnInit, OnDestroy {
   }
 
   @HostListener('document:scroll', ['$event'])
-  onScroll(event: Event) {
+  onScroll(event: Event): void {
     const windowHeight = window.innerHeight;
     const boundingAddMore = this.addMore.nativeElement.getBoundingClientRect();
 
@@ -111,7 +123,7 @@ export class OurBiensComponent implements OnInit, OnDestroy {
     }
   }
 
-  lowerThan(one: number, two: number) {
+  lowerThan(one: number, two: number): boolean {
     return one < two;
   }
 }
