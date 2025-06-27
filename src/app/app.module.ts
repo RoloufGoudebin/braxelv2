@@ -46,6 +46,7 @@ import { ContactModalComponent } from './view-property/contact-modal/contact-mod
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ModalAddComponent } from './admin/avis/modal-add/modal-add.component';
 import { StorageComponent } from './admin/storage/storage.component';
 import { ModalAvisComponent } from './avis/modal-avis/modal-avis.component';
 import { EstimationModalComponent } from './estimation-modal/estimation-modal.component';
@@ -96,6 +97,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     AgentsComponent,
     StorageComponent,
     SearchBarComponent,
+    ModalAddComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

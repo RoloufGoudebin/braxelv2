@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { OmnicasaService } from '../services/omnicasa/omnicasa.service'
-import { Property } from '../services/omnicasa/interface';
-import { FirestoreService } from '../services/firebase/firestore.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { FirestoreService } from '../services/firebase/firestore.service';
+import { Property } from '../services/omnicasa/interface';
 
 @Component({
   selector: 'app-view-property-list',

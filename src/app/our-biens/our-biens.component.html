@@ -1,110 +1,37 @@
 <app-navbar></app-navbar>
-<section id="nos-biens" class="animated fadeIn">
+<section id="nos-biens" class="animated fadeIn container-fluid">
+  <div class="mt-40"></div>
 
+  <app-search-bar></app-search-bar>
 
-  <div class="mt-36"></div>
-
-  <app-search-bar ></app-search-bar>
-
-  <div class="container-fluid pt-0 mt-0 pt-lg-5 mt-lg-5">
+  <div class="container-fluid pt-0 mt-0">
     <div class="row">
-      <div class="col-12 col-lg-3 mt-5 pt-5">
-        <div class="col-12 col-lg-11 pt-5 mt-5">
-          <div class="row">
-            <h2 class="text-center ml-auto col-11 mx-auto">{{ 'ourBiens.1' | translate }}</h2>
-          </div>
-          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <div class="search-form ml-auto pb-3 col-12 pt-3">
-              <div class="row">
-                <div class="text-search-form col-11 text-left">
-                  <h3>{{ 'ourBiens.2' | translate }}</h3>
-                </div>
-                <div class="col-11 mx-auto">
-                  <div class="row">
-                    <button type="button" *ngFor="let item of items" (click)="toggleClass(item)"
-                      [ngClass]="item.select ? 'select' : 'not-select'"
-                      class="btn rounded-pill col mx-2 mb-2">{{ item.name | translate}}</button>
-                  </div>
-                  <div class="row py-0 my-0" *ngIf="!goalSelect">
-                    <div class="invalid-feedback d-block ml-1">{{ 'ourBiens.3' | translate }}</div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="row">
-                <label class="text-search-form col-11 text-left" for="selected">{{ 'ourBiens.4' | translate }}</label>
-                <div class="col-12">
-                  <ng-select bindLabel="selected" class="custom" name="selected" [multiple]="true"
-                    formControlName="selected">
-                    <ng-option *ngFor="let type of types" [value]="type.id" required>{{type.name | translate}}</ng-option>
-                  </ng-select>
-                  <div class="row">
-                    <div *ngIf="selected.invalid" class="text-danger ml-3">
-                      <div *ngIf="selected.errors?.required">
-                        <div class="invalid-feedback d-block">{{ 'ourBiens.3' | translate }}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <label class="text-search-form col-11 text-left" for="zip">{{ 'ourBiens.5' | translate }}</label>
-                <div class="col-12">
-                  <ng-select class="custom" name="zip" [items]="listOfZips" bindLabel="localite" bindValue="zip"
-                    [multiple]="true" formControlName="zip" [minTermLength]="2"
-                    typeToSearchText="Please enter 2 or more characters">
-                  </ng-select>
-                  <div class="row">
-                    <div *ngIf="zip.invalid" class="text-danger ml-3">
-                      <div *ngIf="zip.errors?.required">
-                        <div class="invalid-feedback d-block">{{ 'navbar.17' | translate }}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row pt-2">
-                <label class="text-search-form col-11 text-left">{{ 'ourBiens.7' | translate }}</label>
-                <app-slider class="col-11 mx-auto" [options]="sliderRooms"></app-slider>
-              </div>
-
-              <div class="row pt-2">
-                <label class="text-search-form col-11 text-left">{{ 'ourBiens.8' | translate }}</label>
-                <app-slider class="col-11 mx-auto" [options]="sliderBudget"></app-slider>
-              </div>
-              <div class="row pt-3 button-search">
-                <button type="button" class="btn1 btn-outline-danger col-7 mx-auto rounded-pill py-2 mb-2"
-                  [disabled]="!registerForm.valid" (click)="onSubmit()">{{ 'ourBiens.9' | translate }}</button>
-              </div>
-            </div>
-          </form>
+      <div class="col-12" id="listProperty">
+        <div class="row mt-5">
+          <h1 class="col text-center">{{ "ourBiens.10" | translate }}</h1>
         </div>
-      </div>
-      <div class="col-12 col-lg-8" id="listProperty">
-        <div class="row pt-5 mt-5">
-          <h1 class="col text-center">{{ 'ourBiens.10' | translate }}</h1>
-        </div>
-        <app-view-property-list *ngIf="toShow" [numberProperty]="sharedDatas.numberPropertyOurBiens" [propertyList]="toShow">
+        <app-view-property-list
+          *ngIf="toShow"
+          [numberProperty]="sharedDatas.numberPropertyOurBiens"
+          [propertyList]="toShow"
+        >
         </app-view-property-list>
         <div class="row" *ngIf="toShow" id="addMore" #addMore>
-          <button *ngIf="lowerThan(sharedDatas.numberPropertyOurBiens, toShow.length)" type="button"
-            class="btn btn-outline-danger col-7 col-lg-3 mx-auto text-center" (click)="sharedDatas.addPropertiesOurBiens()">{{ 'ourBiens.11' | translate }}</button>
-          <div *ngIf="toShow.length==0">
-            {{ 'ourBiens.12' | translate }}
+          <button
+            *ngIf="lowerThan(sharedDatas.numberPropertyOurBiens, toShow.length)"
+            type="button"
+            class="btn btn-outline-danger col-7 col-lg-3 mx-auto text-center"
+            (click)="sharedDatas.addPropertiesOurBiens()"
+          >
+            {{ "ourBiens.11" | translate }}
+          </button>
+          <div *ngIf="toShow.length == 0" class="col-12 text-center mt-4">
+            {{ "ourBiens.12" | translate }}
           </div>
         </div>
-
-
-
       </div>
     </div>
-
   </div>
-
 </section>
-
 
 <app-footer></app-footer>

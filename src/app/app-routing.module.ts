@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ViewPropertyComponent } from './view-property/view-property.component';
-import { AgencyComponent } from './agency/agency.component';
-import { ServicesComponent } from './services-braxel/services.component';
-import { FaqComponent } from './faq/faq.component';
-import { ContactComponent } from './contact/contact.component';
-import { TopBiensComponent } from './admin/top-biens/top-biens.component';
-import { OurBiensComponent } from './our-biens/our-biens.component';
-import { SignInComponent } from './admin/sign-in/sign-in.component';
+import { RouterModule, Routes } from '@angular/router';
 import { AvisComponent as AvisAdminComponent } from './admin/avis/avis.component';
 import { AuthGuard } from './admin/guard/auth.guard';
-import { RealisationsComponent } from './realisations/realisations.component';
+import { SignInComponent } from './admin/sign-in/sign-in.component';
 import { StorageComponent } from './admin/storage/storage.component';
+import { TopBiensComponent } from './admin/top-biens/top-biens.component';
+import { AgencyComponent } from './agency/agency.component';
+import { ContactComponent } from './contact/contact.component';
+import { FaqComponent } from './faq/faq.component';
+import { HomeComponent } from './home/home.component';
+import { OurBiensComponent } from './our-biens/our-biens.component';
+import { RealisationsComponent } from './realisations/realisations.component';
+import { ServicesComponent } from './services-braxel/services.component';
+import { ViewPropertyComponent } from './view-property/view-property.component';
 
 
 
