@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { AngularFireStorage, AngularFireUploadTask, AngularFireStorageReference } from "@angular/fire/storage";
 import { finalize, map } from 'rxjs/operators';
 import { FirestoreService } from 'src/app/services/firebase/firestore.service';
