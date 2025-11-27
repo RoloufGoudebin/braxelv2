@@ -50,8 +50,8 @@ export class OurBiensComponent implements OnInit, OnDestroy {
         if (idDiff !== 0) return idDiff;
         
         // Tri secondaire par SubStatus (propriétés disponibles en premier)
-        const aAvailable = a.SubStatus === 2 || a.SubStatus === 3;
-        const bAvailable = b.SubStatus === 2 || b.SubStatus === 3;
+        const aAvailable = a.SubStatus === 2 || a.SubStatus === 3 || a.SubStatus === 4;
+        const bAvailable = b.SubStatus === 2 || b.SubStatus === 3 || b.SubStatus === 4;
         
         if (aAvailable && !bAvailable) return -1;
         if (!aAvailable && bAvailable) return 1;

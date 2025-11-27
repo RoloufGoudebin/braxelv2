@@ -205,6 +205,21 @@ li {
 
 .carousel {
   position: relative;
+  height: 60vh;
+  min-height: 400px;
+}
+
+.carousel .slide {
+  height: 60vh;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.carousel .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .carousel-item img {
@@ -219,6 +234,24 @@ li {
 
 .thumbnail-img {
   max-height: 150px;
+}
+
+/* Uniformiser la hauteur des miniatures dans les carousels */
+.carouselXs .slide,
+.carouselXl .slide {
+  height: 120px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carouselXs .slide img,
+.carouselXl .slide img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .carousel-fullscreen-icon {

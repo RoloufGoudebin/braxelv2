@@ -65,7 +65,7 @@
           </div>
         </ngx-slick-carousel>
 
-        <ngx-slick-carousel class="carouselXl d-none d-md-block" #slickModalNavXl="slick-carousel"
+        <ngx-slick-carousel class="carouselXl d-none d-md-block pb-4" #slickModalNavXl="slick-carousel"
           [config]="slideConfigNavXl" (init)="slickInit($event)" (breakpoint)="breakpoint($event)"
           (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
           <div ngxSlickItem *ngFor="let picture of property.LargePictures; let i = index"
