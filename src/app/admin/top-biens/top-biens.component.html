@@ -1,96 +1,93 @@
 <app-navbar-admin></app-navbar-admin>
-<div class="container-fluid">
-  <div class="row">
-    <h1 class="col-5 text-center">
-      BIENS A LA UNE
-    </h1>
-  </div>
-  <div class="row" *ngIf="topPropertyList">
-    <div class="col-10 topBiens">
-      <div class="row">
-        <a *ngFor="let Items of topPropertyList; let index = index;" class="col-2 px-1 my-3" style="width: 18rem;"
-          (click)="selectSwap(index)">
-          <div class="card" [ngClass]="{'select': toSwap[0]===index || toSwap[1]===index}">
-            <img class="card-img-top" src={{Items.LargePicture}} alt="Card image cap">
-            <div class="card-block">
-              <h5 class="card-title">{{Items.TypeDescription}}</h5>
-              <p class="card-text">{{Items.Zip}} {{Items.City}}</p>
-              <hr>
-              <h6>{{Items.Price}}</h6>
-            </div>
-          </div>
-        </a>
+<div class="container-fluid admin-container">
+  <div class="header-section">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h1 class="admin-title">
+          <i class="bi bi-star-fill text-warning me-2"></i>
+          Biens à la Une
+        </h1>
+        <p class="admin-subtitle">Glissez-déposez les biens pour modifier leur ordre d'affichage</p>
+      </div>
+      <div class="d-flex gap-2">
+        <button 
+          type="button" 
+          class="btn btn-outline-secondary"
+          (click)="resetOrder()"
+          [disabled]="!hasChanges">
+          <i class="bi bi-arrow-counterclockwise me-1"></i>
+          Réinitialiser
+        </button>
+        <button 
+          type="button" 
+          class="btn btn-success btn-save"
+          (click)="save()"
+          [disabled]="!hasChanges || isSaving">
+          <span *ngIf="!isSaving">
+            <i class="bi bi-check-circle me-1"></i>
+            Sauvegarder
+          </span>
+          <span *ngIf="isSaving">
+            <span class="spinner-border spinner-border-sm me-1" role="status"></span>
+            Sauvegarde...
+          </span>
+        </button>
       </div>
     </div>
-    <div class="col-2">
-      <div class="row">
-        <button type="button" class="btn btn-primary col-6" (click)="swap()">Échanger</button>
-      </div>
-      <div class="row">
-        <button type="button" class="btn btn-primary col-6" (click)="save()">Sauvegarder</button>
+
+    <div *ngIf="hasChanges" class="alert alert-info d-flex align-items-center" role="alert">
+      <i class="bi bi-info-circle-fill me-2"></i>
+      <div>Vous avez des modifications non sauvegardées. N'oubliez pas de sauvegarder !</div>
+    </div>
+  </div>
+
+  <div class="properties-grid" *ngIf="topPropertyList">
+    <div 
+      #propertyListContainer
+      cdkDropList 
+      cdkDropListOrientation="horizontal"
+      class="property-list"
+      cdkDropListAutoScrollDisabled="true"
+      (cdkDropListDropped)="drop($event)">
+      
+      <div 
+        *ngFor="let property of topPropertyList; let index = index;" 
+        class="property-item"
+        cdkDrag
+        (cdkDragMoved)="onDragMoved($event)"
+        (cdkDragEnded)="onDragEnded()">
+        
+        <div class="drag-placeholder" *cdkDragPlaceholder></div>
+        
+        <div class="property-card">
+          <div class="drag-handle" cdkDragHandle>
+            <i class="bi bi-grip-vertical"></i>
+          </div>
+          
+          <div class="property-position">{{ index + 1 }}</div>
+          
+          <img 
+            class="property-image" 
+            [src]="getImageUrl(property)" 
+            [alt]="property.TypeDescription"
+            (error)="onImageError($event)">
+          
+          <div class="property-content">
+            <h5 class="property-type">{{ property.TypeDescription }}</h5>
+            <p class="property-location">
+              <i class="bi bi-geo-alt-fill"></i>
+              {{ property.Zip }} {{ property.City }}
+            </p>
+            <div class="property-price">{{ property.Price | currency:'EUR':'symbol':'1.0-0':'fr' }}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <ng-template #notShow>
-    <div class="mt-5 pt-5">
-      <button type="button" *ngIf="topPropertyList" class="btn btn-primary col-6">Voir les biens</button>
-    </div>
-  </ng-template>
-  <!--
-    <div class="col-2">
-      <form>
-        <div class="form-group row">
-          <div class="col-sm-9">
-            <input [(ngModel)]="zip" type="string" class="form-control" #inputZip name="zip" placeholder="Code Postal">
-          </div>
-          <button type="button" class="btn btn-primary col-2" (click)="searchZIP(inputZip.value)">GO</button>
-        </div>
-        <div class="form-group row">
-          <div class="col-sm-9">
-            <input [(ngModel)]="priceMax" type="string" class="form-control" #inputPriceMax name="priceMax"
-              placeholder="Prix max">
-          </div>
-          <button type="button" class="btn btn-primary col-2" (click)="searchMaxPrice(inputPriceMax.value)">GO</button>
-        </div>
-        <div class="form-group row">
-          <div class="col-sm-9">
-            <input [(ngModel)]="priceMin" type="string" class="form-control" #inputPriceMin name="priceMin"
-              placeholder="Prix min">
-          </div>
-          <button type="button" class="btn btn-primary col-2" (click)="searchMinPrice(inputPriceMin.value)">GO</button>
-        </div>
-        <div class="form-group row">
-          <div class="col-sm-9">
-            <input [(ngModel)]="priceExact" type="string" class="form-control" #inputPriceExact name="priceExact"
-              placeholder="Prix exact">
-          </div>
-          <button type="button" class="btn btn-primary col-2"
-            (click)="searchExactPrice(inputPriceExact.value)">GO</button>
-        </div>
-      </form>
-      <div class="row">
-        <button type="button" class="btn btn-primary col-6" (click)="changeProperty()">Échanger</button>
-      </div>
-      <div class="row">
-        <button type="button" class="btn btn-primary col-6" (click)="save()">Sauvegarder</button>
-      </div>
-    </div>
-
-    <div class="col-5 topBiens">
-      <div class="row">
-        <a *ngFor="let Items of propertyList; let index = index" class="col-4 px-1 my-3" style="width: 18rem;" (click)="selectPropertyListToChange(index)">
-          <div class="card">
-            <img class="card-img-top" src={{Items.LargePicture}} alt="Card image cap">
-            <div class="card-block">
-              <h5 class="card-title">{{Items.TypeDescription}}</h5>
-              <p class="card-text">{{Items.Zip}} {{Items.City}}</p>
-              <hr>
-              <h6>{{Items.Price}}</h6>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-    -->
+  <div *ngIf="!topPropertyList || topPropertyList.length === 0" class="empty-state">
+    <i class="bi bi-house-x-fill"></i>
+    <h3>Aucun bien à la une</h3>
+    <p>Il n'y a actuellement aucun bien configuré pour être affiché à la une.</p>
+  </div>
 </div>

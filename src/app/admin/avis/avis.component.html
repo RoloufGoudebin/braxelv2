@@ -1,93 +1,200 @@
 <app-navbar-admin></app-navbar-admin>
-<div *ngIf="show; else notShow">
-    <div class="row" *ngIf="show; else notShow">
-        <div class="col-10">
-            <div class="row">
-                <div class="col-md-2" *ngFor="let review of cards; let cardIndex = index">
-                    <div class="card my-3" (click)="selectSwap(cardIndex)"
-                        [ngClass]="{'select': toSwap[0]===cardIndex || toSwap[1]===cardIndex}">
-                        <div class="card-title">
-                            <h4 class="text-center">{{review.author_name}}</h4>
-                            <div class="stars text-center pt-0 mt-0">
-                                <mat-icon>{{review.rating}}<i class="bi bi-star-fill"></i></mat-icon>
-                            </div>
+
+<div class="admin-container">
+    <div class="header-section">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="admin-title">
+                    <i class="bi bi-chat-quote-fill text-info me-2"></i>
+                    Gestion des Avis
+                </h1>
+                <p class="admin-subtitle">Organisez l'ordre d'affichage des avis clients</p>
+            </div>
+            <div class="d-flex gap-2">
+                <button 
+                    type="button" 
+                    class="btn btn-outline-secondary"
+                    (click)="resetOrder()"
+                    [disabled]="!hasChanges">
+                    <i class="bi bi-arrow-counterclockwise me-1"></i>
+                    Réinitialiser
+                </button>
+                <button 
+                    type="button" 
+                    class="btn btn-info"
+                    (click)="numberModal.show()">
+                    <i class="bi bi-hash me-1"></i>
+                    Nombre d'avis
+                </button>
+                <button 
+                    type="button" 
+                    class="btn btn-primary"
+                    (click)="basicModal.show()">
+                    <i class="bi bi-plus-circle me-1"></i>
+                    Ajouter un avis
+                </button>
+                <button 
+                    type="button" 
+                    class="btn btn-success"
+                    (click)="save()"
+                    [disabled]="!hasChanges || isSaving">
+                    <span *ngIf="!isSaving">
+                        <i class="bi bi-check-circle me-1"></i>
+                        Sauvegarder
+                    </span>
+                    <span *ngIf="isSaving">
+                        <span class="spinner-border spinner-border-sm me-1" role="status"></span>
+                        Sauvegarde...
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <div *ngIf="hasChanges" class="alert alert-info d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <div>Vous avez des modifications non sauvegardées. N'oubliez pas de sauvegarder !</div>
+        </div>
+
+        <div *ngIf="numberReviews && numberReviews[0]" class="stats-card">
+            <i class="bi bi-star-fill"></i>
+            <div>
+                <div class="stats-number">{{ numberReviews[0].number }}</div>
+                <div class="stats-label">Avis affichés au total</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reviews-section" *ngIf="cards && cards.length > 0">
+        <div 
+            cdkDropList 
+            cdkDropListOrientation="horizontal"
+            class="reviews-list"
+            (cdkDropListDropped)="drop($event)">
+            
+            <div 
+                *ngFor="let review of cards; let index = index;" 
+                class="review-item"
+                cdkDrag>
+                
+                <div class="drag-placeholder-review" *cdkDragPlaceholder></div>
+                
+                <div class="review-card">
+                    <div class="drag-handle-review" cdkDragHandle>
+                        <i class="bi bi-grip-vertical"></i>
+                    </div>
+                    
+                    <button 
+                        class="delete-btn" 
+                        (click)="deleteReview(index)"
+                        title="Supprimer cet avis">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                    
+                    <div class="review-position">{{ index + 1 }}</div>
+                    
+                    <div class="review-header">
+                        <h4 class="review-author">{{ review.author_name }}</h4>
+                        <div class="review-stars">
+                            <span *ngFor="let star of [1,2,3,4,5]">
+                                <i class="bi" [ngClass]="star <= review.rating ? 'bi-star-fill' : 'bi-star'"></i>
+                            </span>
                         </div>
-                        <p
-                            class="text-justify text-card mx-auto text-justify col-10 text-review pt-3 notshow mx-0 px-0 pb-0 mb-0">
-                            {{review.text}}</p>
-                        <p class="text-justify mx-auto col-10 mx-0 px-0 pt-0 mt-0">...</p>
-                        <h6 class="text-center pt-1 pb-0 mb-0">{{ review.relative_time_description }}</h6>
+                    </div>
+                    
+                    <p class="review-text">{{ review.text }}</p>
+                    
+                    <div class="review-footer">
+                        <i class="bi bi-clock"></i>
+                        <span>{{ review.relative_time_description }}</span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-2">
-            <div class="row">
-                <button type="button" class="btn btn-primary col-10" (click)="swap()">Échanger</button>
-            </div>
-            <!--
-            <div class="row" *ngIf="toSwap[0]!=-1 && toSwap[1]==-1">
-                <button type="button" class="btn btn-primary col-10" (click)="delete()">Supprimer</button>
-            </div>
-            -->
-            <div class="row">
-                <button type="button" class="btn btn-primary col-10" (click)="save()">Sauvegarder</button>
-            </div>
-            <div class="row">
-                <button type="button" class="btn btn-primary col-10" (click)="basicModal.show()">Ajouter avis</button>
-            </div>
-            <div class="row">
-                <button type="button" class="btn btn-primary col-10" (click)="numberModal.show()">Modifier le nombre</button>
-            </div>
-        </div>
+    </div>
+
+    <div *ngIf="!cards || cards.length === 0" class="empty-state">
+        <i class="bi bi-chat-left-quote"></i>
+        <h3>Aucun avis</h3>
+        <p>Commencez par ajouter votre premier avis client.</p>
+        <button 
+            type="button" 
+            class="btn btn-primary btn-lg mt-3"
+            (click)="basicModal.show()">
+            <i class="bi bi-plus-circle me-2"></i>
+            Ajouter un avis
+        </button>
     </div>
 </div>
-
-<ng-template #notShow>
-    <div class="mt-5 pt-5">
-        <button type="button" *ngIf="cards" class="btn btn-primary col-6" (click)="sort()">Voir les
-            avis</button>
-    </div>
-</ng-template>
 
 
 
 <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+            <div class="modal-header bg-primary text-white">
+                <h4 class="modal-title w-100" id="myModalLabel">
+                    <i class="bi bi-plus-circle me-2"></i>
+                    Ajouter un avis
+                </h4>
+                <button type="button" class="close text-white" aria-label="Close" (click)="basicModal.hide()">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title w-100" id="myModalLabel">Ajouter un avis</h4>
             </div>
             <form [formGroup]="reviewForm" (ngSubmit)="onSubmitReview()">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="form-group col-12">
-                            <label for="exampleInputEmail1">Auteur : </label>
-                            <input class="col-12 form-control" id="author" type="text" formControlName="author"
-                                placeholder="Entrez l'auteur">
-                        </div>
-                        <div class="form-group col-12">
-                            <label for="exampleInputEmail1">Avis : </label>
-                            <textarea class="form-control col-12" id="review" type="text" formControlName="review"
-                                rows="6" placeholder="Entrez l'avis"></textarea>
-                        </div>
-                        <div class="form-group col-12">
-                            <label for="exampleInputEmail1">Note : </label>
-                            <input class="form-control col-12" id="rate" type="text" formControlName="rate"
-                                placeholder="Entrez la note">
-                        </div>
+                <div class="modal-body p-4">
+                    <div class="form-group mb-3">
+                        <label for="author" class="form-label fw-bold">
+                            <i class="bi bi-person-fill me-2"></i>Auteur
+                        </label>
+                        <input 
+                            class="form-control form-control-lg" 
+                            id="author" 
+                            type="text" 
+                            formControlName="author"
+                            placeholder="Nom du client">
                     </div>
-
+                    <div class="form-group mb-3">
+                        <label for="rate" class="form-label fw-bold">
+                            <i class="bi bi-star-fill me-2"></i>Note (1-5)
+                        </label>
+                        <input 
+                            class="form-control form-control-lg" 
+                            id="rate" 
+                            type="number" 
+                            min="1" 
+                            max="5"
+                            formControlName="rate"
+                            placeholder="Note sur 5">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="review" class="form-label fw-bold">
+                            <i class="bi bi-chat-left-text-fill me-2"></i>Avis
+                        </label>
+                        <textarea 
+                            class="form-control form-control-lg" 
+                            id="review" 
+                            type="text" 
+                            formControlName="review"
+                            rows="6" 
+                            placeholder="Témoignage du client"></textarea>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"
-                        (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-                    <button type="button" mdbBtn color="primary" class="relative waves-light" type="submit"
-                        (click)="basicModal.hide()" mdbWavesEffect>Ajouter</button>
+                    <button 
+                        type="button" 
+                        class="btn btn-secondary" 
+                        (click)="basicModal.hide()">
+                        <i class="bi bi-x-circle me-1"></i>
+                        Annuler
+                    </button>
+                    <button 
+                        type="submit" 
+                        class="btn btn-primary"
+                        (click)="basicModal.hide()">
+                        <i class="bi bi-check-circle me-1"></i>
+                        Ajouter l'avis
+                    </button>
                 </div>
             </form>
         </div>
@@ -98,28 +205,49 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close pull-right" aria-label="Close" (click)="numberModal.hide()">
+            <div class="modal-header bg-info text-white">
+                <h4 class="modal-title w-100" id="myModalLabel">
+                    <i class="bi bi-hash me-2"></i>
+                    Modifier le nombre d'avis
+                </h4>
+                <button type="button" class="close text-white" aria-label="Close" (click)="numberModal.hide()">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title w-100" id="myModalLabel">Modifier le nombre d'avis</h4>
             </div>
             <form [formGroup]="numberForm" (ngSubmit)="onSubmitNumber()">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="form-group col-12">
-                            <label for="exampleInputEmail1">Nombre d'avis : </label>
-                            <input class="col-12 form-control" id="author" type="text" formControlName="newNumberReviews"
-                                placeholder="{{numberReviews[0].number}}">
-                        </div>
+                <div class="modal-body p-4">
+                    <div class="form-group">
+                        <label for="newNumberReviews" class="form-label fw-bold">
+                            <i class="bi bi-calculator-fill me-2"></i>
+                            Nombre total d'avis à afficher
+                        </label>
+                        <input 
+                            class="form-control form-control-lg" 
+                            id="newNumberReviews" 
+                            type="number" 
+                            formControlName="newNumberReviews"
+                            [placeholder]="numberReviews && numberReviews[0] ? numberReviews[0].number : 'Nombre d\'avis'">
+                        <small class="form-text text-muted mt-2">
+                            <i class="bi bi-info-circle me-1"></i>
+                            Ce nombre sera affiché sur votre site web
+                        </small>
                     </div>
-
                 </div>
                 <div class="modal-footer">
-                    <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"
-                        (click)="numberModal.hide()" mdbWavesEffect>Close</button>
-                    <button type="button" mdbBtn color="primary" class="relative waves-light" type="submit"
-                        (click)="numberModal.hide()" mdbWavesEffect>Modifier</button>
+                    <button 
+                        type="button" 
+                        class="btn btn-secondary"
+                        (click)="numberModal.hide()">
+                        <i class="bi bi-x-circle me-1"></i>
+                        Annuler
+                    </button>
+                    <button 
+                        type="submit" 
+                        class="btn btn-info"
+                        (click)="numberModal.hide()">
+                        <i class="bi bi-check-circle me-1"></i>
+                        Modifier
+                    </button>
                 </div>
             </form>
         </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { AngularFireStorage, AngularFireUploadTask, AngularFireStorageReference } from "@angular/fire/storage";
 import { finalize, map } from 'rxjs/operators';
 import { FirestoreService } from 'src/app/services/firebase/firestore.service';
@@ -74,5 +75,10 @@ export class StorageComponent implements OnInit {
     this.firestore.deleteFile(this.toChange);
   }
 
+  dropFile(event: CdkDragDrop<any[]>) {
+    if (event.previousIndex !== event.currentIndex) {
+      moveItemInArray(this.files, event.previousIndex, event.currentIndex);
+    }
+  }
 
 }

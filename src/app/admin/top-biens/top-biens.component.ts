@@ -1,149 +1,191 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, CdkDrag } from '@angular/cdk/drag-drop';
 import { FirestoreService } from '../../services/firebase/firestore.service';
 import { Property } from '../../services/omnicasa/interface';
 import { OmnicasaService } from '../../services/omnicasa/omnicasa.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-top-biens',
   templateUrl: './top-biens.component.html',
   styleUrls: ['./top-biens.component.css', '../../view-property-list/view-property-list.component.css']
 })
-export class TopBiensComponent implements OnInit {
+export class TopBiensComponent implements OnInit, OnDestroy {
+
+  @ViewChild('propertyListContainer', { read: ElementRef }) propertyListContainer: ElementRef;
 
   topPropertyList: Property[];
   propertyList: Property[];
-  newList: Array<Property> = [];
-  listTemp: Array<Property> = [];
-  toSwap= [-1,-1];
-  zip: number;
-  priceMin: number;
-  priceMax: number;
-  priceExact: number;
-  propertyListToChange: number;
-  show= false;
-
+  isSaving = false;
+  hasChanges = false;
+  placeholderImage = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23ddd" width="400" height="300"/%3E%3Ctext fill="rgba(0,0,0,0.5)" font-family="sans-serif" font-size="30" dy="10.5" font-weight="bold" x="50%25" y="50%25" text-anchor="middle"%3EImage%3C/text%3E%3C/svg%3E';
+  
+  private subscription: Subscription;
+  private scrollInterval: any;
+  private isScrolling = false;
+  private currentScrollSpeed = 0;
+  private scrollDirection = 0; // -1 = gauche, 1 = droite, 0 = stop
 
   constructor(private firestore: FirestoreService, private omnicasa: OmnicasaService) { }
 
 
   ngOnInit(): void {
-    this.firestore.prout.subscribe(data =>
-      this.topPropertyList = data.map(e => {
+    // Unsubscribe si déjà souscrit (pour éviter les fuites mémoire)
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+
+    this.subscription = this.firestore.prout.subscribe(data => {
+      const newList = data.map(e => {
         const propertyData = e.payload.doc.data() as Property;
         return {
           id: propertyData.id || 0,
           ...propertyData
         }
-      }).filter(e => (e.SubStatus == 2 || e.SubStatus ==3))
+      }).filter(e => (e.SubStatus == 2 || e.SubStatus == 3))
       .sort(function (a: Property, b: Property){
         return a.id - b.id;
-      })
-      );
+      });
+      
+      // Ne mettre à jour que si la liste a réellement changé (éviter la boucle infinie)
+      if (!this.topPropertyList || JSON.stringify(newList) !== JSON.stringify(this.topPropertyList)) {
+        this.topPropertyList = newList;
+        console.log('Biens à la une chargés:', this.topPropertyList.length);
+        
+        // Vérifier les images (seulement en mode debug)
+        if (this.topPropertyList.length > 0 && this.topPropertyList.length < 100) {
+          this.topPropertyList.forEach((prop, i) => {
+            if (!prop.LargePicture && (!prop.LargePictures || prop.LargePictures.length === 0)) {
+              console.warn(`Bien #${i} (${prop.TypeDescription}) n'a pas d'image`);
+            }
+          });
+        }
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Nettoyer la subscription pour éviter les fuites mémoire
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    // Arrêter le scroll
+    this.isScrolling = false;
+  }
+
+  drop(event: CdkDragDrop<Property[]>) {
+    if (event.previousIndex !== event.currentIndex) {
+      moveItemInArray(this.topPropertyList, event.previousIndex, event.currentIndex);
+      // Mettre à jour les IDs en fonction de la nouvelle position
+      this.topPropertyList.forEach((property, index) => {
+        property.id = index;
+      });
+      this.hasChanges = true;
+    }
   }
 
   save() {
-    console.log(this.topPropertyList);
+    this.isSaving = true;
     this.firestore.savePropertyTop(this.topPropertyList);
-  }
-
-  sort(){
-    this.topPropertyList.sort(function (a, b) {
-      return a.id - b.id;
-    });;
     setTimeout(() => {
-    },
-      3000);
-    this.show = true;
+      this.isSaving = false;
+      this.hasChanges = false;
+    }, 1000);
   }
 
-  update(newID: number, oldID: number) {
-    this.topPropertyList[oldID] = this.topPropertyList[newID];
+  resetOrder() {
+    this.topPropertyList.sort((a, b) => a.id - b.id);
+    this.hasChanges = false;
   }
 
-  getPropertyList() {
-    this.omnicasa.getPropertyList()
-      .subscribe(response => {
-        this.propertyList = response.GetPropertyListJsonResult.Value.Items;
-      })
-  }
-
-  selectSwap(id: number) {
-    if (this.toSwap[0] == -1) {
-      this.toSwap[0] = id;
+  getImageUrl(property: Property): string {
+    // Si LargePicture existe et n'est pas vide
+    if (property.LargePicture && property.LargePicture.trim() !== '') {
+      return property.LargePicture;
     }
-    else if (this.toSwap[1] == -1){
-      this.toSwap[1] = id;
+    // Si LargePictures existe et contient au moins une image
+    if (property.LargePictures && property.LargePictures.length > 0 && property.LargePictures[0]) {
+      return property.LargePictures[0];
     }
-    else if (this.toSwap[0] != -1 && this.toSwap[1] != -1){
-      this.toSwap[0] = -1;
-      this.toSwap[1] = -1;
-    }
+    // Retourner l'image placeholder
+    return this.placeholderImage;
   }
 
-  selectPropertyListToChange(id: number) {
-    this.propertyListToChange = id;
+  onImageError(event: any): void {
+    // En cas d'erreur de chargement, remplacer par le placeholder
+    console.warn('Erreur de chargement d\'image:', event.target.src);
+    event.target.src = this.placeholderImage;
   }
 
-  swap() {
-    let tmp = this.topPropertyList[this.toSwap[0]];
-    let tmpid = this.topPropertyList[this.toSwap[0]].id;
-    let tmpidBis = this.topPropertyList[this.toSwap[1]].id;
-    this.topPropertyList[this.toSwap[0]] = this.topPropertyList[this.toSwap[1]];
-    this.topPropertyList[this.toSwap[0]].id = tmpid;
-    this.topPropertyList[this.toSwap[1]] = tmp;
-    this.topPropertyList[this.toSwap[1]].id = tmpidBis;
-    this.toSwap[0] = -1;
-    this.toSwap[1] = -1;
-    console.log(this.topPropertyList)
+  private autoScroll(): void {
+    if (!this.isScrolling || !this.propertyListContainer) return;
+
+    const container = this.propertyListContainer.nativeElement;
+    container.scrollLeft += this.currentScrollSpeed * this.scrollDirection;
+
+    // Continue le scroll avec requestAnimationFrame (ultra performant!)
+    requestAnimationFrame(() => this.autoScroll());
   }
 
+  onDragMoved(event: any): void {
+    if (!this.propertyListContainer) return;
 
+    const container = this.propertyListContainer.nativeElement;
+    const pointerPosition = event.pointerPosition;
+    const containerRect = container.getBoundingClientRect();
+    
+    // Zone de détection ÉNORME (400px = presque tout l'écran!)
+    const edgeSize = 400;
+    // Vitesse de base (divisée par 2 = plus confortable)
+    const baseScrollSpeed = 25;
+    // Accélération maximale (divisée par 2)
+    const maxSpeedMultiplier = 2.5;
 
+    // Calculer la distance du curseur par rapport au bord
+    const distanceFromRight = containerRect.right - pointerPosition.x;
+    const distanceFromLeft = pointerPosition.x - containerRect.left;
 
-
-  searchZIP(zip: number) {
-    let j = 0;
-    for (let i = 0; i < this.propertyList.length; i++) {
-      if (this.propertyList[i].Zip == zip) {
-        this.propertyList[j] = this.propertyList[i];
-        j++;
+    // Scroll à droite
+    if (distanceFromRight < edgeSize && distanceFromRight > 0) {
+      // Plus on est proche du bord, plus c'est rapide (jusqu'à 5x!)
+      const proximity = 1 - (distanceFromRight / edgeSize);
+      const speedMultiplier = 1 + (proximity * maxSpeedMultiplier);
+      
+      this.currentScrollSpeed = baseScrollSpeed * speedMultiplier;
+      this.scrollDirection = 1;
+      
+      if (!this.isScrolling) {
+        this.isScrolling = true;
+        this.autoScroll();
       }
     }
-    this.propertyList.splice(j, this.propertyList.length - j);
-  }
-
-  searchMaxPrice(max: number) {
-    let j = 0;
-    for (let i = 0; i < this.propertyList.length; i++) {
-      if (this.propertyList[i].StartPrice > max) {
-        this.propertyList[j] = this.propertyList[i];
-        j++
+    // Scroll à gauche
+    else if (distanceFromLeft < edgeSize && distanceFromLeft > 0) {
+      // Plus on est proche du bord, plus c'est rapide (jusqu'à 5x!)
+      const proximity = 1 - (distanceFromLeft / edgeSize);
+      const speedMultiplier = 1 + (proximity * maxSpeedMultiplier);
+      
+      this.currentScrollSpeed = baseScrollSpeed * speedMultiplier;
+      this.scrollDirection = -1;
+      
+      if (!this.isScrolling) {
+        this.isScrolling = true;
+        this.autoScroll();
       }
     }
-    this.propertyList.splice(j, this.propertyList.length - j);
-  }
-
-  searchMinPrice(min: number) {
-    let j = 0;
-    for (let i = 0; i < this.propertyList.length; i++) {
-      if (this.propertyList[i].StartPrice > min) {
-        this.propertyList[j] = this.propertyList[i];
-        j++
-      }
+    // Pas de scroll
+    else {
+      this.isScrolling = false;
+      this.currentScrollSpeed = 0;
+      this.scrollDirection = 0;
     }
-    this.propertyList.splice(j, this.propertyList.length - j);
   }
 
-  searchExactPrice(max: number) {
-    let j = 0;
-    for (let i = 0; i < this.propertyList.length; i++) {
-      if (this.propertyList[i].Price == max) {
-        this.propertyList[j] = this.propertyList[i];
-        j++;
-      }
-    }
-    this.propertyList.splice(j, this.propertyList.length - j);
+  onDragEnded(): void {
+    // Arrêter le scroll automatique quand on relâche
+    this.isScrolling = false;
+    this.currentScrollSpeed = 0;
+    this.scrollDirection = 0;
   }
-
 
 }

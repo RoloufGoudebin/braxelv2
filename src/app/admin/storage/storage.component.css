@@ -1,7 +1,363 @@
-.active{
-    background-color: chartreuse;
+.admin-container {
+    max-width: 100%;
+    padding: 2rem;
+    background: #f8f9fa;
+    min-height: 100vh;
 }
 
-.img-thumbnail{
+.header-section {
+    margin-bottom: 2rem;
+}
+
+.admin-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.admin-subtitle {
+    color: #6c757d;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Carousel Preview Section */
+.carousel-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-preview-card {
+    position: relative;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f8f9fa;
+    height: 300px;
+}
+
+.carousel-label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(0, 123, 255, 0.95);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #adb5bd;
+}
+
+.carousel-empty i {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Files Section */
+.files-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.files-grid {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    min-height: 200px;
+}
+
+.file-item {
+    flex-shrink: 0;
+    width: 180px;
     cursor: pointer;
+}
+
+.file-card {
+    position: relative;
+    border: 3px solid #e9ecef;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: white;
+    height: 180px;
+}
+
+.file-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-color: #007bff;
+}
+
+.file-item.selected .file-card {
+    border-color: #28a745;
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.2);
+}
+
+.file-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.drag-handle-file {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0, 123, 255, 0.9);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: move;
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+
+.drag-handle-file:hover {
+    background: rgba(0, 123, 255, 1);
+    transform: scale(1.1);
+}
+
+.selected-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(40, 167, 69, 0.95);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 10;
+    animation: scaleIn 0.3s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.drag-placeholder-file {
+    background: #f8f9fa;
+    border: 2px dashed #007bff;
+    border-radius: 12px;
+    min-height: 180px;
+    width: 180px;
+}
+
+.cdk-drag-preview .file-card {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.empty-files {
+    text-align: center;
+    padding: 3rem;
+    color: #adb5bd;
+}
+
+.empty-files i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Action Panel */
+.action-panel {
+    position: sticky;
+    top: 2rem;
+    background: white;
+    padding: 1.5rem;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.action-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+/* Upload Section */
+.upload-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upload-card {
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.upload-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.upload-header i {
+    font-size: 1.5rem;
+}
+
+.upload-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.upload-body {
+    padding: 2rem;
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    border: 3px dashed #cbd5e0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.upload-label:hover {
+    border-color: #667eea;
+    background: #f0f4ff;
+}
+
+.upload-label i {
+    font-size: 3rem;
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.upload-label span {
+    font-size: 1.1rem;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.upload-input {
+    display: none;
+}
+
+.upload-progress {
+    margin-top: 1.5rem;
+}
+
+.upload-progress .progress {
+    height: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.upload-progress .progress-bar {
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-success {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    color: #155724;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.upload-success i {
+    font-size: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .action-panel {
+        position: static;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 1rem;
+    }
+
+    .admin-title {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .carousel-preview-card {
+        height: 200px;
+    }
+
+    .files-section,
+    .carousel-section,
+    .upload-section {
+        padding: 1rem;
+    }
 }

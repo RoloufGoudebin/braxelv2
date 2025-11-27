@@ -8,10 +8,17 @@ import { AuthService } from  '../services/auth.service';
   styleUrls: ['./sign-in.component.css'],
 })
 export class SignInComponent implements OnInit {
+  rememberMe = false;
 
   constructor(public authService:  AuthService) { }
 
   ngOnInit(): void {
+    // Vérifier si l'utilisateur est déjà connecté via cookie
+    this.authService.checkRememberedUser();
+  }
+
+  signIn(email: string, password: string): void {
+    this.authService.signIn(email, password, this.rememberMe);
   }
 
 }

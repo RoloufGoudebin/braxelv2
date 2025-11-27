@@ -1,58 +1,146 @@
 <app-navbar-admin></app-navbar-admin>
 
-<div class="container">
-    <div class="row">
-        <div class="col-6">
-            <h2>3 ème photo actuelle : </h2>
-            <div class="row">
-                <img src="{{carousel[0].url}}" class="img-thumbnail col-12" alt="...">
+<div class="admin-container">
+    <div class="header-section">
+        <h1 class="admin-title">
+            <i class="bi bi-images text-primary me-2"></i>
+            Gestion du Carousel
+        </h1>
+        <p class="admin-subtitle">Gérez les images du carousel de la page d'accueil</p>
+    </div>
+
+    <!-- Current Carousel Images -->
+    <div class="carousel-section mb-5">
+        <h2 class="section-title">
+            <i class="bi bi-eye-fill me-2"></i>
+            Images actuelles du carousel
+        </h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="carousel-preview-card">
+                    <div class="carousel-label">3ème photo</div>
+                    <img *ngIf="carousel && carousel[0]" [src]="carousel[0].url" class="carousel-preview-img" alt="3ème photo du carousel">
+                    <div *ngIf="!carousel || !carousel[0]" class="carousel-empty">
+                        <i class="bi bi-image"></i>
+                        <p>Aucune image</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-6">
-            <h2>4 ème photo actuelle : </h2>
-            <div class="row">
-                <img src="{{carousel[1].url}}" class="img-thumbnail col-12" alt="...">
+            <div class="col-md-6">
+                <div class="carousel-preview-card">
+                    <div class="carousel-label">4ème photo</div>
+                    <img *ngIf="carousel && carousel[1]" [src]="carousel[1].url" class="carousel-preview-img" alt="4ème photo du carousel">
+                    <div *ngIf="!carousel || !carousel[1]" class="carousel-empty">
+                        <i class="bi bi-image"></i>
+                        <p>Aucune image</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <h2 class="pt-4">Disponibles : </h2>
-    <div class="row pt-5">
-        <div class="col-9">
-            <img *ngFor="let file of files; let i = index;" src="{{file.url}}" class="img-thumbnail col-2"
-                [ngClass]="{'active': i===chosen}" (click)="chose(i)">
-        </div>
-        <div *ngIf="chosen != -1" class="col-3">
-            <div class="row">
-                <button type="button" class="col-12 btn btn-primary mb-3" (click)="save(3)">
-                    Valider 3ème photo
-                </button>
-                <button type="button" class="col-12 btn btn-primary mb-3" (click)="save(4)">
-                    Valider 4ème photo
-                </button>
-                <button type="button" class="col-12 btn btn-primary" (click)="delete()">
-                    Supprimer photo
-                </button>
+    <!-- Available Files -->
+    <div class="files-section">
+        <h2 class="section-title">
+            <i class="bi bi-folder2-open me-2"></i>
+            Images disponibles
+        </h2>
+        <p class="text-muted mb-4">
+            <i class="bi bi-info-circle me-1"></i>
+            Cliquez sur une image pour la sélectionner, puis utilisez les boutons d'action
+        </p>
+
+        <div class="row">
+            <div class="col-lg-9">
+                <div 
+                    cdkDropList 
+                    cdkDropListOrientation="horizontal"
+                    class="files-grid"
+                    (cdkDropListDropped)="dropFile($event)">
+                    
+                    <div 
+                        *ngFor="let file of files; let i = index;" 
+                        class="file-item"
+                        cdkDrag
+                        [class.selected]="i === chosen"
+                        (click)="chose(i)">
+                        
+                        <div class="drag-placeholder-file" *cdkDragPlaceholder></div>
+                        
+                        <div class="file-card">
+                            <div class="drag-handle-file" cdkDragHandle>
+                                <i class="bi bi-grip-vertical"></i>
+                            </div>
+                            <img [src]="file.url" class="file-img" [alt]="file.name">
+                            <div *ngIf="i === chosen" class="selected-badge">
+                                <i class="bi bi-check-circle-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!files || files.length === 0" class="empty-files">
+                    <i class="bi bi-images"></i>
+                    <p>Aucune image disponible</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="col-lg-3">
+                <div class="action-panel" *ngIf="chosen !== -1">
+                    <h5 class="action-title">Actions</h5>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-primary" (click)="save(3)">
+                            <i class="bi bi-check2-square me-1"></i>
+                            Définir comme 3ème photo
+                        </button>
+                        <button type="button" class="btn btn-primary" (click)="save(4)">
+                            <i class="bi bi-check2-square me-1"></i>
+                            Définir comme 4ème photo
+                        </button>
+                        <button type="button" class="btn btn-danger" (click)="delete()">
+                            <i class="bi bi-trash me-1"></i>
+                            Supprimer l'image
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container pt-5 mt-5">
-    <div class="card">
-        <div class="card-header">
-            Ajouter un fichier
+    <!-- Upload Section -->
+    <div class="upload-section">
+        <div class="upload-card">
+            <div class="upload-header">
+                <i class="bi bi-cloud-upload-fill me-2"></i>
+                <h3>Ajouter une nouvelle image</h3>
+            </div>
+            <div class="upload-body">
+                <label for="file-upload" class="upload-label">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    <span>Cliquez pour sélectionner un fichier</span>
+                    <input id="file-upload" type="file" accept="image/*" (change)="upload($event)" class="upload-input" />
+                </label>
+                
+                <div *ngIf="uploadProgress | async as progress" class="upload-progress">
+                    <div class="progress">
+                        <div 
+                            class="progress-bar progress-bar-striped progress-bar-animated bg-success" 
+                            role="progressbar"
+                            [style.width.%]="progress"
+                            [attr.aria-valuenow]="progress"
+                            aria-valuemin="0" 
+                            aria-valuemax="100">
+                            {{ progress | number:'1.0-0' }}%
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="downloadURL | async as downloadSrc" class="upload-success">
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    <span>Fichier uploadé avec succès !</span>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <input type="file" (change)="upload($event)" />
-        </div>
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
-                [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)"
-                aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-    </div>
-    <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
-        File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
     </div>
 </div>

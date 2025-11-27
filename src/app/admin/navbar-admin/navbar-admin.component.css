@@ -1,8 +1,67 @@
-li {
-    margin: 1em;
-    font-size: 1em;
+
+.navbar {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
 }
 
-img {
-    max-width: 40%;
+.navbar-brand {
+    transition: transform 0.2s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.logo-navbar {
+    max-width: 150px;
+    filter: none; /* Logo en couleurs normales */
+}
+
+.navbar-nav {
+    gap: 1rem;
+}
+
+.nav-item {
+    margin: 0;
+}
+
+.nav-link {
+    color: #212529 !important; /* Texte noir */
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem !important;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link:hover {
+    color: #000 !important; /* Noir plus foncé au hover */
+    background: rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    color: #000 !important; /* Noir pour l'élément actif */
+    background: rgba(0, 0, 0, 0.12);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 991px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .logo-navbar {
+        max-width: 120px;
+    }
+
+    .navbar-nav {
+        margin-top: 1rem;
+        gap: 0.5rem;
+    }
 }

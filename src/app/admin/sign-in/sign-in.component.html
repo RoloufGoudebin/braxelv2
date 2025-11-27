@@ -13,7 +13,13 @@
                             <form>
                                 <input type="text" class="form-control mb-2" placeholder="Email" #email name="email" required autofocus>
                                 <input type="password" class="form-control mb-2" placeholder="Password" #password name="password" required>
-                                <button class="btn btn-lg btn-primary btn-block mb-1" type="submit" (click)="authService.signIn(email.value, password.value)">Connexion</button>
+                                <div class="form-check mb-2">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe" [(ngModel)]="rememberMe" name="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">
+                                        Rester connecté
+                                    </label>
+                                </div>
+                                <button class="btn btn-lg btn-primary btn-block mb-1" type="submit" (click)="signIn(email.value, password.value)">Connexion</button>
                             </form>
                         </div>
                     </div>

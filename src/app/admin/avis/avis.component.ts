@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { FirestoreService } from 'src/app/services/firebase/firestore.service';
 import { FormBuilder } from '@angular/forms';
 
@@ -11,9 +12,10 @@ export class AvisComponent implements OnInit {
 
   constructor(private firestore: FirestoreService, private formBuilder: FormBuilder) { }
   cards: any[];
-  toSwap = [-1, -1];
-  show = false;
   numberReviews;
+  hasChanges = false;
+  isSaving = false;
+  
   reviewForm = this.formBuilder.group({
     author: '',
     review: '',
@@ -48,72 +50,55 @@ export class AvisComponent implements OnInit {
       }));
   }
 
-  swap() {
-    let tmp = this.cards[this.toSwap[0]];
-    let tmpid = this.cards[this.toSwap[0]].id;
-    let tmpidBis = this.cards[this.toSwap[1]].id;
-    this.cards[this.toSwap[0]] = this.cards[this.toSwap[1]];
-    this.cards[this.toSwap[0]].id = tmpid;
-    this.cards[this.toSwap[1]] = tmp;
-    this.cards[this.toSwap[1]].id = tmpidBis;
-    this.toSwap[0] = -1;
-    this.toSwap[1] = -1;
+  drop(event: CdkDragDrop<any[]>) {
+    if (event.previousIndex !== event.currentIndex) {
+      moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
+      // Mettre à jour les IDs en fonction de la nouvelle position
+      this.cards.forEach((card, index) => {
+        card.id = index;
+      });
+      this.hasChanges = true;
+    }
   }
 
   save() {
+    this.isSaving = true;
     this.firestore.createAvis(this.cards);
     setTimeout(() => {
-      this.cards.sort(function (a, b) {
-        return a.id - b.id;
-      });;
-    },
-      1500);
+      this.cards.sort((a, b) => a.id - b.id);
+      this.isSaving = false;
+      this.hasChanges = false;
+    }, 1500);
   }
 
-  selectSwap(id: number) {
-    if (this.toSwap[0] == -1) {
-      this.toSwap[0] = id;
-    }
-    else if (this.toSwap[1] == -1) {
-      this.toSwap[1] = id;
-    }
-    else if (this.toSwap[0] != -1 && this.toSwap[1] != -1) {
-      this.toSwap[0] = -1;
-      this.toSwap[1] = -1;
-    }
-  }
-
-  sort() {
-    this.cards.sort(function (a, b) {
-      return a.id - b.id;
-    });;
-    this.show = true;
+  resetOrder() {
+    this.cards.sort((a, b) => a.id - b.id);
+    this.hasChanges = false;
   }
 
   onSubmitReview(): void {
     this.firestore.addReview(this.reviewForm.value.author, this.reviewForm.value.rate, this.reviewForm.value.review, this.cards.length);
+    this.reviewForm.reset();
     setTimeout(() => {
-      this.cards.sort(function (a, b) {
-        return a.id - b.id;
-      });;
-    },
-      1500);
+      this.cards.sort((a, b) => a.id - b.id);
+    }, 1500);
   }
 
   onSubmitNumber(){
     let newNumber : any =  {
       number: this.numberForm.value.newNumberReviews
     }
-    this.firestore.updateNumberReviews(newNumber)
+    this.firestore.updateNumberReviews(newNumber);
+    this.numberForm.reset();
   }
 
-  delete() {
-    this.firestore.deleteReview(this.toSwap[0], this.cards.length);
-    setTimeout(() => {
-      this.cards.sort();
-    },
-      1500);
-    this.toSwap[0] = -1;
+  deleteReview(index: number) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer cet avis ?')) {
+      this.firestore.deleteReview(index, this.cards.length);
+      setTimeout(() => {
+        this.cards.sort((a, b) => a.id - b.id);
+      }, 1500);
+    }
   }
 
 

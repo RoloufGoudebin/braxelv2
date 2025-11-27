@@ -1,21 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <a class="navbar-brand mr-auto" routerLinkActive="active" routerLink="/"><img class="logo-navbar"
-                src='assets/img/logo-top-inverse.png'></a>
-        <ul class="navbar-nav mr-auto">
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarAdmin" 
+            aria-controls="navbarAdmin" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarAdmin">
+        <ul class="navbar-nav ml-auto text-gray-900">
             <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="/admin/top-biens">Biens à la une <span
-                        class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}" routerLink="/admin/top-biens">
+                    <i class="bi bi-star-fill"></i>
+                    <span>Biens à la une</span>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="/admin/avis">Avis<span
-                        class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}" routerLink="/admin/avis">
+                    <i class="bi bi-chat-quote-fill"></i>
+                    <span>Avis</span>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" routerLink="/admin/storage">Carousel Home<span
-                        class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: false}" routerLink="/admin/storage">
+                    <i class="bi bi-images"></i>
+                    <span>Carousel</span>
+                </a>
             </li>
+            
         </ul>
     </div>
 </nav>

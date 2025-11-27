@@ -1,8 +1,14 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import localeFr from '@angular/common/locales/fr';
+
+// Enregistrer la locale française
+registerLocaleData(localeFr);
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -108,6 +114,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     CommonModule,
     FormsModule,
     NgxSliderModule,
+    DragDropModule,
+    ScrollingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyATpESf9vy24duvdNS3TeSOQE7XBUSnUtA'
     }),
@@ -130,9 +138,11 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     CountUpModule,
     NgImageFullscreenViewModule
   ],
-  providers: [OmnicasaService,
+  providers: [
+    OmnicasaService,
     AngularFireAuth,
     AuthService,
+    { provide: LOCALE_ID, useValue: 'fr' }
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
