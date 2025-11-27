@@ -61,6 +61,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CountUpModule } from 'ngx-countup';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 
 
@@ -126,7 +127,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
         deps: [HttpClient]
       }
     }),
-    CountUpModule
+    CountUpModule,
+    NgImageFullscreenViewModule
   ],
   providers: [OmnicasaService,
     AngularFireAuth,

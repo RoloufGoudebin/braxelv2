@@ -1,21 +1,29 @@
 <app-navbar></app-navbar>
 
 <div *ngIf="property" class="mt-5 margin-sm">
-  <div *ngIf="property" class="container mt-5 pt-5" style="position: relative;">
+  <div *ngIf="property" class="container mt-5 pt-5" style="position: relative">
     <div class="row pt-lg-5 mt-lg-5">
-      <h3 *ngIf="property.TypeDescription" class="col-12">{{property.TypeDescription}}</h3>
-      <h2 *ngIf="property.City" class="col-12">{{property.Zip}} {{property.City}}</h2>
+      <h3 *ngIf="property.TypeDescription" class="col-12">
+        {{ property.TypeDescription }}
+      </h3>
+      <h2 *ngIf="property.City" class="col-12">
+        {{ property.Zip }} {{ property.City }}
+      </h2>
 
-      <hr class="col-10">
+      <hr class="col-10" />
       <div class="col-10 row">
-        <h2 *ngIf="property.StartPrice" class="mr-auto col-12">{{toStringPrice(property.Price)}}
-          {{property.PriceUnitText}}</h2>
-        <p class="price col-12">{{ 'viewProperty.1' | translate }}</p>
+        <h2 *ngIf="property.StartPrice" class="mr-auto col-12">
+          {{ toStringPrice(property.Price) }} {{ property.PriceUnitText }}
+        </h2>
+        <p class="price col-12">{{ "viewProperty.1" | translate }}</p>
       </div>
 
-      <div class="row mx-auto d-lg-none" style="display: inline-block;">
+      <div class="row mx-auto d-lg-none" style="display: inline-block">
         <a class="nav-link mx-auto">
-          <app-contact-modal class="ml-auto" [id]="property.ID"></app-contact-modal>
+          <app-contact-modal
+            class="ml-auto"
+            [id]="property.ID"
+          ></app-contact-modal>
         </a>
         <a class="nav-link" *ngIf="property.VirtualTour">
           <app-modal-nodal class="ml-auto" [item]="nodalLink"></app-modal-nodal>
@@ -24,7 +32,10 @@
 
       <div class="row d-none d-lg-block">
         <a class="nav-link">
-          <app-contact-modal class="ml-auto" [id]="property.ID"></app-contact-modal>
+          <app-contact-modal
+            class="ml-auto"
+            [id]="property.ID"
+          ></app-contact-modal>
         </a>
         <a class="nav-link" *ngIf="property.VirtualTour">
           <app-modal-nodal class="ml-auto" [item]="nodalLink"></app-modal-nodal>
@@ -32,102 +43,192 @@
       </div>
     </div>
 
-
     <div class="shadow rounded mt-3">
-
       <div class="bg mb-5">
-        <ngx-slick-carousel class="carousel mb-5 mb-md-2" #slickModal="slick-carousel" [config]="slideConfig"
-          (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-          (beforeChange)="beforeChange($event)">
-          <div ngxSlickItem *ngFor="let picture of property.LargePictures ; let i = index" class="slide"
-            data-slide-number="i" data-toggle="lightbox" data-gallery="gallery">
-            <img src="{{picture}}" class="d-block rounded img-fluid text-center mx-auto" (click)="showLightbox(i)"
-              alt="photo propriété immobilière de Braxel, une agence immobilière située à Waterloo">
+        <ngx-slick-carousel
+          class="carousel mb-5 mb-md-2"
+          #slickModal="slick-carousel"
+          [config]="slideConfig"
+          (init)="slickInit($event)"
+          (breakpoint)="breakpoint($event)"
+          (afterChange)="afterChange($event)"
+          (beforeChange)="beforeChange($event)"
+        >
+          <div
+            ngxSlickItem
+            *ngFor="let picture of property.LargePictures; let i = index"
+            class="slide"
+            data-slide-number="i"
+            data-toggle="lightbox"
+            data-gallery="gallery"
+          >
+            <img
+              src="{{ picture }}"
+              class="d-block rounded img-fluid text-center mx-auto"
+              (click)="showLightbox(i)"
+              alt="photo propriété immobilière de Braxel, une agence immobilière située à Waterloo"
+            />
           </div>
         </ngx-slick-carousel>
-        <span class="ribon" [ngStyle]="{'background':getColor(property.Goal, property.SubStatus)}">
-          {{getStatus(property.Goal,
-          property.SubStatus)}}
+        <span
+          class="ribon"
+          [ngStyle]="{
+            background: getColor(property.Goal, property.SubStatus)
+          }"
+        >
+          {{ getStatus(property.Goal, property.SubStatus) }}
         </span>
 
-        <span class="bi bi-arrow-left-circle-fill arrow-main" (click)="slickModal.slickPrev()"></span>
-        <span class="bi bi-arrow-right-circle-fill arrow-main" (click)="slickModal.slickNext()"></span>
+        <span
+          class="bi bi-arrow-left-circle-fill arrow-main"
+          (click)="slickModal.slickPrev()"
+        ></span>
+        <span
+          class="bi bi-arrow-right-circle-fill arrow-main"
+          (click)="slickModal.slickNext()"
+        ></span>
 
-        <ngx-slick-carousel class="carouselXs d-md-none" #slickModalNavXs="slick-carousel" [config]="slideConfigNavXs"
-          (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-          (beforeChange)="beforeChange($event)">
-          <div ngxSlickItem *ngFor="let picture of property.LargePictures; let i = index"
-            class="slide mt-5 rounded thumbnail-img text-center mx-auto" data-slide-number="i" data-toggle="lightbox"
-            data-gallery="gallery">
-            <img src="{{picture}}" (click)="slickModal.slickGoTo(i)"
+        <ngx-slick-carousel
+          class="carouselXs d-md-none"
+          #slickModalNavXs="slick-carousel"
+          [config]="slideConfigNavXs"
+          (init)="slickInit($event)"
+          (breakpoint)="breakpoint($event)"
+          (afterChange)="afterChange($event)"
+          (beforeChange)="beforeChange($event)"
+        >
+          <div
+            ngxSlickItem
+            *ngFor="let picture of property.LargePictures; let i = index"
+            class="slide mt-5 rounded thumbnail-img text-center mx-auto"
+            data-slide-number="i"
+            data-toggle="lightbox"
+            data-gallery="gallery"
+          >
+            <img
+              src="{{ picture }}"
+              (click)="slickModal.slickGoTo(i)"
               class="d-block rounded img-fluid px-3 thumbnail-img text-center mx-auto"
-              alt="photo propriété immobilière">
+              alt="photo propriété immobilière"
+            />
           </div>
         </ngx-slick-carousel>
 
-        <ngx-slick-carousel class="carouselXl d-none d-md-block pb-4" #slickModalNavXl="slick-carousel"
-          [config]="slideConfigNavXl" (init)="slickInit($event)" (breakpoint)="breakpoint($event)"
-          (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
-          <div ngxSlickItem *ngFor="let picture of property.LargePictures; let i = index"
-            class="slide mt-5 rounded thumbnail-img text-center mx-auto" data-slide-number="i" data-toggle="lightbox"
-            data-gallery="gallery">
-            <img src="{{picture}}" (click)="slickModal.slickGoTo(i)"
+        <ngx-slick-carousel
+          class="carouselXl d-none d-md-block pb-4"
+          #slickModalNavXl="slick-carousel"
+          [config]="slideConfigNavXl"
+          (init)="slickInit($event)"
+          (breakpoint)="breakpoint($event)"
+          (afterChange)="afterChange($event)"
+          (beforeChange)="beforeChange($event)"
+        >
+          <div
+            ngxSlickItem
+            *ngFor="let picture of property.LargePictures; let i = index"
+            class="slide mt-5 rounded thumbnail-img text-center mx-auto"
+            data-slide-number="i"
+            data-toggle="lightbox"
+            data-gallery="gallery"
+          >
+            <img
+              src="{{ picture }}"
+              (click)="slickModal.slickGoTo(i)"
               class="d-block rounded img-fluid px-3 thumbnail-img text-center mx-auto"
-              alt="photo propriété immobilière mise en vente par Braxel, une agence immobilière située à Waterloo">
+              alt="photo propriété immobilière mise en vente par Braxel, une agence immobilière située à Waterloo"
+            />
           </div>
         </ngx-slick-carousel>
 
-        <span class="bi bi-arrow-left-circle-fill d-md-none arrow-gallery" aria-hidden="true"
-          (click)="slickModalNavXs.slickPrev()"></span>
-        <span class="bi bi-arrow-right-circle-fill d-md-none arrow-gallery" aria-hidden="true"
-          (click)="slickModalNavXs.slickNext()"></span>
+        <span
+          class="bi bi-arrow-left-circle-fill d-md-none arrow-gallery"
+          aria-hidden="true"
+          (click)="slickModalNavXs.slickPrev()"
+        ></span>
+        <span
+          class="bi bi-arrow-right-circle-fill d-md-none arrow-gallery"
+          aria-hidden="true"
+          (click)="slickModalNavXs.slickNext()"
+        ></span>
 
-        <span class="bi bi-arrow-left-circle-fill d-none d-md-block arrow-gallery" aria-hidden="true"
-          (click)="slickModalNavXl.slickPrev()"></span>
-        <span class="bi bi-arrow-right-circle-fill d-none d-md-block arrow-gallery" aria-hidden="true"
-          (click)="slickModalNavXl.slickNext()"></span>
+        <span
+          class="bi bi-arrow-left-circle-fill d-none d-md-block arrow-gallery"
+          aria-hidden="true"
+          (click)="slickModalNavXl.slickPrev()"
+        ></span>
+        <span
+          class="bi bi-arrow-right-circle-fill d-none d-md-block arrow-gallery"
+          aria-hidden="true"
+          (click)="slickModalNavXl.slickNext()"
+        ></span>
       </div>
-
     </div>
-
-
 
     <div class="container d-lg-none">
       <ul class="row px-0 mx-0">
-        <div class="col-4 col-md card text-center mx-auto " style="box-shadow: none;">
+        <div
+          class="col-4 col-md card text-center mx-auto"
+          style="box-shadow: none"
+        >
           <span class="icon-object-ungroup icon"></span>
-          <li class="titlecard">{{ 'viewProperty.2' | translate }}
-            <hr> {{property.SurfaceTotal}}
+          <li class="titlecard">
+            {{ "viewProperty.2" | translate }}
+            <hr />
+            {{ property.SurfaceTotal }}
           </li>
         </div>
-        <div class="col-4 col-md card text-center mx-1 mx-auto" style="box-shadow: none;">
+        <div
+          class="col-4 col-md card text-center mx-1 mx-auto"
+          style="box-shadow: none"
+        >
           <span class="icon-bed icon"></span>
-          <li class="titlecard">{{ 'viewProperty.3' | translate }}
-            <hr> {{property.NumberOfBedRooms}}
+          <li class="titlecard">
+            {{ "viewProperty.3" | translate }}
+            <hr />
+            {{ property.NumberOfBedRooms }}
           </li>
         </div>
-        <div class="col-4 col-md card text-center mx-auto" style="box-shadow: none;">
+        <div
+          class="col-4 col-md card text-center mx-auto"
+          style="box-shadow: none"
+        >
           <span class="icon-bath icon"></span>
-          <li class="titlecard">{{ 'viewProperty.4' | translate }}
-            <hr> {{property.NumberOfBathRooms}}
+          <li class="titlecard">
+            {{ "viewProperty.4" | translate }}
+            <hr />
+            {{ property.NumberOfBathRooms }}
           </li>
         </div>
-        <div class="col-4 col-md card text-center mx-auto" style="box-shadow: none;">
+        <div
+          class="col-4 col-md card text-center mx-auto"
+          style="box-shadow: none"
+        >
           <span class="icon-shower icon"></span>
-          <li class="titlecard">{{ 'viewProperty.5' | translate }}
-            <hr> {{property.NumberOfShowerRooms}}
+          <li class="titlecard">
+            {{ "viewProperty.5" | translate }}
+            <hr />
+            {{ property.NumberOfShowerRooms }}
           </li>
         </div>
-        <div class="col-4 col-md card text-center mx-auto" style="box-shadow: none;">
+        <div
+          class="col-4 col-md card text-center mx-auto"
+          style="box-shadow: none"
+        >
           <span class="icon-automobile icon"></span>
-          <li class="titlecard">{{ 'viewProperty.6' | translate }}
-            <hr> {{property.NumberOfGarages}}
+          <li class="titlecard">
+            {{ "viewProperty.6" | translate }}
+            <hr />
+            {{ property.NumberOfGarages }}
           </li>
         </div>
-        <div class="col-4 col-md card text-center mx-auto" style="box-shadow: none;">
+        <div
+          class="col-4 col-md card text-center mx-auto"
+          style="box-shadow: none"
+        >
           <span class="icon-desktop_windows icon"></span>
-          <li class="titlecard">{{ 'viewProperty.7' | translate }}
-            <hr>
+          <li class="titlecard">
+            {{ "viewProperty.7" | translate }}
+            <hr />
             <div *ngIf="property.IsOffice; else elseBlock">1</div>
             <ng-template #elseBlock>0</ng-template>
           </li>
@@ -136,44 +237,71 @@
     </div>
   </div>
 
-
-
   <div class="container d-none d-lg-block">
     <ul class="row px-0 mx-0">
-      <div class="col-6 col-md card text-center mx-auto " style="box-shadow: none;">
+      <div
+        class="col-6 col-md card text-center mx-auto"
+        style="box-shadow: none"
+      >
         <span class="icon-object-ungroup icon"></span>
-        <li class="titlecard">{{ 'viewProperty.2' | translate }}
-          <hr> {{property.SurfaceTotal}}
+        <li class="titlecard">
+          {{ "viewProperty.2" | translate }}
+          <hr />
+          {{ property.SurfaceTotal }}
         </li>
       </div>
-      <div class="col-6 col-md card text-center mx-1 mx-auto" style="box-shadow: none;">
+      <div
+        class="col-6 col-md card text-center mx-1 mx-auto"
+        style="box-shadow: none"
+      >
         <span class="icon-bed icon"></span>
-        <li class="titlecard">{{ 'viewProperty.3' | translate }}
-          <hr> {{property.NumberOfBedRooms}}
+        <li class="titlecard">
+          {{ "viewProperty.3" | translate }}
+          <hr />
+          {{ property.NumberOfBedRooms }}
         </li>
       </div>
-      <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+      <div
+        class="col-6 col-md card text-center mx-auto"
+        style="box-shadow: none"
+      >
         <span class="icon-bath icon"></span>
-        <li class="titlecard">{{ 'viewProperty.8' | translate }}
-          <hr> {{property.NumberOfBathRooms}}
+        <li class="titlecard">
+          {{ "viewProperty.8" | translate }}
+          <hr />
+          {{ property.NumberOfBathRooms }}
         </li>
       </div>
-      <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+      <div
+        class="col-6 col-md card text-center mx-auto"
+        style="box-shadow: none"
+      >
         <span class="icon-shower icon"></span>
-        <li class="titlecard">{{ 'viewProperty.9' | translate }}
-          <hr> {{property.NumberOfShowerRooms}}
+        <li class="titlecard">
+          {{ "viewProperty.9" | translate }}
+          <hr />
+          {{ property.NumberOfShowerRooms }}
         </li>
       </div>
-      <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+      <div
+        class="col-6 col-md card text-center mx-auto"
+        style="box-shadow: none"
+      >
         <span class="icon-automobile icon"></span>
-        <li class="titlecard">{{ 'viewProperty.6' | translate }}
-          <hr> {{property.NumberOfGarages}}
+        <li class="titlecard">
+          {{ "viewProperty.6" | translate }}
+          <hr />
+          {{ property.NumberOfGarages }}
         </li>
       </div>
-      <div class="col-6 col-md card text-center mx-auto" style="box-shadow: none;">
+      <div
+        class="col-6 col-md card text-center mx-auto"
+        style="box-shadow: none"
+      >
         <span class="icon-desktop_windows icon"></span>
-        <li class="titlecard">{{ 'viewProperty.7' | translate }}
-          <hr>
+        <li class="titlecard">
+          {{ "viewProperty.7" | translate }}
+          <hr />
           <div *ngIf="property.IsOffice; else elseBlock">1</div>
           <ng-template #elseBlock>0</ng-template>
         </li>
@@ -182,59 +310,93 @@
   </div>
 
   <div *ngIf="!isSSR">
-    <ng-image-fullscreen-view [images]="imageObject" [imageIndex]="selectedImageIndex" [show]="showFlag"
-      (close)="closeEventHandler()"></ng-image-fullscreen-view>
+    <ng-image-fullscreen-view
+      [images]="imageObject"
+      [imageIndex]="selectedImageIndex"
+      [show]="showFlag"
+      [arrowKeyMove]="true"
+      [infinite]="true"
+      [paginationShow]="true"
+      (close)="closeEventHandler()"
+    ></ng-image-fullscreen-view>
   </div>
-
-
 
   <div class="container pb-3 pt-3">
     <h4>Particularités</h4>
-    <div class="row text ">
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.KitchenName"><b>{{ 'viewProperty.10' | translate }}</b> :
-        {{property.KitchenName}}
+    <div class="row text">
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.KitchenName">
+        <b>{{ "viewProperty.10" | translate }}</b> :
+        {{ property.KitchenName }}
       </div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.WindowGlazing"><b>{{ 'viewProperty.12' | translate }}</b> :
-        {{property.WindowGlazing}}
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.WindowGlazing">
+        <b>{{ "viewProperty.12" | translate }}</b> :
+        {{ property.WindowGlazing }}
       </div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.OrientationT"><b>{{ 'viewProperty.13' | translate }}</b> :
-        {{property.OrientationT}}
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.OrientationT">
+        <b>{{ "viewProperty.13" | translate }}</b> :
+        {{ property.OrientationT }}
       </div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasLift"><b>{{ 'viewProperty.14' | translate }}</b> : {{
-        'viewProperty.15' | translate }}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.Floor"><b>{{ 'viewProperty.16' | translate }}</b> :
-        {{property.Floor}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionYear"><b>{{ 'viewProperty.17' | translate }}</b>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasLift">
+        <b>{{ "viewProperty.14" | translate }}</b> :
+        {{ "viewProperty.15" | translate }}
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.Floor">
+        <b>{{ "viewProperty.16" | translate }}</b> : {{ property.Floor }}
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionYear">
+        <b>{{ "viewProperty.17" | translate }}</b>
         :
-        {{property.ConstructionYear}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.SurfaceTerrace"><b>{{ 'viewProperty.18' | translate }}</b> :
-        {{property.SurfaceTerrace}}m²</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionName"><b>{{ 'viewProperty.19' | translate }}</b>
+        {{ property.ConstructionYear }}
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.SurfaceTerrace">
+        <b>{{ "viewProperty.18" | translate }}</b> :
+        {{ property.SurfaceTerrace }}m²
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConstructionName">
+        <b>{{ "viewProperty.19" | translate }}</b>
         :
-        {{property.ConstructionName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasGarden"><b>{{ 'viewProperty.20' | translate }}</b> : {{
-        'viewProperty.15' | translate }}
-        ({{property.SurfaceGarden}}m²)</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HeatingName"><b>{{ 'viewProperty.21' | translate }}</b> :
-        {{property.HeatingName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.MainStyleName"><b>{{ 'viewProperty.22' | translate }}</b> :
-        {{property.MainStyleName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConditionName"><b>{{ 'viewProperty.23' | translate }}</b> :
-        {{property.ConditionName}}</div>
-      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.EnergyPerformance"><b>{{ 'viewProperty.23.a' | translate
-          }}</b>
-        : <img src="{{getPEB(property.EnergyPerformance)}}">
+        {{ property.ConstructionName }}
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HasGarden">
+        <b>{{ "viewProperty.20" | translate }}</b> :
+        {{ "viewProperty.15" | translate }} ({{ property.SurfaceGarden }}m²)
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.HeatingName">
+        <b>{{ "viewProperty.21" | translate }}</b> : {{ property.HeatingName }}
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.MainStyleName">
+        <b>{{ "viewProperty.22" | translate }}</b> :
+        {{ property.MainStyleName }}
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.ConditionName">
+        <b>{{ "viewProperty.23" | translate }}</b> :
+        {{ property.ConditionName }}
+      </div>
+      <div class="col-12 col-md-6 col-lg-4" *ngIf="property.EnergyPerformance">
+        <b>{{ "viewProperty.23.a" | translate }}</b> :
+        <img src="{{ getPEB(property.EnergyPerformance) }}" />
       </div>
     </div>
 
-
     <div class="row no-gutters pt-5">
-      <h4>{{ 'viewProperty.24' | translate }}</h4>
-      <p class="content text-justify" *ngIf="property.DescriptionA">{{property.DescriptionB}}</p>
+      <h4>{{ "viewProperty.24" | translate }}</h4>
+      <p class="content text-justify" *ngIf="property.DescriptionA">
+        {{ property.DescriptionB }}
+      </p>
       <div class="container px-3 pb-5">
         <div *ngIf="lat" class="row">
-          <agm-map [latitude]="lat" [longitude]="long" [zoom]="14" [scrollwheel]="false">
-            <agm-circle [latitude]="lat" [longitude]="long" [radius]="1100" [fillColor]="'red'">
+          <agm-map
+            [latitude]="lat"
+            [longitude]="long"
+            [zoom]="14"
+            [scrollwheel]="false"
+          >
+            <agm-circle
+              [latitude]="lat"
+              [longitude]="long"
+              [radius]="1100"
+              [fillColor]="'red'"
+            >
             </agm-circle>
           </agm-map>
         </div>
@@ -242,3 +404,4 @@
     </div>
   </div>
   <app-footer></app-footer>
+</div>
