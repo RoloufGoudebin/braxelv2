@@ -4,8 +4,10 @@
     <a *ngFor="let Items of this.propertyList | slice: 0:numberProperty;" class="col-12 col-md-6 col-lg-4 mx-auto"
       routerLinkActive="active" routerLink="/biens-immobiliers/{{Items.ID}}">
       <div class="card shadow">
-        <img class="h-72 rounded-t-lg object-cover overflow-hidden" [src]="Items.LargePicture"
-          alt="Large Image propriété mise en location par Braxel, agence immobilière située à Waterloo">
+        <div class="card-image-wrapper">
+          <img class="property-card-img" [src]="Items.LargePicture"
+            alt="Large Image propriété mise en location par Braxel, agence immobilière située à Waterloo">
+        </div>
         <span class="ribon" [ngStyle]="{'background':getColor(Items.Goal, Items.SubStatus)}"> {{getStatus(Items.Goal,
           Items.SubStatus)}} </span>
         <span class="ribon-nodal" *ngIf="Items.VirtualTour">{{ 'realisations.3' | translate }}</span>
