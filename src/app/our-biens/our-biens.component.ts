@@ -20,6 +20,7 @@ export class OurBiensComponent implements OnInit, OnDestroy {
 
   allProperties: Property[] = [];
   toShow: Property[] = [];
+  isFallbackMode: boolean = false;
   
   private subscriptions: Subscription[] = [];
 
@@ -45,17 +46,15 @@ export class OurBiensComponent implements OnInit, OnDestroy {
           ...propertyData
         }
       }).sort((a: Property, b: Property) => {
-        // Tri principal par position (id)
-        const idDiff = a.id - b.id;
-        if (idDiff !== 0) return idDiff;
-        
-        // Tri secondaire par SubStatus (propriétés disponibles en premier)
-        const aAvailable = a.SubStatus === 2 || a.SubStatus === 3 || a.SubStatus === 4;
-        const bAvailable = b.SubStatus === 2 || b.SubStatus === 3 || b.SubStatus === 4;
+        // Tri principal par disponibilité (SubStatus 2,3 = disponibles en premier)
+        const aAvailable = a.SubStatus === 2 || a.SubStatus === 3;
+        const bAvailable = b.SubStatus === 2 || b.SubStatus === 3;
         
         if (aAvailable && !bAvailable) return -1;
         if (!aAvailable && bAvailable) return 1;
-        return 0;
+        
+        // Tri secondaire par position (id)
+        return a.id - b.id;
       });
 
       // Transmission des propriétés au service de recherche
@@ -102,7 +101,12 @@ export class OurBiensComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.subscriptions.push(propertiesSub, searchSub);
+    // Abonnement au mode fallback
+    const fallbackSub = this.searchService.isFallbackMode$.subscribe(isFallback => {
+      this.isFallbackMode = isFallback;
+    });
+
+    this.subscriptions.push(propertiesSub, searchSub, fallbackSub);
   }
 
   ngOnDestroy(): void {

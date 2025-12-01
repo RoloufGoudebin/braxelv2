@@ -51,6 +51,10 @@ export class SearchBarComponent implements OnInit {
     { id: 7, name: 'navbar.16.g', count: 0 },
   ];
 
+  // Multi-sélection pour les types de biens
+  selectedPropertyTypes: number[] = [];
+  isPropertyTypeDropdownOpen = false;
+
   // List of zip codes
   listOfZips = data.sort((a: any, b: any) => {
     if (a.localite < b.localite) return -1;
@@ -176,8 +180,8 @@ export class SearchBarComponent implements OnInit {
     const selectedPropertyType = this.searchForm.get('propertyType')?.value;
 
     return properties.filter(property => {
-      // Filtres obligatoires
-      if (property.SubStatus !== 2 && property.SubStatus !== 3) return false;
+      // Filtres obligatoires - MODIFIER POUR INCLURE TOUS LES BIENS (SubStatus 2,3,4,5)
+      if (property.SubStatus !== 2 && property.SubStatus !== 3 && property.SubStatus !== 4 && property.SubStatus !== 5) return false;
       if (property.Goal !== selectedGoal) return false;
 
       // Filtre localisation (sauf si exclu)
@@ -222,29 +226,49 @@ export class SearchBarComponent implements OnInit {
     // Filtrer les propriétés (exclure la localisation pour éviter la dépendance circulaire)
     const filteredProperties = this.applyBaseFilters(properties, ['location']);
 
-    // Compter les propriétés par code postal
+    // Compter UNIQUEMENT les propriétés DISPONIBLES (SubStatus 2,3) par code postal
+    // Car ce sont celles qui seront affichées en priorité
     const zipCounts = new Map<number, number>();
     filteredProperties.forEach(property => {
-      const zipNumber = Number(property.Zip);
-      zipCounts.set(zipNumber, (zipCounts.get(zipNumber) || 0) + 1);
+      // Ne compter que les biens disponibles pour les compteurs
+      if (property.SubStatus === 2 || property.SubStatus === 3) {
+        const zipNumber = Number(property.Zip);
+        zipCounts.set(zipNumber, (zipCounts.get(zipNumber) || 0) + 1);
+      }
     });
 
-    // Créer la liste des codes postaux disponibles avec compteurs
-    this.availableZips = Array.from(zipCounts.entries())
-      .filter(([_, count]) => count > 0)
-      .map(([zip, count]) => {
-        const zipInfo = this.listOfZips.find(item => item.zip === zip);
-        return zipInfo ? {
-          zip,
-          localite: zipInfo.localite,
-          count,
-          displayText: `${zip} ${zipInfo.localite} (${count})`
-        } : null;
-      })
-      .filter(Boolean) as ZipOption[];
+    // CPs prioritaires à mettre en premier
+    const priorityZips = [1410, 1420, 1380, 1640, 1180];
 
-    // Tri par nom de localité
-    this.availableZips.sort((a, b) => a.localite.localeCompare(b.localite));
+    // Créer la liste de TOUS les codes postaux (sans compteur)
+    this.availableZips = this.listOfZips.map(zipInfo => {
+      const count = zipCounts.get(zipInfo.zip) || 0;
+      return {
+        zip: zipInfo.zip,
+        localite: zipInfo.localite,
+        count,
+        displayText: `${zipInfo.zip} ${zipInfo.localite}`
+      };
+    });
+
+    // Tri personnalisé : CPs prioritaires d'abord, puis par localité
+    this.availableZips.sort((a, b) => {
+      const aIsPriority = priorityZips.includes(a.zip);
+      const bIsPriority = priorityZips.includes(b.zip);
+      
+      // Si les deux sont prioritaires, trier selon l'ordre de priorité
+      if (aIsPriority && bIsPriority) {
+        return priorityZips.indexOf(a.zip) - priorityZips.indexOf(b.zip);
+      }
+      
+      // Les prioritaires en premier
+      if (aIsPriority) return -1;
+      if (bIsPriority) return 1;
+      
+      // Pour les autres, tri alphabétique par localité
+      return a.localite.localeCompare(b.localite);
+    });
+
     this.filteredZips = [...this.availableZips];
 
     // Grouper par provinces
@@ -415,6 +439,7 @@ export class SearchBarComponent implements OnInit {
 
   groupZipsByProvince(zipList: ZipOption[]) {
     const provinceMap = new Map<string, ZipOption[]>();
+    const priorityZips = [1410, 1420, 1380, 1640, 1180];
 
     zipList.forEach(zip => {
       const province = this.getProvinceFromZip(zip.zip);
@@ -424,14 +449,50 @@ export class SearchBarComponent implements OnInit {
       provinceMap.get(province)!.push(zip);
     });
 
-    // Convert to array and sort provinces
+    // Convert to array and sort provinces avec Brabant Wallon en premier
     this.filteredProvinces = [];
-    const sortedProvinces = Array.from(provinceMap.keys()).sort();
+    const provinceOrder = ['Brabant Wallon', 'Bruxelles-Capitale', 'Brabant Flamand'];
+    const allProvinces = Array.from(provinceMap.keys());
+    
+    // Trier les provinces : Brabant Wallon en premier, puis ordre personnalisé, puis alphabétique
+    const sortedProvinces = allProvinces.sort((a, b) => {
+      const aIndex = provinceOrder.indexOf(a);
+      const bIndex = provinceOrder.indexOf(b);
+      
+      // Si les deux sont dans l'ordre prioritaire
+      if (aIndex !== -1 && bIndex !== -1) {
+        return aIndex - bIndex;
+      }
+      
+      // Si seulement a est prioritaire
+      if (aIndex !== -1) return -1;
+      
+      // Si seulement b est prioritaire
+      if (bIndex !== -1) return 1;
+      
+      // Sinon tri alphabétique
+      return a.localeCompare(b);
+    });
 
     sortedProvinces.forEach(province => {
       const zipOptions = provinceMap.get(province)!;
-      // Sort zip options within province by localite
-      zipOptions.sort((a, b) => a.localite.localeCompare(b.localite));
+      // Sort zip options within province: priority zips first, then by localite
+      zipOptions.sort((a, b) => {
+        const aIsPriority = priorityZips.includes(a.zip);
+        const bIsPriority = priorityZips.includes(b.zip);
+        
+        // Si les deux sont prioritaires, respecter l'ordre de priorité
+        if (aIsPriority && bIsPriority) {
+          return priorityZips.indexOf(a.zip) - priorityZips.indexOf(b.zip);
+        }
+        
+        // Les prioritaires en premier
+        if (aIsPriority) return -1;
+        if (bIsPriority) return 1;
+        
+        // Pour les autres, tri alphabétique par localité
+        return a.localite.localeCompare(b.localite);
+      });
 
       this.filteredProvinces.push({
         province: province,
@@ -448,6 +509,70 @@ export class SearchBarComponent implements OnInit {
     }
 
     this.onSearch();
+  }
+
+  // Toggle property type dropdown
+  togglePropertyTypeDropdown() {
+    this.isPropertyTypeDropdownOpen = !this.isPropertyTypeDropdownOpen;
+  }
+
+  // Close property type dropdown
+  closePropertyTypeDropdown() {
+    this.isPropertyTypeDropdownOpen = false;
+  }
+
+  // Check if a property type is selected
+  isPropertyTypeSelected(typeId: number): boolean {
+    return this.selectedPropertyTypes.includes(typeId);
+  }
+
+  // Toggle property type selection
+  togglePropertyTypeSelection(typeId: number) {
+    const index = this.selectedPropertyTypes.indexOf(typeId);
+    if (index > -1) {
+      this.selectedPropertyTypes.splice(index, 1);
+    } else {
+      this.selectedPropertyTypes.push(typeId);
+    }
+
+    // Update smart filters when property type changes
+    const currentProperties = this.searchService.getCurrentProperties();
+    if (currentProperties.length > 0) {
+      this.updateSmartFilters(currentProperties);
+    }
+
+    this.onSearch();
+  }
+
+  // Remove a specific property type from selection
+  removePropertyType(typeId: number): void {
+    this.selectedPropertyTypes = this.selectedPropertyTypes.filter(id => id !== typeId);
+    
+    // Update smart filters when property type changes
+    const currentProperties = this.searchService.getCurrentProperties();
+    if (currentProperties.length > 0) {
+      this.updateSmartFilters(currentProperties);
+    }
+    
+    this.onSearch();
+  }
+
+  // Get display text for selected property types
+  getSelectedPropertyTypesText(): string {
+    if (this.selectedPropertyTypes.length === 0) {
+      return this.translate.instant('search.9');
+    } else if (this.selectedPropertyTypes.length === 1) {
+      const type = this.propertyTypes.find(t => t.id === this.selectedPropertyTypes[0]);
+      return type ? this.translate.instant(type.name) : '';
+    } else {
+      return `${this.selectedPropertyTypes.length} types sélectionnés`;
+    }
+  }
+
+  // Get property type name by id
+  getPropertyTypeName(typeId: number): string {
+    const type = this.propertyTypes.find(t => t.id === typeId);
+    return type ? this.translate.instant(type.name) : '';
   }
 
   selectZip(zipOption: ZipOption) {
@@ -549,7 +674,6 @@ export class SearchBarComponent implements OnInit {
 
   // Search function
   onSearch() {
-    const propertyTypeValue = this.searchForm.get('propertyType')?.value;
     const minPriceValue = this.searchForm.get('minPrice')?.value;
     const maxPriceValue = this.searchForm.get('maxPrice')?.value;
     const minSurfaceValue = this.searchForm.get('minSurface')?.value;
@@ -579,8 +703,8 @@ export class SearchBarComponent implements OnInit {
     // Convert selected locations to zip codes
     const zipCodes = this.getZipCodesFromSelectedLocations();
 
-    // Get selected property types
-    const propertyTypes = propertyTypeValue ? [Number(propertyTypeValue)] : [];
+    // Get selected property types (multi-sélection)
+    const propertyTypes = this.selectedPropertyTypes;
 
     const criteria: SearchCriteria = {
       goal: selectedGoal,
@@ -657,6 +781,31 @@ export class SearchBarComponent implements OnInit {
     }
   }
 
+  // Get short name for location chip (just city name without zip)
+  getLocationShortName(location: string): string {
+    // Extract format "1410 WATERLOO" from "1410 WATERLOO"
+    const match = location.match(/^(\d{4})\s+(.+)$/);
+    if (match) {
+      return `${match[1]} ${match[2]}`;
+    }
+    return location;
+  }
+
+  // Remove a specific location from selection
+  removeLocation(location: string): void {
+    this.selectedLocations = this.selectedLocations.filter(loc => loc !== location);
+    // Garder le champ vide
+    this.searchForm.get('location')?.setValue('', { emitEvent: false });
+    
+    // Update smart filters when location changes
+    const currentProperties = this.searchService.getCurrentProperties();
+    if (currentProperties.length > 0) {
+      this.updateSmartFilters(currentProperties);
+    }
+    
+    this.onSearch();
+  }
+
   // Check if a location is selected
   isLocationSelected(locationText: string): boolean {
     return this.selectedLocations.includes(locationText);
@@ -673,8 +822,11 @@ export class SearchBarComponent implements OnInit {
       this.selectedLocations.push(locationText);
     }
 
-    // Update form control with combined locations
-    this.searchForm.get('location')?.setValue(this.selectedLocations.join(', '));
+    // Fermer le dropdown
+    this.closeLocationDropdown();
+
+    // Vider le champ input complètement (les chips suffisent)
+    this.searchForm.get('location')?.setValue('', { emitEvent: false });
 
     // Update smart filters when location changes
     const currentProperties = this.searchService.getCurrentProperties();
@@ -722,15 +874,13 @@ export class SearchBarComponent implements OnInit {
     // Restauration de la localisation
     if (criteria.location) {
       this.selectedLocations = criteria.location.split(', ').filter(loc => loc.trim());
-      this.searchForm.get('location')?.setValue(criteria.location);
+      // NE PAS écrire dans le form control - les chips suffisent
     } else {
       this.selectedLocations = [];
     }
 
-    // Restauration du type de propriété
-    if (criteria.propertyTypes.length > 0) {
-      this.searchForm.get('propertyType')?.setValue(criteria.propertyTypes[0].toString());
-    }
+    // Restauration des types de propriété (multi-sélection)
+    this.selectedPropertyTypes = criteria.propertyTypes || [];
 
     // Restauration des chambres
     this.selectedRooms = criteria.selectedRooms || [];
@@ -775,7 +925,7 @@ export class SearchBarComponent implements OnInit {
 
     this.selectedLocations.forEach(selectedLocation => {
       if (selectedLocation && selectedLocation.trim()) {
-        // Extract zip code from selected location (format: "1410 WATERLOO (4)")
+        // Extract zip code from selected location (format: "1410 WATERLOO"
         const zipMatch = selectedLocation.match(/^(\d{4})\s/);
         if (zipMatch) {
           const selectedZip = Number(zipMatch[1]);
@@ -795,7 +945,7 @@ export class SearchBarComponent implements OnInit {
 
     // Update selections with only available locations
     this.selectedLocations = stillAvailableLocations;
-    this.searchForm.get('location')?.setValue(this.selectedLocations.join(', '));
+    // NE PAS écrire dans le form control - les chips suffisent
   }
 
   // Méthodes pour les filtres avancés
@@ -886,6 +1036,7 @@ export class SearchBarComponent implements OnInit {
   clearSearch(): void {
     this.searchForm.reset();
     this.selectedLocations = [];
+    this.selectedPropertyTypes = [];
     this.minPrice = null;
     this.maxPrice = null;
     this.selectedRooms = [];
