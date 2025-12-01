@@ -348,21 +348,8 @@
   <!-- Section des filtres avancés - visible uniquement si activée -->
   <div *ngIf="isAdvancedFiltersOpen" class="mt-6 border-t border-gray-200 pt-6">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 lg:gap-6 mb-4">
-      
-      <!-- Filtres checkbox -->
       <div class="space-y-3">
-        <label class="text-sm sm:text-base font-medium text-gray-700 block">Options spéciales</label>
-        
-        <label class="flex items-center space-x-2 cursor-pointer">
-          <input
-            type="checkbox"
-            formControlName="showUnderOption"
-            (change)="onAdvancedFilterChange()"
-            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-          />
-          <span class="text-sm text-gray-700">Afficher les biens sous option</span>
-        </label>
-        
+        <label class="text-sm sm:text-base font-medium text-gray-700 block">{{ 'search.32' | translate }}</label>
         <label class="flex items-center space-x-2 cursor-pointer">
           <input
             type="checkbox"
@@ -370,9 +357,8 @@
             (change)="onAdvancedFilterChange()"
             class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
           />
-          <span class="text-sm text-gray-700">Avec terrasse</span>
+          <span class="text-sm text-gray-700">{{ 'search.33' | translate }}</span>
         </label>
-        
         <label class="flex items-center space-x-2 cursor-pointer">
           <input
             type="checkbox"
@@ -380,23 +366,12 @@
             (change)="onAdvancedFilterChange()"
             class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
           />
-          <span class="text-sm text-gray-700">Avec jardin</span>
-        </label>
-        
-        <label class="flex items-center space-x-2 cursor-pointer">
-          <input
-            type="checkbox"
-            formControlName="showWithGarage"
-            (change)="onAdvancedFilterChange()"
-            class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-          />
-          <span class="text-sm text-gray-700">Avec garage</span>
+          <span class="text-sm text-gray-700">{{ 'search.34' | translate }}</span>
         </label>
       </div>
 
-      <!-- Surface -->
       <div>
-        <label class="text-sm sm:text-base font-medium text-gray-700 block mb-2">Surface</label>
+        <label class="text-sm sm:text-base font-medium text-gray-700 block mb-2">{{ 'search.29' | translate }}</label>
         <div class="relative">
           <div
             class="w-full py-3 sm:py-2 px-3 bg-gray-100 rounded-lg cursor-pointer flex items-center justify-between focus-within:ring-2 focus-within:ring-blue-500 focus-within:bg-white transition-all"
@@ -410,112 +385,262 @@
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              ></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </div>
-
-          <!-- Mini fenêtre surface -->
           <div
             *ngIf="isSurfaceDropdownOpen"
             class="absolute top-full left-0 right-0 sm:left-auto sm:right-0 sm:w-96 mt-0 bg-white border border-gray-200 rounded-lg shadow-xl p-4 sm:p-6 z-10"
           >
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="text-xs sm:text-sm text-gray-600 mb-2 block font-medium">Surface min</label>
-              <input
-                type="number"
-                class="w-full py-3 sm:py-2 px-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                placeholder="Min m²"
-                formControlName="minSurface"
-              />
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs sm:text-sm text-gray-600 mb-2 block font-medium">{{ 'search.17' | translate }} (m²)</label>
+                <input
+                  type="number"
+                  class="w-full py-3 sm:py-2 px-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  [placeholder]="'search.17' | translate"
+                  formControlName="minSurface"
+                />
+              </div>
+              <div>
+                <label class="text-xs sm:text-sm text-gray-600 mb-2 block font-medium">{{ 'search.18' | translate }} (m²)</label>
+                <input
+                  type="number"
+                  class="w-full py-3 sm:py-2 px-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  [placeholder]="'search.18' | translate"
+                  formControlName="maxSurface"
+                />
+              </div>
             </div>
-            <div>
-              <label class="text-xs sm:text-sm text-gray-600 mb-2 block font-medium">Surface max</label>
-              <input
-                type="number"
-                class="w-full py-3 sm:py-2 px-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                placeholder="Max m²"
-                formControlName="maxSurface"
-              />
+            <div class="flex justify-end mt-4">
+              <button
+                class="text-sm sm:text-base text-white px-4 sm:px-6 py-2 rounded-lg hover:opacity-90 transition-opacity touch-manipulation"
+                style="background-color: #233353"
+                (click)="closeSurfaceDropdown()"
+              >
+                {{ 'search.21' | translate }}
+              </button>
             </div>
-          </div>
-          <div class="flex justify-end mt-4">
-            <button
-              class="text-sm sm:text-base text-white px-4 sm:px-6 py-2 rounded-lg hover:opacity-90 transition-opacity touch-manipulation"
-              style="background-color: #233353"
-              (click)="closeSurfaceDropdown()"
-            >
-              {{ 'search.21' | translate }}
-            </button>
-          </div>
           </div>
         </div>
       </div>
 
-      <!-- Année de construction -->
+      <div class="relative">
+        <label class="text-sm sm:text-base font-medium text-gray-700 block mb-2">{{ 'search.25' | translate }}</label>
+        <div
+          class="w-full py-3 sm:py-2 px-3 bg-gray-100 rounded-lg cursor-pointer flex items-center justify-between focus-within:ring-2 focus-within:ring-blue-500 focus-within:bg-white transition-all"
+          (click)="toggleSubTypeDropdown()"
+        >
+          <span class="text-gray-700 text-sm sm:text-base truncate">{{ getSelectedSubTypesText() }}</span>
+          <svg
+            class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 flex-shrink-0 ml-2"
+            [class.rotate-180]="isSubTypeDropdownOpen"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </div>
+        <div
+          *ngIf="isSubTypeDropdownOpen"
+          class="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-xl p-3 sm:p-3 z-20 max-h-60 overflow-y-auto"
+        >
+          <div class="space-y-2">
+            <div
+              *ngFor="let subType of subTypeOptions"
+              class="flex items-center justify-between py-2 px-2 hover:bg-gray-50 rounded cursor-pointer"
+              (click)="toggleSubTypeSelection(subType.value)"
+            >
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  [checked]="isSubTypeSelected(subType.value)"
+                  class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  (click)="$event.stopPropagation()"
+                  (change)="toggleSubTypeSelection(subType.value)"
+                />
+                <span class="text-sm text-gray-700">{{ subType.value }}</span>
+              </div>
+              <span class="text-xs text-gray-500">{{ subType.count }}</span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="selectedSubTypes.length > 0" class="flex flex-wrap gap-2 mt-2">
+          <span
+            *ngFor="let subType of selectedSubTypes"
+            class="inline-flex items-center px-3 py-1.5 rounded-full text-sm bg-indigo-100 text-indigo-800 border border-indigo-300 hover:bg-indigo-200 transition-all duration-200 shadow-sm hover:shadow"
+          >
+            <span class="truncate flex-1 min-w-0">{{ subType }}</span>
+            <button
+              type="button"
+              class="ml-2 hover:text-indigo-900 focus:outline-none flex-shrink-0 transition-transform hover:scale-110"
+              (click)="removeSubType(subType); $event.stopPropagation()"
+              [attr.aria-label]="'Supprimer ' + subType"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+          </span>
+        </div>
+      </div>
+
+      <div class="relative">
+        <label class="text-sm sm:text-base font-medium text-gray-700 block mb-2">{{ 'search.27' | translate }}</label>
+        <div
+          class="w-full py-3 sm:py-2 px-3 bg-gray-100 rounded-lg cursor-pointer flex items-center justify-between focus-within:ring-2 focus-within:ring-blue-500 focus-within:bg-white transition-all"
+          (click)="toggleConditionDropdown()"
+        >
+          <span class="text-gray-700 text-sm sm:text-base truncate">{{ getSelectedConditionsText() }}</span>
+          <svg
+            class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 flex-shrink-0 ml-2"
+            [class.rotate-180]="isConditionDropdownOpen"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </div>
+        <div
+          *ngIf="isConditionDropdownOpen"
+          class="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-xl p-3 sm:p-3 z-20 max-h-60 overflow-y-auto"
+        >
+          <div class="space-y-2">
+            <div
+              *ngFor="let condition of conditionOptions"
+              class="flex items-center justify-between py-2 px-2 hover:bg-gray-50 rounded cursor-pointer"
+              (click)="toggleConditionSelection(condition.value)"
+            >
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  [checked]="isConditionSelected(condition.value)"
+                  class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  (click)="$event.stopPropagation()"
+                  (change)="toggleConditionSelection(condition.value)"
+                />
+                <span class="text-sm text-gray-700">{{ condition.value }}</span>
+              </div>
+              <span class="text-xs text-gray-500">{{ condition.count }}</span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="selectedConditions.length > 0" class="flex flex-wrap gap-2 mt-2">
+          <span
+            *ngFor="let condition of selectedConditions"
+            class="inline-flex items-center px-3 py-1.5 rounded-full text-sm bg-pink-100 text-pink-800 border border-pink-300 hover:bg-pink-200 transition-all duration-200 shadow-sm hover:shadow"
+          >
+            <span class="truncate flex-1 min-w-0">{{ condition }}</span>
+            <button
+              type="button"
+              class="ml-2 hover:text-pink-900 focus:outline-none flex-shrink-0 transition-transform hover:scale-110"
+              (click)="removeCondition(condition); $event.stopPropagation()"
+              [attr.aria-label]="'Supprimer ' + condition"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+          </span>
+        </div>
+      </div>
+
       <div>
-        <label class="text-sm sm:text-base font-medium text-gray-700 block mb-2">Année de construction</label>
+        <label class="text-sm sm:text-base font-medium text-gray-700 block mb-2">{{ 'search.30' | translate }}</label>
         <div class="relative">
           <div
             class="w-full py-3 sm:py-2 px-3 bg-gray-100 rounded-lg cursor-pointer flex items-center justify-between focus-within:ring-2 focus-within:ring-blue-500 focus-within:bg-white transition-all"
-            (click)="toggleConstructionYearDropdown()"
+            (click)="toggleGardenSurfaceDropdown()"
           >
-            <span class="text-gray-700 text-sm sm:text-base truncate">{{ getConstructionYearDisplayText() }}</span>
+            <span class="text-gray-700 text-sm sm:text-base truncate">{{ getGardenSurfaceDisplayText() }}</span>
             <svg
               class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 flex-shrink-0 ml-2"
-              [class.rotate-180]="isConstructionYearDropdownOpen"
+              [class.rotate-180]="isGardenSurfaceDropdownOpen"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              ></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </div>
-
-          <!-- Mini fenêtre année de construction -->
           <div
-            *ngIf="isConstructionYearDropdownOpen"
+            *ngIf="isGardenSurfaceDropdownOpen"
             class="absolute top-full left-0 right-0 sm:left-auto sm:right-0 sm:w-96 mt-0 bg-white border border-gray-200 rounded-lg shadow-xl p-4 sm:p-6 z-10"
           >
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="text-xs sm:text-sm text-gray-600 mb-2 block font-medium">Année min</label>
-              <input
-                type="number"
-                class="w-full py-3 sm:py-2 px-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                placeholder="Ex: 1990"
-                formControlName="minConstructionYear"
-              />
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs sm:text-sm text-gray-600 mb-2 block font-medium">{{ 'search.37' | translate }}</label>
+                <input
+                  type="number"
+                  class="w-full py-3 sm:py-2 px-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  formControlName="minGardenSurface"
+                />
+              </div>
+              <div>
+                <label class="text-xs sm:text-sm text-gray-600 mb-2 block font-medium">{{ 'search.38' | translate }}</label>
+                <input
+                  type="number"
+                  class="w-full py-3 sm:py-2 px-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                  formControlName="maxGardenSurface"
+                />
+              </div>
             </div>
-            <div>
-              <label class="text-xs sm:text-sm text-gray-600 mb-2 block font-medium">Année max</label>
-              <input
-                type="number"
-                class="w-full py-3 sm:py-2 px-3 border border-gray-300 rounded-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                placeholder="Ex: 2023"
-                formControlName="maxConstructionYear"
-              />
+            <div class="flex justify-end mt-4">
+              <button
+                class="text-sm sm:text-base text-white px-4 sm:px-6 py-2 rounded-lg hover:opacity-90 transition-opacity touch-manipulation"
+                style="background-color: #233353"
+                (click)="closeGardenSurfaceDropdown()"
+              >
+                {{ 'search.21' | translate }}
+              </button>
             </div>
           </div>
-          <div class="flex justify-end mt-4">
-            <button
-              class="text-sm sm:text-base text-white px-4 sm:px-6 py-2 rounded-lg hover:opacity-90 transition-opacity touch-manipulation"
-              style="background-color: #233353"
-              (click)="closeConstructionYearDropdown()"
+        </div>
+      </div>
+
+      <div>
+        <label class="text-sm sm:text-base font-medium text-gray-700 block mb-2">{{ 'search.31' | translate }}</label>
+        <div class="relative">
+          <div
+            class="w-full py-3 sm:py-2 px-3 bg-gray-100 rounded-lg cursor-pointer flex items-center justify-between focus-within:ring-2 focus-within:ring-blue-500 focus-within:bg-white transition-all"
+            (click)="toggleGarageDropdown()"
+          >
+            <span class="text-gray-700 text-sm sm:text-base truncate">{{ getGarageDisplayText() }}</span>
+            <svg
+              class="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 flex-shrink-0 ml-2"
+              [class.rotate-180]="isGarageDropdownOpen"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              {{ 'search.21' | translate }}
-            </button>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
           </div>
+          <div
+            *ngIf="isGarageDropdownOpen"
+            class="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-xl p-3 sm:p-4 z-10"
+          >
+            <button
+              type="button"
+              class="w-full text-left px-3 py-2 text-sm rounded hover:bg-gray-100"
+              (click)="selectGarageOption(null)"
+            >
+              {{ 'search.36' | translate }}
+            </button>
+            <div class="mt-2 grid grid-cols-3 gap-2">
+              <button
+                type="button"
+                *ngFor="let option of garageOptions"
+                class="px-3 py-2 text-sm rounded border border-gray-200 hover:bg-gray-50"
+                [class.bg-blue-50]="minGarageCount === option.value"
+                [class.border-blue-500]="minGarageCount === option.value"
+                (click)="selectGarageOption(option.value)"
+              >
+                {{ option.value }}+
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -561,4 +686,16 @@
   *ngIf="isPropertyTypeDropdownOpen"
   class="fixed inset-0 z-10"
   (click)="closePropertyTypeDropdown()"
+></div>
+
+<div
+  *ngIf="isSubTypeDropdownOpen"
+  class="fixed inset-0 z-10"
+  (click)="closeSubTypeDropdown()"
+></div>
+
+<div
+  *ngIf="isConditionDropdownOpen"
+  class="fixed inset-0 z-10"
+  (click)="closeConditionDropdown()"
 ></div>

@@ -184,7 +184,21 @@
 		"21": "Validate",
 		"22": "Clear",
 		"23": "Search",
-		"24": "selected locations"
+		"24": "selected locations",
+		"25": "Property sub-type",
+		"26": "All sub-types",
+		"27": "Property condition",
+		"28": "All conditions",
+		"29": "Living area",
+		"30": "Land size",
+		"31": "Minimum number of garages",
+		"32": "Special options",
+		"33": "With terrace",
+		"34": "With garden",
+		"35": "garage(s)",
+		"36": "No preference",
+		"37": "Land min (sqm)",
+		"38": "Land max (sqm)"
 	},
 	"footer": {
 		"1": "Menu",

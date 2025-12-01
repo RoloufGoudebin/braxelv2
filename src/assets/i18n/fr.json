@@ -184,7 +184,21 @@
 		"21": "Valider",
 		"22": "Effacer",
 		"23": "Rechercher",
-		"24": "localités sélectionnées"
+		"24": "localités sélectionnées",
+		"25": "Sous-type de bien",
+		"26": "Tous les sous-types",
+		"27": "État du bien",
+		"28": "Tous les états",
+		"29": "Surface habitable",
+		"30": "Surface du terrain",
+		"31": "Nombre minimum de garages",
+		"32": "Options spéciales",
+		"33": "Avec terrasse",
+		"34": "Avec jardin",
+		"35": "garage(s)",
+		"36": "Sans préférence",
+		"37": "Surface terrain min (m²)",
+		"38": "Surface terrain max (m²)"
 	},
 	"footer": {
 		"1": "Menu",
