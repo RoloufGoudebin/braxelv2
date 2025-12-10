@@ -184,7 +184,21 @@
 		"21": "Valideren",
 		"22": "Wissen",
 		"23": "Zoeken",
-		"24": "geselecteerde locaties"
+		"24": "geselecteerde locaties",
+		"25": "Subtype van het pand",
+		"26": "Alle subtypes",
+		"27": "Staat van het pand",
+		"28": "Alle staten",
+		"29": "Bewoonbare oppervlakte",
+		"30": "Perceeloppervlakte",
+		"31": "Minimaal aantal garages",
+		"32": "Speciale opties",
+		"33": "Met terras",
+		"34": "Met tuin",
+		"35": "garage(s)",
+		"36": "Geen voorkeur",
+		"37": "Terrein min (m²)",
+		"38": "Terrein max (m²)"
 	},
 	"footer": {
 		"1": "Menu",

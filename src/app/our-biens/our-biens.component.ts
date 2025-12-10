@@ -71,14 +71,15 @@ export class OurBiensComponent implements OnInit, OnDestroy {
           selectedRooms: [],
           minPrice: null,
           maxPrice: null,
-          showUnderOption: true,
           showWithTerrace: false,
           showWithGarden: false,
-          showWithGarage: false,
           minSurface: null,
           maxSurface: null,
-          minConstructionYear: null,
-          maxConstructionYear: null
+          subTypes: [],
+          propertyConditions: [],
+          minGardenSurface: null,
+          maxGardenSurface: null,
+          minGarageCount: null
         };
         
         this.searchService.updateSearchCriteria(defaultCriteria);

@@ -88,27 +88,41 @@ export class SearchBarComponent implements OnInit {
   ];
   availableRoomOptions: any[] = [];
 
+  // Sous-types de biens
+  subTypeOptions: Array<{ value: string; count: number }> = [];
+  selectedSubTypes: string[] = [];
+  isSubTypeDropdownOpen = false;
+
+  // État du bien
+  conditionOptions: Array<{ value: string; count: number }> = [];
+  selectedConditions: string[] = [];
+  isConditionDropdownOpen = false;
+
   isLocationDropdownOpen = false;
   selectedLocations: string[] = [];
 
   // Filtres avancés
   isAdvancedFiltersOpen = false;
-  showUnderOption = true;
   showWithTerrace = false;
   showWithGarden = false;
-  showWithGarage = false;
   
   isSurfaceDropdownOpen = false;
   minSurface: number | null = null;
   maxSurface: number | null = null;
   suggestedMinSurface: number | null = null;
   suggestedMaxSurface: number | null = null;
-  
-  isConstructionYearDropdownOpen = false;
-  minConstructionYear: number | null = null;
-  maxConstructionYear: number | null = null;
-  suggestedMinConstructionYear: number | null = null;
-  suggestedMaxConstructionYear: number | null = null;
+
+  isGardenSurfaceDropdownOpen = false;
+  minGardenSurface: number | null = null;
+  maxGardenSurface: number | null = null;
+
+  isGarageDropdownOpen = false;
+  minGarageCount: number | null = null;
+  garageOptions = [
+    { value: 1, label: '1+' },
+    { value: 2, label: '2+' },
+    { value: 3, label: '3+' }
+  ];
 
   // Form controls
   searchForm = new FormGroup({
@@ -118,12 +132,11 @@ export class SearchBarComponent implements OnInit {
     maxPrice: new FormControl(null),
     minSurface: new FormControl(null),
     maxSurface: new FormControl(null),
-    minConstructionYear: new FormControl(null),
-    maxConstructionYear: new FormControl(null),
-    showUnderOption: new FormControl(true),
+    minGardenSurface: new FormControl(null),
+    maxGardenSurface: new FormControl(null),
+    minGarageCount: new FormControl(null),
     showWithTerrace: new FormControl(false),
-    showWithGarden: new FormControl(false),
-    showWithGarage: new FormControl(false)
+    showWithGarden: new FormControl(false)
   })
 
   ngOnInit(): void {
@@ -178,6 +191,8 @@ export class SearchBarComponent implements OnInit {
     const selectedGoal = this.getSelectedGoal();
     const selectedLocationZips = this.getZipCodesFromSelectedLocations();
     const selectedPropertyType = this.searchForm.get('propertyType')?.value;
+    const normalizedSubTypes = this.selectedSubTypes.map(subType => subType.toLowerCase());
+    const normalizedConditions = this.selectedConditions.map(condition => condition.toLowerCase());
 
     return properties.filter(property => {
       // Filtres obligatoires - MODIFIER POUR INCLURE TOUS LES BIENS (SubStatus 2,3,4,5)
@@ -202,6 +217,16 @@ export class SearchBarComponent implements OnInit {
         if (!roomMatches) return false;
       }
 
+      if (normalizedSubTypes.length > 0) {
+        const subType = (property.MainTypeName || '').toLowerCase();
+        if (!subType || !normalizedSubTypes.includes(subType)) return false;
+      }
+
+      if (normalizedConditions.length > 0) {
+        const propertyCondition = (property.ConditionName || '').toLowerCase();
+        if (!propertyCondition || !normalizedConditions.includes(propertyCondition)) return false;
+      }
+
       // Filtre prix (sauf si exclu)
       if (!excludeFilters.includes('price')) {
         if (this.minPrice && property.Price < this.minPrice) return false;
@@ -209,14 +234,16 @@ export class SearchBarComponent implements OnInit {
       }
 
       // Filtres avancés
-      if (this.showUnderOption === false && property.Marquee) return false;
       if (this.showWithTerrace && (!property.SurfaceTerrace || property.SurfaceTerrace <= 0)) return false;
       if (this.showWithGarden && !property.HasGarden) return false;
-      if (this.showWithGarage && (!property.NumberOfGarages || property.NumberOfGarages <= 0)) return false;
       if (this.minSurface !== null && (!property.SurfaceTotal || property.SurfaceTotal < this.minSurface)) return false;
       if (this.maxSurface !== null && (!property.SurfaceTotal || property.SurfaceTotal > this.maxSurface)) return false;
-      if (this.minConstructionYear !== null && (!property.ConstructionYear || property.ConstructionYear < this.minConstructionYear)) return false;
-      if (this.maxConstructionYear !== null && (!property.ConstructionYear || property.ConstructionYear > this.maxConstructionYear)) return false;
+      if (this.minGardenSurface !== null && (!property.SurfaceGarden || property.SurfaceGarden < this.minGardenSurface)) return false;
+      if (this.maxGardenSurface !== null && (!property.SurfaceGarden || property.SurfaceGarden > this.maxGardenSurface)) return false;
+      if (this.minGarageCount !== null) {
+        const garages = property.NumberOfGarages || 0;
+        if (garages < this.minGarageCount) return false;
+      }
 
       return true;
     });
@@ -284,6 +311,8 @@ export class SearchBarComponent implements OnInit {
     // Mise à jour simultanée de tous les filtres intelligents
     this.updatePropertyTypeCounts(baseFilteredProperties);
     this.updateAvailableRooms(baseFilteredProperties);
+    this.updateSubTypeOptions(baseFilteredProperties);
+    this.updateConditionOptions(baseFilteredProperties);
     this.updatePriceSuggestions(baseFilteredProperties);
   }
 
@@ -331,39 +360,42 @@ export class SearchBarComponent implements OnInit {
     // );
   }
 
-  updatePriceSuggestions(properties: Property[]) {
-    // Apply current filters (except price)
-    const filteredProperties = properties.filter(property => {
-      // Property type filter
-      const selectedPropertyType = this.searchForm.get('propertyType')?.value;
-      if (selectedPropertyType && Number(selectedPropertyType) !== property.WebID) return false;
-
-      // Room filter
-      if (this.selectedRooms.length > 0) {
-        let matchesRoom = false;
-        for (const selectedRoom of this.selectedRooms) {
-          if (selectedRoom === 5) { // "4+" chambres
-            if (property.NumberOfBedRooms >= 4) matchesRoom = true;
-          } else {
-            if (property.NumberOfBedRooms === selectedRoom) matchesRoom = true;
-          }
-        }
-        if (!matchesRoom) return false;
+  updateSubTypeOptions(properties: Property[]): void {
+    const counts = new Map<string, number>();
+    properties.forEach(property => {
+      const subType = property.MainTypeName?.trim();
+      if (subType) {
+        counts.set(subType, (counts.get(subType) || 0) + 1);
       }
-
-      // Apply advanced filters
-      if (!this.showUnderOption && property.Marquee) return false;
-      if (this.showWithTerrace && (!property.SurfaceTerrace || property.SurfaceTerrace <= 0)) return false;
-      if (this.showWithGarden && !property.HasGarden) return false;
-      if (this.showWithGarage && (!property.NumberOfGarages || property.NumberOfGarages <= 0)) return false;
-      if (this.minSurface !== null && (!property.SurfaceTotal || property.SurfaceTotal < this.minSurface)) return false;
-      if (this.maxSurface !== null && (!property.SurfaceTotal || property.SurfaceTotal > this.maxSurface)) return false;
-      if (this.minConstructionYear !== null && (!property.ConstructionYear || property.ConstructionYear < this.minConstructionYear)) return false;
-      if (this.maxConstructionYear !== null && (!property.ConstructionYear || property.ConstructionYear > this.maxConstructionYear)) return false;
-
-      return true;
     });
 
+    this.subTypeOptions = Array.from(counts.entries())
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(([value, count]) => ({ value, count }));
+
+    const validSubTypes = new Set(this.subTypeOptions.map(option => option.value));
+    this.selectedSubTypes = this.selectedSubTypes.filter(value => validSubTypes.has(value));
+  }
+
+  updateConditionOptions(properties: Property[]): void {
+    const counts = new Map<string, number>();
+    properties.forEach(property => {
+      const condition = property.ConditionName?.trim();
+      if (condition) {
+        counts.set(condition, (counts.get(condition) || 0) + 1);
+      }
+    });
+
+    this.conditionOptions = Array.from(counts.entries())
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(([value, count]) => ({ value, count }));
+
+    const validConditions = new Set(this.conditionOptions.map(option => option.value));
+    this.selectedConditions = this.selectedConditions.filter(value => validConditions.has(value));
+  }
+
+  updatePriceSuggestions(properties: Property[]) {
+    const filteredProperties = this.applyBaseFilters(properties, ['price']);
     if (filteredProperties.length > 0) {
       const prices = filteredProperties.map(p => p.Price).sort((a, b) => a - b);
       this.suggestedMinPrice = prices[0];
@@ -575,6 +607,80 @@ export class SearchBarComponent implements OnInit {
     return type ? this.translate.instant(type.name) : '';
   }
 
+  // Gestion des sous-types
+  toggleSubTypeDropdown() {
+    this.isSubTypeDropdownOpen = !this.isSubTypeDropdownOpen;
+  }
+
+  closeSubTypeDropdown() {
+    this.isSubTypeDropdownOpen = false;
+  }
+
+  isSubTypeSelected(value: string): boolean {
+    return this.selectedSubTypes.includes(value);
+  }
+
+  toggleSubTypeSelection(value: string) {
+    if (this.isSubTypeSelected(value)) {
+      this.selectedSubTypes = this.selectedSubTypes.filter(item => item !== value);
+    } else {
+      this.selectedSubTypes.push(value);
+    }
+    this.onSearch();
+  }
+
+  removeSubType(value: string) {
+    this.selectedSubTypes = this.selectedSubTypes.filter(item => item !== value);
+    this.onSearch();
+  }
+
+  getSelectedSubTypesText(): string {
+    if (this.selectedSubTypes.length === 0) {
+      return this.translate.instant('search.26');
+    }
+    if (this.selectedSubTypes.length === 1) {
+      return this.selectedSubTypes[0];
+    }
+    return `${this.selectedSubTypes.length} ${this.translate.instant('search.13')}`;
+  }
+
+  // Gestion des états
+  toggleConditionDropdown() {
+    this.isConditionDropdownOpen = !this.isConditionDropdownOpen;
+  }
+
+  closeConditionDropdown() {
+    this.isConditionDropdownOpen = false;
+  }
+
+  isConditionSelected(value: string): boolean {
+    return this.selectedConditions.includes(value);
+  }
+
+  toggleConditionSelection(value: string) {
+    if (this.isConditionSelected(value)) {
+      this.selectedConditions = this.selectedConditions.filter(item => item !== value);
+    } else {
+      this.selectedConditions.push(value);
+    }
+    this.onSearch();
+  }
+
+  removeCondition(value: string) {
+    this.selectedConditions = this.selectedConditions.filter(item => item !== value);
+    this.onSearch();
+  }
+
+  getSelectedConditionsText(): string {
+    if (this.selectedConditions.length === 0) {
+      return this.translate.instant('search.28');
+    }
+    if (this.selectedConditions.length === 1) {
+      return this.selectedConditions[0];
+    }
+    return `${this.selectedConditions.length} ${this.translate.instant('search.13')}`;
+  }
+
   selectZip(zipOption: ZipOption) {
     // Use the new toggle method for multi-selection
     this.toggleLocationSelection(zipOption);
@@ -678,24 +784,22 @@ export class SearchBarComponent implements OnInit {
     const maxPriceValue = this.searchForm.get('maxPrice')?.value;
     const minSurfaceValue = this.searchForm.get('minSurface')?.value;
     const maxSurfaceValue = this.searchForm.get('maxSurface')?.value;
-    const minConstructionYearValue = this.searchForm.get('minConstructionYear')?.value;
-    const maxConstructionYearValue = this.searchForm.get('maxConstructionYear')?.value;
-    const showUnderOptionValue = this.searchForm.get('showUnderOption')?.value;
+    const minGardenSurfaceValue = this.searchForm.get('minGardenSurface')?.value;
+    const maxGardenSurfaceValue = this.searchForm.get('maxGardenSurface')?.value;
+    const minGarageCountValue = this.searchForm.get('minGarageCount')?.value;
     const showWithTerraceValue = this.searchForm.get('showWithTerrace')?.value;
     const showWithGardenValue = this.searchForm.get('showWithGarden')?.value;
-    const showWithGarageValue = this.searchForm.get('showWithGarage')?.value;
 
     // Sync component properties with form values
     this.minPrice = minPriceValue || null;
     this.maxPrice = maxPriceValue || null;
     this.minSurface = minSurfaceValue || null;
     this.maxSurface = maxSurfaceValue || null;
-    this.minConstructionYear = minConstructionYearValue || null;
-    this.maxConstructionYear = maxConstructionYearValue || null;
-    this.showUnderOption = showUnderOptionValue !== undefined ? showUnderOptionValue : true;
+    this.minGardenSurface = minGardenSurfaceValue || null;
+    this.maxGardenSurface = maxGardenSurfaceValue || null;
+    this.minGarageCount = minGarageCountValue || null;
     this.showWithTerrace = showWithTerraceValue || false;
     this.showWithGarden = showWithGardenValue || false;
-    this.showWithGarage = showWithGarageValue || false;
 
     // Get selected goal (Achat=0, Location=1)
     const selectedGoal = this.getSelectedGoal();
@@ -715,14 +819,15 @@ export class SearchBarComponent implements OnInit {
       minPrice: this.minPrice,
       maxPrice: this.maxPrice,
       // Nouveaux filtres avancés
-      showUnderOption: this.showUnderOption,
       showWithTerrace: this.showWithTerrace,
       showWithGarden: this.showWithGarden,
-      showWithGarage: this.showWithGarage,
       minSurface: this.minSurface,
       maxSurface: this.maxSurface,
-      minConstructionYear: this.minConstructionYear,
-      maxConstructionYear: this.maxConstructionYear
+      subTypes: this.selectedSubTypes,
+      propertyConditions: this.selectedConditions,
+      minGardenSurface: this.minGardenSurface,
+      maxGardenSurface: this.maxGardenSurface,
+      minGarageCount: this.minGarageCount
     };
 
     this.searchService.updateSearchCriteria(criteria);
@@ -884,6 +989,8 @@ export class SearchBarComponent implements OnInit {
 
     // Restauration des chambres
     this.selectedRooms = criteria.selectedRooms || [];
+    this.selectedSubTypes = criteria.subTypes || [];
+    this.selectedConditions = criteria.propertyConditions || [];
 
     // Restauration des prix
     this.minPrice = criteria.minPrice;
@@ -892,24 +999,22 @@ export class SearchBarComponent implements OnInit {
     this.searchForm.get('maxPrice')?.setValue(criteria.maxPrice);
 
     // Restauration des filtres avancés (correction du bug de re-cochage automatique)
-    this.showUnderOption = criteria.showUnderOption !== undefined ? criteria.showUnderOption : true;
     this.showWithTerrace = criteria.showWithTerrace || false;
     this.showWithGarden = criteria.showWithGarden || false;
-    this.showWithGarage = criteria.showWithGarage || false;
     this.minSurface = criteria.minSurface;
     this.maxSurface = criteria.maxSurface;
-    this.minConstructionYear = criteria.minConstructionYear;
-    this.maxConstructionYear = criteria.maxConstructionYear;
+    this.minGardenSurface = criteria.minGardenSurface ?? null;
+    this.maxGardenSurface = criteria.maxGardenSurface ?? null;
+    this.minGarageCount = criteria.minGarageCount ?? null;
     
     // Mise à jour des contrôles de formulaire
     this.searchForm.get('minSurface')?.setValue(criteria.minSurface);
     this.searchForm.get('maxSurface')?.setValue(criteria.maxSurface);
-    this.searchForm.get('minConstructionYear')?.setValue(criteria.minConstructionYear);
-    this.searchForm.get('maxConstructionYear')?.setValue(criteria.maxConstructionYear);
-    this.searchForm.get('showUnderOption')?.setValue(this.showUnderOption);
     this.searchForm.get('showWithTerrace')?.setValue(this.showWithTerrace);
     this.searchForm.get('showWithGarden')?.setValue(this.showWithGarden);
-    this.searchForm.get('showWithGarage')?.setValue(this.showWithGarage);
+    this.searchForm.get('minGardenSurface')?.setValue(this.minGardenSurface);
+    this.searchForm.get('maxGardenSurface')?.setValue(this.maxGardenSurface);
+    this.searchForm.get('minGarageCount')?.setValue(this.minGarageCount);
 
     // Mise à jour des codes postaux disponibles avec les critères restaurés
     const currentProperties = this.searchService.getCurrentProperties();
@@ -981,46 +1086,71 @@ export class SearchBarComponent implements OnInit {
     } else if (this.maxSurface) {
       return `Jusqu'à ${this.maxSurface}m²`;
     }
-    return 'Surface';
+    return this.translate.instant('search.29');
   }
 
-  toggleConstructionYearDropdown() {
-    this.isConstructionYearDropdownOpen = !this.isConstructionYearDropdownOpen;
+  toggleGardenSurfaceDropdown() {
+    this.isGardenSurfaceDropdownOpen = !this.isGardenSurfaceDropdownOpen;
   }
 
-  closeConstructionYearDropdown() {
-    this.isConstructionYearDropdownOpen = false;
-    // Sync form values with component properties
-    this.minConstructionYear = this.searchForm.get('minConstructionYear')?.value || null;
-    this.maxConstructionYear = this.searchForm.get('maxConstructionYear')?.value || null;
-    
-    // Update available zips and smart filters with new construction year criteria
+  closeGardenSurfaceDropdown() {
+    this.isGardenSurfaceDropdownOpen = false;
+    this.minGardenSurface = this.searchForm.get('minGardenSurface')?.value || null;
+    this.maxGardenSurface = this.searchForm.get('maxGardenSurface')?.value || null;
+
     const currentProperties = this.searchService.getCurrentProperties();
     if (currentProperties.length > 0) {
       this.updateAvailableZips(currentProperties);
       this.checkSelectedLocationAvailability();
     }
-    
+
     this.onSearch();
   }
 
-  getConstructionYearDisplayText(): string {
-    if (this.minConstructionYear && this.maxConstructionYear) {
-      return `${this.minConstructionYear} - ${this.maxConstructionYear}`;
-    } else if (this.minConstructionYear) {
-      return `À partir de ${this.minConstructionYear}`;
-    } else if (this.maxConstructionYear) {
-      return `Jusqu'à ${this.maxConstructionYear}`;
+  getGardenSurfaceDisplayText(): string {
+    if (this.minGardenSurface && this.maxGardenSurface) {
+      return `${this.minGardenSurface}m² - ${this.maxGardenSurface}m²`;
+    } else if (this.minGardenSurface) {
+      return `≥ ${this.minGardenSurface}m²`;
+    } else if (this.maxGardenSurface) {
+      return `≤ ${this.maxGardenSurface}m²`;
     }
-    return 'Année de construction';
+    return this.translate.instant('search.30');
+  }
+
+  toggleGarageDropdown() {
+    this.isGarageDropdownOpen = !this.isGarageDropdownOpen;
+  }
+
+  closeGarageDropdown() {
+    this.isGarageDropdownOpen = false;
+  }
+
+  selectGarageOption(value: number | null) {
+    this.minGarageCount = value;
+    this.searchForm.get('minGarageCount')?.setValue(value);
+    this.closeGarageDropdown();
+
+    const currentProperties = this.searchService.getCurrentProperties();
+    if (currentProperties.length > 0) {
+      this.updateAvailableZips(currentProperties);
+      this.checkSelectedLocationAvailability();
+    }
+
+    this.onSearch();
+  }
+
+  getGarageDisplayText(): string {
+    if (this.minGarageCount) {
+      return `${this.minGarageCount}+ ${this.translate.instant('search.35')}`;
+    }
+    return this.translate.instant('search.31');
   }
 
   onAdvancedFilterChange(): void {
     // Synchronisation des valeurs du formulaire avec les propriétés du composant
-    this.showUnderOption = this.searchForm.get('showUnderOption')?.value || false;
     this.showWithTerrace = this.searchForm.get('showWithTerrace')?.value || false;
     this.showWithGarden = this.searchForm.get('showWithGarden')?.value || false;
-    this.showWithGarage = this.searchForm.get('showWithGarage')?.value || false;
     
     // Mise à jour des codes postaux et filtres intelligents
     const currentProperties = this.searchService.getCurrentProperties();
@@ -1040,22 +1170,26 @@ export class SearchBarComponent implements OnInit {
     this.minPrice = null;
     this.maxPrice = null;
     this.selectedRooms = [];
+    this.selectedSubTypes = [];
+    this.selectedConditions = [];
     
     // Réinitialisation des filtres avancés
-    this.showUnderOption = true;
     this.showWithTerrace = false;
     this.showWithGarden = false;
-    this.showWithGarage = false;
     this.minSurface = null;
     this.maxSurface = null;
-    this.minConstructionYear = null;
-    this.maxConstructionYear = null;
+    this.minGardenSurface = null;
+    this.maxGardenSurface = null;
+    this.minGarageCount = null;
     
     // Réinitialisation des contrôles de formulaire
-    this.searchForm.get('showUnderOption')?.setValue(true);
     this.searchForm.get('showWithTerrace')?.setValue(false);
     this.searchForm.get('showWithGarden')?.setValue(false);
-    this.searchForm.get('showWithGarage')?.setValue(false);
+    this.searchForm.get('minSurface')?.setValue(null);
+    this.searchForm.get('maxSurface')?.setValue(null);
+    this.searchForm.get('minGardenSurface')?.setValue(null);
+    this.searchForm.get('maxGardenSurface')?.setValue(null);
+    this.searchForm.get('minGarageCount')?.setValue(null);
     
     // Retour à l'état par défaut (vente/achat)
     this.types.forEach(type => type.active = false);

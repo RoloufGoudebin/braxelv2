@@ -12,14 +12,15 @@ export interface SearchCriteria {
   minPrice: number | null;
   maxPrice: number | null;
   // Filtres avancés
-  showUnderOption?: boolean; // Par défaut true - si false, masque les biens sous option
   showWithTerrace?: boolean;
   showWithGarden?: boolean;
-  showWithGarage?: boolean;
   minSurface?: number | null;
   maxSurface?: number | null;
-  minConstructionYear?: number | null;
-  maxConstructionYear?: number | null;
+  subTypes?: string[];
+  propertyConditions?: string[];
+  minGardenSurface?: number | null;
+  maxGardenSurface?: number | null;
+  minGarageCount?: number | null;
 }
 
 @Injectable({
@@ -128,6 +129,9 @@ export class PropertySearchService {
     const availableResults: Property[] = [];
     const soldResults: Property[] = [];
     
+    const normalizedSubTypes = (criteria.subTypes || []).map(subType => subType.toLowerCase());
+    const normalizedConditions = (criteria.propertyConditions || []).map(condition => condition.toLowerCase());
+
     for (let i = 0; i < allProperties.length; i++) {
       const property = allProperties[i];
       
@@ -147,6 +151,16 @@ export class PropertySearchService {
       const propertyZip = Number(property.Zip);
       const matchesLocation = criteria.zipCodes.length === 0 || criteria.zipCodes.includes(propertyZip);
       if (!matchesLocation) passesFilters = false;
+
+      if (normalizedSubTypes.length > 0) {
+        const subType = (property.MainTypeName || '').toLowerCase();
+        if (!subType || !normalizedSubTypes.includes(subType)) passesFilters = false;
+      }
+      
+      if (normalizedConditions.length > 0) {
+        const propertyCondition = (property.ConditionName || '').toLowerCase();
+        if (!propertyCondition || !normalizedConditions.includes(propertyCondition)) passesFilters = false;
+      }
       
       if (criteria.selectedRooms.length > 0) {
         const rooms = property.NumberOfBedRooms || 0;
@@ -156,14 +170,16 @@ export class PropertySearchService {
         if (!roomMatches) passesFilters = false;
       }
 
-      if (criteria.showUnderOption === false && property.Marquee) passesFilters = false;
       if (criteria.showWithTerrace && (!property.SurfaceTerrace || property.SurfaceTerrace <= 0)) passesFilters = false;
       if (criteria.showWithGarden && !property.HasGarden) passesFilters = false;
-      if (criteria.showWithGarage && (!property.NumberOfGarages || property.NumberOfGarages <= 0)) passesFilters = false;
       if (criteria.minSurface !== null && (!property.SurfaceTotal || property.SurfaceTotal < criteria.minSurface)) passesFilters = false;
       if (criteria.maxSurface !== null && (!property.SurfaceTotal || property.SurfaceTotal > criteria.maxSurface)) passesFilters = false;
-      if (criteria.minConstructionYear !== null && (!property.ConstructionYear || property.ConstructionYear < criteria.minConstructionYear)) passesFilters = false;
-      if (criteria.maxConstructionYear !== null && (!property.ConstructionYear || property.ConstructionYear > criteria.maxConstructionYear)) passesFilters = false;
+      if (criteria.minGardenSurface !== null && (!property.SurfaceGarden || property.SurfaceGarden < criteria.minGardenSurface)) passesFilters = false;
+      if (criteria.maxGardenSurface !== null && (!property.SurfaceGarden || property.SurfaceGarden > criteria.maxGardenSurface)) passesFilters = false;
+      if (criteria.minGarageCount !== null) {
+        const garages = property.NumberOfGarages || 0;
+        if (garages < criteria.minGarageCount) passesFilters = false;
+      }
 
       if (passesFilters) {
         if (isAvailable) {
