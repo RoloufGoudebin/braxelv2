@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { OmnicasaService } from '../services/omnicasa/omnicasa.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Meta } from '@angular/platform-browser';
-import { getStatusColor, getStatusLabel } from '../shared/utils/property-status.util';
 
 @Component({
   selector: 'app-view-property',
@@ -190,11 +189,85 @@ export class ViewPropertyComponent implements OnInit {
 
 
   getColor(goal: number, subStatus: number) {
-    return getStatusColor(goal, subStatus);
+    if (goal == 0 && subStatus == 2) {
+      return '#283152'
+    }
+    if (goal == 1 && subStatus == 2) {
+      return '#283152';
+    }
+    if (goal == 0 && subStatus == 3) {
+      return '#26CE6C';
+    }
+    if (goal == 0 && subStatus == 6) {
+      return '#26CE6C';
+    }
+    if (goal == 1 && subStatus == 13) {
+      return '#FFC738';
+    }
+
   }
 
   getStatus(goal: number, subStatus: number) {
-    return getStatusLabel(this.lang, goal, subStatus);
+    if (goal == 0 && subStatus == 2) {
+      //check language
+      if (this.lang == 'fr') {
+        return 'À vendre';
+      }
+      else if(this.lang == 'nl') {
+        return 'Te koop';
+      }
+      else {
+        return 'For sale'
+      }
+    }
+    if (goal == 1 && subStatus == 2) {
+      //check language
+      if (this.lang == 'fr') {
+        return 'À louer';
+      }
+      else if(this.lang == 'nl') {
+        return 'Te huur';
+      }
+      else {
+        return 'For rent'
+      }
+    }
+    if (goal == 0 && subStatus == 3) {
+      //check language
+      if (this.lang == 'fr') {
+        return 'Sous option';
+      }
+      else if(this.lang == 'nl') {
+        return 'Onder optie';
+      }
+      else {
+        return 'Under option'
+      }
+    }
+    if (goal == 0 && subStatus == 6) {
+      //check language
+      if (this.lang == 'fr') {
+        return 'VENDU';
+      }
+      else if(this.lang == 'nl') {
+        return 'VERKOCHT';
+      }
+      else {
+        return 'SOLD'
+      }
+    }
+    if (goal == 1 && subStatus == 13) {
+      //check language
+      if (this.lang == 'fr') {
+        return 'Loué';
+      }
+      else if(this.lang == 'nl') {
+        return 'Verhuurd';
+      }
+      else {
+        return 'Rented'
+      }
+    }
   }
 
 }
