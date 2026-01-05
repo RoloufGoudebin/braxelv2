@@ -569,7 +569,7 @@ li {
 /* Correction des flèches sur mobile */
 @media screen and (max-width: 767px) {
   .arrow-main {
-    top: 30%;
+    top: 35%;
     font-size: 2em;
   }
   
