@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { Observable } from 'rxjs/Observable';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+=======
+import { Observable } from 'rxjs';
+>>>>>>> main
 import { AngularFireStorage, AngularFireUploadTask, AngularFireStorageReference } from "@angular/fire/storage";
 import { finalize, map } from 'rxjs/operators';
 import { FirestoreService } from 'src/app/services/firebase/firestore.service';
