@@ -106,7 +106,7 @@ img {
 }
 
 .shake {
-  animation: shake-animation 3.5s ease infinite;
+  animation: shake-animation 4s ease infinite, pulse 2s ease-in-out infinite;
   transform-origin: 50% 50%;
 }
 
@@ -391,6 +391,61 @@ i {
 
 a{
   cursor: pointer;
+}
+
+/* Styles pour les drapeaux */
+.language-flag {
+  display: inline-block;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+}
+
+.language-flag:hover {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
+.flag-icon {
+  font-size: 1.8em;
+  display: inline-block;
+  line-height: 1;
+}
+
+.language-selector-mobile {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.language-flag-mobile {
+  display: inline-block;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.language-flag-mobile:hover {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
+.flag-icon-mobile {
+  font-size: 2em;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Assurer que les drapeaux sont bien visibles sur desktop */
+@media screen and (min-width: 1068px) {
+  .top-navbar .nav-link {
+    padding: 0.5rem 0.8rem;
+  }
+  
+  .flag-icon {
+    font-size: 2em;
+  }
 }
 
 

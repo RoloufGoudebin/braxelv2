@@ -369,8 +369,23 @@ export class SearchBarComponent implements OnInit {
       }
     });
 
+    // Tri personnalisé : Maison en premier, Villa en second, puis ordre alphabétique
     this.subTypeOptions = Array.from(counts.entries())
-      .sort((a, b) => a[0].localeCompare(b[0]))
+      .sort((a, b) => {
+        const aLower = a[0].toLowerCase();
+        const bLower = b[0].toLowerCase();
+        
+        // Si a est "maison", il vient en premier
+        if (aLower === 'maison') return -1;
+        if (bLower === 'maison') return 1;
+        
+        // Si a est "villa", il vient en second (après maison)
+        if (aLower === 'villa') return -1;
+        if (bLower === 'villa') return 1;
+        
+        // Sinon tri alphabétique
+        return a[0].localeCompare(b[0]);
+      })
       .map(([value, count]) => ({ value, count }));
 
     const validSubTypes = new Set(this.subTypeOptions.map(option => option.value));

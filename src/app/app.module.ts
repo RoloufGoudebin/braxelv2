@@ -61,6 +61,7 @@ import { CarouselHomeComponent } from './home/carousel-home/carousel-home.compon
 import { LoadingComponent } from './loading/loading.component';
 import { SafePipe } from './safe.pipe';
 import { ModalNodalComponent } from './view-property/modal-nodal/modal-nodal.component';
+import { CookieConsentComponent } from './cookie-consent/cookie-consent.component';
 
 import { HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -105,6 +106,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     StorageComponent,
     SearchBarComponent,
     ModalAddComponent,
+    CookieConsentComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
