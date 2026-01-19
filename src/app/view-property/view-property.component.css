@@ -631,3 +631,47 @@ li {
 ::ng-deep .draggable {
   height: 100% !important;
 }
+
+/* Styles pour la première photo mobile */
+.mobile-first-photo-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.mobile-first-photo {
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
+}
+
+.photo-counter-mobile {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 0.9em;
+  font-weight: 600;
+  z-index: 5;
+}
+
+@media screen and (max-width: 767px) {
+  .mobile-first-photo {
+    height: 50vh;
+    min-height: 300px;
+  }
+  
+  .photo-counter-mobile {
+    bottom: 10px;
+    right: 10px;
+    padding: 6px 10px;
+    font-size: 0.85em;
+  }
+}

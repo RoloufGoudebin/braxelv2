@@ -45,8 +45,20 @@
 
     <div class="shadow rounded mt-3">
       <div class="bg mb-5">
+        <!-- Version mobile : première photo uniquement -->
+        <div class="d-md-none mobile-first-photo-container position-relative">
+          <img
+            src="{{ property.LargePictures[0] }}"
+            class="d-block rounded img-fluid text-center mx-auto mobile-first-photo"
+            (click)="showLightbox(0)"
+            alt="photo propriété immobilière de Braxel, une agence immobilière située à Waterloo"
+          />
+          <span class="photo-counter-mobile">1/{{ property.LargePictures.length }}</span>
+        </div>
+
+        <!-- Version desktop : carousel complet -->
         <ngx-slick-carousel
-          class="carousel mb-5 mb-md-2"
+          class="carousel mb-5 mb-md-2 d-none d-md-block"
           #slickModal="slick-carousel"
           [config]="slideConfig"
           (init)="slickInit($event)"
@@ -80,39 +92,14 @@
         </span>
 
         <span
-          class="bi bi-arrow-left-circle-fill arrow-main"
+          class="bi bi-arrow-left-circle-fill arrow-main d-none d-md-block"
           (click)="slickModal.slickPrev()"
         ></span>
         <span
-          class="bi bi-arrow-right-circle-fill arrow-main"
+          class="bi bi-arrow-right-circle-fill arrow-main d-none d-md-block"
           (click)="slickModal.slickNext()"
         ></span>
 
-        <ngx-slick-carousel
-          class="carouselXs d-md-none"
-          #slickModalNavXs="slick-carousel"
-          [config]="slideConfigNavXs"
-          (init)="slickInit($event)"
-          (breakpoint)="breakpoint($event)"
-          (afterChange)="afterChange($event)"
-          (beforeChange)="beforeChange($event)"
-        >
-          <div
-            ngxSlickItem
-            *ngFor="let picture of property.LargePictures; let i = index"
-            class="slide mt-5 rounded thumbnail-img text-center mx-auto"
-            data-slide-number="i"
-            data-toggle="lightbox"
-            data-gallery="gallery"
-          >
-            <img
-              src="{{ picture }}"
-              (click)="slickModal.slickGoTo(i)"
-              class="d-block rounded img-fluid px-3 thumbnail-img text-center mx-auto"
-              alt="photo propriété immobilière"
-            />
-          </div>
-        </ngx-slick-carousel>
 
         <ngx-slick-carousel
           class="carouselXl d-none d-md-block pb-4"
@@ -140,16 +127,6 @@
           </div>
         </ngx-slick-carousel>
 
-        <span
-          class="bi bi-arrow-left-circle-fill d-md-none arrow-gallery"
-          aria-hidden="true"
-          (click)="slickModalNavXs.slickPrev()"
-        ></span>
-        <span
-          class="bi bi-arrow-right-circle-fill d-md-none arrow-gallery"
-          aria-hidden="true"
-          (click)="slickModalNavXs.slickNext()"
-        ></span>
 
         <span
           class="bi bi-arrow-left-circle-fill d-none d-md-block arrow-gallery"
