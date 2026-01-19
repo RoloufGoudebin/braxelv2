@@ -70,6 +70,8 @@ import { CountUpModule } from 'ngx-countup';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { PolitiqueConfidentialiteComponent } from './politique-confidentialite/politique-confidentialite.component';
+import { CodeDeontologieComponent } from './code-deontologie/code-deontologie.component';
 
 
 @NgModule({
@@ -107,6 +109,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     SearchBarComponent,
     ModalAddComponent,
     CookieConsentComponent,
+    PolitiqueConfidentialiteComponent,
+    CodeDeontologieComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

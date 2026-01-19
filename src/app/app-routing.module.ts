@@ -13,6 +13,8 @@ import { OurBiensComponent } from './our-biens/our-biens.component';
 import { RealisationsComponent } from './realisations/realisations.component';
 import { ServicesComponent } from './services-braxel/services.component';
 import { ViewPropertyComponent } from './view-property/view-property.component';
+import { PolitiqueConfidentialiteComponent } from './politique-confidentialite/politique-confidentialite.component';
+import { CodeDeontologieComponent } from './code-deontologie/code-deontologie.component';
 
 
 
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: 'realisations', component: RealisationsComponent, data: { animationState: 'Five' }},
   { path: 'faq', component: FaqComponent, data: { animationState: 'Six'}},
   { path: 'contact', component: ContactComponent, data: { animationState: 'Seven' } },
+  { path: 'politique-confidentialite', component: PolitiqueConfidentialiteComponent, data: { animationState: 'Eight' } },
+  { path: 'code-deontologie', component: CodeDeontologieComponent, data: { animationState: 'Nine' } },
   { path: 'biens-immobiliers/:id', component: ViewPropertyComponent, data: { animationState: 'biens-immobiliers' } },
   { path: 'admin', component: SignInComponent },
   { path: 'admin/top-biens', component: TopBiensComponent, canActivate: [AuthGuard] },

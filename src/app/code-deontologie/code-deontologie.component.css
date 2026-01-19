@@ -1,0 +1,95 @@
+h1{
+    color: #233353;
+    font-size: 3em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.intro{
+    font-size: 1.1em;
+    font-family: "Source Sans Pro", sans-serif;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1.5em;
+}
+
+h2{
+    color: #233353;
+    font-size: 2em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #EA514E;
+    padding-bottom: 0.5em;
+}
+
+h3{
+    color: #233353;
+    font-size: 1.6em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+h4{
+    color: #233353;
+    font-size: 1.3em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+}
+
+p{
+    font-size: 1.1em;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: normal;
+    line-height: 1.6;
+    margin-bottom: 0.8em;
+}
+
+ul, ol{
+    font-size: 1.1em;
+    font-family: "Source Sans Pro", sans-serif;
+    line-height: 1.6;
+    margin-bottom: 1em;
+    padding-left: 2em;
+}
+
+li{
+    margin-bottom: 0.2em;
+}
+
+.content{
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 3em;
+}
+
+strong{
+    font-weight: 600;
+    color: #233353;
+}
+
+.note{
+    font-style: italic;
+    color: #666;
+    background-color: #f6f6f6;
+    padding: 1em;
+    border-left: 4px solid #EA514E;
+    margin: 1.5em 0;
+}
+
+.footer-note{
+    margin-top: 3em;
+    padding: 1.5em;
+    background-color: #f6f6f6;
+    border-top: 3px solid #EA514E;
+}
+
+.footer-note p{
+    margin-bottom: 0.8em;
+}
