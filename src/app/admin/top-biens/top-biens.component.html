@@ -1,93 +1,140 @@
 <app-navbar-admin></app-navbar-admin>
+
 <div class="container-fluid admin-container">
+  <!-- En-tête avec titre et actions -->
   <div class="header-section">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <div>
+    <div class="header-top">
+      <div class="header-title-section">
         <h1 class="admin-title">
-          <i class="bi bi-star-fill text-warning me-2"></i>
-          Biens à la Une
+          <i class="bi bi-list-ol"></i>
+          Ordre des Biens à la Une
         </h1>
-        <p class="admin-subtitle">Glissez-déposez les biens pour modifier leur ordre d'affichage</p>
+        <p class="admin-subtitle">
+          Organisez l'ordre d'affichage des biens sur votre site. Utilisez le glisser-déposer ou les boutons pour réorganiser.
+        </p>
       </div>
-      <div class="d-flex gap-2">
-        <button 
-          type="button" 
-          class="btn btn-outline-secondary"
-          (click)="resetOrder()"
-          [disabled]="!hasChanges">
-          <i class="bi bi-arrow-counterclockwise me-1"></i>
-          Réinitialiser
-        </button>
-        <button 
-          type="button" 
-          class="btn btn-success btn-save"
-          (click)="save()"
-          [disabled]="!hasChanges || isSaving">
-          <span *ngIf="!isSaving">
-            <i class="bi bi-check-circle me-1"></i>
-            Sauvegarder
-          </span>
-          <span *ngIf="isSaving">
-            <span class="spinner-border spinner-border-sm me-1" role="status"></span>
-            Sauvegarde...
-          </span>
-        </button>
+      
+      <div class="header-actions">
+        <!-- Actions -->
+        <div class="action-buttons">
+          <button 
+            type="button" 
+            class="btn-action btn-reset"
+            (click)="resetOrder()"
+            [disabled]="!hasChanges">
+            <i class="bi bi-arrow-counterclockwise"></i>
+            <span>Annuler</span>
+          </button>
+          
+          <button 
+            type="button" 
+            class="btn-action btn-save"
+            (click)="save()"
+            [disabled]="!hasChanges || isSaving">
+            <span *ngIf="!isSaving">
+              <i class="bi bi-check-circle"></i>
+              <span>Sauvegarder</span>
+            </span>
+            <span *ngIf="isSaving" class="saving-state">
+              <span class="spinner"></span>
+              <span>Sauvegarde...</span>
+            </span>
+          </button>
+        </div>
       </div>
     </div>
 
-    <div *ngIf="hasChanges" class="alert alert-info d-flex align-items-center" role="alert">
-      <i class="bi bi-info-circle-fill me-2"></i>
-      <div>Vous avez des modifications non sauvegardées. N'oubliez pas de sauvegarder !</div>
+    <!-- Alerte de modifications non sauvegardées -->
+    <div *ngIf="hasChanges" class="alert-unsaved">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+      <span>Vous avez des modifications non sauvegardées</span>
     </div>
   </div>
 
-  <div class="properties-grid" *ngIf="topPropertyList">
+  <!-- Liste des propriétés avec drag & drop -->
+  <div class="properties-list-container" *ngIf="filteredPropertyList && filteredPropertyList.length > 0">
     <div 
-      #propertyListContainer
       cdkDropList 
-      cdkDropListOrientation="horizontal"
-      class="property-list"
-      cdkDropListAutoScrollDisabled="true"
+      class="properties-list"
       (cdkDropListDropped)="drop($event)">
       
       <div 
-        *ngFor="let property of topPropertyList; let index = index;" 
-        class="property-item"
+        *ngFor="let property of filteredPropertyList; let index = index;" 
+        class="property-row"
         cdkDrag
-        (cdkDragMoved)="onDragMoved($event)"
-        (cdkDragEnded)="onDragEnded()">
+        [attr.aria-label]="'Bien position ' + getGlobalPosition(property) + ': ' + property.TypeDescription">
         
-        <div class="drag-placeholder" *cdkDragPlaceholder></div>
+        <!-- Placeholder pour le drag & drop -->
+        <div class="drag-placeholder" *cdkDragPlaceholder>
+          <div class="placeholder-line"></div>
+        </div>
         
-        <div class="property-card">
-          <div class="drag-handle" cdkDragHandle>
-            <i class="bi bi-grip-vertical"></i>
+        <!-- Contenu de la ligne -->
+        <div class="property-row-content" cdkDragHandle>
+          <!-- Numéro de position -->
+          <div class="position-badge">
+            <span class="position-number">{{ getGlobalPosition(property) }}</span>
           </div>
           
-          <div class="property-position">{{ index + 1 }}</div>
+          <!-- Image du bien -->
+          <div class="property-image-wrapper">
+            <img 
+              class="property-image" 
+              [src]="getImageUrl(property)" 
+              [alt]="property.TypeDescription"
+              loading="lazy"
+              (error)="onImageError($event)">
+          </div>
           
-          <img 
-            class="property-image" 
-            [src]="getImageUrl(property)" 
-            [alt]="property.TypeDescription"
-            (error)="onImageError($event)">
+          <!-- Informations du bien -->
+          <div class="property-info">
+            <h3 class="property-title">{{ property.TypeDescription }}</h3>
+            <div class="property-details">
+              <span class="property-location">
+                <i class="bi bi-geo-alt-fill"></i>
+                {{ property.Zip }} {{ property.City }}
+              </span>
+              <span class="property-price">
+                {{ property.Price | currency:'EUR':'symbol':'1.0-0':'fr' }}
+              </span>
+            </div>
+          </div>
           
-          <div class="property-content">
-            <h5 class="property-type">{{ property.TypeDescription }}</h5>
-            <p class="property-location">
-              <i class="bi bi-geo-alt-fill"></i>
-              {{ property.Zip }} {{ property.City }}
-            </p>
-            <div class="property-price">{{ property.Price | currency:'EUR':'symbol':'1.0-0':'fr' }}</div>
+          <!-- Actions de réorganisation -->
+          <div class="property-actions">
+            <button 
+              type="button"
+              class="action-btn btn-move-up"
+              (click)="moveUp(index); $event.stopPropagation()"
+              [disabled]="index === 0"
+              title="Monter d'une position">
+              <i class="bi bi-chevron-up"></i>
+            </button>
+            <button 
+              type="button"
+              class="action-btn btn-move-down"
+              (click)="moveDown(index); $event.stopPropagation()"
+              [disabled]="index === filteredPropertyList.length - 1"
+              title="Descendre d'une position">
+              <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="drag-handle-icon" title="Glisser-déposer">
+              <i class="bi bi-grip-vertical"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div *ngIf="!topPropertyList || topPropertyList.length === 0" class="empty-state">
-    <i class="bi bi-house-x-fill"></i>
-    <h3>Aucun bien à la une</h3>
-    <p>Il n'y a actuellement aucun bien configuré pour être affiché à la une.</p>
+  <!-- État vide -->
+  <div *ngIf="!filteredPropertyList || filteredPropertyList.length === 0" class="empty-state">
+    <div class="empty-icon">
+      <i class="bi bi-inbox"></i>
+    </div>
+    <h3>Aucun bien trouvé</h3>
+    <p>
+      Il n'y a actuellement aucun bien configuré pour être affiché à la une.
+    </p>
   </div>
 </div>

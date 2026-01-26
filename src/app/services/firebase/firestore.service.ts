@@ -31,15 +31,65 @@ export class FirestoreService {
     return this.firestore.collection(collection).snapshotChanges();
   }
 
-  savePropertyTop(newTopPropertyList: Property[]) {
-    for (let i = 0; i < newTopPropertyList.length; i++) {
-      console.log(newTopPropertyList[i].ID.toString())
-      this.firestore
-        .collection("newProperties")
-        .doc(newTopPropertyList[i].ID.toString())
-        .update(newTopPropertyList[i])
+  /**
+   * Sauvegarde la liste des biens à la une avec leur ordre
+   * 
+   * Principe :
+   * - L'ordre est déterminé par le champ 'id' de chaque propriété (0, 1, 2, 3...)
+   * - Les IDs sont normalisés pour garantir un ordre séquentiel
+   * - Chaque propriété est sauvegardée dans Firestore avec son 'id' mis à jour
+   * 
+   * @param newTopPropertyList Liste des propriétés avec leur ordre souhaité
+   */
+  savePropertyTop(newTopPropertyList: Property[]): void {
+    if (!newTopPropertyList || newTopPropertyList.length === 0) {
+      console.warn('⚠️ Aucune propriété à sauvegarder');
+      return;
     }
 
+    // Créer une copie pour ne pas modifier l'original
+    const sortedList = [...newTopPropertyList];
+
+    // Trier par id pour garantir l'ordre
+    sortedList.sort((a, b) => {
+      const idA = (a.id !== undefined && a.id !== null && a.id >= 0) ? a.id : 999999;
+      const idB = (b.id !== undefined && b.id !== null && b.id >= 0) ? b.id : 999999;
+      return idA - idB;
+    });
+
+    // Normaliser les IDs pour garantir un ordre séquentiel strict (0, 1, 2, 3...)
+    sortedList.forEach((property, index) => {
+      property.id = index;
+    });
+
+    console.log(`💾 Sauvegarde de ${sortedList.length} biens à la une`);
+
+    // Sauvegarder chaque propriété dans Firestore
+    const savePromises = sortedList.map((property, index) => {
+      // Double vérification que l'id est correct
+      property.id = index;
+      
+      return this.firestore
+        .collection("activePropertieeees")
+        .doc(property.ID.toString())
+        .set(property, { merge: true })
+        .then(() => {
+          console.log(`  ✓ Bien #${index + 1} sauvegardé (ID: ${property.ID})`);
+        })
+        .catch((error) => {
+          console.error(`  ✗ Erreur pour le bien #${index + 1} (ID: ${property.ID}):`, error);
+          throw error;
+        });
+    });
+
+    // Attendre que toutes les sauvegardes soient terminées
+    Promise.all(savePromises)
+      .then(() => {
+        console.log('✅ Tous les biens à la une ont été sauvegardés avec succès');
+      })
+      .catch((error) => {
+        console.error('❌ Erreur lors de la sauvegarde des biens à la une:', error);
+      });
   }
 
 
@@ -167,7 +217,7 @@ export class FirestoreService {
                   IsOffice: this.propertyList[i].IsOffice
                 }
                 this.firestore
-                  .collection("newProperties")
+                  .collection("activePropertieeees")
                   .doc(toWrite.ID.toString())
                   .set(toWrite)
                 j++;
@@ -291,7 +341,7 @@ export class FirestoreService {
                     IsOffice: this.propertyList[i].IsOffice
                   }
                   this.firestore
-                    .collection("newProperties")
+                    .collection("activePropertieeees")
                     .doc(this.propertyList[i].ID.toString())
                     .update(toWrite)
                   break;
@@ -348,7 +398,7 @@ export class FirestoreService {
                   }
                   add++;
                   this.firestore
-                    .collection("newProperties")
+                    .collection("activePropertieeees")
                     .doc(this.propertyList[i].ID.toString())
                     .set(toWrite)
                 }
@@ -398,7 +448,7 @@ export class FirestoreService {
   }
 
   setPropertyListActiveFire() {
-    this.prout = this.getFirestoreCollection("newProperties")
+    this.prout = this.getFirestoreCollection("activePropertieeees")
     this.prout.subscribe(data =>
       this.topPropertyListActive = data.map(e => {
         return {
@@ -461,7 +511,7 @@ export class FirestoreService {
 
   deleteProperty(id: number){
     this.firestore
-      .collection("newProperties")
+      .collection("activePropertieeees")
       .doc(id.toString())
       .delete()
   }

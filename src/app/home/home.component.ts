@@ -1,10 +1,13 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../services/firebase/firestore.service';
 import { Property } from '../services/omnicasa/interface';
-
-import { BraxelHome } from '../braxel-home.model'
+import { BraxelHome } from '../braxel-home.model';
 import { Meta } from '@angular/platform-browser';
 
+/**
+ * Composant de la page d'accueil
+ * Affiche les biens à la une dans l'ordre défini dans l'admin
+ */
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,41 +15,68 @@ import { Meta } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private firestore: FirestoreService, private meta: Meta) {
-   }
-
   numberProperty = 9;
   texts: BraxelHome[];
-  showChiffres= false;
-  toShow: Property[]
-
+  showChiffres = false;
+  toShow: Property[];
   isSSR = false;
 
+  constructor(
+    private firestore: FirestoreService,
+    private meta: Meta
+  ) {}
 
-  ngOnInit() {
-    this.firestore.prout.subscribe(data=>
-      this.toShow = data.map(e => {
-        return {
-          id: Number(e.payload.doc.id),
-          ...e.payload.doc.data() as Property
-        }
-    }).filter(e => (e.SubStatus == 2 || e.SubStatus == 3))
-    .sort(function (a: Property, b: Property){
-      return a.id - b.id;
-    })
-    );
-
-    this.meta.updateTag({ name: 'canonical', content: "https://braxel.be/"})
-
-    //check if is server side rendering
-    if (typeof window !== 'undefined') {
-      this.isSSR = false;
-    }
-    else {
-      this.isSSR = true;
-    }
-
+  ngOnInit(): void {
+    this.loadTopProperties();
+    this.setupMetaTags();
+    this.detectSSR();
   }
 
+  /**
+   * Charge les biens à la une depuis Firestore
+   * Les biens sont triés par leur champ 'id' pour respecter l'ordre défini dans l'admin
+   */
+  private loadTopProperties(): void {
+    this.firestore.prout.subscribe(data => {
+      this.toShow = data
+        .map(e => {
+          const propertyData = e.payload.doc.data() as Property;
+          return {
+            id: this.normalizeId(propertyData.id),
+            ...propertyData
+          };
+        })
+        .filter(e => e.SubStatus === 2 || e.SubStatus === 3)
+        .sort((a, b) => {
+          // Trier par id croissant pour respecter l'ordre défini dans l'admin
+          return a.id - b.id;
+        });
+
+      if (this.toShow && this.toShow.length > 0) {
+        console.log(`🏠 Affichage de ${this.toShow.length} biens à la une sur la page d'accueil`);
+      }
+    });
+  }
+
+  /**
+   * Normalise un ID (remplace les valeurs invalides par 999999 pour les placer à la fin)
+   */
+  private normalizeId(id: any): number {
+    return (id !== undefined && id !== null && typeof id === 'number' && id >= 0) ? id : 999999;
+  }
+
+  /**
+   * Configure les meta tags pour le SEO
+   */
+  private setupMetaTags(): void {
+    this.meta.updateTag({ name: 'canonical', content: 'https://braxel.be/' });
+  }
+
+  /**
+   * Détecte si on est en mode SSR (Server Side Rendering)
+   */
+  private detectSSR(): void {
+    this.isSSR = typeof window === 'undefined';
+  }
 
 }
