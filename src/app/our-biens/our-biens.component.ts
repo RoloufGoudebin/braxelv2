@@ -1,6 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { FirestoreService } from '../services/firebase/firestore.service';
@@ -21,24 +21,29 @@ export class OurBiensComponent implements OnInit, OnDestroy {
   allProperties: Property[] = [];
   toShow: Property[] = [];
   isFallbackMode: boolean = false;
-  
+  /** True après la première réponse Firestore — évite le message "Aucune propriété" au premier paint (Soft 404). */
+  hasDataLoaded: boolean = false;
+
   private subscriptions: Subscription[] = [];
 
   constructor(
-    public firestore: FirestoreService, 
-    private viewportScroller: ViewportScroller, 
-    private translate: TranslateService, 
-    public sharedDatas: SharedDatasService, 
+    public firestore: FirestoreService,
+    private viewportScroller: ViewportScroller,
+    private translate: TranslateService,
+    public sharedDatas: SharedDatasService,
     private meta: Meta,
+    private title: Title,
     private searchService: PropertySearchService
   ) { }
 
   ngOnInit(): void {
+    this.title.setTitle('Biens immobiliers à vendre et louer | Waterloo, Brabant wallon - Braxel');
+    this.meta.updateTag({ name: 'description', content: 'Découvrez notre sélection de biens immobiliers à vendre et à louer à Waterloo et dans le Brabant wallon. Maisons, appartements et terrains.' });
     this.meta.updateTag({ name: 'canonical', content: 'https://braxel.be/nos-biens' });
     this.sharedDatas.resetPropertiesOurBiens();
 
     // Abonnement aux propriétés depuis Firestore
-    const propertiesSub = this.firestore.prout.subscribe(data => {
+    const propertiesSub = this.firestore.activeProperties$.subscribe(data => {
       this.allProperties = data.map(e => {
         const propertyData = e.payload.doc.data() as Property;
         return {
@@ -84,6 +89,7 @@ export class OurBiensComponent implements OnInit, OnDestroy {
         
         this.searchService.updateSearchCriteria(defaultCriteria);
       }
+      this.hasDataLoaded = true;
     });
 
     // Abonnement aux résultats de recherche
@@ -120,6 +126,7 @@ export class OurBiensComponent implements OnInit, OnDestroy {
 
   @HostListener('document:scroll', ['$event'])
   onScroll(event: Event): void {
+    if (!this.addMore?.nativeElement) return;
     const windowHeight = window.innerHeight;
     const boundingAddMore = this.addMore.nativeElement.getBoundingClientRect();
 

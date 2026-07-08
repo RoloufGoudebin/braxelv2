@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { FirestoreService } from '../services/firebase/firestore.service';
 import { Property } from '../services/omnicasa/interface';
 import { BraxelHome } from '../braxel-home.model';
@@ -13,13 +14,14 @@ import { Meta } from '@angular/platform-browser';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   numberProperty = 9;
   texts: BraxelHome[];
   showChiffres = false;
   toShow: Property[];
   isSSR = false;
+  private propertiesSubscription: Subscription;
 
   constructor(
     private firestore: FirestoreService,
@@ -37,8 +39,8 @@ export class HomeComponent implements OnInit {
    * Les biens sont triés par leur champ 'id' pour respecter l'ordre défini dans l'admin
    */
   private loadTopProperties(): void {
-    this.firestore.prout.subscribe(data => {
-      this.toShow = data
+    this.propertiesSubscription = this.firestore.activeProperties$.subscribe(data => {
+      const newToShow = data
         .map(e => {
           const propertyData = e.payload.doc.data() as Property;
           return {
@@ -47,15 +49,16 @@ export class HomeComponent implements OnInit {
           };
         })
         .filter(e => e.SubStatus === 2 || e.SubStatus === 3)
-        .sort((a, b) => {
-          // Trier par id croissant pour respecter l'ordre défini dans l'admin
-          return a.id - b.id;
-        });
+        .sort((a, b) => a.id - b.id);
 
-      if (this.toShow && this.toShow.length > 0) {
-        console.log(`🏠 Affichage de ${this.toShow.length} biens à la une sur la page d'accueil`);
+      if (JSON.stringify(this.toShow) !== JSON.stringify(newToShow)) {
+        this.toShow = newToShow;
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.propertiesSubscription?.unsubscribe();
   }
 
   /**

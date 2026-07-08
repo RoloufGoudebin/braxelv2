@@ -20,7 +20,7 @@ export class RealisationsComponent implements OnInit {
 
     this.meta.updateTag({name:'canonical', content:'https://braxel.be/realisations'})
 
-    this.firestore.prout.subscribe(data=>
+    this.firestore.activeProperties$.subscribe(data=>
       this.toShow = data.map(e => {
         return {
           id: e.payload.doc.id,

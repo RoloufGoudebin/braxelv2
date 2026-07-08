@@ -53,7 +53,7 @@ export class TopBiensComponent implements OnInit, OnDestroy {
    * Charge les biens à la une depuis Firestore
    */
   private loadProperties(): void {
-    this.subscription = this.firestore.prout.subscribe(data => {
+    this.subscription = this.firestore.activeProperties$.subscribe(data => {
       // Ignorer les mises à jour si l'utilisateur a des modifications non sauvegardées
       // ou si on est en train de sauvegarder (pour éviter les conflits)
       if (this.hasChanges || this.isSavingToFirestore) {

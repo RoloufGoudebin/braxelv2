@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConsentService } from '../services/consent.service';
 
 @Component({
   selector: 'app-cookie-consent',
@@ -8,11 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class CookieConsentComponent implements OnInit {
   showBanner = false;
 
+  constructor(private consentService: ConsentService) {}
+
   ngOnInit(): void {
-    // Vérifier si l'utilisateur a déjà donné son consentement
-    const consent = localStorage.getItem('cookieConsent');
-    if (!consent) {
-      // Afficher le banner après un court délai
+    if (!this.consentService.getStoredConsent()) {
       setTimeout(() => {
         this.showBanner = true;
       }, 1000);
@@ -20,12 +20,12 @@ export class CookieConsentComponent implements OnInit {
   }
 
   acceptCookies(): void {
-    localStorage.setItem('cookieConsent', 'accepted');
+    this.consentService.saveConsent('accepted');
     this.showBanner = false;
   }
 
   rejectCookies(): void {
-    localStorage.setItem('cookieConsent', 'rejected');
+    this.consentService.saveConsent('rejected');
     this.showBanner = false;
   }
 }

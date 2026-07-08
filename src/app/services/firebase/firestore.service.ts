@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 import { Property } from '../omnicasa/interface';
 import { OmnicasaService } from '../omnicasa/omnicasa.service';
 
@@ -10,8 +11,13 @@ import { OmnicasaService } from '../omnicasa/omnicasa.service';
 })
 export class FirestoreService {
 
+  private propertyListSubscribed = false;
+
   constructor(private firestore: AngularFirestore, private omnicasaService: OmnicasaService, private translate: TranslateService) {
     this.lang = this.translate.currentLang;
+    this.activeProperties$ = this.getFirestoreCollection('activePropertieeees').pipe(
+      shareReplay(1)
+    );
   }
 
   lang: string;
@@ -25,7 +31,7 @@ export class FirestoreService {
   topPropertyListActive: Property[];
   propertyListSell: Property[] = [];
   topPropertyListSell: Property[] = [];
-  prout: Observable<any>
+  activeProperties$: Observable<any>
 
   getFirestoreCollection(collection) {
     return this.firestore.collection(collection).snapshotChanges();
@@ -270,7 +276,7 @@ export class FirestoreService {
 
   updatePropertyListActive() {
     let toCopy = [];
-    this.setPropertyListActiveFire(); //topPropertyListActive
+    this.initActivePropertiesSubscription(); //topPropertyListActive
     this.setPropertyListActiveOmni(); //propertyList
     setTimeout(() => {
       for (let i = 0; i < this.propertyList.length; i++) {
@@ -447,9 +453,12 @@ export class FirestoreService {
     return this.firestore.collection('refresh').snapshotChanges();
   }
 
-  setPropertyListActiveFire() {
-    this.prout = this.getFirestoreCollection("activePropertieeees")
-    this.prout.subscribe(data =>
+  initActivePropertiesSubscription() {
+    if (this.propertyListSubscribed) {
+      return;
+    }
+    this.propertyListSubscribed = true;
+    this.activeProperties$.subscribe(data =>
       this.topPropertyListActive = data.map(e => {
         return {
           ...e.payload.doc.data() as Property

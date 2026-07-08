@@ -44,8 +44,8 @@ export class AppComponent {
     else {
       this.document.documentElement.lang = 'fr';
     }
+    this.firestore.initActivePropertiesSubscription();
     this.firestore.updatePropertyListActive();
-    this.firestore.setPropertyListActiveFire();
     this.firestore.getDateRefresh().subscribe(data =>
       this.date = data.map(e => {
         return {
